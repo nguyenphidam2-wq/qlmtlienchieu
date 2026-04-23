@@ -36,6 +36,6 @@ export default function MigratePage() {
                                     className="bg-blue-500 text-white px-4 py-2 rounded"
                                   >
                             Run Migration
-                    </button>b          <div className="mt-4 p-4 border rounded bg-gray-100 whitespace-pre-wrap">                         Status: {status}
+                    </button>b         <div className="mt-4 p-4 border rounded bg-gray-100 whitespace-pre-wrap">                     Status: {status}
                     </div>div>           </div>di           );
 }</div>
