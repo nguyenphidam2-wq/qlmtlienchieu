@@ -30,12 +30,16 @@ export default function MigratePage() {
 
   return (
               <div className="p-10">
-                    <h1 className="text-2xl font-bold mb-4">Data Migration</h1>
+                              <h1 className="text-2xl font-bold mb-4">Data Migration</h1>h1>
                     <button 
-                                    onClick={runMigration}
-                                    className="bg-blue-500 text-white px-4 py-2 rounded"
-                                  >
+                                      onClick={runMigration}
+                                      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                                    >
                             Run Migration
-                    </button>b       <div className="mt-4 p-4 border rounded bg-gray-100 whitespace-pre-wrap">                     Status: {status}
-                    </div>div>           </div>di           );
-}</div>
+                    </button>button>
+                    <div className="mt-4 p-4 border rounded bg-gray-50">
+                            Status: {status}
+                    </div>div>
+              </div>div>
+              );
+}
