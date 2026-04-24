@@ -88,44 +88,48 @@ export function SubjectList() {
   };
 
   return (
-    <div>
+    <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">
-            Quản lý Đối tượng Ma túy
+          <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Quản lý Đối tượng
           </h1>
-          <p className="text-slate-500 mt-1">
-            Danh sách và thông tin đầy đủ về các đối tượng
+          <p className="text-slate-500 dark:text-slate-400 mt-1 text-sm">
+            Danh sách chi tiết các đối tượng trên địa bàn
           </p>
         </div>
-        <Button icon={Plus} onClick={handleCreate}>
+        <Button 
+          icon={Plus} 
+          onClick={handleCreate}
+          className="w-full md:w-auto justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-200"
+        >
           Thêm đối tượng
         </Button>
       </div>
 
       {/* Toolbar */}
-      <div className="table-toolbar">
-        <div className="search-box">
+      <div className="flex flex-col gap-4 bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+        <div className="search-box !flex-1 !min-w-0 !w-full">
           <Search className="w-4 h-4 text-slate-400" />
           <input
             type="text"
             placeholder="Tìm theo họ tên, CMND, địa chỉ..."
+            className="bg-transparent border-none focus:ring-0 w-full"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        <div className="filter-btns">
+        <div className="flex overflow-x-auto pb-1 gap-2 custom-scrollbar">
           {STATUS_OPTIONS.map((opt) => (
             <button
               key={opt.value}
-              className={`filter-btn ${statusFilter === opt.value ? "active" : ""}`}
+              className={`whitespace-nowrap px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
+                statusFilter === opt.value 
+                ? "bg-slate-900 text-white border-slate-900 shadow-md" 
+                : "bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100"
+              }`}
               onClick={() => setStatusFilter(opt.value)}
-              style={
-                opt.value && statusFilter === opt.value
-                  ? { color: opt.color }
-                  : {}
-              }
             >
               {opt.label}
             </button>
@@ -133,114 +137,80 @@ export function SubjectList() {
         </div>
       </div>
 
-      {/* Table */}
-      <div className="table-wrap">
-        <table>
+      {/* Desktop Table View */}
+      <div className="hidden md:block table-wrap">
+        <table className="w-full">
           <thead>
             <tr>
-              <th>#</th>
+              <th className="w-12">#</th>
               <th>Họ và tên</th>
               <th>Năm sinh</th>
               <th>Giới tính</th>
               <th>CMND/CCCD</th>
-              <th>Loại MT</th>
-              <th>Địa chỉ cư trú</th>
+              <th>Loại ĐT</th>
+              <th>Tổ dân phố</th>
               <th>Tình trạng</th>
-              <th>Thao tác</th>
+              <th className="text-right">Thao tác</th>
             </tr>
           </thead>
           <tbody>
             {loading || isPending ? (
               <tr>
-                <td colSpan={9} style={{ textAlign: "center", padding: "40px" }}>
-                  Đang tải dữ liệu...
+                <td colSpan={9} className="text-center py-20 text-slate-400">
+                  <div className="animate-pulse flex flex-col items-center">
+                    <div className="h-8 w-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+                    Đang tải dữ liệu...
+                  </div>
                 </td>
               </tr>
             ) : filteredSubjects.length === 0 ? (
               <tr>
-                <td colSpan={9}>
-                  <div className="empty-state">
-                    <div>Chưa có dữ liệu. Nhấn <strong>Thêm đối tượng</strong> để bắt đầu.</div>
-                  </div>
+                <td colSpan={9} className="text-center py-20 text-slate-400 italic">
+                  Không tìm thấy đối tượng nào.
                 </td>
               </tr>
             ) : (
               filteredSubjects.map((s, i) => (
-                <tr key={s._id?.toString()}>
-                  <td style={{ color: "var(--text-2)" }}>{i + 1}</td>
+                <tr key={s._id?.toString()} className="hover:bg-slate-50 transition-colors">
+                  <td className="text-slate-400 font-mono text-xs">{i + 1}</td>
                   <td>
-                    <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                      {s.face_image_url ? (
-                        <img
-                          src={s.face_image_url}
-                          style={{
-                            width: "32px",
-                            height: "32px",
-                            borderRadius: "50%",
-                            objectFit: "cover",
-                            border: "1px solid var(--border)",
-                          }}
-                        />
-                      ) : (
-                        <div
-                          style={{
-                            width: "32px",
-                            height: "32px",
-                            borderRadius: "50%",
-                            background: "#f1f5f9",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                          }}
-                        >
-                          👤
-                        </div>
-                      )}
-                      <div>
-                        <strong>{s.full_name}</strong>
-                        {s.alias && (
-                          <div style={{ fontSize: "0.75rem", color: "#94a3b8" }}>
-                            {s.alias}
-                          </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden bg-slate-100 flex-shrink-0">
+                        {s.face_image_url ? (
+                          <img src={s.face_image_url} className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-slate-400">👤</div>
                         )}
+                      </div>
+                      <div>
+                        <div className="font-bold text-slate-900 dark:text-white leading-tight">{s.full_name}</div>
+                        <div className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">{s.alias || "Không có bí danh"}</div>
                       </div>
                     </div>
                   </td>
-                  <td>{s.dob || s.yob || "—"}</td>
-                  <td>{s.gender || "—"}</td>
-                  <td style={{ fontFamily: "monospace", fontSize: "0.8rem" }}>
-                    {s.id_card || "—"}
-                  </td>
+                  <td className="text-sm">{s.dob || s.yob || "—"}</td>
+                  <td className="text-sm">{s.gender || "—"}</td>
+                  <td className="font-mono text-xs text-slate-500">{s.id_card || "—"}</td>
                   <td>
-                    <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-                      {s.is_criminal === 1 && (
-                        <SubjectTypeBadge type="is_criminal" value={1} />
-                      )}
-                      {s.is_drug === 1 && (
-                        <SubjectTypeBadge type="is_drug" value={1} />
-                      )}
-                      {s.is_economic === 1 && (
-                        <SubjectTypeBadge type="is_economic" value={1} />
-                      )}
+                    <div className="flex flex-wrap gap-1">
+                      {s.is_criminal === 1 && <span className="px-2 py-0.5 bg-red-100 text-red-700 text-[10px] font-bold rounded">HS</span>}
+                      {s.is_drug === 1 && <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-bold rounded">MT</span>}
+                      {s.is_economic === 1 && <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-bold rounded">KT</span>}
                     </div>
                   </td>
-                  <td style={{ fontSize: "0.85rem" }}>
-                    {s.tdp ? `Tổ ${s.tdp}` : "—"}
+                  <td>
+                    <span className="inline-flex items-center px-2 py-1 bg-slate-100 text-slate-700 rounded-lg text-xs font-bold">
+                      Tổ {s.tdp || "—"}
+                    </span>
                   </td>
                   <td>
                     {s.status && <StatusBadge status={s.status} />}
                   </td>
                   <td>
-                    <div className="action-btns">
-                      <div className="btn-icon" onClick={() => handleView(s)} title="Xem chi tiết">
-                        <Eye className="w-4 h-4" />
-                      </div>
-                      <div className="btn-icon" onClick={() => handleEdit(s)} title="Chỉnh sửa">
-                        <Edit2 className="w-4 h-4" />
-                      </div>
-                      <div className="btn-icon del" onClick={() => handleDelete(s._id!.toString())} title="Xoá">
-                        <Trash2 className="w-4 h-4" />
-                      </div>
+                    <div className="flex justify-end gap-1">
+                      <button onClick={() => handleView(s)} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-blue-50 text-blue-600 transition-all"><Eye className="w-4 h-4" /></button>
+                      <button onClick={() => handleEdit(s)} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-amber-50 text-amber-600 transition-all"><Edit2 className="w-4 h-4" /></button>
+                      <button onClick={() => handleDelete(s._id!.toString())} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-red-600 transition-all"><Trash2 className="w-4 h-4" /></button>
                     </div>
                   </td>
                 </tr>
@@ -248,6 +218,67 @@ export function SubjectList() {
             )}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile Card View */}
+      <div className="md:hidden space-y-4">
+        {loading || isPending ? (
+          <div className="text-center py-10 text-slate-400">Đang tải dữ liệu...</div>
+        ) : filteredSubjects.length === 0 ? (
+          <div className="text-center py-10 text-slate-400 italic">Không tìm thấy đối tượng nào.</div>
+        ) : (
+          filteredSubjects.map((s) => (
+            <div key={s._id?.toString()} className="bg-white dark:bg-slate-800 rounded-3xl p-5 shadow-sm border border-slate-200 dark:border-slate-700 relative overflow-hidden group active:scale-[0.98] transition-transform">
+               {/* Left accent */}
+               <div className={`absolute top-0 left-0 w-1.5 h-full ${
+                 s.status === 'Nghiện' ? 'bg-red-500' : 
+                 s.status === 'Sử dụng' ? 'bg-amber-500' : 
+                 s.status === 'Sau cai' ? 'bg-emerald-500' : 'bg-slate-400'
+               }`}></div>
+
+               <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 rounded-2xl border-4 border-white dark:border-slate-700 shadow-md overflow-hidden bg-slate-100 flex-shrink-0">
+                    {s.face_image_url ? (
+                      <img src={s.face_image_url} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-slate-300 text-2xl">👤</div>
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                       <span className="text-[10px] font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full uppercase">Tổ {s.tdp || "—"}</span>
+                       <StatusBadge status={s.status || ""} />
+                    </div>
+                    <h3 className="text-lg font-black text-slate-900 dark:text-white truncate leading-tight">{s.full_name}</h3>
+                    <p className="text-xs font-bold text-slate-400 uppercase tracking-tighter mb-2 italic">"{s.alias || "Không bí danh"}"</p>
+                    
+                    <div className="grid grid-cols-2 gap-y-2 mt-3 border-t border-slate-50 pt-3">
+                       <div className="flex flex-col">
+                         <span className="text-[10px] text-slate-400 uppercase font-bold">Năm sinh</span>
+                         <span className="text-sm font-bold text-slate-700">{s.dob || s.yob || "—"}</span>
+                       </div>
+                       <div className="flex flex-col">
+                         <span className="text-[10px] text-slate-400 uppercase font-bold">CCCD</span>
+                         <span className="text-sm font-mono text-slate-700">{s.id_card || "—"}</span>
+                       </div>
+                    </div>
+                  </div>
+               </div>
+
+               <div className="mt-4 flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-700/50">
+                  <div className="flex gap-1">
+                    {s.is_criminal === 1 && <span className="px-2 py-1 bg-red-600 text-white text-[9px] font-black rounded-lg shadow-sm">HÌNH SỰ</span>}
+                    {s.is_drug === 1 && <span className="px-2 py-1 bg-amber-500 text-white text-[9px] font-black rounded-lg shadow-sm">MA TÚY</span>}
+                  </div>
+                  <div className="flex gap-2">
+                    <button onClick={() => handleView(s)} className="w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-600 rounded-2xl hover:bg-blue-100 transition-colors"><Eye className="w-5 h-5" /></button>
+                    <button onClick={() => handleEdit(s)} className="w-10 h-10 flex items-center justify-center bg-amber-50 text-amber-600 rounded-2xl hover:bg-amber-100 transition-colors"><Edit2 className="w-5 h-5" /></button>
+                    <button onClick={() => handleDelete(s._id!.toString())} className="w-10 h-10 flex items-center justify-center bg-red-50 text-red-600 rounded-2xl hover:bg-red-100 transition-colors"><Trash2 className="w-5 h-5" /></button>
+                  </div>
+               </div>
+            </div>
+          ))
+        )}
       </div>
 
       {/* Create/Edit Modal */}
@@ -318,7 +349,7 @@ function SubjectDetail({ subject }: { subject: ISubject }) {
         <h4 className="text-base font-bold text-slate-800 dark:text-white mb-3 pb-2 border-b-2 border-slate-200 dark:border-slate-700 uppercase tracking-wide">
           Thông tin cá nhân
         </h4>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex justify-between py-2 border-b border-dashed border-slate-200 dark:border-slate-700">
             <span className="font-semibold text-slate-600 dark:text-slate-400">Họ và tên</span>
             <span className="font-bold text-slate-900 dark:text-white text-right">{subject.full_name}</span>
@@ -414,7 +445,7 @@ function SubjectDetail({ subject }: { subject: ISubject }) {
         </div>
 
         {subject.is_drug === 1 && (
-          <div className="grid grid-cols-2 gap-4 mt-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
             <div className="flex justify-between py-2 border-b border-dashed border-slate-200 dark:border-slate-700">
               <span className="font-semibold text-slate-600 dark:text-slate-400">Tình trạng</span>
               <StatusBadge status={subject.status || ""} />

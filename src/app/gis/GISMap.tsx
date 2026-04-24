@@ -156,7 +156,8 @@ export function GISMap() {
     zones: true,
   });
   const [drawMode, setDrawMode] = useState(false);
-  const [showPanel, setShowPanel] = useState(true);
+  const [showPanel, setShowPanel] = useState(false);
+  const [legendOpen, setLegendOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const drawnItemsRef = useRef<L.FeatureGroup | null>(null);
   const mapRef = useRef<L.Map | null>(null);
@@ -175,11 +176,13 @@ export function GISMap() {
         setBusinesses(businessesData);
         
         // Turf.js Point-In-Polygon calculate risk density per zone
+        // Chuẩn bị dữ liệu điểm một lần duy nhất để tối ưu hiệu năng
+        const points = turf.featureCollection(
+          subjectsData.filter(s => s.lat && s.lng).map(s => turf.point([s.lng!, s.lat!]))
+        );
+
         const enrichedZones = zonesData.map((zone) => {
           if (zone.type === "polygon" && zone.geojson?.features) {
-            const points = turf.featureCollection(
-              subjectsData.filter(s => s.lat && s.lng).map(s => turf.point([s.lng!, s.lat!]))
-            );
             let count = 0;
             let totalArea = 0;
             zone.geojson.features.forEach((f: any) => {
@@ -420,115 +423,155 @@ export function GISMap() {
 
   return (
     <div className="relative">
-      {/* Toggle Panel Button */}
-      <button
-        onClick={() => setShowPanel(!showPanel)}
-        className="absolute top-4 right-4 z-[1001] bg-white rounded-lg shadow-lg p-2 hover:bg-gray-100 transition-all"
-        title={showPanel ? "Ẩn bảng điều khiển" : "Hiện bảng điều khiển"}
-      >
-        <i className={`fas ${showPanel ? "fa-chevron-right" : "fa-chevron-left"}`}></i>
-      </button>
+      {/* Layer Control Dropdown */}
+      <div className="absolute top-4 right-4 z-[1000] flex flex-col items-end gap-2">
+        <button
+          onClick={() => setShowPanel(!showPanel)}
+          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl shadow-xl transition-all duration-300 border ${
+            showPanel 
+            ? "bg-slate-900 text-white border-slate-700" 
+            : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
+          }`}
+        >
+          <i className={`fas ${showPanel ? "fa-times" : "fa-layer-group"} text-sm`}></i>
+          <span className="text-sm font-semibold">{showPanel ? "Đóng menu" : "Lớp bản đồ & Công cụ"}</span>
+          {!showPanel && customZones.length > 0 && (
+             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-500 text-[10px] text-white font-bold">
+               {customZones.length}
+             </span>
+          )}
+        </button>
 
-      {/* Collapsible Controls Panel */}
-      {showPanel && (
-        <div className="absolute top-4 right-10 z-[1000] bg-white rounded-lg shadow-lg p-3 w-56 transition-all text-slate-800">
-          {/* Layers Section */}
-          <div className="mb-3">
-            <h4 className="text-xs font-bold text-gray-500 mb-2 flex items-center justify-between">
-              LỚP BẢN ĐỒ
-              <span className="text-[10px] font-normal text-gray-400">Layers</span>
-            </h4>
-            <div className="space-y-1">
-              <button
-                className={`w-full px-3 py-1.5 rounded text-xs flex items-center gap-2 ${layers.subjects ? "bg-blue-100 text-blue-700" : "bg-gray-50 text-gray-400"}`}
-                onClick={() => toggleLayer("subjects")}
-              >
-                <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#ff5252" }}></span>
-                Đối tượng
-              </button>
-              <button
-                className={`w-full px-3 py-1.5 rounded text-xs flex items-center gap-2 ${layers.businesses ? "bg-blue-100 text-blue-700" : "bg-gray-50 text-gray-400"}`}
-                onClick={() => toggleLayer("businesses")}
-              >
-                <span className="w-2.5 h-2.5 rounded" style={{ background: "#00e676" }}></span>
-                CSKD
-              </button>
-              <button
-                className={`w-full px-3 py-1.5 rounded text-xs flex items-center gap-2 ${layers.zones ? "bg-blue-100 text-blue-700" : "bg-gray-50 text-gray-400"}`}
-                onClick={() => toggleLayer("zones")}
-              >
-                <span className="w-2.5 h-2.5 rounded border-2 border-purple-500"></span>
-                Khu vực tùy chỉnh
-              </button>
-            </div>
-          </div>
-
-          {/* Drawing Tools */}
-          <div className="mb-3 border-t pt-2 border-slate-200">
-            <h4 className="text-xs font-bold text-gray-500 mb-2">CÔNG CỤ</h4>
-            <div className="space-y-1">
-              <button
-                className={`w-full px-3 py-1.5 rounded text-xs flex items-center gap-2 ${drawMode ? "bg-purple-100 text-purple-700" : "bg-gray-50 text-gray-600"}`}
-                onClick={toggleDrawMode}
-              >
-                <i className="fas fa-draw-polygon"></i>
-                {drawMode ? "Tắt vẽ" : "Bật vẽ"}
-              </button>
-              <label className="w-full px-3 py-1.5 rounded text-xs flex items-center gap-2 bg-gray-50 text-gray-600 cursor-pointer hover:bg-gray-100">
-                <i className="fas fa-file-import"></i>
-                Import GeoJSON
-                <input ref={fileInputRef} type="file" accept=".json,.geojson" onChange={handleFileUpload} className="hidden" />
-              </label>
-            </div>
-          </div>
-
-          {/* Saved Zones */}
-          {customZones.length > 0 && (
-            <div className="border-t pt-2 border-slate-200">
-              <h4 className="text-xs font-bold text-gray-500 mb-2">
-                KHU VỰC ({customZones.length})
+        {showPanel && (
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-4 w-72 border border-slate-200 animate-in fade-in zoom-in duration-200 origin-top-right overflow-hidden">
+            {/* Layers Section */}
+            <div className="mb-4">
+              <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center justify-between">
+                Lớp dữ liệu
+                <span className="h-px flex-1 bg-slate-100 ml-3"></span>
               </h4>
-              <div className="max-h-32 overflow-y-auto space-y-1">
-                {customZones.map((zone: any) => (
-                  <div key={zone._id?.toString()} className="flex items-center gap-1 px-1 py-0.5 hover:bg-gray-100 rounded text-xs text-slate-700">
-                    <span className="w-2 h-2 rounded" style={{ backgroundColor: zone.color }}></span>
-                    <span className="flex-1 truncate">{zone.name}</span>
-                    <button onClick={() => zone._id && handleDeleteZone(zone._id.toString())} className="text-red-400 hover:text-red-600">
-                      <i className="fas fa-times text-[10px]"></i>
-                    </button>
-                  </div>
-                ))}
+              <div className="grid grid-cols-1 gap-2">
+                <button
+                  className={`px-3 py-2 rounded-xl text-xs font-medium flex items-center gap-3 transition-all ${layers.subjects ? "bg-blue-50 text-blue-700 ring-1 ring-blue-200" : "bg-slate-50 text-slate-400 hover:bg-slate-100"}`}
+                  onClick={() => toggleLayer("subjects")}
+                >
+                  <div className="w-4 h-4 rounded-full flex items-center justify-center border-2 border-white shadow-sm" style={{ background: "#ff5252" }}></div>
+                  Đối tượng quản lý
+                  {layers.subjects && <i className="fas fa-check ml-auto text-[10px]"></i>}
+                </button>
+                <button
+                  className={`px-3 py-2 rounded-xl text-xs font-medium flex items-center gap-3 transition-all ${layers.businesses ? "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200" : "bg-slate-50 text-slate-400 hover:bg-slate-100"}`}
+                  onClick={() => toggleLayer("businesses")}
+                >
+                  <div className="w-4 h-4 rounded shadow-sm border-2 border-white" style={{ background: "#00e676" }}></div>
+                  Cơ sở kinh doanh
+                  {layers.businesses && <i className="fas fa-check ml-auto text-[10px]"></i>}
+                </button>
+                <button
+                  className={`px-3 py-2 rounded-xl text-xs font-medium flex items-center gap-3 transition-all ${layers.zones ? "bg-purple-50 text-purple-700 ring-1 ring-purple-200" : "bg-slate-50 text-slate-400 hover:bg-slate-100"}`}
+                  onClick={() => toggleLayer("zones")}
+                >
+                  <div className="w-4 h-4 rounded border-2 border-purple-500 shadow-sm bg-purple-100"></div>
+                  Khu vực tùy chỉnh
+                  {layers.zones && <i className="fas fa-check ml-auto text-[10px]"></i>}
+                </button>
               </div>
             </div>
-          )}
-        </div>
-      )}
 
-      {/* Legend - Bottom Left, Compact */}
-      <div className="absolute bottom-4 left-4 z-[1000] bg-white rounded-lg shadow-lg p-3 w-48 text-slate-800 border border-slate-200">
-        <h4 className="font-semibold text-xs mb-2">Chú giải</h4>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
-          <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full" style={{ background: statusColors["Nghiện"] }}></span>
-            <span>Nghiện</span>
+            {/* Tools Section */}
+            <div className="mb-4">
+              <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center justify-between">
+                Công cụ phân tích
+                <span className="h-px flex-1 bg-slate-100 ml-3"></span>
+              </h4>
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  className={`px-3 py-2.5 rounded-xl text-xs font-bold flex flex-col items-center gap-1.5 transition-all ${drawMode ? "bg-purple-600 text-white shadow-lg shadow-purple-200" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`}
+                  onClick={toggleDrawMode}
+                >
+                  <i className={`fas ${drawMode ? "fa-mouse-pointer" : "fa-draw-polygon"} text-sm`}></i>
+                  {drawMode ? "Dừng vẽ" : "Vẽ khu vực"}
+                </button>
+                <label className="px-3 py-2.5 rounded-xl text-xs font-bold flex flex-col items-center gap-1.5 bg-slate-100 text-slate-600 cursor-pointer hover:bg-slate-200 transition-all">
+                  <i className="fas fa-file-import text-sm"></i>
+                  Import
+                  <input ref={fileInputRef} type="file" accept=".json,.geojson" onChange={handleFileUpload} className="hidden" />
+                </label>
+              </div>
+            </div>
+
+            {/* Saved Zones List */}
+            {customZones.length > 0 && (
+              <div>
+                <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center justify-between">
+                  Khu vực đã lưu ({customZones.length})
+                  <span className="h-px flex-1 bg-slate-100 ml-3"></span>
+                </h4>
+                <div className="max-h-48 overflow-y-auto space-y-1 pr-1 custom-scrollbar">
+                  {customZones.map((zone: any) => (
+                    <div key={zone._id?.toString()} className="flex items-center gap-3 px-3 py-2 hover:bg-slate-50 rounded-xl group transition-all">
+                      <div className="w-3 h-3 rounded-sm shadow-sm" style={{ backgroundColor: zone.color }}></div>
+                      <span className="flex-1 truncate text-xs font-medium text-slate-700">{zone.name}</span>
+                      <button 
+                        onClick={() => zone._id && handleDeleteZone(zone._id.toString())} 
+                        className="opacity-0 group-hover:opacity-100 w-6 h-6 flex items-center justify-center rounded-lg text-red-400 hover:bg-red-50 hover:text-red-600 transition-all"
+                      >
+                        <i className="fas fa-trash-can text-[10px]"></i>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-          <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full" style={{ background: statusColors["Sử dụng"] }}></span>
-            <span>Sử dụng</span>
+        )}
+      </div>
+
+      {/* Legend - Bottom Left, Compact & Collapsible */}
+      <div className={`absolute bottom-6 left-4 z-[1000] transition-all duration-300 ${legendOpen ? 'w-48' : 'w-10'}`}>
+        {legendOpen ? (
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl p-4 text-slate-800 border border-slate-200 animate-in slide-in-from-bottom-2 duration-300">
+            <div className="flex items-center justify-between mb-3">
+              <h4 className="font-black text-[10px] uppercase tracking-wider text-slate-400">Chú giải</h4>
+              <button 
+                onClick={() => setLegendOpen(false)}
+                className="w-5 h-5 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-400 transition-colors"
+              >
+                <i className="fas fa-times text-[10px]"></i>
+              </button>
+            </div>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[11px] font-bold">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full shadow-sm" style={{ background: statusColors["Nghiện"] }}></span>
+                <span className="text-slate-600">Nghiện</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full shadow-sm" style={{ background: statusColors["Sử dụng"] }}></span>
+                <span className="text-slate-600">Sử dụng</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full shadow-sm" style={{ background: statusColors["Sau cai"] }}></span>
+                <span className="text-slate-600">Sau cai</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full shadow-sm" style={{ background: statusColors["Khởi tố"] }}></span>
+                <span className="text-slate-600">Khởi tố</span>
+              </div>
+              <div className="flex items-center gap-2 mt-2 pt-2 border-t border-slate-100 col-span-2">
+                <span className="w-3 h-3 rounded-sm shadow-sm" style={{ background: riskColors["Cao"] }}></span>
+                <span className="text-slate-600">CSKD nguy cơ cao</span>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full" style={{ background: statusColors["Sau cai"] }}></span>
-            <span>Sau cai</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="w-2.5 h-2.5 rounded-full" style={{ background: statusColors["Khởi tố"] }}></span>
-            <span>Khởi tố</span>
-          </div>
-          <div className="flex items-center gap-1.5 mt-1 pt-1 border-t border-slate-200 col-span-2">
-            <span className="w-2.5 h-2.5 rounded" style={{ background: riskColors["Cao"] }}></span>
-            <span>CSKD nguy cơ cao</span>
-          </div>
-        </div>
+        ) : (
+          <button 
+            onClick={() => setLegendOpen(true)}
+            className="w-10 h-10 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-all active:scale-90"
+            title="Xem chú giải"
+          >
+            <i className="fas fa-info-circle text-lg"></i>
+          </button>
+        )}
       </div>
 
       {/* Map */}

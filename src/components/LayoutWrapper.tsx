@@ -17,28 +17,36 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen w-full relative">
       {/* Mobile Top Bar */}
-      <div className="md:hidden fixed top-0 left-0 right-0 h-14 bg-slate-800 text-white z-50 flex items-center justify-between px-4 shadow-md">
-        <div className="flex items-center gap-2">
-           <img src="/logo.png?v=2" alt="Logo" className="w-8 h-8 rounded-full bg-white p-0.5" />
-           <span className="font-bold text-sm text-yellow-500">CA P.LIÊN CHIỂU</span>
+      <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-slate-900/95 backdrop-blur-md text-white z-[10002] flex items-center justify-between px-4 shadow-xl border-b border-slate-800">
+        <div className="flex items-center gap-3">
+           <div className="w-10 h-10 rounded-full bg-white p-1 shadow-inner border border-yellow-500/50">
+             <img src="/logo.png?v=2" alt="Logo" className="w-full h-full object-contain" />
+           </div>
+           <div className="flex flex-col">
+             <span className="font-black text-xs text-yellow-500 leading-none">CA P.LIÊN CHIỂU</span>
+             <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Hệ thống nghiệp vụ</span>
+           </div>
         </div>
-        <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-1 rounded bg-slate-700 hover:bg-slate-600">
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        <button 
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
+          className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-800 border border-slate-700 active:scale-90 transition-transform"
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6 text-red-400" /> : <Menu className="w-6 h-6 text-blue-400" />}
         </button>
       </div>
 
       {/* Sidebar Overlay for Mobile */}
       {mobileMenuOpen && (
         <div 
-          className="fixed inset-0 bg-slate-900/50 z-40 md:hidden"
+          className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[10001] md:hidden animate-in fade-in duration-300"
           onClick={() => setMobileMenuOpen(false)}
         />
       )}
 
       {/* Sidebar Container */}
       <div className={`
-        fixed inset-y-0 left-0 z-50 transform transition-transform duration-300 ease-in-out
-        md:relative md:translate-x-0 
+        fixed inset-y-0 left-0 z-[10002] transform transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1)
+        md:relative md:translate-x-0 w-72
         ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
       `}>
         <Sidebar onCloseMobile={() => setMobileMenuOpen(false)} />
