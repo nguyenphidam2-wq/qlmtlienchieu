@@ -1,13 +1,16 @@
 "use client";
 
 import { useState, useEffect, useTransition } from "react";
-import { Plus, Search, Eye, Edit2, Trash2 } from "lucide-react";
-import { Button, Input, Modal, StatusBadge, SubjectTypeBadge, Drawer } from "@/components/ui";
+import { Plus, Search, Eye, Edit2, Trash2, CheckCircle, CheckSquare, Square } from "lucide-react";
+import { Button, Modal, StatusBadge } from "@/components/ui";
 import {
   getSubjects,
   createSubject,
   updateSubject,
   deleteSubject,
+  getCurrentUserInfo,
+  approveSubject,
+  bulkApproveSubjects,
 } from "@/lib/actions/subjects";
 import { ISubject } from "@/lib/models";
 import { SubjectForm } from "./components/SubjectForm";
@@ -20,21 +23,45 @@ const STATUS_OPTIONS = [
   { value: "Khởi tố", label: "Khởi tố", color: "var(--purple)" },
 ];
 
+// Các vai trò được phép tạo/sửa đối tượng
+const ALLOWED_ROLES_FOR_CREATE_UPDATE = ["admin", "leader", "officer"];
+
+// Chỉ admin được phép xóa
+const ALLOWED_ROLES_FOR_DELETE = ["admin"];
+
+// Chỉ admin và leader được phép duyệt đối tượng
+const ALLOWED_ROLES_FOR_APPROVE = ["admin", "leader"];
+
 export function SubjectList() {
   const [subjects, setSubjects] = useState<ISubject[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [isPending, startTransition] = useTransition();
+  const [currentUser, setCurrentUser] = useState<{ id: string; username: string; role: string } | null>(null);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [editingSubject, setEditingSubject] = useState<ISubject | null>(null);
   const [viewingSubject, setViewingSubject] = useState<ISubject | null>(null);
 
+  // Bulk selection state
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+
+  // Lấy thông tin user hiện tại khi component mount
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await getCurrentUserInfo();
+      setCurrentUser(user);
+    };
+    fetchUser();
+  }, []);
+
   const loadSubjects = () => {
     startTransition(async () => {
-      const data = await getSubjects(statusFilter || undefined);
+      // Admin và leader có thể xem tất cả (bao gồm Pending)
+      const includePending = currentUser?.role === "admin" || currentUser?.role === "leader";
+      const data = await getSubjects(statusFilter || undefined, undefined, undefined, includePending);
       setSubjects(data);
       setLoading(false);
     });
@@ -42,10 +69,17 @@ export function SubjectList() {
 
   useEffect(() => {
     loadSubjects();
-  }, [statusFilter]);
+  }, [statusFilter, currentUser]);
 
   const filteredSubjects = subjects.filter((s) => {
     const q = searchQuery.toLowerCase();
+    
+    // Lọc theo tình trạng phê duyệt nếu chọn "Chờ duyệt"
+    if (statusFilter === "Pending" && s.approval_status !== "Pending") return false;
+    
+    // Lọc theo tình trạng đối tượng (nếu không phải đang lọc Chờ duyệt)
+    if (statusFilter && statusFilter !== "Pending" && s.status !== statusFilter) return false;
+
     if (!q) return true;
     return (
       s.full_name?.toLowerCase().includes(q) ||
@@ -73,19 +107,74 @@ export function SubjectList() {
 
   const handleDelete = async (id: string) => {
     if (!confirm("Bạn có chắc muốn xóa đối tượng này?")) return;
-    await deleteSubject(id.toString());
+    const result = await deleteSubject(id.toString());
+    if (!result.success) {
+      alert(result.error || "Không thể xóa đối tượng");
+      return;
+    }
     loadSubjects();
+  };
+
+  const handleApprove = async (id: string) => {
+    if (!confirm("Bạn có chắc muốn duyệt đối tượng này?")) return;
+    const result = await approveSubject(id.toString());
+    if (!result.success) {
+      alert(result.error || "Không thể duyệt đối tượng");
+      return;
+    }
+    loadSubjects();
+  };
+
+  // Bulk approve handlers
+  const handleBulkApprove = async () => {
+    if (selectedIds.length === 0) return;
+    if (!confirm(`Bạn có chắc muốn duyệt ${selectedIds.length} đối tượng này không?`)) return;
+    const result = await bulkApproveSubjects(selectedIds);
+    if (!result.success) {
+      alert(result.error || "Không thể duyệt các đối tượng");
+      return;
+    }
+    setSelectedIds([]);
+    loadSubjects();
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedIds.length === filteredSubjects.filter(s => s.approval_status === "Pending").length) {
+      setSelectedIds([]);
+    } else {
+      setSelectedIds(filteredSubjects.filter(s => s.approval_status === "Pending").map(s => s._id!.toString()));
+    }
+  };
+
+  const toggleSelectOne = (id: string) => {
+    setSelectedIds(prev =>
+      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
+    );
   };
 
   const handleSubmit = async (data: Partial<ISubject>) => {
     if (editingSubject?._id) {
-      await updateSubject(editingSubject._id.toString(), data);
+      const result = await updateSubject(editingSubject._id.toString(), data);
+      if (!result.success) {
+        alert(result.error || "Không thể cập nhật đối tượng");
+        return;
+      }
     } else {
-      await createSubject(data);
+      const result = await createSubject(data);
+      if (!result.success) {
+        alert(result.error || "Không thể tạo đối tượng mới");
+        return;
+      }
     }
     setIsModalOpen(false);
     loadSubjects();
   };
+
+  // Kiểm tra quyền
+  const canCreate = currentUser && ALLOWED_ROLES_FOR_CREATE_UPDATE.includes(currentUser.role);
+  const canEdit = currentUser && ALLOWED_ROLES_FOR_CREATE_UPDATE.includes(currentUser.role);
+  const canDelete = currentUser && ALLOWED_ROLES_FOR_DELETE.includes(currentUser.role);
+  const canApprove = currentUser && ALLOWED_ROLES_FOR_APPROVE.includes(currentUser.role);
 
   return (
     <div className="space-y-6">
@@ -99,34 +188,47 @@ export function SubjectList() {
             Danh sách chi tiết các đối tượng trên địa bàn
           </p>
         </div>
-        <Button 
-          icon={Plus} 
-          onClick={handleCreate}
-          className="w-full md:w-auto justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-200"
-        >
-          Thêm đối tượng
-        </Button>
+        {canCreate && (
+          <Button
+            icon={Plus}
+            onClick={handleCreate}
+            className="w-full md:w-auto justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-200"
+          >
+            Thêm đối tượng
+          </Button>
+        )}
       </div>
 
       {/* Toolbar */}
       <div className="flex flex-col gap-4 bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
-        <div className="search-box !flex-1 !min-w-0 !w-full">
-          <Search className="w-4 h-4 text-slate-400" />
-          <input
-            type="text"
-            placeholder="Tìm theo họ tên, CMND, địa chỉ..."
-            className="bg-transparent border-none focus:ring-0 w-full"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="search-box !flex-1 !min-w-0 !w-full">
+            <Search className="w-4 h-4 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Tìm theo họ tên, CMND, địa chỉ..."
+              className="bg-transparent border-none focus:ring-0 w-full"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          {canApprove && selectedIds.length > 0 && (
+            <button
+              onClick={handleBulkApprove}
+              className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl text-sm font-bold shadow-md transition-colors whitespace-nowrap"
+            >
+              <CheckCircle className="w-4 h-4" />
+              Duyệt {selectedIds.length} mục đã chọn
+            </button>
+          )}
         </div>
         <div className="flex overflow-x-auto pb-1 gap-2 custom-scrollbar">
           {STATUS_OPTIONS.map((opt) => (
             <button
               key={opt.value}
               className={`whitespace-nowrap px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
-                statusFilter === opt.value 
-                ? "bg-slate-900 text-white border-slate-900 shadow-md" 
+                statusFilter === opt.value
+                ? "bg-slate-900 text-white border-slate-900 shadow-md"
                 : "bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100"
               }`}
               onClick={() => setStatusFilter(opt.value)}
@@ -134,6 +236,32 @@ export function SubjectList() {
               {opt.label}
             </button>
           ))}
+          {canApprove && (
+            <button
+              className={`whitespace-nowrap px-4 py-2 rounded-xl text-xs font-bold transition-all border flex items-center gap-2 ${
+                statusFilter === "Pending"
+                ? "bg-yellow-500 text-white border-yellow-500 shadow-md"
+                : "bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100"
+              }`}
+              onClick={() => setStatusFilter("Pending")}
+            >
+              <div className={`w-2 h-2 rounded-full ${statusFilter === "Pending" ? "bg-white" : "bg-yellow-500"} animate-pulse`}></div>
+              Chờ duyệt ({subjects.filter(s => s.approval_status === "Pending").length})
+            </button>
+          )}
+          {canApprove && statusFilter === "Pending" && filteredSubjects.length > 0 && (
+            <button
+              onClick={toggleSelectAll}
+              className="whitespace-nowrap px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold hover:bg-slate-200 transition-colors flex items-center gap-2"
+            >
+              {selectedIds.length === filteredSubjects.filter(s => s.approval_status === "Pending").length ? (
+                <CheckSquare className="w-4 h-4" />
+              ) : (
+                <Square className="w-4 h-4" />
+              )}
+              Chọn tất cả
+            </button>
+          )}
         </div>
       </div>
 
@@ -142,6 +270,21 @@ export function SubjectList() {
         <table className="w-full">
           <thead>
             <tr>
+              <th className="w-12">
+                {canApprove && (
+                  <button
+                    onClick={toggleSelectAll}
+                    className="p-1 hover:bg-slate-100 rounded transition-colors"
+                    title="Chọn tất cả"
+                  >
+                    {selectedIds.length === filteredSubjects.filter(s => s.approval_status === "Pending").length && filteredSubjects.some(s => s.approval_status === "Pending") ? (
+                      <CheckSquare className="w-4 h-4 text-blue-600" />
+                    ) : (
+                      <Square className="w-4 h-4 text-slate-400" />
+                    )}
+                  </button>
+                )}
+              </th>
               <th className="w-12">#</th>
               <th>Họ và tên</th>
               <th>Năm sinh</th>
@@ -156,7 +299,7 @@ export function SubjectList() {
           <tbody>
             {loading || isPending ? (
               <tr>
-                <td colSpan={9} className="text-center py-20 text-slate-400">
+                <td colSpan={10} className="text-center py-20 text-slate-400">
                   <div className="animate-pulse flex flex-col items-center">
                     <div className="h-8 w-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
                     Đang tải dữ liệu...
@@ -165,13 +308,32 @@ export function SubjectList() {
               </tr>
             ) : filteredSubjects.length === 0 ? (
               <tr>
-                <td colSpan={9} className="text-center py-20 text-slate-400 italic">
+                <td colSpan={10} className="text-center py-20 text-slate-400 italic">
                   Không tìm thấy đối tượng nào.
                 </td>
               </tr>
             ) : (
               filteredSubjects.map((s, i) => (
                 <tr key={s._id?.toString()} className="hover:bg-slate-50 transition-colors">
+                  <td>
+                    {canApprove && (
+                      <button
+                        onClick={() => toggleSelectOne(s._id!.toString())}
+                        className="p-1 hover:bg-slate-100 rounded transition-colors"
+                        disabled={s.approval_status !== "Pending"}
+                      >
+                        {s.approval_status === "Pending" ? (
+                          selectedIds.includes(s._id!.toString()) ? (
+                            <CheckSquare className="w-4 h-4 text-blue-600" />
+                          ) : (
+                            <Square className="w-4 h-4 text-slate-400" />
+                          )
+                        ) : (
+                          <CheckSquare className="w-4 h-4 text-slate-300 cursor-not-allowed" />
+                        )}
+                      </button>
+                    )}
+                  </td>
                   <td className="text-slate-400 font-mono text-xs">{i + 1}</td>
                   <td>
                     <div className="flex items-center gap-3">
@@ -209,8 +371,11 @@ export function SubjectList() {
                   <td>
                     <div className="flex justify-end gap-1">
                       <button onClick={() => handleView(s)} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-blue-50 text-blue-600 transition-all"><Eye className="w-4 h-4" /></button>
-                      <button onClick={() => handleEdit(s)} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-amber-50 text-amber-600 transition-all"><Edit2 className="w-4 h-4" /></button>
-                      <button onClick={() => handleDelete(s._id!.toString())} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-red-600 transition-all"><Trash2 className="w-4 h-4" /></button>
+                      {canEdit && <button onClick={() => handleEdit(s)} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-amber-50 text-amber-600 transition-all"><Edit2 className="w-4 h-4" /></button>}
+                      {canApprove && s.approval_status === "Pending" && (
+                        <button onClick={() => handleApprove(s._id!.toString())} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-green-50 text-green-600 transition-all" title="Duyệt đối tượng"><CheckCircle className="w-4 h-4" /></button>
+                      )}
+                      {canDelete && <button onClick={() => handleDelete(s._id!.toString())} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-red-600 transition-all"><Trash2 className="w-4 h-4" /></button>}
                     </div>
                   </td>
                 </tr>
@@ -235,6 +400,30 @@ export function SubjectList() {
                  s.status === 'Sử dụng' ? 'bg-amber-500' : 
                  s.status === 'Sau cai' ? 'bg-emerald-500' : 'bg-slate-400'
                }`}></div>
+
+               {/* Mobile Selection Checkbox */}
+               {canApprove && (
+                 <div className="absolute top-4 right-4 z-10">
+                   <button
+                     onClick={(e) => {
+                       e.stopPropagation();
+                       toggleSelectOne(s._id!.toString());
+                     }}
+                     className="p-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl shadow-sm border border-slate-200 dark:border-slate-700"
+                     disabled={s.approval_status !== "Pending"}
+                   >
+                     {s.approval_status === "Pending" ? (
+                       selectedIds.includes(s._id!.toString()) ? (
+                         <CheckSquare className="w-5 h-5 text-blue-600" />
+                       ) : (
+                         <Square className="w-5 h-5 text-slate-400" />
+                       )
+                     ) : (
+                       <CheckSquare className="w-5 h-5 text-slate-200 cursor-not-allowed" />
+                     )}
+                   </button>
+                 </div>
+               )}
 
                <div className="flex items-start gap-4">
                   <div className="w-16 h-16 rounded-2xl border-4 border-white dark:border-slate-700 shadow-md overflow-hidden bg-slate-100 flex-shrink-0">
@@ -269,11 +458,15 @@ export function SubjectList() {
                   <div className="flex gap-1">
                     {s.is_criminal === 1 && <span className="px-2 py-1 bg-red-600 text-white text-[9px] font-black rounded-lg shadow-sm">HÌNH SỰ</span>}
                     {s.is_drug === 1 && <span className="px-2 py-1 bg-amber-500 text-white text-[9px] font-black rounded-lg shadow-sm">MA TÚY</span>}
+                    {s.approval_status === "Pending" && <span className="px-2 py-1 bg-yellow-500 text-white text-[9px] font-black rounded-lg shadow-sm">CHỜ DUYỆT</span>}
                   </div>
                   <div className="flex gap-2">
                     <button onClick={() => handleView(s)} className="w-10 h-10 flex items-center justify-center bg-blue-50 text-blue-600 rounded-2xl hover:bg-blue-100 transition-colors"><Eye className="w-5 h-5" /></button>
-                    <button onClick={() => handleEdit(s)} className="w-10 h-10 flex items-center justify-center bg-amber-50 text-amber-600 rounded-2xl hover:bg-amber-100 transition-colors"><Edit2 className="w-5 h-5" /></button>
-                    <button onClick={() => handleDelete(s._id!.toString())} className="w-10 h-10 flex items-center justify-center bg-red-50 text-red-600 rounded-2xl hover:bg-red-100 transition-colors"><Trash2 className="w-5 h-5" /></button>
+                    {canEdit && <button onClick={() => handleEdit(s)} className="w-10 h-10 flex items-center justify-center bg-amber-50 text-amber-600 rounded-2xl hover:bg-amber-100 transition-colors"><Edit2 className="w-5 h-5" /></button>}
+                    {canApprove && s.approval_status === "Pending" && (
+                      <button onClick={() => handleApprove(s._id!.toString())} className="w-10 h-10 flex items-center justify-center bg-green-50 text-green-600 rounded-2xl hover:bg-green-100 transition-colors" title="Duyệt đối tượng"><CheckCircle className="w-5 h-5" /></button>
+                    )}
+                    {canDelete && <button onClick={() => handleDelete(s._id!.toString())} className="w-10 h-10 flex items-center justify-center bg-red-50 text-red-600 rounded-2xl hover:bg-red-100 transition-colors"><Trash2 className="w-5 h-5" /></button>}
                   </div>
                </div>
             </div>

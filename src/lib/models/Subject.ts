@@ -42,7 +42,7 @@ export interface ISubject extends Document {
   tdp?: string;
   address_permanent?: string;
   address_current?: string;
-  
+
   // Violations
   violation_histories: IViolationHistory[];
 
@@ -67,6 +67,12 @@ export interface ISubject extends Document {
 
   lat?: number;
   lng?: number;
+
+  // Approval workflow - trạng thái duyệt của đối tượng
+  approval_status?: "Pending" | "Approved";
+  created_by?: string;       // ID của user tạo
+  approved_by?: string;      // ID của user duyệt
+  approved_at?: Date;        // Thời gian duyệt
 
   created_at: Date;
   updated_at: Date;
@@ -105,7 +111,7 @@ const SubjectSchema = new Schema<ISubject>(
     health_status: { type: String },
 
     family_members: { type: [FamilyMemberSchema], default: [] },
-    
+
     drug_types_used: { type: [String], default: [] },
 
     tdp: { type: String, index: true },
@@ -123,6 +129,12 @@ const SubjectSchema = new Schema<ISubject>(
 
     lat: { type: Number },
     lng: { type: Number },
+
+    // Approval workflow fields
+    approval_status: { type: String, enum: ["Pending", "Approved"], default: "Pending", index: true },
+    created_by: { type: String },
+    approved_by: { type: String },
+    approved_at: { type: Date },
   },
   {
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" },

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "./ThemeProvider";
+import { useEffect, useState } from "react";
+import { getCurrentUserInfo } from "@/lib/actions/subjects";
 import {
   BarChart3,
   Users,
@@ -14,17 +16,35 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
+// Định nghĩa menu với các vai trò được phép truy cập
+// guest: không thấy "Quản lý Phân quyền" và "Bản đồ GIS"
+// officer: không thấy "Quản lý Phân quyền"
 const navItems = [
-  { href: "/", label: "Báo cáo", icon: BarChart3, section: "Tổng quan" },
-  { href: "/subjects", label: "Đối tượng quản lý", icon: Users, section: "Quản lý" },
-  { href: "/businesses", label: "Cơ sở kinh doanh", icon: Store, section: "Quản lý" },
-  { href: "/gis", label: "Bản đồ GIS", icon: Map, section: "Phân tích" },
-  { href: "/accounts", label: "Quản lý Phân quyền", icon: Shield, section: "Hệ thống" },
+  { href: "/", label: "Báo cáo", icon: BarChart3, section: "Tổng quan", roles: ["admin", "leader", "officer", "guest"] },
+  { href: "/subjects", label: "Đối tượng quản lý", icon: Users, section: "Quản lý", roles: ["admin", "leader", "officer", "guest"] },
+  { href: "/businesses", label: "Cơ sở kinh doanh", icon: Store, section: "Quản lý", roles: ["admin", "leader", "officer", "guest"] },
+  { href: "/gis", label: "Bản đồ GIS", icon: Map, section: "Phân tích", roles: ["admin", "leader"] }, // Chỉ admin và leader
+  { href: "/accounts", label: "Quản lý Phân quyền", icon: Shield, section: "Hệ thống", roles: ["admin"] }, // Chỉ admin
 ];
 
 export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
+  const [currentUser, setCurrentUser] = useState<{ id: string; username: string; role: string } | null>(null);
+
+  // Lấy thông tin user hiện tại khi component mount
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await getCurrentUserInfo();
+      setCurrentUser(user);
+    };
+    fetchUser();
+  }, []);
+
+  // Lọc menu theo role của user
+  const visibleNavItems = navItems.filter(item =>
+    currentUser && item.roles.includes(currentUser.role)
+  );
 
   return (
     <aside className="w-64 min-h-screen bg-slate-800 text-white flex flex-col">
@@ -47,7 +67,7 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
 
       {/* Navigation */}
       <nav className="flex-1 py-4">
-        {navItems.map((item) => {
+        {visibleNavItems.map((item) => {
           const isActive = pathname === item.href ||
             (item.href !== "/" && pathname.startsWith(item.href));
 
@@ -107,8 +127,13 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
             <Users className="w-4 h-4 text-white" />
           </div>
           <div className="flex flex-col">
-            <span className="font-medium text-white text-xs">Cán bộ QL</span>
-            <span className="text-[10px] text-green-400 flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-green-500"></span> Đang trực tuyến</span>
+            <span className="font-medium text-white text-xs">{currentUser?.username || "Khách"}</span>
+            <span className="text-[10px] text-green-400 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+              {currentUser?.role === "admin" ? "Quản trị viên" :
+               currentUser?.role === "leader" ? "Lãnh đạo" :
+               currentUser?.role === "officer" ? "Cán bộ" : "Khách"}
+            </span>
           </div>
         </div>
         <button 
