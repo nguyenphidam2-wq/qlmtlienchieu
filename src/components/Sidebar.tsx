@@ -13,6 +13,7 @@ import {
   Shield,
   Sun,
   Moon,
+  ShieldCheck,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -21,7 +22,8 @@ import Image from "next/image";
 // officer: không thấy "Quản lý Phân quyền"
 const navItems = [
   { href: "/", label: "Báo cáo", icon: BarChart3, section: "Tổng quan", roles: ["admin", "leader", "officer", "guest"] },
-  { href: "/subjects", label: "Đối tượng quản lý", icon: Users, section: "Quản lý", roles: ["admin", "leader", "officer", "guest"] },
+  { href: "/subjects", label: "Đối tượng ma túy", icon: Users, section: "Quản lý", roles: ["admin", "leader", "officer", "guest"] },
+  { href: "/subjects-nghiepvu", label: "Đối tượng nghiệp vụ", icon: ShieldCheck, section: "Quản lý", roles: ["admin", "leader", "officer"] },
   { href: "/businesses", label: "Cơ sở kinh doanh", icon: Store, section: "Quản lý", roles: ["admin", "leader", "officer", "guest"] },
   { href: "/gis", label: "Bản đồ GIS", icon: Map, section: "Phân tích", roles: ["admin", "leader"] }, // Chỉ admin và leader
   { href: "/accounts", label: "Quản lý Phân quyền", icon: Shield, section: "Hệ thống", roles: ["admin"] }, // Chỉ admin

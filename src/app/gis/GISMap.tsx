@@ -155,13 +155,15 @@ export function GISMap() {
     businesses: true,
     zones: true,
   });
+  // Layer dropdown state - starts collapsed
+  const [layerDropdownOpen, setLayerDropdownOpen] = useState(false);
   const [drawMode, setDrawMode] = useState(false);
-  const [showPanel, setShowPanel] = useState(false);
   const [legendOpen, setLegendOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const drawnItemsRef = useRef<L.FeatureGroup | null>(null);
   const mapRef = useRef<L.Map | null>(null);
   const drawControlRef = useRef<L.Control.Draw | null>(null);
+  const layerDropdownRef = useRef<HTMLDivElement>(null);
 
   // Load data
   useEffect(() => {
@@ -214,7 +216,17 @@ export function GISMap() {
     loadData();
   }, []);
 
-  // Fix Leaflet default icon issue
+  // Close layer dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      const dropdown = document.getElementById("layer-dropdown");
+      if (dropdown && !dropdown.contains(event.target as Node)) {
+        setLayerDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   useEffect(() => {
     delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: unknown })._getIconUrl;
     L.Icon.Default.mergeOptions({
@@ -423,26 +435,25 @@ export function GISMap() {
 
   return (
     <div className="relative">
-      {/* Layer Control Dropdown */}
-      <div className="absolute top-4 right-4 z-[1000] flex flex-col items-end gap-2">
+      {/* Layer Control Dropdown - Collapsible */}
+      <div id="layer-dropdown" ref={layerDropdownRef} className="absolute top-4 right-4 z-[1000] flex flex-col items-end gap-2">
+        {/* Toggle button */}
         <button
-          onClick={() => setShowPanel(!showPanel)}
+          onClick={() => setLayerDropdownOpen(!layerDropdownOpen)}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl shadow-xl transition-all duration-300 border ${
-            showPanel 
-            ? "bg-slate-900 text-white border-slate-700" 
+            layerDropdownOpen
+            ? "bg-slate-900 text-white border-slate-700"
             : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
           }`}
+          title="Lớp bản đồ & Công cụ"
         >
-          <i className={`fas ${showPanel ? "fa-times" : "fa-layer-group"} text-sm`}></i>
-          <span className="text-sm font-semibold">{showPanel ? "Đóng menu" : "Lớp bản đồ & Công cụ"}</span>
-          {!showPanel && customZones.length > 0 && (
-             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-500 text-[10px] text-white font-bold">
-               {customZones.length}
-             </span>
-          )}
+          <i className="fas fa-layer-group text-sm"></i>
+          <span className="text-sm font-semibold">Lớp bản đồ</span>
+          <i className={`fas fa-chevron-down text-xs transition-transform ${layerDropdownOpen ? "rotate-180" : ""}`}></i>
         </button>
 
-        {showPanel && (
+        {/* Dropdown panel */}
+        {layerDropdownOpen && (
           <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-4 w-72 border border-slate-200 animate-in fade-in zoom-in duration-200 origin-top-right overflow-hidden">
             {/* Layers Section */}
             <div className="mb-4">
@@ -512,8 +523,8 @@ export function GISMap() {
                     <div key={zone._id?.toString()} className="flex items-center gap-3 px-3 py-2 hover:bg-slate-50 rounded-xl group transition-all">
                       <div className="w-3 h-3 rounded-sm shadow-sm" style={{ backgroundColor: zone.color }}></div>
                       <span className="flex-1 truncate text-xs font-medium text-slate-700">{zone.name}</span>
-                      <button 
-                        onClick={() => zone._id && handleDeleteZone(zone._id.toString())} 
+                      <button
+                        onClick={() => zone._id && handleDeleteZone(zone._id.toString())}
                         className="opacity-0 group-hover:opacity-100 w-6 h-6 flex items-center justify-center rounded-lg text-red-400 hover:bg-red-50 hover:text-red-600 transition-all"
                       >
                         <i className="fas fa-trash-can text-[10px]"></i>

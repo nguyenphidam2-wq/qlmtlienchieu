@@ -14,7 +14,7 @@ export async function POST() {
     
     const users = [
       { username: "admin", password_hash: passwordHash, full_name: "Admin Tổng", role: "admin" },
-      { username: "lanhdao", password_hash: passwordHash, full_name: "Lãnh Đạo Quận", role: "leader" },
+      { username: "lanhdao", password_hash: passwordHash, full_name: "Lãnh Đạo", role: "leader" },
       { username: "canbo", password_hash: passwordHash, full_name: "CSKV Tổ 1", role: "officer" },
       { username: "khach", password_hash: passwordHash, full_name: "Khách (Tổ trưởng)", role: "guest" },
     ];
