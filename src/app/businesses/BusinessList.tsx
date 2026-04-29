@@ -10,8 +10,8 @@ import {
   deleteBusiness,
   approveBusiness,
   bulkApproveBusinesses,
-  getCurrentUserInfo,
 } from "@/lib/actions/businesses";
+import { getCurrentUserInfo } from "@/lib/actions/subjects";
 import { IBusiness } from "@/lib/models";
 import { BusinessForm } from "./components/BusinessForm";
 

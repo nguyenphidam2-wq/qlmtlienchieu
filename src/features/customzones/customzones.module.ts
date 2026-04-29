@@ -7,7 +7,14 @@ export const customzonesModule: IFeatureModule = {
   async importData(collection: Collection, data: unknown[]): Promise<number> {
     await collection.deleteMany({});
     if (data.length === 0) return 0;
-    const result = await collection.insertMany(data as Document[]);
+    
+    // Add Pending approval status to all imported records
+    const dataWithPendingStatus = data.map((item: any) => ({
+      ...item,
+      approval_status: "Pending"
+    }));
+    
+    const result = await collection.insertMany(dataWithPendingStatus as Document[]);
     return result.insertedCount;
   },
 };

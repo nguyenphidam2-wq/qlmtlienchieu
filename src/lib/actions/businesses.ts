@@ -5,9 +5,6 @@ import connectDB from "@/lib/mongodb";
 import { Business, IBusiness } from "@/lib/models";
 import { getCurrentUserInfo } from "./subjects";
 
-// Re-export for use in BusinessList
-export { getCurrentUserInfo } from "./subjects";
-
 // Get all businesses with optional pending filter
 export async function getBusinesses(
   includePending = false

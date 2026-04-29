@@ -6,6 +6,7 @@ import { appModules } from "@/features/registry";
 const MAX_BODY_SIZE = 10 * 1024 * 1024; // 10MB limit
 
 export async function POST(request: Request) {
+  console.log("📥 API /api/import-data was hit!");
   try {
     // Bug fix #1 & #2: Limit body size + catch connection errors
     const contentLength = request.headers.get("content-length");
