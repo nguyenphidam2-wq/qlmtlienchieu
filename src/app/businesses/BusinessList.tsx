@@ -1,13 +1,16 @@
 "use client";
 
 import { useState, useEffect, useTransition } from "react";
-import { Plus, Search, Eye, Edit2, Trash2 } from "lucide-react";
+import { Plus, Search, Eye, Edit2, Trash2, CheckCircle, CheckSquare, Square } from "lucide-react";
 import { Button, Modal, RiskBadge, Drawer } from "@/components/ui";
 import {
   getBusinesses,
   createBusiness,
   updateBusiness,
   deleteBusiness,
+  approveBusiness,
+  bulkApproveBusinesses,
+  getCurrentUserInfo,
 } from "@/lib/actions/businesses";
 import { IBusiness } from "@/lib/models";
 import { BusinessForm } from "./components/BusinessForm";
@@ -20,21 +23,45 @@ const BUSINESS_TYPE_OPTIONS = [
   { value: "Tiệm cầm đồ", label: "Tiệm cầm đồ" },
 ];
 
+// Các vai trò được phép tạo/sửa
+const ALLOWED_ROLES_FOR_CREATE_UPDATE = ["admin", "leader", "officer"];
+
+// Chỉ admin và leader được phép duyệt
+const ALLOWED_ROLES_FOR_APPROVE = ["admin", "leader"];
+
+// Chỉ admin được phép xóa
+const ALLOWED_ROLES_FOR_DELETE = ["admin"];
+
 export function BusinessList() {
   const [businesses, setBusinesses] = useState<IBusiness[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
   const [isPending, startTransition] = useTransition();
+  const [currentUser, setCurrentUser] = useState<{ id: string; username: string; role: string } | null>(null);
+
+  // Bulk selection state
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [editingBusiness, setEditingBusiness] = useState<IBusiness | null>(null);
   const [viewingBusiness, setViewingBusiness] = useState<IBusiness | null>(null);
 
+  // Lấy thông tin user hiện tại khi component mount
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await getCurrentUserInfo();
+      setCurrentUser(user);
+    };
+    fetchUser();
+  }, []);
+
   const loadBusinesses = () => {
     startTransition(async () => {
-      const data = await getBusinesses();
+      // Admin và leader có thể xem tất cả (bao gồm Pending)
+      const includePending = currentUser?.role === "admin" || currentUser?.role === "leader";
+      const data = await getBusinesses(includePending);
       setBusinesses(data);
       setLoading(false);
     });
@@ -42,7 +69,7 @@ export function BusinessList() {
 
   useEffect(() => {
     loadBusinesses();
-  }, []);
+  }, [currentUser]);
 
   const filteredBusinesses = businesses.filter((b) => {
     const q = searchQuery.toLowerCase();
@@ -54,6 +81,44 @@ export function BusinessList() {
     const matchesType = !typeFilter || b.business_type === typeFilter;
     return matchesSearch && matchesType;
   });
+
+  // Bulk selection handlers
+  const toggleSelectAll = () => {
+    if (selectedIds.length === filteredBusinesses.filter(b => b.approval_status === "Pending").length) {
+      setSelectedIds([]);
+    } else {
+      setSelectedIds(filteredBusinesses.filter(b => b.approval_status === "Pending").map(b => b._id!.toString()));
+    }
+  };
+
+  const toggleSelectOne = (id: string) => {
+    setSelectedIds(prev =>
+      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
+    );
+  };
+
+  // Approval handlers
+  const handleApprove = async (id: string) => {
+    if (!confirm("Bạn có chắc muốn duyệt cơ sở này?")) return;
+    const result = await approveBusiness(id.toString());
+    if (!result.success) {
+      alert(result.error || "Không thể duyệt cơ sở");
+      return;
+    }
+    loadBusinesses();
+  };
+
+  const handleBulkApprove = async () => {
+    if (selectedIds.length === 0) return;
+    if (!confirm(`Bạn có chắc muốn duyệt ${selectedIds.length} cơ sở này không?`)) return;
+    const result = await bulkApproveBusinesses(selectedIds);
+    if (!result.success) {
+      alert(result.error || "Không thể duyệt các cơ sở");
+      return;
+    }
+    setSelectedIds([]);
+    loadBusinesses();
+  };
 
   const handleCreate = () => {
     setEditingBusiness(null);
@@ -72,19 +137,38 @@ export function BusinessList() {
 
   const handleDelete = async (id: string) => {
     if (!confirm("Bạn có chắc muốn xóa cơ sở này?")) return;
-    await deleteBusiness(id.toString());
+    const result = await deleteBusiness(id.toString());
+    if (!result.success) {
+      alert(result.error || "Không thể xóa cơ sở");
+      return;
+    }
     loadBusinesses();
   };
 
   const handleSubmit = async (data: Partial<IBusiness>) => {
+    let result;
     if (editingBusiness?._id) {
-      await updateBusiness(editingBusiness._id.toString(), data);
+      result = await updateBusiness(editingBusiness._id.toString(), data);
+      if (!result.success) {
+        alert(result.error || "Không thể cập nhật cơ sở");
+        return;
+      }
     } else {
-      await createBusiness(data);
+      result = await createBusiness(data);
+      if (!result.success) {
+        alert(result.error || "Không thể tạo cơ sở mới");
+        return;
+      }
     }
     setIsModalOpen(false);
     loadBusinesses();
   };
+
+  // Kiểm tra quyền
+  const canCreate = currentUser && ALLOWED_ROLES_FOR_CREATE_UPDATE.includes(currentUser.role);
+  const canEdit = currentUser && ALLOWED_ROLES_FOR_CREATE_UPDATE.includes(currentUser.role);
+  const canDelete = currentUser && ALLOWED_ROLES_FOR_DELETE.includes(currentUser.role);
+  const canApprove = currentUser && ALLOWED_ROLES_FOR_APPROVE.includes(currentUser.role);
 
   return (
     <div>
@@ -98,9 +182,11 @@ export function BusinessList() {
             Karaoke, Nhà nghỉ, Pub, Cầm đồ và các cơ sở tiềm ẩn nguy cơ
           </p>
         </div>
-        <Button icon={Plus} onClick={handleCreate}>
-          Thêm CSKD
-        </Button>
+        {canCreate && (
+          <Button icon={Plus} onClick={handleCreate}>
+            Thêm CSKD
+          </Button>
+        )}
       </div>
 
       {/* Toolbar */}
@@ -114,16 +200,27 @@ export function BusinessList() {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        <div className="filter-btns">
-          {BUSINESS_TYPE_OPTIONS.map((opt) => (
+        <div className="flex items-center gap-3">
+          <div className="filter-btns">
+            {BUSINESS_TYPE_OPTIONS.map((opt) => (
+              <button
+                key={opt.value}
+                className={`filter-btn ${typeFilter === opt.value ? "active" : ""}`}
+                onClick={() => setTypeFilter(opt.value)}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+          {canApprove && selectedIds.length > 0 && (
             <button
-              key={opt.value}
-              className={`filter-btn ${typeFilter === opt.value ? "active" : ""}`}
-              onClick={() => setTypeFilter(opt.value)}
+              onClick={handleBulkApprove}
+              className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl text-sm font-bold shadow-md transition-colors"
             >
-              {opt.label}
+              <CheckCircle className="w-4 h-4" />
+              Duyệt {selectedIds.length} mục đã chọn
             </button>
-          ))}
+          )}
         </div>
       </div>
 
@@ -132,6 +229,21 @@ export function BusinessList() {
         <table>
           <thead>
             <tr>
+              <th style={{ width: "40px" }}>
+                {canApprove && (
+                  <button
+                    onClick={toggleSelectAll}
+                    className="p-1 hover:bg-slate-100 rounded transition-colors"
+                    title="Chọn tất cả"
+                  >
+                    {selectedIds.length === filteredBusinesses.filter(b => b.approval_status === "Pending").length && filteredBusinesses.some(b => b.approval_status === "Pending") ? (
+                      <CheckSquare className="w-4 h-4 text-blue-600" />
+                    ) : (
+                      <Square className="w-4 h-4 text-slate-400" />
+                    )}
+                  </button>
+                )}
+              </th>
               <th>#</th>
               <th>Tên cơ sở</th>
               <th>Loại hình</th>
@@ -140,19 +252,20 @@ export function BusinessList() {
               <th>Địa chỉ</th>
               <th>Mức độ nguy cơ</th>
               <th>Số kt</th>
+              <th>Trạng thái</th>
               <th>Thao tác</th>
             </tr>
           </thead>
           <tbody>
             {loading || isPending ? (
               <tr>
-                <td colSpan={9} style={{ textAlign: "center", padding: "40px" }}>
+                <td colSpan={11} style={{ textAlign: "center", padding: "40px" }}>
                   Đang tải dữ liệu...
                 </td>
               </tr>
             ) : filteredBusinesses.length === 0 ? (
               <tr>
-                <td colSpan={9}>
+                <td colSpan={11}>
                   <div className="empty-state">
                     <div>Chưa có dữ liệu. Nhấn <strong>Thêm CSKD</strong> để bắt đầu.</div>
                   </div>
@@ -161,6 +274,25 @@ export function BusinessList() {
             ) : (
               filteredBusinesses.map((b, i) => (
                 <tr key={b._id?.toString()}>
+                  <td>
+                    {canApprove && (
+                      <button
+                        onClick={() => toggleSelectOne(b._id!.toString())}
+                        className="p-1 hover:bg-slate-100 rounded transition-colors"
+                        disabled={b.approval_status !== "Pending"}
+                      >
+                        {b.approval_status === "Pending" ? (
+                          selectedIds.includes(b._id!.toString()) ? (
+                            <CheckSquare className="w-4 h-4 text-blue-600" />
+                          ) : (
+                            <Square className="w-4 h-4 text-slate-400" />
+                          )
+                        ) : (
+                          <CheckSquare className="w-4 h-4 text-slate-300 cursor-not-allowed" />
+                        )}
+                      </button>
+                    )}
+                  </td>
                   <td style={{ color: "var(--text-2)" }}>{i + 1}</td>
                   <td><strong>{b.name}</strong></td>
                   <td><span style={{ fontSize: "0.78rem" }}>{b.business_type}</span></td>
@@ -182,16 +314,55 @@ export function BusinessList() {
                   </td>
                   <td style={{ textAlign: "center" }}>{b.inspection_count || 0}</td>
                   <td>
+                    {b.approval_status === "Pending" ? (
+                      <span style={{
+                        fontSize: "0.7rem",
+                        padding: "2px 8px",
+                        borderRadius: "10px",
+                        background: "var(--warning-bg)",
+                        color: "var(--warning)",
+                        fontWeight: 600,
+                      }}>
+                        Chờ duyệt
+                      </span>
+                    ) : (
+                      <span style={{
+                        fontSize: "0.7rem",
+                        padding: "2px 8px",
+                        borderRadius: "10px",
+                        background: "var(--success-bg)",
+                        color: "var(--success)",
+                        fontWeight: 600,
+                      }}>
+                        Đã duyệt
+                      </span>
+                    )}
+                  </td>
+                  <td>
                     <div className="action-btns">
                       <div className="btn-icon" onClick={() => handleView(b)} title="Xem chi tiết">
                         <Eye className="w-4 h-4" />
                       </div>
-                      <div className="btn-icon" onClick={() => handleEdit(b)} title="Chỉnh sửa">
-                        <Edit2 className="w-4 h-4" />
-                      </div>
-                      <div className="btn-icon del" onClick={() => handleDelete(b._id!.toString())} title="Xoá">
-                        <Trash2 className="w-4 h-4" />
-                      </div>
+                      {canEdit && (
+                        <div className="btn-icon" onClick={() => handleEdit(b)} title="Chỉnh sửa">
+                          <Edit2 className="w-4 h-4" />
+                        </div>
+                      )}
+                      {canApprove && b.approval_status === "Pending" && (
+                        <div
+                          className="btn-icon"
+                          onClick={() => handleApprove(b._id!.toString())}
+                          title="Duyệt cơ sở"
+                          style={{ color: "var(--success)" }}
+                        >
+                          <CheckCircle className="w-4 h-4" />
+                        </div>
+                      )}
+                      {canDelete && (
+                        <div className="btn-icon del" onClick={() => handleDelete(b._id!.toString())} title="Xoá">
+                          <Trash2 className="w-4 h-4" />
+                        </div>
+                      )}
                     </div>
                   </td>
                 </tr>
@@ -303,6 +474,37 @@ function BusinessDetail({ business }: { business: IBusiness }) {
       <div className="detail-row">
         <span className="detail-label">Ghi chú</span>
         <span className="detail-val">{business.notes || "—"}</span>
+      </div>
+
+      {/* Approval status in detail */}
+      <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "10px 0" }} />
+      <div className="detail-row">
+        <span className="detail-label">Trạng thái</span>
+        <span className="detail-val">
+          {business.approval_status === "Pending" ? (
+            <span style={{
+              fontSize: "0.75rem",
+              padding: "2px 8px",
+              borderRadius: "10px",
+              background: "var(--warning-bg)",
+              color: "var(--warning)",
+              fontWeight: 600,
+            }}>
+              Chờ duyệt
+            </span>
+          ) : (
+            <span style={{
+              fontSize: "0.75rem",
+              padding: "2px 8px",
+              borderRadius: "10px",
+              background: "var(--success-bg)",
+              color: "var(--success)",
+              fontWeight: 600,
+            }}>
+              Đã duyệt
+            </span>
+          )}
+        </span>
       </div>
     </div>
   );

@@ -18,6 +18,13 @@ export interface IBusiness extends Document {
   notes?: string;
   lat?: number;
   lng?: number;
+
+  // Approval workflow fields
+  approval_status?: "Pending" | "Approved";
+  created_by?: string;
+  approved_by?: string;
+  approved_at?: Date;
+
   created_at: Date;
   updated_at: Date;
 }
@@ -41,6 +48,12 @@ const BusinessSchema = new Schema<IBusiness>(
     notes: { type: String },
     lat: { type: Number },
     lng: { type: Number },
+
+    // Approval workflow fields
+    approval_status: { type: String, enum: ["Pending", "Approved"], default: "Pending", index: true },
+    created_by: { type: String },
+    approved_by: { type: String },
+    approved_at: { type: Date },
   },
   {
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
@@ -49,5 +62,6 @@ const BusinessSchema = new Schema<IBusiness>(
 
 BusinessSchema.index({ lat: 1, lng: 1 });
 BusinessSchema.index({ risk_level: 1 });
+BusinessSchema.index({ approval_status: 1 });
 
 export const Business = mongoose.models.Business || mongoose.model<IBusiness>("Business", BusinessSchema);
