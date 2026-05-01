@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 
 export const metadata: Metadata = {
-  title: "QLMT Liên Chiểu - Hệ thống quản lý ma túy",
+  title: "Quản lý địa bàn phường Liên Chiểu",
   description: "Hệ thống quản lý tình trạng ma túy nội bộ - Công an phường Liên Chiểu",
 };
 

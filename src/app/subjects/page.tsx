@@ -1,7 +1,7 @@
 import { SubjectList } from "./SubjectList";
 
 export const metadata = {
-  title: "Quản lý Đối tượng - QLMT Liên Chiểu",
+  title: "Quản lý Đối tượng - Quản lý địa bàn Liên Chiểu",
 };
 
 export default function SubjectsPage() {

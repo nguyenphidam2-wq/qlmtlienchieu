@@ -1,7 +1,7 @@
 import GISMapWrapper from "./GISMapWrapper";
 
 export const metadata = {
-  title: "Bản đồ GIS - QLMT Liên Chiểu",
+  title: "Bản đồ GIS - Quản lý địa bàn Liên Chiểu",
 };
 
 export default function GISPage() {

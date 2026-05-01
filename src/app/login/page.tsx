@@ -35,7 +35,7 @@ export default function LoginPage() {
             alt="Công An Phường Liên Chiểu"
             style={{ width: "200px", height: "auto", margin: "0 auto 15px" }}
           />
-          <h1 style={{ color: "white", fontSize: "24px", margin: "0 0 5px" }}>QLMT Liên Chiểu</h1>
+          <h1 style={{ color: "white", fontSize: "24px", margin: "0 0 5px" }}>Quản lý địa bàn phường Liên Chiểu</h1>
           <p style={{ color: "#94a3b8", margin: "0" }}>Quản lý địa bàn phường Liên Chiểu</p>
         </div>
 
