@@ -5,7 +5,7 @@ export function GET() {
   const html = `<!DOCTYPE html>
 <html>
 <head>
-    <title>QLMT TEST</title>
+    <title>Quản lý địa bàn TEST</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         * { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
@@ -51,7 +51,7 @@ export function GET() {
 </head>
 <body>
     <div class="container">
-        <h1>🔴 QLMT TEST</h1>
+        <h1>🔴 Quản lý địa bàn TEST</h1>
         <input type="text" id="user" value="admin" readonly>
         <input type="password" id="pass" value="123456" readonly>
         <button class="green" onclick="login()">BẤM ĐỂ ĐĂNG NHẬP</button>
