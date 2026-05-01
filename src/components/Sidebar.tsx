@@ -71,7 +71,7 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
       <nav className="flex-1 py-4">
         {visibleNavItems.map((item) => {
           const isActive = pathname === item.href ||
-            (item.href !== "/" && pathname.startsWith(item.href));
+            (item.href !== "/" && pathname.startsWith(item.href + "/"));
 
           return (
             <Link
