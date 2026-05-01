@@ -31,9 +31,9 @@ export default function LoginPage() {
       <div style={{ maxWidth: "400px", margin: "0 auto", background: "#1e293b", borderRadius: "20px", padding: "30px" }}>
         <div style={{ textAlign: "center", marginBottom: "30px" }}>
           <img
-            src="https://minimax-algeng-chat-tts-us.oss-us-east-1.aliyuncs.com/ccv2%2F2026-04-23%2FMiniMax-M2.7%2F2015681939565973754%2Fd726a4947cd898943652324c7860f738fb7f6631ee0c471c9aadf412ac05d7c6..jpeg?Expires=1777040202&OSSAccessKeyId=LTAI5tCpJNKCf5EkQHSuL9xg&Signature=AQmI8V8uBiwMiTHA1V9n9v%2FGKqI%3D"
+            src="/logo.png"
             alt="Công An Phường Liên Chiểu"
-            style={{ width: "200px", height: "auto", margin: "0 auto 15px" }}
+            style={{ width: "120px", height: "auto", margin: "0 auto 15px" }}
           />
           <h1 style={{ color: "white", fontSize: "24px", margin: "0 0 5px" }}>Quản lý địa bàn phường Liên Chiểu</h1>
           <p style={{ color: "#94a3b8", margin: "0" }}>Quản lý địa bàn phường Liên Chiểu</p>
