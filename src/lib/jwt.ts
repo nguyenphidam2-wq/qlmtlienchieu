@@ -40,7 +40,7 @@ export async function getCurrentUser(): Promise<{ id: string; username: string; 
     }
 
     return {
-      id: payload.id as string,
+      id: (payload.id || payload.userId) as string,
       username: payload.username as string,
       role: payload.role as string,
     };

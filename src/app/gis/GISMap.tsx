@@ -4,9 +4,9 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { MapContainer, TileLayer, CircleMarker, Popup, Marker, useMap, GeoJSON, FeatureGroup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import "leaflet-draw/dist/leaflet.draw.css";
-import "leaflet-draw";
-import { getSubjects } from "@/lib/actions/subjects";
+import "@geoman-io/leaflet-geoman-free";
+import "@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css";
+import { getSubjects, getCurrentUserInfo } from "@/lib/actions/subjects";
 import { getBusinesses } from "@/lib/actions/businesses";
 import { getCustomZones, createCustomZone, deleteCustomZone, importGeoJSONZones, updateCustomZone } from "@/lib/actions/zones";
 import { ISubject, IBusiness, ICustomZone } from "@/lib/models";
@@ -96,74 +96,180 @@ function MapController() {
   return null;
 }
 
-function ZonePopupComponent({ zone, onSaveField, onRemoveField }: { zone: any, onSaveField: any, onRemoveField: any }) {
+function ZonePopupComponent({ 
+  zone, 
+  onSaveField, 
+  onRemoveField,
+  onChangeColor,
+  currentUser
+}: { 
+  zone: any, 
+  onSaveField: any, 
+  onRemoveField: any,
+  onChangeColor: (id: string, color: string) => void,
+  currentUser: any
+}) {
   const [newLabel, setNewLabel] = useState("");
   const [newValue, setNewValue] = useState("");
   const [isAdding, setIsAdding] = useState(false);
 
+  // Extract population from custom fields if available
+  const populationField = zone.custom_fields?.find((f: any) => f.label.toLowerCase().includes("nhân khẩu") || f.label.toLowerCase().includes("dân số"));
+  const population = populationField ? populationField.value : "Chưa cập nhật";
+
+  const canEditColor = currentUser?.role === "admin" || currentUser?.role === "leader";
+
   return (
-    <div className="text-sm min-w-[200px]">
-      <b>{zone.name}</b>
-      <br />
-      <span className="inline-block w-3 h-3 rounded-full mr-1" style={{ backgroundColor: zone.displayColor || zone.color }}></span>
-      {zone.riskCount !== undefined ? `Số đối tượng: ${zone.riskCount}` : `Loại: ${zone.type}`}
-      {zone.areaSqm > 0 && (
-        <>
-          <br />
-          <span className="text-slate-600 block mt-1">
-            📐 Diện tích: {(zone.areaSqm / 10000).toFixed(2)} hecta (ha)
-          </span>
-        </>
-      )}
+    <div className="text-sm min-w-[260px] p-1">
+      <div className="flex items-center gap-2 mb-2 border-b border-slate-100 pb-2">
+        <div className="w-4 h-4 rounded shadow-inner" style={{ backgroundColor: zone.color }}></div>
+        <b className="text-base text-slate-800">{zone.name}</b>
+      </div>
 
-      {/* Custom Fields Section */}
-      <div className="mt-2 pt-2 border-t border-slate-200">
-         {zone.custom_fields && zone.custom_fields.map((f: any, i: number) => (
-           <div key={i} className="flex justify-between items-start group py-1 text-xs border-b border-slate-50 last:border-0">
-             <span className="text-slate-500 font-medium whitespace-nowrap">{f.label}:</span>
-             <strong className="text-slate-800 ml-2 flex-1 text-right break-words">{f.value}</strong>
-             <button onClick={() => onRemoveField(zone._id?.toString(), i)} className="opacity-0 group-hover:opacity-100 text-red-500 ml-2 hover:bg-red-50 px-1.5 py-0.5 rounded transition-opacity" title="Xóa">✕</button>
-           </div>
-         ))}
+      <div className="space-y-2.5">
+        {/* Core Stats */}
+        <div className="grid grid-cols-2 gap-2">
+          <div className="bg-blue-50/50 p-2 rounded-lg border border-blue-100/50">
+            <span className="text-[10px] uppercase font-bold text-blue-400 block leading-none mb-1">Nhân khẩu</span>
+            <span className="text-blue-700 font-bold">{population}</span>
+          </div>
+          <div className="bg-purple-50/50 p-2 rounded-lg border border-purple-100/50">
+            <span className="text-[10px] uppercase font-bold text-purple-400 block leading-none mb-1">Diện tích</span>
+            <span className="text-purple-700 font-bold">{(zone.areaSqm / 10000).toFixed(2)} <small>ha</small></span>
+          </div>
+        </div>
 
-         {isAdding ? (
-           <div className="mt-2 bg-slate-50 p-2 rounded-lg border border-slate-200 shadow-inner">
-             <input value={newLabel} onChange={e => setNewLabel(e.target.value)} placeholder="Tên trường (VD: Số hộ)" className="w-full text-xs p-1.5 mb-1.5 border border-slate-300 rounded outline-none focus:border-blue-500" />
-             <input value={newValue} onChange={e => setNewValue(e.target.value)} placeholder="Nội dung (VD: 345)" className="w-full text-xs p-1.5 mb-2 border border-slate-300 rounded outline-none focus:border-blue-500" />
-             <div className="flex gap-2">
-               <button onClick={() => { onSaveField(zone._id?.toString(), newLabel, newValue); setIsAdding(false); setNewLabel(""); setNewValue(""); }} disabled={!newLabel || !newValue} className="flex-1 bg-blue-600 text-white py-1.5 rounded text-xs font-semibold disabled:opacity-50 hover:bg-blue-700 transition-colors">Lưu</button>
-               <button onClick={() => setIsAdding(false)} className="flex-1 bg-slate-200 text-slate-700 py-1.5 rounded text-xs font-semibold hover:bg-slate-300 transition-colors">Hủy</button>
+        <div className="grid grid-cols-1 gap-2">
+          <div className="bg-red-50/50 p-2 rounded-lg border border-red-100/50 flex justify-between items-center">
+            <span className="text-[10px] uppercase font-bold text-red-400 block leading-none">Đối tượng ma túy</span>
+            <span className="text-red-700 font-black text-base">{zone.riskCount || 0}</span>
+          </div>
+        </div>
+
+        {/* Business List */}
+        {zone.businessList && zone.businessList.length > 0 && (
+          <div className="mt-3">
+            <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 flex items-center gap-2">
+              <i className="fas fa-store"></i> Danh sách cơ sở ({zone.businessList.length})
+            </h4>
+            <div className="max-h-24 overflow-y-auto pr-1 space-y-1 custom-scrollbar">
+              {zone.businessList.map((b: string, i: number) => (
+                <div key={i} className="text-[11px] bg-slate-50 text-slate-600 px-2 py-1 rounded border border-slate-100">
+                  {b}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Color Picker Section - Moved to bottom for visibility */}
+        {canEditColor && (
+          <div className="mt-4 pt-3 border-t-2 border-blue-100 bg-blue-50/30 p-2 rounded-xl">
+            <h4 className="text-[10px] font-black text-blue-500 uppercase tracking-widest mb-2 flex items-center gap-2">
+              <i className="fas fa-palette"></i> Phân loại mức độ (Chỉ Lãnh đạo)
+            </h4>
+            <div className="flex justify-around items-center">
+              {Object.entries(drugZoneColors).map(([name, color]) => (
+                <button
+                  key={name}
+                  onClick={() => onChangeColor(zone._id.toString(), color)}
+                  className={`w-10 h-10 rounded-full border-4 shadow-md transition-all hover:scale-110 active:scale-90 ${zone.color === color ? 'border-slate-800 ring-4 ring-slate-200' : 'border-white'}`}
+                  style={{ backgroundColor: color }}
+                  title={`Đổi sang màu ${name}`}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Custom Fields Section */}
+        <div className="mt-3 pt-3 border-t border-slate-100">
+           <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Thông tin bổ sung</h4>
+           {zone.custom_fields && zone.custom_fields.filter((f: any) => f !== populationField).map((f: any, i: number) => (
+             <div key={i} className="flex justify-between items-start group py-1.5 text-xs border-b border-slate-50 last:border-0">
+               <span className="text-slate-500 font-medium whitespace-nowrap">{f.label}:</span>
+               <strong className="text-slate-800 ml-2 flex-1 text-right break-words">{f.value}</strong>
+               <button onClick={() => onRemoveField(zone._id?.toString(), i)} className="opacity-0 group-hover:opacity-100 text-red-400 ml-2 hover:text-red-600 transition-opacity" title="Xóa">✕</button>
              </div>
-           </div>
-         ) : (
-           <button onClick={() => setIsAdding(true)} className="w-full mt-2 text-xs text-blue-600 bg-blue-50 hover:bg-blue-100 py-1.5 rounded-lg font-medium border border-blue-100 transition-colors flex items-center justify-center gap-1 shadow-sm">
-             <i className="fas fa-plus"></i> Thêm trường thông tin
-           </button>
-         )}
+           ))}
+
+           {isAdding ? (
+             <div className="mt-2 bg-slate-50 p-2 rounded-xl border border-slate-200 shadow-inner">
+               <input value={newLabel} onChange={e => setNewLabel(e.target.value)} placeholder="Tên trường (VD: Số hộ)" className="w-full text-xs p-2 mb-2 border border-slate-200 rounded-lg outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-100" />
+               <input value={newValue} onChange={e => setNewValue(e.target.value)} placeholder="Nội dung (VD: 345)" className="w-full text-xs p-2 mb-2 border border-slate-200 rounded-lg outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-100" />
+               <div className="flex gap-2">
+                 <button onClick={() => { onSaveField(zone._id?.toString(), newLabel, newValue); setIsAdding(false); setNewLabel(""); setNewValue(""); }} disabled={!newLabel || !newValue} className="flex-1 bg-blue-600 text-white py-2 rounded-lg text-xs font-bold shadow-md shadow-blue-100 disabled:opacity-50 hover:bg-blue-700 transition-all active:scale-95">Lưu</button>
+                 <button onClick={() => setIsAdding(false)} className="flex-1 bg-white text-slate-600 py-2 rounded-lg text-xs font-bold border border-slate-200 hover:bg-slate-50 transition-all">Hủy</button>
+               </div>
+             </div>
+           ) : (
+             <button onClick={() => setIsAdding(true)} className="w-full mt-2 text-[11px] text-blue-600 bg-blue-50/50 hover:bg-blue-50 py-2 rounded-lg font-bold border border-blue-100/50 transition-all flex items-center justify-center gap-1.5 shadow-sm">
+               <i className="fas fa-plus-circle text-xs"></i> Thêm thông tin
+             </button>
+           )}
+        </div>
+        
+        {/* Debug Role */}
+        <div className="mt-4 text-[9px] text-slate-300 italic text-center border-t border-slate-50 pt-2">
+          KIỂM TRA QUYỀN: {currentUser?.role || "Không xác định"}
+        </div>
       </div>
     </div>
   );
 }
 
+import { useSearchParams } from "next/navigation";
+
 export function GISMap() {
+  const searchParams = useSearchParams();
   const [subjects, setSubjects] = useState<ISubject[]>([]);
   const [businesses, setBusinesses] = useState<IBusiness[]>([]);
   const [customZones, setCustomZones] = useState<ICustomZone[]>([]);
+  const [currentUser, setCurrentUser] = useState<{ id: string; username: string; role: string } | null>(null);
   const [loading, setLoading] = useState(true);
-  const [layers, setLayers] = useState({
-    subjects: true,
-    businesses: true,
-    zones: true,
-  });
-  // Layer dropdown state - starts collapsed
-  const [layerDropdownOpen, setLayerDropdownOpen] = useState(false);
-  const [drawMode, setDrawMode] = useState(false);
+
+  // Fetch current user
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await getCurrentUserInfo();
+      setCurrentUser(user);
+    };
+    fetchUser();
+  }, []);
+
+  // Derived states from searchParams
+  const layers = {
+    subjects: searchParams.get("subjects") !== "false",
+    businesses: searchParams.get("businesses") !== "false",
+    zones: searchParams.get("zones") !== "false",
+  };
+  const drawMode = searchParams.get("draw") === "true";
+  const selectedZoneId = searchParams.get("zoneId");
+
   const [legendOpen, setLegendOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const drawnItemsRef = useRef<L.FeatureGroup | null>(null);
   const mapRef = useRef<L.Map | null>(null);
-  const drawControlRef = useRef<L.Control.Draw | null>(null);
-  const layerDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Zoom to selected zone effect
+  useEffect(() => {
+    if (selectedZoneId && mapRef.current && customZones.length > 0) {
+      const zone = customZones.find(z => z._id?.toString() === selectedZoneId);
+      if (zone && zone.geojson) {
+        const bbox = turf.bbox(zone.geojson);
+        mapRef.current.fitBounds([[bbox[1], bbox[0]], [bbox[3], bbox[2]]], { padding: [50, 50] });
+      }
+    }
+  }, [selectedZoneId, customZones]);
+
+  // Listen for custom "trigger-import" event from sidebar
+  useEffect(() => {
+    const handleTriggerImport = () => {
+      fileInputRef.current?.click();
+    };
+    window.addEventListener("trigger-gis-import", handleTriggerImport);
+    return () => window.removeEventListener("trigger-gis-import", handleTriggerImport);
+  }, []);
 
   // Load data
   useEffect(() => {
@@ -177,32 +283,49 @@ export function GISMap() {
         setSubjects(subjectsData);
         setBusinesses(businessesData);
         
-        // Turf.js Point-In-Polygon calculate risk density per zone
-        // Chuẩn bị dữ liệu điểm một lần duy nhất để tối ưu hiệu năng
-        const points = turf.featureCollection(
+        // Preparation for Point-In-Polygon calculation
+        const subjectPoints = turf.featureCollection(
           subjectsData.filter(s => s.lat && s.lng).map(s => turf.point([s.lng!, s.lat!]))
+        );
+        const businessPoints = turf.featureCollection(
+          businessesData.filter(b => b.lat && b.lng).map(b => {
+            const p = turf.point([b.lng!, b.lat!]);
+            p.properties = { name: b.name };
+            return p;
+          })
         );
 
         const enrichedZones = zonesData.map((zone) => {
           if (zone.type === "polygon" && zone.geojson?.features) {
-            let count = 0;
+            let riskCount = 0;
             let totalArea = 0;
+            let zoneBusinessList: string[] = [];
+
             zone.geojson.features.forEach((f: any) => {
               if (f.geometry.type === "Polygon" || f.geometry.type === "MultiPolygon") {
-                const ptsWithin = turf.pointsWithinPolygon(points, f);
-                count += ptsWithin.features.length;
+                // Count subjects within
+                const subjectsWithin = turf.pointsWithinPolygon(subjectPoints, f);
+                riskCount += subjectsWithin.features.length;
+
+                // Find businesses within
+                const businessesWithin = turf.pointsWithinPolygon(businessPoints, f);
+                businessesWithin.features.forEach(feat => {
+                  if (feat.properties?.name) zoneBusinessList.push(feat.properties.name);
+                });
+
                 try {
                   totalArea += turf.area(f);
                 } catch(e) {}
               }
             });
-            let calculatedColor = zone.color;
-            // Density logic
-            if (count >= 5) calculatedColor = drugZoneColors.red;
-            else if (count >= 2) calculatedColor = drugZoneColors.yellow;
-            else if (count === 1) calculatedColor = drugZoneColors.green;
-            
-            return { ...zone, riskCount: count, displayColor: calculatedColor, areaSqm: totalArea };
+
+            return { 
+              ...zone, 
+              riskCount, 
+              displayColor: zone.color, // Sử dụng màu gốc từ DB, không tự động đổi theo riskCount
+              areaSqm: totalArea,
+              businessList: Array.from(new Set(zoneBusinessList)) // Unique list
+            };
           }
           return { ...zone, displayColor: zone.color };
         });
@@ -216,17 +339,9 @@ export function GISMap() {
     loadData();
   }, []);
 
-  // Close layer dropdown when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      const dropdown = document.getElementById("layer-dropdown");
-      if (dropdown && !dropdown.contains(event.target as Node)) {
-        setLayerDropdownOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+
+
+
   useEffect(() => {
     delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: unknown })._getIconUrl;
     L.Icon.Default.mergeOptions({
@@ -236,7 +351,7 @@ export function GISMap() {
     });
   }, []);
 
-  // Initialize draw control after map loads
+  // Initialize Geoman draw control and snapping after map loads
   useEffect(() => {
     if (loading || !mapRef.current) return;
 
@@ -248,59 +363,58 @@ export function GISMap() {
       map.addLayer(drawnItemsRef.current);
     }
 
-    // Initialize draw control
-    if (!drawControlRef.current && drawnItemsRef.current) {
-      drawControlRef.current = new L.Control.Draw({
-        position: "topright",
-        draw: {
-          polygon: {
-            allowIntersection: false,
-            showArea: true,
-            shapeOptions: {
-              color: PRESET_COLORS[Math.floor(Math.random() * PRESET_COLORS.length)],
-              fillOpacity: 0.3,
-            },
-          },
-          polyline: false,
-          circle: false,
-          rectangle: false,
-          marker: false,
-          circlemarker: false,
-        },
-        edit: {
-          featureGroup: drawnItemsRef.current,
-          remove: true,
-        },
-      });
+    // Configure Geoman global options for advanced editing and snapping
+    map.pm.setGlobalOptions({
+      layerGroup: drawnItemsRef.current,
+      snappable: true,
+      snapDistance: 20, // Snap when within 20 pixels of another vertex/edge
+      snapSegment: true, // Allow snapping to the middle of segments (centerlines)
+      allowSelfIntersection: false,
+      hintlineStyle: { color: '#3388ff', dashArray: '5,5' },
+      templineStyle: { color: '#3388ff' }
+    });
 
-      if (drawMode) {
-        map.addControl(drawControlRef.current);
-      }
+    // We don't add the default Geoman toolbar because we use our custom sidebar button
+    // But we still need to set up the global language or specific settings if needed.
+    map.pm.setLang('vi'); // Try to set Vietnamese if supported, otherwise defaults to en
+
+    // Handle draw/edit modes based on sidebar state
+    if (drawMode) {
+      // Enable polygon drawing mode
+      map.pm.enableDraw('Polygon', {
+        snappable: true,
+        snapDistance: 20,
+        pathOptions: {
+          color: PRESET_COLORS[Math.floor(Math.random() * PRESET_COLORS.length)],
+          fillOpacity: 0.3,
+        }
+      });
+    } else {
+      map.pm.disableDraw();
+      // Optional: you could enable global edit mode here if you wanted users to always be able to tweak boundaries
+      // map.pm.enableGlobalEditMode();
     }
 
-    // Handle draw created event
-    const handleDrawCreated = async (e: L.LeafletEvent) => {
-      const event = e as L.DrawEvents.Created;
-      const layer = event.layer;
-      const type = event.layerType;
+    // Handle draw created event (Geoman uses pm:create)
+    const handleDrawCreated = async (e: any) => {
+      const layer = e.layer;
+      const shape = e.shape; // e.g., 'Polygon', 'Marker'
 
-      if (drawnItemsRef.current) {
-        drawnItemsRef.current.addLayer(layer);
+      if (drawnItemsRef.current && shape === 'Polygon') {
+        // layer is automatically added to drawnItemsRef by Geoman because of setGlobalOptions
       }
 
       const geojson = layer.toGeoJSON();
-      const name = prompt("Nhập tên khu vực:");
+      const name = prompt("Nhập tên khu vực (Tổ dân phố):");
       if (!name) {
-        if (drawnItemsRef.current) {
-          drawnItemsRef.current.removeLayer(layer);
-        }
+        if (drawnItemsRef.current) drawnItemsRef.current.removeLayer(layer);
+        map.removeLayer(layer);
         return;
       }
 
       let zoneType: "polygon" | "marker" | "circle" | "polyline" = "polygon";
-      if (type === "marker") zoneType = "marker";
-      else if (type === "rectangle") zoneType = "polygon";
-      else if (type === "polyline") zoneType = "polyline";
+      if (shape === "Marker") zoneType = "marker";
+      else if (shape === "Line") zoneType = "polyline";
 
       try {
         const color = PRESET_COLORS[Math.floor(Math.random() * PRESET_COLORS.length)];
@@ -317,28 +431,22 @@ export function GISMap() {
         const zones = await getCustomZones();
         setCustomZones(zones);
 
-        if (drawnItemsRef.current) {
-          drawnItemsRef.current.removeLayer(layer);
-        }
+        // Remove the temporary drawn layer since it will be re-rendered from the DB
+        if (drawnItemsRef.current) drawnItemsRef.current.removeLayer(layer);
+        map.removeLayer(layer);
       } catch (error) {
         console.error("Error saving zone:", error);
       }
     };
 
-    map.on(L.Draw.Event.CREATED, handleDrawCreated);
+    map.on('pm:create', handleDrawCreated);
 
     return () => {
-      map.off(L.Draw.Event.CREATED, handleDrawCreated);
+      map.off('pm:create', handleDrawCreated);
     };
   }, [loading, drawMode]);
 
-  const toggleLayer = (layer: keyof typeof layers) => {
-    setLayers((prev) => ({ ...prev, [layer]: !prev[layer] }));
-  };
 
-  const toggleDrawMode = () => {
-    setDrawMode((prev) => !prev);
-  };
 
   const handleFileUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -408,6 +516,15 @@ export function GISMap() {
     }
   };
 
+  const handleChangeColor = async (id: string, color: string) => {
+    try {
+      await updateCustomZone(id, { color });
+      setCustomZones(prev => prev.map(z => z._id?.toString() === id ? { ...z, color, displayColor: color } : z) as any);
+    } catch (e) {
+      console.error("Error updating color:", e);
+    }
+  };
+
   // Get TDP center coordinates
   const getTDPCoords = useCallback((tdp: string | undefined): [number, number] | null => {
     if (!tdp) return null;
@@ -435,108 +552,8 @@ export function GISMap() {
 
   return (
     <div className="relative">
-      {/* Layer Control Dropdown - Collapsible */}
-      <div id="layer-dropdown" ref={layerDropdownRef} className="absolute top-4 right-4 z-[1000] flex flex-col items-end gap-2">
-        {/* Toggle button */}
-        <button
-          onClick={() => setLayerDropdownOpen(!layerDropdownOpen)}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl shadow-xl transition-all duration-300 border ${
-            layerDropdownOpen
-            ? "bg-slate-900 text-white border-slate-700"
-            : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
-          }`}
-          title="Lớp bản đồ & Công cụ"
-        >
-          <i className="fas fa-layer-group text-sm"></i>
-          <span className="text-sm font-semibold">Lớp bản đồ</span>
-          <i className={`fas fa-chevron-down text-xs transition-transform ${layerDropdownOpen ? "rotate-180" : ""}`}></i>
-        </button>
 
-        {/* Dropdown panel */}
-        {layerDropdownOpen && (
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-4 w-72 border border-slate-200 animate-in fade-in zoom-in duration-200 origin-top-right overflow-hidden">
-            {/* Layers Section */}
-            <div className="mb-4">
-              <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center justify-between">
-                Lớp dữ liệu
-                <span className="h-px flex-1 bg-slate-100 ml-3"></span>
-              </h4>
-              <div className="grid grid-cols-1 gap-2">
-                <button
-                  className={`px-3 py-2 rounded-xl text-xs font-medium flex items-center gap-3 transition-all ${layers.subjects ? "bg-blue-50 text-blue-700 ring-1 ring-blue-200" : "bg-slate-50 text-slate-400 hover:bg-slate-100"}`}
-                  onClick={() => toggleLayer("subjects")}
-                >
-                  <div className="w-4 h-4 rounded-full flex items-center justify-center border-2 border-white shadow-sm" style={{ background: "#ff5252" }}></div>
-                  Đối tượng quản lý
-                  {layers.subjects && <i className="fas fa-check ml-auto text-[10px]"></i>}
-                </button>
-                <button
-                  className={`px-3 py-2 rounded-xl text-xs font-medium flex items-center gap-3 transition-all ${layers.businesses ? "bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200" : "bg-slate-50 text-slate-400 hover:bg-slate-100"}`}
-                  onClick={() => toggleLayer("businesses")}
-                >
-                  <div className="w-4 h-4 rounded shadow-sm border-2 border-white" style={{ background: "#00e676" }}></div>
-                  Cơ sở kinh doanh
-                  {layers.businesses && <i className="fas fa-check ml-auto text-[10px]"></i>}
-                </button>
-                <button
-                  className={`px-3 py-2 rounded-xl text-xs font-medium flex items-center gap-3 transition-all ${layers.zones ? "bg-purple-50 text-purple-700 ring-1 ring-purple-200" : "bg-slate-50 text-slate-400 hover:bg-slate-100"}`}
-                  onClick={() => toggleLayer("zones")}
-                >
-                  <div className="w-4 h-4 rounded border-2 border-purple-500 shadow-sm bg-purple-100"></div>
-                  Khu vực tùy chỉnh
-                  {layers.zones && <i className="fas fa-check ml-auto text-[10px]"></i>}
-                </button>
-              </div>
-            </div>
 
-            {/* Tools Section */}
-            <div className="mb-4">
-              <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center justify-between">
-                Công cụ phân tích
-                <span className="h-px flex-1 bg-slate-100 ml-3"></span>
-              </h4>
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  className={`px-3 py-2.5 rounded-xl text-xs font-bold flex flex-col items-center gap-1.5 transition-all ${drawMode ? "bg-purple-600 text-white shadow-lg shadow-purple-200" : "bg-slate-100 text-slate-600 hover:bg-slate-200"}`}
-                  onClick={toggleDrawMode}
-                >
-                  <i className={`fas ${drawMode ? "fa-mouse-pointer" : "fa-draw-polygon"} text-sm`}></i>
-                  {drawMode ? "Dừng vẽ" : "Vẽ khu vực"}
-                </button>
-                <label className="px-3 py-2.5 rounded-xl text-xs font-bold flex flex-col items-center gap-1.5 bg-slate-100 text-slate-600 cursor-pointer hover:bg-slate-200 transition-all">
-                  <i className="fas fa-file-import text-sm"></i>
-                  Import
-                  <input ref={fileInputRef} type="file" accept=".json,.geojson" onChange={handleFileUpload} className="hidden" />
-                </label>
-              </div>
-            </div>
-
-            {/* Saved Zones List */}
-            {customZones.length > 0 && (
-              <div>
-                <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center justify-between">
-                  Khu vực đã lưu ({customZones.length})
-                  <span className="h-px flex-1 bg-slate-100 ml-3"></span>
-                </h4>
-                <div className="max-h-48 overflow-y-auto space-y-1 pr-1 custom-scrollbar">
-                  {customZones.map((zone: any) => (
-                    <div key={zone._id?.toString()} className="flex items-center gap-3 px-3 py-2 hover:bg-slate-50 rounded-xl group transition-all">
-                      <div className="w-3 h-3 rounded-sm shadow-sm" style={{ backgroundColor: zone.color }}></div>
-                      <span className="flex-1 truncate text-xs font-medium text-slate-700">{zone.name}</span>
-                      <button
-                        onClick={() => zone._id && handleDeleteZone(zone._id.toString())}
-                        className="opacity-0 group-hover:opacity-100 w-6 h-6 flex items-center justify-center rounded-lg text-red-400 hover:bg-red-50 hover:text-red-600 transition-all"
-                      >
-                        <i className="fas fa-trash-can text-[10px]"></i>
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
 
       {/* Legend - Bottom Left, Compact & Collapsible */}
       <div className={`absolute bottom-6 left-4 z-[1000] transition-all duration-300 ${legendOpen ? 'w-48' : 'w-10'}`}>
@@ -617,7 +634,13 @@ export function GISMap() {
                 }}
               >
                 <Popup>
-                  <ZonePopupComponent zone={zone} onSaveField={handleSaveField} onRemoveField={handleRemoveField} />
+                  <ZonePopupComponent 
+                    zone={zone} 
+                    onSaveField={handleSaveField} 
+                    onRemoveField={handleRemoveField}
+                    onChangeColor={handleChangeColor}
+                    currentUser={currentUser}
+                  />
                 </Popup>
               </GeoJSON>
             ))}
@@ -697,6 +720,21 @@ export function GISMap() {
         </MapContainer>
       </div>
 
+      <style jsx global>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #e2e8f0;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #cbd5e1;
+        }
+      `}</style>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     </div>
   );

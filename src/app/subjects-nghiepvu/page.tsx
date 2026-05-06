@@ -1,7 +1,7 @@
 import { SubjectListNghiepvu } from "./SubjectList";
 
 export const metadata = {
-  title: "Đối tượng nghiệp vụ - Quản lý địa bàn Liên Chiểu",
+  title: "Đối tượng nghiệp vụ - Bản đồ số Liên Chiểu",
 };
 
 export default function Page() {

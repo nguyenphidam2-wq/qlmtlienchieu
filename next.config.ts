@@ -3,14 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   typescript: {
-    ignoreBuildErrors: true, // Tiết kiệm RAM khi build/dev
+    ignoreBuildErrors: true, 
   },
-  eslint: {
-    ignoreDuringBuilds: true, // Tiết kiệm RAM khi build/dev
-  },
+  serverExternalPackages: ["mongoose"],
   experimental: {
-    // Tối ưu hóa bộ nhớ cho môi trường dev/build
-    webpackBuildWorker: false,
+    webpackBuildWorker: true,
     parallelServerCompiles: false,
   }
 };

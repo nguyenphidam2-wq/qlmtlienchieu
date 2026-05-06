@@ -61,7 +61,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: { 
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
         <div>
           <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Báo cáo Thống kê
+            Báo cáo tổng quát
           </h1>
           <p className="text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>

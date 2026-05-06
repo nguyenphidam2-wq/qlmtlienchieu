@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { usePathname } from "next/navigation";
 import { Sidebar } from "./Sidebar";
 import React from "react";
@@ -49,7 +49,9 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
         md:relative md:translate-x-0 w-72
         ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
       `}>
-        <Sidebar onCloseMobile={() => setMobileMenuOpen(false)} />
+        <Suspense fallback={<div className="w-72 bg-slate-800 min-h-screen"></div>}>
+          <Sidebar onCloseMobile={() => setMobileMenuOpen(false)} />
+        </Suspense>
       </div>
 
       <main className="flex-1 p-4 md:p-6 mt-14 md:mt-0 relative h-screen overflow-y-auto w-full">

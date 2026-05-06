@@ -1,9 +1,9 @@
-# Quản lý địa bàn Phường Liên Chiểu - Project Overview & Context
+# Bản đồ số phường Liên Chiểu - Project Overview & Context
 
 This file serves as a quick onboarding guide for AI coding assistants to understand the project structure, tech stack, and progress without consuming excessive tokens.
 
 ## 🚀 Project Summary
-**Quản lý địa bàn Phường Liên Chiểu** (formerly QLMT Next) is a modular management system for territory and environmental data in the Lien Chieu district. It is designed to handle large-scale data imports and map-based territory management.
+**Bản đồ số phường Liên Chiểu** (formerly Quản lý địa bàn phường Liên Chiểu) is a modular management system for territory and environmental data in the Lien Chieu district. It is designed to handle large-scale data imports and map-based territory management.
 
 ---
 

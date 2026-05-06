@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 
 export const metadata: Metadata = {
-  title: "Quản lý địa bàn phường Liên Chiểu",
+  title: "Bản đồ số phường Liên Chiểu",
   description: "Hệ thống quản lý tình trạng ma túy nội bộ - Công an phường Liên Chiểu",
 };
 

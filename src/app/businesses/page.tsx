@@ -1,7 +1,7 @@
 import { BusinessList } from "./BusinessList";
 
 export const metadata = {
-  title: "Cơ sở Kinh doanh - Quản lý địa bàn Liên Chiểu",
+  title: "Cơ sở Kinh doanh - Bản đồ số Liên Chiểu",
 };
 
 export default function BusinessesPage() {

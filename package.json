@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "set NODE_OPTIONS=--max-old-space-size=4096 && next dev",
+    "dev:turbo": "set NODE_OPTIONS=--max-old-space-size=4096 && next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "migrate": "npx tsx scripts/migrate-data.ts"
+    "migrate": "npx tsx scripts/migrate-data.ts",
+    "clean": "rd /s /q .next && npm run dev"
   },
   "dependencies": {
+    "@geoman-io/leaflet-geoman-free": "^2.19.3",
     "@turf/turf": "^7.3.5",
     "@types/bcryptjs": "^2.4.6",
     "@types/leaflet-draw": "^1.0.13",
