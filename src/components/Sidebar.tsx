@@ -10,7 +10,6 @@ import { getCustomZones } from "@/lib/actions/zones";
 import {
   BarChart3,
   Users,
-  Store,
   Map,
   Shield,
   Sun,
@@ -21,16 +20,19 @@ import {
   MapPin,
   PenTool,
   CheckCircle2,
+  Flame,
 } from "lucide-react";
-import Image from "next/image";
 
 // Định nghĩa menu với các vai trò được phép truy cập
 const navItems = [
-  { href: "/gis", label: "Bản đồ số GIS", icon: Map, section: "Phân tích", roles: ["admin", "leader", "officer", "guest"] }, // Đưa lên đầu và đổi tên
-  { href: "/", label: "Báo cáo tổng quát", icon: BarChart3, section: "Tổng quan", roles: ["admin", "leader", "officer", "guest"] }, // Đổi tên
-  { href: "/subjects", label: "Đối tượng ma túy", icon: Users, section: "Quản lý", roles: ["admin", "leader", "officer", "guest"] },
+  { href: "/gis", label: "Bản đồ số GIS", icon: Map, section: "Phân tích", roles: ["admin", "leader", "officer", "guest"] },
+  { href: "/", label: "Báo cáo tổng quát", icon: BarChart3, section: "Tổng quan", roles: ["admin", "leader", "officer", "guest"] },
+  { href: "/quan-ly-ma-tuy", label: "Quản lý ma túy", icon: Shield, section: "Quản lý", roles: ["admin", "leader", "officer", "guest"], isParent: true, children: [
+    { href: "/subjects", label: "Đối tượng ma túy" },
+    { href: "/businesses", label: "Cơ sở có dấu hiệu cần chú ý" },
+  ]},
   { href: "/subjects-nghiepvu", label: "Đối tượng nghiệp vụ", icon: ShieldCheck, section: "Quản lý", roles: ["admin", "leader", "officer"] },
-  { href: "/businesses", label: "Cơ sở kinh doanh", icon: Store, section: "Quản lý", roles: ["admin", "leader", "officer", "guest"] },
+  { href: "/pccc", label: "An toàn PCCC", icon: Flame, section: "Quản lý", roles: ["admin", "leader", "officer"] },
   { href: "/accounts", label: "Quản lý Phân quyền", icon: Shield, section: "Hệ thống", roles: ["admin"] },
 ];
 
@@ -42,6 +44,11 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
   const [currentUser, setCurrentUser] = useState<{ id: string; username: string; role: string } | null>(null);
   const [customZones, setCustomZones] = useState<any[]>([]);
   const [gisOpen, setGisOpen] = useState(pathname.startsWith("/gis"));
+  const [quanLyMatuyOpen, setQuanLyMatuyOpen] = useState(
+    pathname === "/subjects" || pathname.startsWith("/subjects/") || 
+    pathname === "/businesses" || pathname.startsWith("/businesses/") || 
+    pathname === "/quan-ly-ma-tuy"
+  );
 
   // Lấy thông tin user hiện tại và danh sách TDP
   useEffect(() => {
@@ -61,6 +68,16 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
     if (pathname.startsWith("/gis")) setGisOpen(true);
   }, [pathname]);
 
+  // Sync quanLyMatuyOpen with pathname
+  useEffect(() => {
+    const isMaTuyPath = pathname === "/subjects" || pathname.startsWith("/subjects/") || 
+                       pathname === "/businesses" || pathname.startsWith("/businesses/") || 
+                       pathname === "/quan-ly-ma-tuy";
+    if (isMaTuyPath) {
+      setQuanLyMatuyOpen(true);
+    }
+  }, [pathname]);
+
   const updateParam = (key: string, value: string | null) => {
     const params = new URLSearchParams(searchParams.toString());
     if (value === null) params.delete(key);
@@ -72,6 +89,7 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
     subjects: searchParams.get("subjects") !== "false",
     businesses: searchParams.get("businesses") !== "false",
     zones: searchParams.get("zones") !== "false",
+    pccc: searchParams.get("pccc") === "true", // Default off for now
   };
 
   const drawMode = searchParams.get("draw") === "true";
@@ -163,6 +181,14 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
                         <span className="flex-1 text-left">Ranh giới TDP</span>
                         {layers.zones && <CheckCircle2 className="w-3.5 h-3.5" />}
                       </button>
+                      <button 
+                        onClick={() => updateParam("pccc", layers.pccc ? "false" : "true")}
+                        className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all text-xs ${layers.pccc ? "bg-orange-500/10 text-orange-400" : "text-slate-500 hover:bg-slate-800"}`}
+                      >
+                        <div className={`w-2.5 h-2.5 rounded-full ${layers.pccc ? "bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.5)]" : "bg-slate-700"}`}></div>
+                        <span className="flex-1 text-left">An toàn PCCC</span>
+                        {layers.pccc && <CheckCircle2 className="w-3.5 h-3.5" />}
+                      </button>
                     </div>
                   </div>
 
@@ -212,6 +238,53 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
                     </button>
                   </div>
 
+                </div>
+              </div>
+            );
+          }
+
+          // Parent menu item with dropdown (e.g. "Quản lý ma túy")
+          if (item.isParent) {
+            return (
+              <div key={item.href} className="flex flex-col mb-1">
+                <button
+                  onClick={() => setQuanLyMatuyOpen(!quanLyMatuyOpen)}
+                  className={`
+                    relative flex items-center gap-3 px-6 py-3.5 text-sm transition-all duration-300 w-full group
+                    ${quanLyMatuyOpen
+                      ? "bg-blue-600/90 text-white shadow-lg"
+                      : "text-slate-300 hover:bg-slate-700/50 hover:text-white"
+                    }
+                  `}
+                >
+                  <item.icon className={`w-5 h-5 ${quanLyMatuyOpen ? "text-white" : "text-slate-400 group-hover:text-blue-400"}`} />
+                  <span className="flex-1 text-left font-bold">{item.label}</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${quanLyMatuyOpen ? "rotate-180" : ""}`} />
+                </button>
+
+                {/* Sub-menu */}
+                <div className={`overflow-hidden transition-all duration-500 bg-slate-900/40 border-l-2 border-blue-600/30 ml-4 mr-2 rounded-br-2xl ${quanLyMatuyOpen ? "max-h-[1000px] py-4" : "max-h-0"}`}>
+                  {item.children?.map((child) => {
+                    const isChildActive = pathname === child.href;
+                    return (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        onClick={() => {
+                          if (onCloseMobile) onCloseMobile();
+                        }}
+                        className={`
+                          flex items-center gap-3 px-6 py-3 text-sm transition-all duration-200 mb-1 group
+                          ${isChildActive
+                            ? "bg-blue-600/90 text-white shadow-lg"
+                            : "text-slate-300 hover:bg-slate-700/50 hover:text-white"
+                          }
+                        `}
+                      >
+                        <span className="flex-1 text-left font-medium">{child.label}</span>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             );

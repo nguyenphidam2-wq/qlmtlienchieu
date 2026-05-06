@@ -9,7 +9,9 @@ import "@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css";
 import { getSubjects, getCurrentUserInfo } from "@/lib/actions/subjects";
 import { getBusinesses } from "@/lib/actions/businesses";
 import { getCustomZones, createCustomZone, deleteCustomZone, importGeoJSONZones, updateCustomZone } from "@/lib/actions/zones";
+import { getPCCCRecords } from "@/lib/actions/pccc";
 import { ISubject, IBusiness, ICustomZone } from "@/lib/models";
+import { IPCCCRecord } from "@/lib/models/PCCC";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import * as turf from "@turf/turf";
 
@@ -225,6 +227,7 @@ export function GISMap() {
   const [subjects, setSubjects] = useState<ISubject[]>([]);
   const [businesses, setBusinesses] = useState<IBusiness[]>([]);
   const [customZones, setCustomZones] = useState<ICustomZone[]>([]);
+  const [pcccRecords, setPcccRecords] = useState<IPCCCRecord[]>([]);
   const [currentUser, setCurrentUser] = useState<{ id: string; username: string; role: string } | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -242,6 +245,7 @@ export function GISMap() {
     subjects: searchParams.get("subjects") !== "false",
     businesses: searchParams.get("businesses") !== "false",
     zones: searchParams.get("zones") !== "false",
+    pccc: searchParams.get("pccc") === "true",
   };
   const drawMode = searchParams.get("draw") === "true";
   const selectedZoneId = searchParams.get("zoneId");
@@ -275,13 +279,15 @@ export function GISMap() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [subjectsData, businessesData, zonesData] = await Promise.all([
+        const [subjectsData, businessesData, zonesData, pcccData] = await Promise.all([
           getSubjects(),
           getBusinesses(),
           getCustomZones(),
+          getPCCCRecords(),
         ]);
         setSubjects(subjectsData);
         setBusinesses(businessesData);
+        setPcccRecords(pcccData);
         
         // Preparation for Point-In-Polygon calculation
         const subjectPoints = turf.featureCollection(
@@ -552,6 +558,13 @@ export function GISMap() {
 
   return (
     <div className="relative">
+      <input 
+        type="file" 
+        ref={fileInputRef} 
+        onChange={handleFileUpload} 
+        className="hidden" 
+        accept=".geojson,.json"
+      />
 
 
 
@@ -611,9 +624,9 @@ export function GISMap() {
           ref={mapRef}
         >
           <TileLayer
-            attribution='&copy; <a href="https://www.google.com/maps">Google Maps</a>'
-            url="https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
-            subdomains={["mt0", "mt1", "mt2", "mt3"]}
+            attribution='&copy; <a href="https://carto.com/attributions">CARTO</a>'
+            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+            subdomains={["a", "b", "c", "d"]}
             maxZoom={19}
           />
           <MapController />
@@ -708,6 +721,43 @@ export function GISMap() {
                         Loại: {b.business_type} | Nguy cơ: <span style={{ color }}>{b.risk_level}</span>
                         <br />
                         <small>{b.address}</small>
+                      </div>
+                    </Popup>
+                  </Marker>
+                );
+              })}
+            </MarkerClusterGroup>
+          )}
+
+          {/* PCCC Markers */}
+          {layers.pccc && (
+            <MarkerClusterGroup chunkedLoading maxClusterRadius={30}>
+              {pcccRecords
+              .filter((p) => p.lat && p.lng)
+              .map((p) => {
+                const icon = L.divIcon({
+                  className: "",
+                  html: `<div style="width:24px;height:24px;background:#f97316;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-fire-extinguisher" style="color:#fff;font-size:10px;"></i></div>`,
+                  iconSize: [24, 24],
+                  iconAnchor: [12, 12],
+                });
+                return (
+                  <Marker
+                    key={p._id?.toString()}
+                    position={[p.lat!, p.lng!]}
+                    icon={icon}
+                  >
+                    <Popup>
+                      <div className="text-sm">
+                        <b className="text-orange-600">{p.name}</b>
+                        <br />
+                        Loại: {p.type === "hydrant" ? "Trụ nước" : p.type === "building" ? "Công trình" : "Thiết bị"}
+                        <br />
+                        Trạng thái: <span className={p.status === "active" ? "text-green-600 font-bold" : "text-red-600"}>
+                          {p.status === "active" ? "Hoạt động" : "Bảo trì"}
+                        </span>
+                        <br />
+                        <small>{p.address}</small>
                       </div>
                     </Popup>
                   </Marker>
