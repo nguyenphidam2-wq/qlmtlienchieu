@@ -9,7 +9,7 @@ import { FeatureCollection } from "geojson";
 export async function getCustomZones(): Promise<ICustomZone[]> {
   await connectDB();
   const zones = await CustomZone.find().sort({ created_at: -1 }).lean();
-  return zones as ICustomZone[];
+  return JSON.parse(JSON.stringify(zones));
 }
 
 // Create custom zone from GeoJSON file upload
@@ -22,7 +22,7 @@ export async function createCustomZone(data: {
   await connectDB();
   const zone = await CustomZone.create(data);
   revalidatePath("/gis");
-  return zone as ICustomZone;
+  return JSON.parse(JSON.stringify(zone));
 }
 
 // Update custom zone
@@ -33,7 +33,7 @@ export async function updateCustomZone(
   await connectDB();
   const zone = await CustomZone.findByIdAndUpdate(id, data, { new: true }).lean();
   revalidatePath("/gis");
-  return zone as ICustomZone | null;
+  return JSON.parse(JSON.stringify(zone));
 }
 
 // Delete custom zone

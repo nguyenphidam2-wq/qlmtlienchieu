@@ -33,6 +33,7 @@ const navItems = [
   ]},
   { href: "/subjects-nghiepvu", label: "Đối tượng nghiệp vụ", icon: ShieldCheck, section: "Quản lý", roles: ["admin", "leader", "officer"] },
   { href: "/pccc", label: "An toàn PCCC", icon: Flame, section: "Quản lý", roles: ["admin", "leader", "officer"] },
+  { href: "/tdp", label: "Quản lý Tổ dân phố", icon: MapPin, section: "Quản lý", roles: ["admin", "leader", "officer"] },
   { href: "/accounts", label: "Quản lý Phân quyền", icon: Shield, section: "Hệ thống", roles: ["admin"] },
 ];
 
@@ -101,7 +102,7 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
   );
 
   return (
-    <aside className="w-72 min-h-screen bg-slate-800 text-white flex flex-col border-r border-slate-700 shadow-2xl">
+    <aside className="m-4 w-72 h-[calc(100vh-2rem)] bg-slate-900/60 backdrop-blur-xl text-white flex flex-col border border-white/10 shadow-2xl rounded-3xl overflow-hidden">
       {/* Logo */}
       <div className="p-6 border-b border-slate-700/50 bg-slate-900/20">
         <div className="flex items-center gap-3 mb-2">
@@ -188,6 +189,14 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
                         <div className={`w-2.5 h-2.5 rounded-full ${layers.pccc ? "bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.5)]" : "bg-slate-700"}`}></div>
                         <span className="flex-1 text-left">An toàn PCCC</span>
                         {layers.pccc && <CheckCircle2 className="w-3.5 h-3.5" />}
+                      </button>
+                      <button 
+                        onClick={() => updateParam("neutral", searchParams.get("neutral") === "true" ? "false" : "true")}
+                        className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all text-xs ${searchParams.get("neutral") === "true" ? "bg-white/10 text-white" : "text-slate-500 hover:bg-slate-800"}`}
+                      >
+                        <div className={`w-2.5 h-2.5 rounded-full ${searchParams.get("neutral") === "true" ? "bg-white shadow-[0_0_8px_rgba(255,255,255,0.5)]" : "bg-slate-700"}`}></div>
+                        <span className="flex-1 text-left">Chế độ Trung tính</span>
+                        {searchParams.get("neutral") === "true" && <CheckCircle2 className="w-3.5 h-3.5" />}
                       </button>
                     </div>
                   </div>

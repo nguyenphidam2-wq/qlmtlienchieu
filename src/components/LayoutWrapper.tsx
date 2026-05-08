@@ -10,6 +10,8 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isLogin = pathname === "/login";
 
+  const isGis = pathname.startsWith("/gis");
+
   if (isLogin) {
     return <main className="flex-1 min-h-screen bg-slate-900">{children}</main>;
   }
@@ -46,15 +48,17 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
       {/* Sidebar Container */}
       <div className={`
         fixed inset-y-0 left-0 z-[10002] transform transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1)
-        md:relative md:translate-x-0 w-72
-        ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
+        ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
       `}>
-        <Suspense fallback={<div className="w-72 bg-slate-800 min-h-screen"></div>}>
+        <Suspense fallback={<div className="m-4 w-72 bg-slate-900/40 backdrop-blur-md rounded-3xl h-[calc(100vh-2rem)]"></div>}>
           <Sidebar onCloseMobile={() => setMobileMenuOpen(false)} />
         </Suspense>
       </div>
 
-      <main className="flex-1 p-4 md:p-6 mt-14 md:mt-0 relative h-screen overflow-y-auto w-full">
+      <main className={`
+        flex-1 mt-14 md:mt-0 relative h-screen w-full
+        ${isGis ? 'overflow-hidden' : 'p-4 md:p-6 md:pl-[340px] overflow-y-auto'}
+      `}>
         {children}
       </main>
     </div>

@@ -9,11 +9,13 @@ import "@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css";
 import { getSubjects, getCurrentUserInfo } from "@/lib/actions/subjects";
 import { getBusinesses } from "@/lib/actions/businesses";
 import { getCustomZones, createCustomZone, deleteCustomZone, importGeoJSONZones, updateCustomZone } from "@/lib/actions/zones";
+import { getTDPById, updateTDP, getTDPs } from "@/lib/actions/tdp";
 import { getPCCCRecords } from "@/lib/actions/pccc";
-import { ISubject, IBusiness, ICustomZone } from "@/lib/models";
+import { ISubject, IBusiness, ICustomZone, ITDP } from "@/lib/models";
 import { IPCCCRecord } from "@/lib/models/PCCC";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import * as turf from "@turf/turf";
+import { PenTool, X, CheckCircle2 } from "lucide-react";
 
 // Status colors
 const statusColors: Record<string, string> = {
@@ -227,9 +229,13 @@ export function GISMap() {
   const [subjects, setSubjects] = useState<ISubject[]>([]);
   const [businesses, setBusinesses] = useState<IBusiness[]>([]);
   const [customZones, setCustomZones] = useState<ICustomZone[]>([]);
+  const [tdps, setTdps] = useState<ITDP[]>([]);
   const [pcccRecords, setPcccRecords] = useState<IPCCCRecord[]>([]);
   const [currentUser, setCurrentUser] = useState<{ id: string; username: string; role: string } | null>(null);
   const [loading, setLoading] = useState(true);
+  const [targetTdp, setTargetTdp] = useState<any>(null); // For UI feedback when drawing
+  const [lastDrawnLayer, setLastDrawnLayer] = useState<L.Layer | null>(null); // To store the layer before manual save
+  const [saving, setSaving] = useState(false);
 
   // Fetch current user
   useEffect(() => {
@@ -249,6 +255,17 @@ export function GISMap() {
   };
   const drawMode = searchParams.get("draw") === "true";
   const selectedZoneId = searchParams.get("zoneId");
+  const neutralMode = searchParams.get("neutral") === "true";
+  const drawTdpId = searchParams.get("drawTdpId");
+
+  // Fetch target TDP info if drawing
+  useEffect(() => {
+    if (drawTdpId) {
+      getTDPById(drawTdpId).then(data => setTargetTdp(data));
+    } else {
+      setTargetTdp(null);
+    }
+  }, [drawTdpId]);
 
   const [legendOpen, setLegendOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -279,15 +296,17 @@ export function GISMap() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [subjectsData, businessesData, zonesData, pcccData] = await Promise.all([
+        const [subjectsData, businessesData, zonesData, pcccData, tdpsData] = await Promise.all([
           getSubjects(),
           getBusinesses(),
           getCustomZones(),
           getPCCCRecords(),
+          getTDPs(),
         ]);
         setSubjects(subjectsData);
         setBusinesses(businessesData);
         setPcccRecords(pcccData);
+        setTdps(tdpsData);
         
         // Preparation for Point-In-Polygon calculation
         const subjectPoints = turf.featureCollection(
@@ -384,21 +403,31 @@ export function GISMap() {
     // But we still need to set up the global language or specific settings if needed.
     map.pm.setLang('vi'); // Try to set Vietnamese if supported, otherwise defaults to en
 
-    // Handle draw/edit modes based on sidebar state
-    if (drawMode) {
-      // Enable polygon drawing mode
-      map.pm.enableDraw('Polygon', {
-        snappable: true,
-        snapDistance: 20,
-        pathOptions: {
-          color: PRESET_COLORS[Math.floor(Math.random() * PRESET_COLORS.length)],
-          fillOpacity: 0.3,
-        }
-      });
+    // Handle draw/edit modes based on sidebar state or drawTdpId
+    if (drawMode || drawTdpId) {
+      // Ensure map is ready before enabling draw
+      const timer = setTimeout(() => {
+        map.pm.enableDraw('Polygon', {
+          snappable: true,
+          snapDistance: 20,
+          finishOn: 'dblclick',
+          pathOptions: {
+            color: targetTdp?.color || PRESET_COLORS[Math.floor(Math.random() * PRESET_COLORS.length)],
+            fillOpacity: 0.4,
+            weight: 3,
+            dashArray: '5, 10'
+          }
+        });
+        
+        // Disable other layers' popups during drawing to avoid distraction
+        map.eachLayer((l: any) => {
+          if (l.closePopup) l.off('click');
+        });
+      }, 500);
+      
+      return () => clearTimeout(timer);
     } else {
       map.pm.disableDraw();
-      // Optional: you could enable global edit mode here if you wanted users to always be able to tweak boundaries
-      // map.pm.enableGlobalEditMode();
     }
 
     // Handle draw created event (Geoman uses pm:create)
@@ -411,6 +440,13 @@ export function GISMap() {
       }
 
       const geojson = layer.toGeoJSON();
+      
+       if (drawTdpId) {
+          // Instead of auto-saving, we keep the layer and show the Save button
+          setLastDrawnLayer(layer);
+          return;
+       }
+
       const name = prompt("Nhập tên khu vực (Tổ dân phố):");
       if (!name) {
         if (drawnItemsRef.current) drawnItemsRef.current.removeLayer(layer);
@@ -450,7 +486,7 @@ export function GISMap() {
     return () => {
       map.off('pm:create', handleDrawCreated);
     };
-  }, [loading, drawMode]);
+  }, [loading, drawMode, drawTdpId, targetTdp]);
 
 
 
@@ -569,63 +605,177 @@ export function GISMap() {
 
 
       {/* Legend - Bottom Left, Compact & Collapsible */}
-      <div className={`absolute bottom-6 left-4 z-[1000] transition-all duration-300 ${legendOpen ? 'w-48' : 'w-10'}`}>
+      <div className={`absolute bottom-8 right-8 z-[1000] transition-all duration-300 ${legendOpen ? 'w-56' : 'w-12'}`}>
         {legendOpen ? (
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl p-4 text-slate-800 border border-slate-200 animate-in slide-in-from-bottom-2 duration-300">
-            <div className="flex items-center justify-between mb-3">
-              <h4 className="font-black text-[10px] uppercase tracking-wider text-slate-400">Chú giải</h4>
+          <div className="bg-slate-900/60 backdrop-blur-xl rounded-3xl shadow-2xl p-5 text-white border border-white/10 animate-in slide-in-from-bottom-4 duration-500">
+            <div className="flex items-center justify-between mb-4">
+              <h4 className="font-black text-[10px] uppercase tracking-widest text-slate-400">Chú giải lớp dữ liệu</h4>
               <button 
                 onClick={() => setLegendOpen(false)}
-                className="w-5 h-5 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-400 transition-colors"
+                className="w-6 h-6 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 text-white/60 transition-colors"
               >
                 <i className="fas fa-times text-[10px]"></i>
               </button>
             </div>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[11px] font-bold">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full shadow-sm" style={{ background: statusColors["Nghiện"] }}></span>
-                <span className="text-slate-600">Nghiện</span>
+            <div className="grid grid-cols-1 gap-y-3 text-[11px] font-bold">
+              <div className="flex items-center gap-3">
+                <span className="w-3 h-3 rounded-full shadow-[0_0_8px_rgba(255,82,82,0.4)]" style={{ background: statusColors["Nghiện"] }}></span>
+                <span className="text-slate-200">Đối tượng Nghiện</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full shadow-sm" style={{ background: statusColors["Sử dụng"] }}></span>
-                <span className="text-slate-600">Sử dụng</span>
+              <div className="flex items-center gap-3">
+                <span className="w-3 h-3 rounded-full shadow-[0_0_8px_rgba(255,179,0,0.4)]" style={{ background: statusColors["Sử dụng"] }}></span>
+                <span className="text-slate-200">Đối tượng Sử dụng</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full shadow-sm" style={{ background: statusColors["Sau cai"] }}></span>
-                <span className="text-slate-600">Sau cai</span>
+              <div className="flex items-center gap-3">
+                <span className="w-3 h-3 rounded-full shadow-[0_0_8px_rgba(0,230,118,0.4)]" style={{ background: statusColors["Sau cai"] }}></span>
+                <span className="text-slate-200">Đối tượng Sau cai</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full shadow-sm" style={{ background: statusColors["Khởi tố"] }}></span>
-                <span className="text-slate-600">Khởi tố</span>
+              <div className="flex items-center gap-3">
+                <span className="w-3 h-3 rounded-full shadow-[0_0_8px_rgba(206,147,216,0.4)]" style={{ background: statusColors["Khởi tố"] }}></span>
+                <span className="text-slate-200">Đối tượng Khởi tố</span>
               </div>
-              <div className="flex items-center gap-2 mt-2 pt-2 border-t border-slate-100 col-span-2">
-                <span className="w-3 h-3 rounded-sm shadow-sm" style={{ background: riskColors["Cao"] }}></span>
-                <span className="text-slate-600">CSKD nguy cơ cao</span>
+              <div className="mt-2 pt-3 border-t border-white/10">
+                <div className="flex items-center gap-3">
+                  <span className="w-3.5 h-3.5 rounded-sm shadow-[0_0_8px_rgba(255,82,82,0.4)]" style={{ background: riskColors["Cao"] }}></span>
+                  <span className="text-slate-200 text-[10px] uppercase tracking-tighter">CSKD nguy cơ cao</span>
+                </div>
               </div>
             </div>
           </div>
         ) : (
           <button 
             onClick={() => setLegendOpen(true)}
-            className="w-10 h-10 bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-all active:scale-90"
+            className="w-12 h-12 bg-slate-900/60 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/10 flex items-center justify-center text-blue-400 hover:bg-slate-800 transition-all active:scale-90"
             title="Xem chú giải"
           >
-            <i className="fas fa-info-circle text-lg"></i>
+            <i className="fas fa-layer-group text-lg"></i>
           </button>
         )}
       </div>
 
+      {/* Drawing Mode Overlay */}
+      {drawTdpId && targetTdp && (
+        <div className="absolute top-8 left-1/2 -translate-x-1/2 z-[2000] animate-in slide-in-from-top-4 duration-500">
+          <div className="bg-slate-900/80 backdrop-blur-xl px-6 py-4 rounded-3xl border border-blue-500/30 shadow-2xl flex items-center gap-4">
+            <div className="w-10 h-10 bg-blue-500 rounded-2xl flex items-center justify-center animate-pulse">
+              <PenTool className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <h3 className="text-white font-black text-sm uppercase tracking-tight leading-none mb-1">Đang vẽ ranh giới</h3>
+              <p className="text-blue-400 text-[11px] font-bold uppercase tracking-widest">{targetTdp.name}</p>
+            </div>
+            <div className="h-8 w-px bg-white/10 mx-2"></div>
+            <div className="text-[11px] text-slate-300 font-bold bg-blue-500/10 px-3 py-2 rounded-xl border border-blue-500/20">
+              <span className="text-blue-400">HƯỚNG DẪN:</span> Click các điểm để tạo vùng. 
+              <br />
+              <span className="text-yellow-400 underline decoration-yellow-500/50 underline-offset-4">Click lại ĐIỂM ĐẦU TIÊN để HOÀN TẤT & LƯU TỰ ĐỘNG.</span>
+            </div>
+            <div className="flex gap-2">
+              <button 
+                onClick={async () => {
+                  if (!drawTdpId) return;
+                  
+                  let layerToSave = lastDrawnLayer;
+                  
+                  // If no lastDrawnLayer, check if currently drawing and try to finish it
+                  if (!layerToSave && mapRef.current) {
+                    const map = mapRef.current;
+                    // @ts-ignore - Accessing internal Geoman Draw instance to finish shape
+                    if (map.pm.Draw.Polygon._shape) {
+                       // @ts-ignore
+                       map.pm.Draw.Polygon._finishShape();
+                       // The pm:create event should have fired now and set lastDrawnLayer
+                       // But since state update is async, we might need to grab it directly if possible
+                       // or wait a tiny bit. Let's try to grab from drawnItemsRef
+                       if (drawnItemsRef.current) {
+                         const layers = drawnItemsRef.current.getLayers();
+                         if (layers.length > 0) layerToSave = layers[layers.length - 1];
+                       }
+                    }
+                  }
+
+                  if (!layerToSave) {
+                    alert("Vui lòng vẽ ít nhất 3 điểm trên bản đồ trước khi lưu!");
+                    return;
+                  }
+
+                  setSaving(true);
+                  try {
+                    // @ts-ignore
+                    const geojson = layerToSave.toGeoJSON();
+                    await updateTDP(drawTdpId, {
+                      geojson: {
+                        type: "FeatureCollection",
+                        features: [geojson as GeoJSON.Feature],
+                      }
+                    });
+                    alert("Đã cập nhật tọa độ cho " + targetTdp?.name + " thành công!");
+                    window.location.href = '/tdp';
+                  } catch (e) {
+                    console.error(e);
+                    alert("Lỗi khi lưu!");
+                  } finally {
+                    setSaving(false);
+                  }
+                }}
+                disabled={saving}
+                className={`px-6 py-2 ${lastDrawnLayer ? 'bg-emerald-500 hover:bg-emerald-600 animate-bounce' : 'bg-blue-600 hover:bg-blue-700'} text-white text-xs font-black rounded-xl transition-all shadow-lg flex items-center gap-2 disabled:opacity-50`}
+              >
+                {saving ? (
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent animate-spin rounded-full"></div>
+                ) : (
+                  <CheckCircle2 className="w-4 h-4" />
+                )}
+                XÁC NHẬN & LƯU VÙNG
+              </button>
+
+              {!lastDrawnLayer && (
+                <button 
+                  onClick={() => {
+                    if (mapRef.current) {
+                      mapRef.current.pm.enableDraw('Polygon', {
+                        snappable: true,
+                        snapDistance: 20,
+                        pathOptions: {
+                          color: targetTdp?.color || '#3388ff',
+                          fillOpacity: 0.4,
+                        }
+                      });
+                    }
+                  }}
+                  className="px-3 py-2 bg-white/5 hover:bg-white/10 text-white/60 text-[10px] font-bold rounded-xl transition-all border border-white/10"
+                >
+                  Kích hoạt lại bút
+                </button>
+              )}
+              
+              <button 
+                onClick={() => window.location.href = '/tdp'}
+                className="p-2 bg-white/5 hover:bg-red-500/20 text-white/50 hover:text-red-400 rounded-xl transition-all"
+                title="Hủy vẽ"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Map */}
-      <div className="h-[calc(100vh-120px)] rounded-xl overflow-hidden border border-slate-200">
+      <div className="h-screen w-full">
         <MapContainer
           center={LIEN_CHIEU_CENTER}
           zoom={DEFAULT_ZOOM}
           style={{ height: "100%", width: "100%" }}
           ref={mapRef}
+          zoomControl={false}
         >
           <TileLayer
             attribution='&copy; <a href="https://carto.com/attributions">CARTO</a>'
-            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+            url={neutralMode 
+              ? "https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png"
+              : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+            }
             subdomains={["a", "b", "c", "d"]}
             maxZoom={19}
           />
@@ -634,29 +784,81 @@ export function GISMap() {
             {/* Draw control */}
           </FeatureGroup>
 
+          {/* TDP Zones from Database */}
+          {layers.zones &&
+            tdps.filter(t => t.geojson).map((tdp: any) => {
+              const isSelected = selectedZoneId === tdp._id?.toString() || drawTdpId === tdp._id?.toString();
+              return (
+                <GeoJSON
+                  key={tdp._id?.toString() + (isSelected ? '-selected' : '')}
+                  data={tdp.geojson}
+                  style={{
+                    color: isSelected ? '#eab308' : (tdp.color || '#3388ff'),
+                    weight: isSelected ? 4 : 2,
+                    fillOpacity: isSelected ? 0.5 : 0.2,
+                    className: isSelected ? 'animate-pulse' : ''
+                  }}
+                >
+                  <Popup>
+                    <div className="p-2 min-w-[200px]">
+                       <div className="flex items-center gap-2 mb-2 border-b pb-1">
+                         <div className="w-3 h-3 rounded" style={{ backgroundColor: tdp.color }}></div>
+                         <b className="text-slate-800">{tdp.name}</b>
+                       </div>
+                       <div className="space-y-1 text-xs">
+                          <p><b>Số hộ:</b> {tdp.households || "—"}</p>
+                          <p><b>Nhân khẩu:</b> {tdp.population || "—"}</p>
+                          <p><b>Diện tích:</b> {tdp.area_sqm ? (tdp.area_sqm).toLocaleString() + " m²" : "—"}</p>
+                          <p><b>Phân loại:</b> 
+                            <span className={`ml-2 px-2 py-0.5 rounded-full font-bold ${
+                              tdp.risk_status === 'red' ? 'bg-red-100 text-red-600' : 
+                              tdp.risk_status === 'yellow' ? 'bg-yellow-100 text-yellow-600' : 
+                              'bg-green-100 text-green-600'
+                            }`}>
+                              {tdp.risk_status === 'red' ? 'Vùng Đỏ' : tdp.risk_status === 'yellow' ? 'Vùng Vàng' : 'Vùng Xanh'}
+                            </span>
+                          </p>
+                       </div>
+                    </div>
+                  </Popup>
+                </GeoJSON>
+              );
+            })}
+
           {/* Custom Zones from Database */}
           {layers.zones &&
-            customZones.map((zone: any) => (
-              <GeoJSON
-                key={zone._id?.toString()}
-                data={zone.geojson}
-                style={{
-                  color: zone.displayColor || zone.color,
-                  weight: 2,
-                  fillOpacity: (zone.riskCount || 0) > 0 ? 0.35 : 0.15,
-                }}
-              >
-                <Popup>
-                  <ZonePopupComponent 
-                    zone={zone} 
-                    onSaveField={handleSaveField} 
-                    onRemoveField={handleRemoveField}
-                    onChangeColor={handleChangeColor}
-                    currentUser={currentUser}
-                  />
-                </Popup>
-              </GeoJSON>
-            ))}
+            customZones.map((zone: any) => {
+              const isSelected = selectedZoneId === zone._id?.toString();
+              return (
+                <GeoJSON
+                  key={zone._id?.toString() + (isSelected ? '-selected' : '')}
+                  data={zone.geojson}
+                  style={{
+                    color: isSelected ? '#eab308' : (zone.displayColor || zone.color),
+                    weight: isSelected ? 4 : 2,
+                    fillOpacity: isSelected ? 0.5 : ((zone.riskCount || 0) > 0 ? 0.35 : 0.15),
+                    className: isSelected ? 'animate-pulse shadow-2xl' : ''
+                  }}
+                  eventHandlers={{
+                    add: (e) => {
+                      if (isSelected) {
+                        e.target.bringToFront();
+                      }
+                    }
+                  }}
+                >
+                  <Popup>
+                    <ZonePopupComponent 
+                      zone={zone} 
+                      onSaveField={handleSaveField} 
+                      onRemoveField={handleRemoveField}
+                      onChangeColor={handleChangeColor}
+                      currentUser={currentUser}
+                    />
+                  </Popup>
+                </GeoJSON>
+              );
+            })}
 
           {/* Subject Markers with Clustering */}
           {layers.subjects && (

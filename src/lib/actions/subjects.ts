@@ -45,14 +45,14 @@ export async function getSubjects(status?: string, startDate?: string, endDate?:
   }
 
   const subjects = await Subject.find(query).sort({ created_at: -1 }).lean();
-  return subjects as ISubject[];
+  return JSON.parse(JSON.stringify(subjects));
 }
 
 // Get single subject by ID
 export async function getSubject(id: string): Promise<ISubject | null> {
   await connectDB();
   const subject = await Subject.findById(id).lean();
-  return subject as ISubject | null;
+  return JSON.parse(JSON.stringify(subject));
 }
 
 // Create new subject - chỉ admin, leader, officer được phép
@@ -81,7 +81,7 @@ export async function createSubject(data: Partial<ISubject>): Promise<{ success:
 
   revalidatePath("/subjects");
   revalidatePath("/");
-  return { success: true, data: subject as ISubject };
+  return { success: true, data: JSON.parse(JSON.stringify(subject)) };
 }
 
 // Update existing subject - chỉ admin, leader, officer được phép
@@ -118,7 +118,7 @@ export async function updateSubject(id: string, data: Partial<ISubject>): Promis
 
   revalidatePath("/subjects");
   revalidatePath("/");
-  return { success: true, data: subject as ISubject };
+  return { success: true, data: JSON.parse(JSON.stringify(subject)) };
 }
 
 // Delete subject - chỉ admin được phép

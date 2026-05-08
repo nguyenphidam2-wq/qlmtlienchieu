@@ -20,14 +20,14 @@ export async function getBusinesses(
   }
 
   const businesses = await Business.find(filter).sort({ created_at: -1 }).lean();
-  return businesses as IBusiness[];
+  return JSON.parse(JSON.stringify(businesses));
 }
 
 // Get single business by ID
 export async function getBusiness(id: string): Promise<IBusiness | null> {
   await connectDB();
   const business = await Business.findById(id).lean();
-  return business as IBusiness | null;
+  return JSON.parse(JSON.stringify(business));
 }
 
 // Create new business
@@ -50,7 +50,7 @@ export async function createBusiness(data: Partial<IBusiness>): Promise<{ succes
     revalidatePath("/businesses");
     revalidatePath("/");
 
-    return { success: true, business: business as IBusiness };
+    return { success: true, business: JSON.parse(JSON.stringify(business)) };
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : "Unknown error";
     return { success: false, error: message };
@@ -70,7 +70,7 @@ export async function updateBusiness(
     revalidatePath("/businesses");
     revalidatePath("/");
 
-    return { success: true, business: business as IBusiness };
+    return { success: true, business: JSON.parse(JSON.stringify(business)) };
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : "Unknown error";
     return { success: false, error: message };
