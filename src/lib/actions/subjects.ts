@@ -221,6 +221,7 @@ export async function getStats(startDate?: string, endDate?: string): Promise<{
   total_businesses: number;
   status_counts: Record<string, number>;
   tdp_stats: Record<string, number>;
+  timeline_stats: Array<{ month: string; count: number }>;
 }> {
   await connectDB();
 
@@ -242,6 +243,7 @@ export async function getStats(startDate?: string, endDate?: string): Promise<{
   let tdpStats: any[];
   let total_subjects: number;
   let total_businesses: number;
+  let timelineStats: any[];
 
   if (startDate || endDate) {
     const statusMatch = { status: { $exists: true, $ne: null }, ...approvedFilter } as any;
@@ -254,6 +256,19 @@ export async function getStats(startDate?: string, endDate?: string): Promise<{
     const tdpQ: any = { tdp: { $exists: true, $ne: null, $ne: "" }, ...approvedFilter };
     tdpQ.created_at = matchQuery.created_at;
     tdpStats = await Subject.aggregate([{ $match: tdpQ }, { $group: { _id: "$tdp", count: { $sum: 1 } } }]);
+    timelineStats = await Subject.aggregate([
+      { $match: matchQuery },
+      {
+        $group: {
+          _id: {
+            $dateToString: { format: "%Y-%m", date: "$created_at" }
+          },
+          count: { $sum: 1 }
+        }
+      },
+      { $sort: { _id: 1 } },
+      { $limit: 12 }
+    ]);
   } else {
     const statusMatch: any = { status: { $exists: true, $ne: null }, ...approvedFilter };
     // @ts-ignore
@@ -269,6 +284,19 @@ export async function getStats(startDate?: string, endDate?: string): Promise<{
       { $match: tdpMatch },
       { $group: { _id: "$tdp", count: { $sum: 1 } } },
     ]);
+    timelineStats = await Subject.aggregate([
+      { $match: matchQuery },
+      {
+        $group: {
+          _id: {
+            $dateToString: { format: "%Y-%m", date: "$created_at" }
+          },
+          count: { $sum: 1 }
+        }
+      },
+      { $sort: { _id: 1 } },
+      { $limit: 12 }
+    ]);
   }
 
   const status_counts: Record<string, number> = {};
@@ -281,10 +309,16 @@ export async function getStats(startDate?: string, endDate?: string): Promise<{
     if (item._id) tdp_stats[item._id] = item.count;
   });
 
+  const timeline_stats = timelineStats.map((item: any) => ({
+    month: item._id,
+    count: item.count,
+  }));
+
   return {
     total_subjects,
     total_businesses,
     status_counts,
     tdp_stats,
+    timeline_stats,
   };
 }

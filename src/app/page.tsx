@@ -1,17 +1,13 @@
 import { getStats } from "@/lib/actions/subjects";
 import { Users, Store, RefreshCw, Map } from "lucide-react";
 import Link from "next/link";
-
 import DashboardControls from "@/components/DashboardControls";
+import DashboardCharts from "@/components/DashboardCharts";
 
 export const dynamic = "force-dynamic";
 
 export default async function DashboardPage({ searchParams }: { searchParams: { start?: string, end?: string } }) {
-  const { start, end } = await searchParams; // In Next 15+ searchParams is treated as a promise/async. But technically in 14 it is sync. Let's just destructure safely.
-  
-  // Actually, depending on the Next.js version (15 requires await searchParams, 14 does not). Since package.json says Next 16.2.4:
-  const resolvedParams = searchParams ? await searchParams : {};
-  const stats = await getStats(resolvedParams.start, resolvedParams.end);
+  const stats = await getStats();
 
   const kpiCards = [
     {
@@ -51,9 +47,6 @@ export default async function DashboardPage({ searchParams }: { searchParams: { 
       color: "c-accent",
     },
   ];
-
-  const sortedTdp = Object.entries(stats.tdp_stats || {})
-    .sort(([, a], [, b]) => b - a);
 
   return (
     <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500">
@@ -107,83 +100,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: { 
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Status Breakdown - Circular Style */}
-        <div className="lg:col-span-1 bg-white dark:bg-slate-800 p-6 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm">
-          <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-            <span className="p-2 bg-blue-50 dark:bg-blue-900/30 rounded-lg text-blue-600">📊</span>
-            Tỷ lệ theo tình trạng
-          </h3>
-          <div className="space-y-4">
-            {[
-              { label: "Nghiện", count: stats.status_counts["Nghiện"] || 0, color: "bg-red-500", light: "bg-red-50" },
-              { label: "Sử dụng", count: stats.status_counts["Sử dụng"] || 0, color: "bg-amber-500", light: "bg-amber-50" },
-              { label: "Sau cai", count: stats.status_counts["Sau cai"] || 0, color: "bg-emerald-500", light: "bg-emerald-50" },
-              { label: "Khởi tố", count: stats.status_counts["Khởi tố"] || 0, color: "bg-purple-500", light: "bg-purple-50" }
-            ].map((item, idx) => {
-              const percentage = stats.total_subjects > 0 ? (item.count / stats.total_subjects) * 100 : 0;
-              return (
-                <div key={idx} className="group">
-                  <div className="flex justify-between items-center mb-1.5">
-                    <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{item.label}</span>
-                    <span className="text-sm font-black text-slate-900 dark:text-white">{item.count}</span>
-                  </div>
-                  <div className="h-2.5 w-full bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full ${item.color} rounded-full transition-all duration-1000 ease-out`} 
-                      style={{ width: `${percentage}%` }}
-                    ></div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* TDP Stats Chart */}
-        <div className="lg:col-span-2 bg-white dark:bg-slate-800 p-6 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden flex flex-col">
-          <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-            <span className="p-2 bg-amber-50 dark:bg-amber-900/30 rounded-lg text-amber-600">📍</span>
-            Phân bố theo Tổ dân phố
-          </h3>
-          <div className="flex-1 overflow-x-auto pb-4 custom-scrollbar">
-            {sortedTdp.length === 0 ? (
-               <div className="h-full flex items-center justify-center text-slate-400 italic">Không có dữ liệu</div>
-            ) : (
-              <div className="flex items-end gap-5 h-64 pt-10 min-w-max">
-                {sortedTdp.map(([tdp, count]) => {
-                  const maxCount = Math.max(...sortedTdp.map(s => s[1]));
-                  const heightPercent = Math.max((count / (maxCount || 1)) * 100, 8);
-                  
-                  let barColor = "bg-gradient-to-t from-emerald-500 to-emerald-400";
-                  let shadowColor = "shadow-emerald-200";
-                  if (count >= 5) {
-                    barColor = "bg-gradient-to-t from-red-600 to-red-400";
-                    shadowColor = "shadow-red-200";
-                  } else if (count >= 2) {
-                    barColor = "bg-gradient-to-t from-amber-500 to-amber-400";
-                    shadowColor = "shadow-amber-200";
-                  }
-
-                  return (
-                    <div key={tdp} className="flex flex-col items-center group relative w-12">
-                      <div className="opacity-0 group-hover:opacity-100 absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] font-bold py-1 px-2 rounded shadow-xl whitespace-nowrap z-20 pointer-events-none transition-all scale-75 group-hover:scale-100">
-                        Tổ {tdp}: {count} ĐT
-                      </div>
-                      <span className="text-xs font-black text-slate-900 dark:text-white mb-2">{count}</span>
-                      <div 
-                        className={`w-10 rounded-t-lg transition-all duration-700 ease-out shadow-lg ${barColor} ${shadowColor} group-hover:brightness-110 group-hover:scale-x-110`} 
-                        style={{ height: `${heightPercent}%` }}
-                      ></div>
-                      <span className="text-[10px] font-bold text-slate-500 mt-3 whitespace-nowrap">Tổ {tdp}</span>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+      <DashboardCharts stats={stats} />
 
       {/* Quick Actions */}
       <div className="bg-slate-900 rounded-3xl p-8 text-white relative overflow-hidden shadow-2xl">
