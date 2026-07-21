@@ -37,6 +37,8 @@ The project follows a modular feature-based architecture located in `src/feature
 - **Modular Design:** Each feature has its own module file (e.g., `subjects.module.ts`) and is registered in `src/features/registry.ts`.
 - **Data Integrity:** Recent work focuses on "Bulk Approval" workflows and ensuring data defaults to "Pending" status upon import.
 - **Geospatial Focus:** Extensive use of Leaflet for managing custom zones and marking locations.
+- **TDP Boundary Standardization:** Successfully processed and imported highly detailed boundary data for 78 TDPs (Tổ dân phố) from complex GeoJSON sources. Handled coordinate rounding to prevent Excel cell limit overflow during data exchange.
+- **Mock Data Ecosystem:** Implemented robust scripts (`generate-mock-data.ts`) to programmatically populate the map with hundreds of entities (Subjects, Businesses, PCCC) specifically pinned within their respective TDP boundaries to simulate a live, highly-dense GIS environment.
 
 ---
 

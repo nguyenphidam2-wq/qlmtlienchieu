@@ -1,5 +1,8 @@
+/* Hallmark · genre: modern-minimal · macrostructure: Stat-Led · theme: Cobalt (modern-minimal cluster) */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
+
 import { getStats } from "@/lib/actions/subjects";
-import { Users, Store, RefreshCw, Map } from "lucide-react";
+import { Users, Store, RefreshCw, Map, ArrowUpRight, ShieldCheck, AlertCircle, CheckCircle2, Clock } from "lucide-react";
 import Link from "next/link";
 import DashboardControls from "@/components/DashboardControls";
 import DashboardCharts from "@/components/DashboardCharts";
@@ -9,131 +12,183 @@ export const dynamic = "force-dynamic";
 export default async function DashboardPage({ searchParams }: { searchParams: { start?: string, end?: string } }) {
   const stats = await getStats();
 
-  const kpiCards = [
-    {
-      label: "Tổng đối tượng",
-      value: stats.total_subjects,
-      icon: Users,
-      color: "c-accent",
-    },
-    {
-      label: "Đang nghiện",
-      value: stats.status_counts["Nghiện"] || 0,
-      icon: Users,
-      color: "c-danger",
-    },
-    {
-      label: "Sử dụng",
-      value: stats.status_counts["Sử dụng"] || 0,
-      icon: Users,
-      color: "c-warning",
-    },
-    {
-      label: "Sau cai",
-      value: stats.status_counts["Sau cai"] || 0,
-      icon: Users,
-      color: "c-success",
-    },
-    {
-      label: "Đã khởi tố",
-      value: stats.status_counts["Khởi tố"] || 0,
-      icon: Users,
-      color: "c-purple",
-    },
-    {
-      label: "Cơ sở kinh doanh",
-      value: stats.total_businesses,
-      icon: Store,
-      color: "c-accent",
-    },
-  ];
+  const totalSubjects = stats.total_subjects || 0;
+  const statusCounts = stats.status_counts || {};
+  const totalBusinesses = stats.total_businesses || 0;
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500">
+    <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-300">
       {/* Header Section */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
+      <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
         <div>
-          <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Báo cáo tổng quát
+          <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 mb-1">
+            <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>HỆ THỐNG GIÁM SÁT SỐ GEOSPATIAL</span>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <span>PHƯỜNG LIÊN CHIỂU</span>
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+            Báo cáo tổng quát địa bàn
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            Hệ thống quản lý nghiệp vụ - Công an phường Liên Chiểu
-          </p>
         </div>
         <div className="flex items-center gap-3">
           <DashboardControls />
           <Link
             href="/subjects"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200 transition-all active:scale-95"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg text-xs font-semibold hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500"
           >
-            <RefreshCw className="w-4 h-4" />
+            <RefreshCw className="w-3.5 h-3.5" />
             Làm mới dữ liệu
           </Link>
         </div>
-      </div>
+      </header>
 
-      {/* KPI Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-        {kpiCards.map((card, idx) => (
-          <div 
-            key={idx} 
-            className={`relative group overflow-hidden bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all hover:shadow-xl hover:-translate-y-1`}
-          >
-            <div className={`absolute top-0 left-0 w-1 h-full ${
-              card.color === 'c-accent' ? 'bg-blue-500' : 
-              card.color === 'c-danger' ? 'bg-red-500' : 
-              card.color === 'c-warning' ? 'bg-amber-500' : 
-              card.color === 'c-success' ? 'bg-emerald-500' : 
-              card.color === 'c-purple' ? 'bg-purple-500' : 'bg-slate-500'
-            }`}></div>
-            <div className="flex flex-col">
-              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1 group-hover:text-slate-500 transition-colors">
-                {card.label}
+      {/* Stat-Led Asymmetric Hero Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        {/* Primary Hero Stat Card (Spans 5 cols) */}
+        <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 to-slate-950 text-white rounded-2xl p-7 flex flex-col justify-between border border-slate-800 shadow-sm relative overflow-hidden">
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-xs font-mono text-blue-400 tracking-wider uppercase font-semibold">
+                Tổng số đối tượng quản lý
               </span>
-              <span className="text-3xl font-black text-slate-900 dark:text-white leading-none">
-                {card.value}
+              <span className="p-2 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                <Users className="w-5 h-5" />
               </span>
             </div>
-            <card.icon className="absolute right-3 bottom-3 w-8 h-8 text-slate-100 dark:text-slate-700 group-hover:text-slate-200 dark:group-hover:text-slate-600 transition-colors" />
+            <div className="flex items-baseline gap-3 my-2">
+              <span className="text-5xl font-mono font-bold tracking-tight">
+                {totalSubjects}
+              </span>
+              <span className="text-xs text-slate-400 font-sans">hồ sơ giám sát</span>
+            </div>
+            <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+              Dữ liệu đối tượng nghiện, sử dụng trái phép, sau cai và đối tượng nghiệp vụ cập nhật trên toàn địa bàn.
+            </p>
           </div>
-        ))}
+
+          <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span className="text-slate-400 flex items-center gap-1.5">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              Dữ liệu kiểm duyệt
+            </span>
+            <Link 
+              href="/subjects" 
+              className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center gap-1 group"
+            >
+              Chi tiết danh sách <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Secondary Stat Grid (Spans 7 cols) */}
+        <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Card: Đang nghiện */}
+          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 flex flex-col justify-between hover:border-red-500/30 transition-colors">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-red-500"></span>
+                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Đang nghiện</span>
+              </div>
+              <AlertCircle className="w-4 h-4 text-red-500/70" />
+            </div>
+            <div className="mt-4">
+              <div className="text-3xl font-mono font-bold text-slate-900 dark:text-white">
+                {statusCounts["Nghiện"] || 0}
+              </div>
+              <span className="text-[11px] text-slate-400 mt-1 block">Diện quản lý trọng điểm</span>
+            </div>
+          </div>
+
+          {/* Card: Sử dụng */}
+          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 flex flex-col justify-between hover:border-amber-500/30 transition-colors">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Sử dụng trái phép</span>
+              </div>
+              <Clock className="w-4 h-4 text-amber-500/70" />
+            </div>
+            <div className="mt-4">
+              <div className="text-3xl font-mono font-bold text-slate-900 dark:text-white">
+                {statusCounts["Sử dụng"] || 0}
+              </div>
+              <span className="text-[11px] text-slate-400 mt-1 block">Theo dõi hành vi định kỳ</span>
+            </div>
+          </div>
+
+          {/* Card: Sau cai */}
+          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 flex flex-col justify-between hover:border-emerald-500/30 transition-colors">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Quản lý sau cai</span>
+              </div>
+              <CheckCircle2 className="w-4 h-4 text-emerald-500/70" />
+            </div>
+            <div className="mt-4">
+              <div className="text-3xl font-mono font-bold text-slate-900 dark:text-white">
+                {statusCounts["Sau cai"] || 0}
+              </div>
+              <span className="text-[11px] text-slate-400 mt-1 block">Hỗ trợ hòa nhập cộng đồng</span>
+            </div>
+          </div>
+
+          {/* Card: Cơ sở kinh doanh */}
+          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 flex flex-col justify-between hover:border-blue-500/30 transition-colors">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Cơ sở kinh doanh chú ý</span>
+              </div>
+              <Store className="w-4 h-4 text-blue-500/70" />
+            </div>
+            <div className="mt-4">
+              <div className="text-3xl font-mono font-bold text-slate-900 dark:text-white">
+                {totalBusinesses}
+              </div>
+              <span className="text-[11px] text-slate-400 mt-1 block">Địa điểm có điều kiện an ninh</span>
+            </div>
+          </div>
+        </div>
       </div>
 
+      {/* Dashboard Charts Section */}
       <DashboardCharts stats={stats} />
 
-      {/* Quick Actions */}
-      <div className="bg-slate-900 rounded-3xl p-8 text-white relative overflow-hidden shadow-2xl">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-        <div className="relative z-10">
-          <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-            <span className="p-2 bg-white/10 rounded-lg">⚡</span> Thao tác nghiệp vụ nhanh
+      {/* Quick Actions (Clean Solid Surface - No Aurora Blobs) */}
+      <div className="bg-slate-900 dark:bg-slate-950 rounded-2xl p-6 text-white border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div>
+          <h3 className="text-base font-bold flex items-center gap-2 text-white">
+            <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+            Lối tắt thao tác nghiệp vụ
           </h3>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              href="/subjects"
-              className="flex items-center gap-3 px-6 py-4 bg-white text-slate-900 rounded-2xl font-bold hover:bg-blue-50 transition-all shadow-lg active:scale-95"
-            >
-              <Users className="w-5 h-5 text-blue-600" />
-              Quản lý Đối tượng
-            </Link>
-            <Link
-              href="/businesses"
-              className="flex items-center gap-3 px-6 py-4 bg-slate-800 text-white rounded-2xl font-bold border border-slate-700 hover:bg-slate-700 transition-all shadow-lg active:scale-95"
-            >
-              <Store className="w-5 h-5 text-emerald-400" />
-              Cơ sở kinh doanh
-            </Link>
-            <Link
-              href="/gis"
-              className="flex items-center gap-3 px-6 py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-900/20 active:scale-95"
-            >
-              <Map className="w-5 h-5" />
-              Bản đồ nghiệp vụ
-            </Link>
-          </div>
+          <p className="text-xs text-slate-400 mt-1">Truy cập nhanh danh mục dữ liệu và phân hệ bản đồ GIS không gian.</p>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href="/subjects"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-semibold border border-slate-700 transition-colors"
+          >
+            <Users className="w-4 h-4 text-blue-400" />
+            Quản lý Đối tượng
+          </Link>
+          <Link
+            href="/businesses"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-semibold border border-slate-700 transition-colors"
+          >
+            <Store className="w-4 h-4 text-emerald-400" />
+            Cơ sở kinh doanh
+          </Link>
+          <Link
+            href="/gis"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold transition-colors shadow-sm"
+          >
+            <Map className="w-4 h-4" />
+            Bản đồ GIS
+          </Link>
         </div>
       </div>
     </div>
   );
-}
+}
