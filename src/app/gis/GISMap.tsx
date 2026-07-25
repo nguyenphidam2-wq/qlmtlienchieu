@@ -15,7 +15,8 @@ import { ISubject, IBusiness, ICustomZone, ITDP } from "@/lib/models";
 import { IPCCCRecord } from "@/lib/models/PCCC";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import * as turf from "@turf/turf";
-import { PenTool, X, CheckCircle2 } from "lucide-react";
+import { PenTool, X, CheckCircle2, Eye, EyeOff, MapPin, Layers } from "lucide-react";
+
 
 // Status colors
 const statusColors: Record<string, string> = {
@@ -268,17 +269,54 @@ export function GISMap() {
     fetchUser();
   }, []);
 
-  // Derived states from searchParams
-  const layers = {
+  // State for map layers (allow user interactive toggle directly on map)
+  const [visibleLayers, setVisibleLayers] = useState({
     subjects: searchParams.get("subjects") !== "false",
     businesses: searchParams.get("businesses") !== "false",
     zones: searchParams.get("zones") !== "false",
     pccc: searchParams.get("pccc") === "true",
+  });
+
+  useEffect(() => {
+    setVisibleLayers({
+      subjects: searchParams.get("subjects") !== "false",
+      businesses: searchParams.get("businesses") !== "false",
+      zones: searchParams.get("zones") !== "false",
+      pccc: searchParams.get("pccc") === "true",
+    });
+  }, [searchParams]);
+
+  const toggleSubjectLayers = () => {
+    setVisibleLayers(prev => ({ ...prev, subjects: !prev.subjects }));
   };
+
+  const toggleBusinessLayers = () => {
+    setVisibleLayers(prev => ({ ...prev, businesses: !prev.businesses }));
+  };
+
+  const togglePcccLayers = () => {
+    setVisibleLayers(prev => ({ ...prev, pccc: !prev.pccc }));
+  };
+
+  const toggleZoneLayers = () => {
+    setVisibleLayers(prev => ({ ...prev, zones: !prev.zones }));
+  };
+
+  const areAllMarkersOff = !visibleLayers.subjects && !visibleLayers.businesses && !visibleLayers.pccc;
+
+  const toggleAllMarkers = () => {
+    if (areAllMarkersOff) {
+      setVisibleLayers(prev => ({ ...prev, subjects: true, businesses: true, pccc: true }));
+    } else {
+      setVisibleLayers(prev => ({ ...prev, subjects: false, businesses: false, pccc: false }));
+    }
+  };
+
   const drawMode = searchParams.get("draw") === "true";
   const selectedZoneId = searchParams.get("zoneId");
   const neutralMode = searchParams.get("neutral") === "true";
   const drawTdpId = searchParams.get("drawTdpId");
+
 
   // Fetch target TDP info if drawing
   useEffect(() => {
@@ -672,7 +710,77 @@ export function GISMap() {
 
 
 
+      {/* Quick Marker & Layer Toggle Bar */}
+      <div className="absolute top-6 right-6 z-[1000] flex flex-col gap-2 items-end animate-in fade-in duration-300">
+        <div className="flex items-center gap-2 bg-slate-900/80 backdrop-blur-xl p-2 rounded-2xl border border-white/10 shadow-2xl">
+          {/* Master Toggle All Markers */}
+          <button
+            onClick={toggleAllMarkers}
+            className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-2 shadow-md ${
+              areAllMarkersOff
+                ? "bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30"
+                : "bg-blue-600 text-white shadow-blue-500/20 hover:bg-blue-500 active:scale-95"
+            }`}
+            title={areAllMarkersOff ? "Hiện tất cả địa điểm" : "Tắt toàn bộ dấu địa điểm"}
+          >
+            {areAllMarkersOff ? (
+              <>
+                <EyeOff className="w-4 h-4 text-amber-400" />
+                <span>Đang Ẩn Địa Điểm</span>
+              </>
+            ) : (
+              <>
+                <Eye className="w-4 h-4 text-white" />
+                <span>Tắt Dấu Địa Điểm</span>
+              </>
+            )}
+          </button>
+
+          <div className="w-px h-6 bg-white/10 mx-0.5"></div>
+
+          {/* Toggle Subject Markers */}
+          <button
+            onClick={toggleSubjectLayers}
+            className={`px-3 py-1.5 rounded-xl text-[11px] font-bold transition-all flex items-center gap-1.5 ${
+              visibleLayers.subjects
+                ? "bg-red-500/20 text-red-300 border border-red-500/40"
+                : "bg-white/5 text-slate-400 hover:text-slate-200 hover:bg-white/10"
+            }`}
+          >
+            <span className={`w-2.5 h-2.5 rounded-full ${visibleLayers.subjects ? 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)]' : 'bg-slate-500'}`}></span>
+            Đối tượng
+          </button>
+
+          {/* Toggle Business Markers */}
+          <button
+            onClick={toggleBusinessLayers}
+            className={`px-3 py-1.5 rounded-xl text-[11px] font-bold transition-all flex items-center gap-1.5 ${
+              visibleLayers.businesses
+                ? "bg-amber-500/20 text-amber-300 border border-amber-500/40"
+                : "bg-white/5 text-slate-400 hover:text-slate-200 hover:bg-white/10"
+            }`}
+          >
+            <span className={`w-2.5 h-2.5 rounded-full ${visibleLayers.businesses ? 'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]' : 'bg-slate-500'}`}></span>
+            Cơ sở
+          </button>
+
+          {/* Toggle Zone Polygons */}
+          <button
+            onClick={toggleZoneLayers}
+            className={`px-3 py-1.5 rounded-xl text-[11px] font-bold transition-all flex items-center gap-1.5 ${
+              visibleLayers.zones
+                ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/40"
+                : "bg-white/5 text-slate-400 hover:text-slate-200 hover:bg-white/10"
+            }`}
+          >
+            <span className={`w-2.5 h-2.5 rounded-full ${visibleLayers.zones ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]' : 'bg-slate-500'}`}></span>
+            Vùng TDP
+          </button>
+        </div>
+      </div>
+
       {/* BaseMap Selector */}
+
       <div className="absolute bottom-24 right-8 z-[1000] flex flex-col items-end gap-2">
         <div className="flex gap-2 bg-slate-900/60 backdrop-blur-xl p-1.5 rounded-2xl border border-white/10 shadow-2xl">
           {(Object.keys(BASE_MAPS) as Array<keyof typeof BASE_MAPS>).map((key) => {
@@ -874,7 +982,7 @@ export function GISMap() {
           </FeatureGroup>
 
           {/* TDP Zones from Database */}
-          {layers.zones &&
+          {visibleLayers.zones &&
             tdps.filter(t => t.geojson && t._id?.toString() !== drawTdpId).map((tdp: any) => {
               const isSelected = selectedZoneId === tdp._id?.toString();
               return (
@@ -915,7 +1023,7 @@ export function GISMap() {
             })}
 
           {/* Custom Zones from Database */}
-          {layers.zones &&
+          {visibleLayers.zones &&
             customZones.map((zone: any) => {
               const isSelected = selectedZoneId === zone._id?.toString();
               return (
@@ -950,7 +1058,7 @@ export function GISMap() {
             })}
 
           {/* Subject Markers with Clustering */}
-          {layers.subjects && (
+          {visibleLayers.subjects && (
             <MarkerClusterGroup chunkedLoading maxClusterRadius={40}>
               {subjects
                 .filter((s) => s.lat && s.lng)
@@ -987,7 +1095,7 @@ export function GISMap() {
           )}
 
           {/* Business Markers with Clustering */}
-          {layers.businesses && (
+          {visibleLayers.businesses && (
             <MarkerClusterGroup chunkedLoading maxClusterRadius={30}>
               {businesses
               .filter((b) => b.lat && b.lng)
@@ -1021,7 +1129,7 @@ export function GISMap() {
           )}
 
           {/* PCCC Markers */}
-          {layers.pccc && (
+          {visibleLayers.pccc && (
             <MarkerClusterGroup chunkedLoading maxClusterRadius={30}>
               {pcccRecords
               .filter((p) => p.lat && p.lng)
@@ -1056,6 +1164,7 @@ export function GISMap() {
               })}
             </MarkerClusterGroup>
           )}
+
 
           {/* Drug Density Zones - Auto calculated based on subject count per TDP */}
         </MapContainer>
