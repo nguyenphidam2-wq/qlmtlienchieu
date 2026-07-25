@@ -1,6 +1,6 @@
 const { execSync } = require('child_process');
 
-const uri = "mongodb://admin:dannghi%402023@ac-ywyb5s8-shard-00-00.129xiqk.mongodb.net:27017,ac-ywyb5s8-shard-00-01.129xiqk.mongodb.net:27017,ac-ywyb5s8-shard-00-02.129xiqk.mongodb.net:27017/?authSource=admin&replicaSet=atlas-upfdpr-shard-0&tls=true";
+const uri = "mongodb://admin:M2QKeyQwumScBLuN@ac-ywyb5s8-shard-00-00.129xiqk.mongodb.net:27017,ac-ywyb5s8-shard-00-01.129xiqk.mongodb.net:27017,ac-ywyb5s8-shard-00-02.129xiqk.mongodb.net:27017/?authSource=admin&replicaSet=atlas-upfdpr-shard-0&tls=true";
 const jwt = "qlmt-lienchieu-secret-key-2024";
 
 try {

@@ -261,9 +261,14 @@ export default function TDPPage() {
                       </td>
                       <td className="px-6 py-4 text-center">
                         {hasGeojson ? (
-                          <div className="flex items-center justify-center gap-1.5 text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg w-fit mx-auto border border-emerald-100">
-                            <CheckCircle2 className="w-3.5 h-3.5" />
-                            <span className="text-[10px] font-bold uppercase">Đã định vị</span>
+                          <div className="flex items-center justify-center gap-2">
+                            <div className="flex items-center justify-center gap-1.5 text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-100">
+                              <CheckCircle2 className="w-3.5 h-3.5" />
+                              <span className="text-[10px] font-bold uppercase">Đã định vị</span>
+                            </div>
+                            <Link href={`/gis?drawTdpId=${tdp._id}`} className="flex items-center justify-center gap-1 text-slate-500 hover:text-blue-600 bg-white hover:bg-slate-50 px-2 py-1 rounded-lg border border-slate-200 text-[10px] font-bold uppercase transition-all" title="Chỉnh sửa ranh giới không gian">
+                              Sửa
+                            </Link>
                           </div>
                         ) : (
                           <Link href={`/gis?drawTdpId=${tdp._id}`} className="flex items-center justify-center gap-1.5 text-blue-600 bg-blue-50 hover:bg-blue-100 hover:border-blue-300 px-2.5 py-1 rounded-lg w-fit mx-auto border border-blue-200 transition-colors">
@@ -273,16 +278,16 @@ export default function TDPPage() {
                         )}
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="flex items-center justify-end gap-1">
                           {hasGeojson && (
-                            <Link href={`/gis?zoneId=${tdp._id}`} className="p-1.5 text-blue-500 hover:bg-blue-50 rounded-lg transition-colors" title="Xem trên bản đồ">
+                            <Link href={`/gis?zoneId=${tdp._id}`} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-blue-50 text-blue-600 transition-all" title="Xem trên bản đồ">
                               <MapPin className="w-4 h-4" />
                             </Link>
                           )}
-                          <button onClick={() => openEditModal(tdp)} className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Chỉnh sửa">
+                          <button onClick={() => openEditModal(tdp)} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 text-slate-500 hover:text-blue-600 transition-all" title="Chỉnh sửa">
                             <Edit className="w-4 h-4" />
                           </button>
-                          <button onClick={() => handleDelete(tdp._id as string)} className="p-1.5 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors" title="Xóa">
+                          <button onClick={() => handleDelete(tdp._id as string)} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-500 hover:text-red-600 transition-all" title="Xóa">
                             <Trash2 className="w-4 h-4" />
                           </button>
                         </div>

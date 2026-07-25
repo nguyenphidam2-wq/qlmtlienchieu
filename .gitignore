@@ -44,3 +44,5 @@ _archive/
 next-env.d.ts
 
 .vercel
+.gemini
+

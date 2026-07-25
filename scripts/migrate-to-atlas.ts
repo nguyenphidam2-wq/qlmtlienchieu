@@ -7,7 +7,7 @@
 import mongoose from "mongoose";
 
 const LOCAL_URI = "mongodb://localhost:27017/qlmt-lienchieu";
-const ATLAS_URI = "mongodb+srv://admin:dannghi%402023@cluster0.129xiqk.mongodb.net/qlmt-lienchieu?appName=Cluster0";
+const ATLAS_URI = process.env.MONGODB_URI || "mongodb://admin:M2QKeyQwumScBLuN@ac-ywyb5s8-shard-00-00.129xiqk.mongodb.net:27017,ac-ywyb5s8-shard-00-01.129xiqk.mongodb.net:27017,ac-ywyb5s8-shard-00-02.129xiqk.mongodb.net:27017/?authSource=admin&replicaSet=atlas-upfdpr-shard-0&tls=true";
 
 async function migrate() {
   console.log("🔄 Bắt đầu migrate dữ liệu từ Local → Atlas...\n");

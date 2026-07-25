@@ -88,6 +88,27 @@ const TDP_COORDINATES: Record<string, [number, number]> = {
 // Special TDP areas
 const SPECIAL_TDPS = ["Quan Nam 1", "Quan Nam 2", "Quan Nam 3", "Quan Nam 4", "Quan Nam 5", "Quan Nam 6", "Hiền Phước", "Hưởng Phước", "Trung Sơn", "Tân Ninh", "Vân Dương 1", "Vân Dương 2"];
 
+const BASE_MAPS = {
+  voyager: {
+    name: "Bản đồ Mặc định (Carto)",
+    url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: ["a", "b", "c", "d"],
+  },
+  osm: {
+    name: "OpenStreetMap Standard",
+    url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    subdomains: ["a", "b", "c"],
+  },
+  light: {
+    name: "Chế độ tối giản xám (Carto)",
+    url: "https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png",
+    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: ["a", "b", "c", "d"],
+  }
+};
+
 function MapController() {
   const map = useMap();
 
@@ -236,6 +257,7 @@ export function GISMap() {
   const [targetTdp, setTargetTdp] = useState<any>(null); // For UI feedback when drawing
   const [lastDrawnLayer, setLastDrawnLayer] = useState<L.Layer | null>(null); // To store the layer before manual save
   const [saving, setSaving] = useState(false);
+  const [activeBaseMap, setActiveBaseMap] = useState<"voyager" | "osm" | "light">("voyager");
 
   // Fetch current user
   useEffect(() => {
@@ -401,23 +423,69 @@ export function GISMap() {
 
     // We don't add the default Geoman toolbar because we use our custom sidebar button
     // But we still need to set up the global language or specific settings if needed.
-    map.pm.setLang('vi'); // Try to set Vietnamese if supported, otherwise defaults to en
+    map.pm.setLang('vi' as any); // Try to set Vietnamese if supported, otherwise defaults to en
 
     // Handle draw/edit modes based on sidebar state or drawTdpId
     if (drawMode || drawTdpId) {
       // Ensure map is ready before enabling draw
       const timer = setTimeout(() => {
-        map.pm.enableDraw('Polygon', {
-          snappable: true,
-          snapDistance: 20,
-          finishOn: 'dblclick',
-          pathOptions: {
-            color: targetTdp?.color || PRESET_COLORS[Math.floor(Math.random() * PRESET_COLORS.length)],
-            fillOpacity: 0.4,
-            weight: 3,
-            dashArray: '5, 10'
+        // Clear any previous drawn items
+        if (drawnItemsRef.current) {
+          drawnItemsRef.current.clearLayers();
+        }
+
+        // Check if there is an existing geojson in targetTdp to edit
+        let hasExistingBoundary = false;
+        if (drawTdpId && targetTdp && targetTdp.geojson && targetTdp.geojson.features && targetTdp.geojson.features.length > 0) {
+          try {
+            const geojsonLayer = L.geoJSON(targetTdp.geojson, {
+              style: {
+                color: targetTdp.color || '#3388ff',
+                fillOpacity: 0.4,
+                weight: 3,
+                dashArray: '5, 10'
+              }
+            });
+
+            let existingLayer: L.Layer | null = null;
+            geojsonLayer.eachLayer((layer: any) => {
+              existingLayer = layer;
+            });
+
+            if (existingLayer && drawnItemsRef.current) {
+              drawnItemsRef.current.addLayer(existingLayer);
+              
+              // Enable Geoman editing on this layer
+              (existingLayer as any).pm.enable({
+                allowSelfIntersection: false,
+              });
+
+              setLastDrawnLayer(existingLayer);
+              hasExistingBoundary = true;
+
+              // Zoom and fit bounds to the existing shape
+              const bounds = (existingLayer as any).getBounds();
+              map.fitBounds(bounds, { padding: [50, 50] });
+            }
+          } catch (err) {
+            console.error("Error loading existing TDP boundary for editing:", err);
           }
-        });
+        }
+
+        // If no existing boundary, enable drawing tool
+        if (!hasExistingBoundary) {
+          map.pm.enableDraw('Polygon', {
+            snappable: true,
+            snapDistance: 20,
+            finishOn: 'dblclick',
+            pathOptions: {
+              color: targetTdp?.color || PRESET_COLORS[Math.floor(Math.random() * PRESET_COLORS.length)],
+              fillOpacity: 0.4,
+              weight: 3,
+              dashArray: '5, 10'
+            }
+          });
+        }
         
         // Disable other layers' popups during drawing to avoid distraction
         map.eachLayer((l: any) => {
@@ -604,6 +672,30 @@ export function GISMap() {
 
 
 
+      {/* BaseMap Selector */}
+      <div className="absolute bottom-24 right-8 z-[1000] flex flex-col items-end gap-2">
+        <div className="flex gap-2 bg-slate-900/60 backdrop-blur-xl p-1.5 rounded-2xl border border-white/10 shadow-2xl">
+          {(Object.keys(BASE_MAPS) as Array<keyof typeof BASE_MAPS>).map((key) => {
+            const isSelected = neutralMode ? key === "light" : activeBaseMap === key;
+            return (
+              <button
+                key={key}
+                disabled={neutralMode}
+                onClick={() => setActiveBaseMap(key)}
+                className={`px-3 py-1.5 rounded-xl text-[10px] font-black uppercase transition-all duration-300 ${
+                  isSelected
+                    ? "bg-blue-500 text-white shadow-lg"
+                    : "text-slate-300 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:hover:bg-transparent"
+                }`}
+                title={BASE_MAPS[key].name}
+              >
+                {key === "voyager" ? "Mặc định" : key === "osm" ? "Bản đồ OSM" : "Tối giản"}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Legend - Bottom Left, Compact & Collapsible */}
       <div className={`absolute bottom-8 right-8 z-[1000] transition-all duration-300 ${legendOpen ? 'w-56' : 'w-12'}`}>
         {legendOpen ? (
@@ -771,12 +863,9 @@ export function GISMap() {
           zoomControl={false}
         >
           <TileLayer
-            attribution='&copy; <a href="https://carto.com/attributions">CARTO</a>'
-            url={neutralMode 
-              ? "https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png"
-              : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-            }
-            subdomains={["a", "b", "c", "d"]}
+            attribution={BASE_MAPS[neutralMode ? "light" : activeBaseMap].attribution}
+            url={BASE_MAPS[neutralMode ? "light" : activeBaseMap].url}
+            subdomains={BASE_MAPS[neutralMode ? "light" : activeBaseMap].subdomains}
             maxZoom={19}
           />
           <MapController />
@@ -786,8 +875,8 @@ export function GISMap() {
 
           {/* TDP Zones from Database */}
           {layers.zones &&
-            tdps.filter(t => t.geojson).map((tdp: any) => {
-              const isSelected = selectedZoneId === tdp._id?.toString() || drawTdpId === tdp._id?.toString();
+            tdps.filter(t => t.geojson && t._id?.toString() !== drawTdpId).map((tdp: any) => {
+              const isSelected = selectedZoneId === tdp._id?.toString();
               return (
                 <GeoJSON
                   key={tdp._id?.toString() + (isSelected ? '-selected' : '')}
