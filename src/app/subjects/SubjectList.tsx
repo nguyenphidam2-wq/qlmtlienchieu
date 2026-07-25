@@ -74,7 +74,8 @@ export function SubjectList() {
     startTransition(async () => {
       // Admin và leader có thể xem tất cả (bao gồm Pending)
       const includePending = currentUser?.role === "admin" || currentUser?.role === "leader";
-      const data = await getSubjects(statusFilter || undefined, undefined, undefined, includePending);
+      // Nạp toàn bộ dữ liệu để người dùng chuyển tab (Tất cả, Nghiện, Sử dụng, Sau cai...) tức thì không bị giật lag
+      const data = await getSubjects(undefined, undefined, undefined, includePending);
       setSubjects(data);
       setLoading(false);
     });
@@ -82,7 +83,7 @@ export function SubjectList() {
 
   useEffect(() => {
     loadSubjects();
-  }, [statusFilter, currentUser]);
+  }, [currentUser]);
 
   const filteredSubjects = subjects.filter((s) => {
     const q = searchQuery.toLowerCase();
@@ -90,8 +91,12 @@ export function SubjectList() {
     // Lọc theo tình trạng phê duyệt nếu chọn "Chờ duyệt"
     if (statusFilter === "Pending" && s.approval_status !== "Pending") return false;
     
-    // Lọc theo tình trạng đối tượng (nếu không phải đang lọc Chờ duyệt)
-    if (statusFilter && statusFilter !== "Pending" && s.status !== statusFilter) return false;
+    // Lọc theo tình trạng đối tượng (chuẩn hóa Unicode NFC để khớp chính xác 100%)
+    if (statusFilter && statusFilter !== "Pending") {
+      const sStatus = (s.status || "").normalize("NFC").trim();
+      const targetStatus = statusFilter.normalize("NFC").trim();
+      if (sStatus !== targetStatus) return false;
+    }
 
     if (!q) return true;
     return (
@@ -102,6 +107,7 @@ export function SubjectList() {
       s.address_permanent?.toLowerCase().includes(q)
     );
   });
+
 
   const handleCreate = () => {
     setEditingSubject(null);

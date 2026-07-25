@@ -22,7 +22,12 @@ const ALLOWED_ROLES_FOR_APPROVE = ["admin", "leader"];
 export async function getSubjects(status?: string, startDate?: string, endDate?: string, includePending = false): Promise<ISubject[]> {
   await connectDB();
   const query: any = {};
-  if (status) query.status = status;
+  if (status) {
+    const nfcStatus = status.normalize("NFC");
+    query.status = { $regex: new RegExp("^" + nfcStatus.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&') + "$", "i") };
+  }
+
+
 
   // Nếu không yêu cầu includePending (mặc định), lấy đối tượng đã duyệt
   // HOẶC đối tượng chưa có trường approval_status (dữ liệu cũ từ import thủ công)
