@@ -140,7 +140,8 @@ export default function LoginPage() {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && doLogin()}
-                  className="w-full bg-slate-950/80 border border-slate-800 rounded-2xl py-3.5 pl-11 pr-4 text-white text-sm placeholder-slate-500 outline-none focus:border-blue-500/60 focus:ring-4 focus:ring-blue-500/10 transition-all font-medium"
+                  style={{ paddingLeft: "3.25rem" }}
+                  className="w-full bg-slate-950/80 border border-slate-800 rounded-2xl py-3.5 pr-4 text-white text-sm placeholder-slate-500 outline-none focus:border-blue-500/60 focus:ring-4 focus:ring-blue-500/10 transition-all font-medium !pl-14"
                   placeholder="Nhập tên tài khoản..."
                   disabled={loading}
                 />
@@ -160,12 +161,14 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && doLogin()}
-                  className="w-full bg-slate-950/80 border border-slate-800 rounded-2xl py-3.5 pl-11 pr-4 text-white text-sm placeholder-slate-500 outline-none focus:border-blue-500/60 focus:ring-4 focus:ring-blue-500/10 transition-all font-medium"
+                  style={{ paddingLeft: "3.25rem" }}
+                  className="w-full bg-slate-950/80 border border-slate-800 rounded-2xl py-3.5 pr-4 text-white text-sm placeholder-slate-500 outline-none focus:border-blue-500/60 focus:ring-4 focus:ring-blue-500/10 transition-all font-medium !pl-14"
                   placeholder="••••••••"
                   disabled={loading}
                 />
               </div>
             </div>
+
 
             <button
               onClick={() => doLogin()}
