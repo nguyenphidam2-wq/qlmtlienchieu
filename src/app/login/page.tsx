@@ -1,119 +1,258 @@
 "use client";
 import { useState } from "react";
-import { User, Lock } from "lucide-react";
+import { User, Lock, Shield, ShieldCheck, ArrowRight, KeyRound, Sparkles, AlertCircle } from "lucide-react";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const doLogin = async () => {
-    setStatus("Đang đăng nhập...");
+  const doLogin = async (customUser?: string, customPass?: string) => {
+    const userToUse = customUser || username;
+    const passToUse = customPass || password;
+
+    if (!userToUse || !passToUse) {
+      setStatus("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu!");
+      return;
+    }
+
+    setLoading(true);
+    setStatus("Đang xác thực thông tin đăng nhập...");
     try {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username: userToUse, password: passToUse }),
       });
       const data = await res.json();
       if (res.ok) {
+        setStatus("Đăng nhập thành công! Đang chuyển hướng...");
         window.location.href = "/";
       } else {
-        setStatus("Lỗi: " + JSON.stringify(data));
+        setLoading(false);
+        setStatus(data.error || "Tên đăng nhập hoặc mật khẩu không chính xác.");
       }
     } catch (e: unknown) {
-      setStatus("Lỗi kết nối: " + (e as Error).message);
+      setLoading(false);
+      setStatus("Lỗi kết nối máy chủ: " + (e as Error).message);
     }
   };
 
-  return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-blue-600/20 rounded-full blur-[120px]"></div>
-        <div className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-indigo-600/20 rounded-full blur-[120px]"></div>
-      </div>
+  const handleQuickLogin = (roleUser: string, rolePass: string) => {
+    setUsername(roleUser);
+    setPassword(rolePass);
+    doLogin(roleUser, rolePass);
+  };
 
-      <div className="w-full max-w-[420px] relative z-10 animate-in fade-in zoom-in duration-700">
-        <div className="bg-slate-900/40 backdrop-blur-2xl border border-white/10 rounded-[40px] p-10 shadow-2xl overflow-hidden">
-          <div className="text-center mb-10">
-            <div className="w-24 h-24 mx-auto mb-6 relative">
-              <div className="absolute inset-0 bg-yellow-500/20 rounded-full blur-xl animate-pulse"></div>
-              <img
-                src="/logo.png?v=2"
-                alt="Công An Phường Liên Chiểu"
-                className="w-full h-full object-contain relative z-10"
-              />
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center p-4 relative overflow-hidden font-sans selection:bg-blue-500 selection:text-white">
+      {/* Autofill CSS Fix to prevent Chrome white background bug */}
+      <style jsx global>{`
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active {
+          -webkit-text-fill-color: #ffffff !important;
+          -webkit-box-shadow: 0 0 0px 1000px #090d16 inset !important;
+          transition: background-color 5000s ease-in-out 0s;
+        }
+      `}</style>
+
+      {/* Ambient Grid & Glow Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:32px_32px] opacity-40 pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+      <div className="absolute bottom-10 right-10 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+      <div className="w-full max-w-[460px] relative z-10 animate-in fade-in zoom-in-95 duration-500">
+        
+        {/* Main Glassmorphism Card */}
+        <div className="bg-slate-900/80 backdrop-blur-2xl border border-slate-800/80 rounded-3xl p-8 sm:p-10 shadow-2xl shadow-black/80 relative overflow-hidden">
+          
+          {/* Subtle Top Accent Glow Line */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-amber-500 to-emerald-500"></div>
+
+          {/* Header & Logo */}
+          <div className="text-center mb-8">
+            <div className="w-20 h-20 mx-auto mb-5 relative flex items-center justify-center">
+              <div className="absolute inset-0 bg-amber-500/20 rounded-2xl blur-xl animate-pulse"></div>
+              <div className="w-full h-full rounded-2xl bg-gradient-to-b from-slate-800 to-slate-900 border border-slate-700/80 flex items-center justify-center shadow-lg relative z-10 overflow-hidden p-2">
+                <img
+                  src="/logo.png"
+                  alt="Công An Phường Liên Chiểu"
+                  className="w-full h-full object-contain filter drop-shadow"
+                  onError={(e) => {
+                    // Fallback icon if logo image fails to load
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.parentElement!.innerHTML = '<div class="text-3xl">🛡️</div>';
+                  }}
+                />
+              </div>
             </div>
-            <h1 className="text-white text-2xl font-black tracking-tight leading-tight uppercase">
-              Bản đồ số <br/>
-              <span className="text-yellow-500">Liên Chiểu</span>
+
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full mb-3">
+              <ShieldCheck className="w-3.5 h-3.5 text-blue-400" />
+              <span className="text-[10px] font-mono font-bold text-blue-400 uppercase tracking-widest">
+                CÔNG AN PHƯỜNG LIÊN CHIỂU
+              </span>
+            </div>
+
+            <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase leading-none">
+              BẢN ĐỒ SỐ <span className="text-amber-400">LIÊN CHIỂU</span>
             </h1>
-            <p className="text-slate-500 text-xs font-bold mt-2 uppercase tracking-widest">Hệ thống quản trị nghiệp vụ</p>
+            <p className="text-slate-400 text-xs font-medium mt-2">
+              Hệ thống Giám sát Geospatial & Quản lý Nghiệp vụ
+            </p>
           </div>
 
+          {/* Status Alert Banner */}
           {status && (
-            <div className={`p-4 rounded-2xl text-xs font-bold mb-6 text-center animate-in slide-in-from-top-2 duration-300 ${status.includes("Lỗi") ? "bg-red-500/10 text-red-400 border border-red-500/20" : "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"}`}>
-              {status}
+            <div
+              className={`p-3.5 rounded-2xl text-xs font-semibold mb-6 flex items-center gap-2.5 animate-in slide-in-from-top-2 duration-300 ${
+                status.includes("Lỗi") || status.includes("Vui lòng")
+                  ? "bg-red-500/10 text-red-400 border border-red-500/20"
+                  : status.includes("thành công")
+                  ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                  : "bg-blue-500/10 text-blue-400 border border-blue-500/20"
+              }`}
+            >
+              {status.includes("Lỗi") || status.includes("Vui lòng") ? (
+                <AlertCircle className="w-4 h-4 flex-shrink-0 text-red-400" />
+              ) : (
+                <Sparkles className="w-4 h-4 flex-shrink-0 text-blue-400 animate-spin" />
+              )}
+              <span>{status}</span>
             </div>
           )}
 
-          <div className="space-y-6">
-            <div className="space-y-2">
-              <label className="text-slate-400 text-[10px] font-black uppercase tracking-widest ml-1">Tên đăng nhập</label>
+          {/* Login Form */}
+          <div className="space-y-5">
+            <div className="space-y-1.5">
+              <label className="text-slate-300 text-[11px] font-bold uppercase tracking-wider ml-1">
+                Tài khoản làm việc
+              </label>
               <div className="relative group">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-blue-400 transition-colors">
-                  <User className="w-5 h-5" />
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-400 transition-colors pointer-events-none z-10">
+                  <User className="w-4 h-4" />
                 </div>
                 <input
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full bg-slate-950/50 border border-white/5 rounded-2xl py-4 pl-12 pr-4 text-white placeholder-slate-600 outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/10 transition-all"
-                  placeholder="Nhập tài khoản..."
+                  onKeyDown={(e) => e.key === "Enter" && doLogin()}
+                  className="w-full bg-slate-950/80 border border-slate-800 rounded-2xl py-3.5 pl-11 pr-4 text-white text-sm placeholder-slate-500 outline-none focus:border-blue-500/60 focus:ring-4 focus:ring-blue-500/10 transition-all font-medium"
+                  placeholder="Nhập tên tài khoản..."
+                  disabled={loading}
                 />
               </div>
             </div>
 
-            <div className="space-y-2">
-              <label className="text-slate-400 text-[10px] font-black uppercase tracking-widest ml-1">Mật khẩu</label>
+            <div className="space-y-1.5">
+              <label className="text-slate-300 text-[11px] font-bold uppercase tracking-wider ml-1">
+                Mật khẩu hệ thống
+              </label>
               <div className="relative group">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-blue-400 transition-colors">
-                  <Lock className="w-5 h-5" />
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-400 transition-colors pointer-events-none z-10">
+                  <Lock className="w-4 h-4" />
                 </div>
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-slate-950/50 border border-white/5 rounded-2xl py-4 pl-12 pr-4 text-white placeholder-slate-600 outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/10 transition-all"
+                  onKeyDown={(e) => e.key === "Enter" && doLogin()}
+                  className="w-full bg-slate-950/80 border border-slate-800 rounded-2xl py-3.5 pl-11 pr-4 text-white text-sm placeholder-slate-500 outline-none focus:border-blue-500/60 focus:ring-4 focus:ring-blue-500/10 transition-all font-medium"
                   placeholder="••••••••"
+                  disabled={loading}
                 />
               </div>
             </div>
 
             <button
-              onClick={doLogin}
-              className="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black text-sm rounded-2xl shadow-xl shadow-blue-900/20 transition-all active:scale-[0.98] mt-4"
+              onClick={() => doLogin()}
+              disabled={loading}
+              className="w-full py-4 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 hover:from-blue-500 hover:to-indigo-600 text-white font-bold text-sm rounded-2xl shadow-xl shadow-blue-900/30 transition-all active:scale-[0.99] flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-50"
             >
-              ĐĂNG NHẬP HỆ THỐNG
+              {loading ? (
+                <span>Đang xử lý...</span>
+              ) : (
+                <>
+                  <span>ĐĂNG NHẬP HỆ THỐNG</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </>
+              )}
             </button>
           </div>
 
-          <div className="mt-10 pt-8 border-t border-white/5">
-            <p className="text-slate-500 text-[10px] font-black text-center mb-4 uppercase tracking-widest">Truy cập nhanh (Demo)</p>
+          {/* Quick Demo Access Bar */}
+          <div className="mt-8 pt-6 border-t border-slate-800/80">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+                <KeyRound className="w-3 h-3 text-amber-400" />
+                Truy cập nhanh tài khoản Demo
+              </span>
+              <span className="text-[10px] text-slate-400 font-mono">pass: 123456</span>
+            </div>
+            
             <div className="grid grid-cols-2 gap-2">
-              <button onClick={() => { setUsername("admin"); setPassword("123456"); }} className="py-2.5 px-4 bg-white/5 hover:bg-white/10 text-white text-[11px] font-bold rounded-xl border border-white/5 transition-all">Admin</button>
-              <button onClick={() => { setUsername("lanhdao"); setPassword("123456"); }} className="py-2.5 px-4 bg-white/5 hover:bg-white/10 text-white text-[11px] font-bold rounded-xl border border-white/5 transition-all">Lãnh Đạo</button>
-              <button onClick={() => { setUsername("canbo"); setPassword("123456"); }} className="py-2.5 px-4 bg-white/5 hover:bg-white/10 text-white text-[11px] font-bold rounded-xl border border-white/5 transition-all">Cán bộ</button>
-              <button onClick={() => { setUsername("khach"); setPassword("123456"); }} className="py-2.5 px-4 bg-white/5 hover:bg-white/10 text-white text-[11px] font-bold rounded-xl border border-white/5 transition-all">Khách</button>
+              <button
+                onClick={() => handleQuickLogin("admin", "123456")}
+                className="p-2.5 bg-slate-950/60 hover:bg-blue-600/10 hover:border-blue-500/40 text-slate-200 text-xs font-semibold rounded-xl border border-slate-800 transition-all flex items-center gap-2 group cursor-pointer text-left"
+              >
+                <span className="w-2 h-2 rounded-full bg-red-500 group-hover:scale-125 transition-transform"></span>
+                <div>
+                  <div className="font-bold text-white leading-tight">Admin</div>
+                  <div className="text-[10px] text-slate-400">Quản trị viên</div>
+                </div>
+              </button>
+
+              <button
+                onClick={() => handleQuickLogin("lanhdao", "123456")}
+                className="p-2.5 bg-slate-950/60 hover:bg-amber-600/10 hover:border-amber-500/40 text-slate-200 text-xs font-semibold rounded-xl border border-slate-800 transition-all flex items-center gap-2 group cursor-pointer text-left"
+              >
+                <span className="w-2 h-2 rounded-full bg-amber-500 group-hover:scale-125 transition-transform"></span>
+                <div>
+                  <div className="font-bold text-white leading-tight">Lãnh Đạo</div>
+                  <div className="text-[10px] text-slate-400">Xem & Duyệt</div>
+                </div>
+              </button>
+
+              <button
+                onClick={() => handleQuickLogin("canbo", "123456")}
+                className="p-2.5 bg-slate-950/60 hover:bg-emerald-600/10 hover:border-emerald-500/40 text-slate-200 text-xs font-semibold rounded-xl border border-slate-800 transition-all flex items-center gap-2 group cursor-pointer text-left"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-500 group-hover:scale-125 transition-transform"></span>
+                <div>
+                  <div className="font-bold text-white leading-tight">Cán bộ</div>
+                  <div className="text-[10px] text-slate-400">Tạo & Cập nhật</div>
+                </div>
+              </button>
+
+              <button
+                onClick={() => handleQuickLogin("khach", "123456")}
+                className="p-2.5 bg-slate-950/60 hover:bg-slate-700/20 hover:border-slate-600 text-slate-200 text-xs font-semibold rounded-xl border border-slate-800 transition-all flex items-center gap-2 group cursor-pointer text-left"
+              >
+                <span className="w-2 h-2 rounded-full bg-slate-400 group-hover:scale-125 transition-transform"></span>
+                <div>
+                  <div className="font-bold text-white leading-tight">Khách</div>
+                  <div className="text-[10px] text-slate-400">Chỉ xem</div>
+                </div>
+              </button>
             </div>
           </div>
         </div>
-        
-        <p className="text-center text-slate-600 text-[10px] mt-8 font-medium">
-          &copy; 2024 CÔNG AN PHƯỜNG LIÊN CHIỂU. ALL RIGHTS RESERVED.
-        </p>
+
+        {/* Footer info */}
+        <div className="text-center mt-6 space-y-1">
+          <p className="text-[11px] font-mono text-slate-400">
+            &copy; 2026 CÔNG AN PHƯỜNG LIÊN CHIỂU • THÀNH PHỐ ĐÀ NẴNG
+          </p>
+          <p className="text-[10px] text-slate-400">
+            Bảo mật thông tin dữ liệu địa bàn theo quy định Ngành Công An
+          </p>
+        </div>
+
       </div>
     </div>
   );
 }
+
