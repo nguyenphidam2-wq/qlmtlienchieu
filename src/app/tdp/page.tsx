@@ -141,38 +141,36 @@ export default function TDPPage() {
       {/* Header */}
       <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 mb-6 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="flex-1 min-w-0">
-            <h1 className="text-xl sm:text-2xl font-black text-slate-800 tracking-tight flex items-center gap-2.5">
+        <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h1 className="text-xl sm:text-2xl font-black text-slate-800 dark:text-white tracking-tight flex items-center gap-2.5">
               <MapPin className="w-7 h-7 text-blue-600 shrink-0" />
               <span>Quản lý Tổ dân phố</span>
             </h1>
-            <p className="text-slate-500 mt-1 text-xs sm:text-sm font-medium leading-normal">
-              Quản lý thông tin hành chính, nhân khẩu và ranh giới không gian các TDP
-            </p>
           </div>
-          <div className="shrink-0 flex items-center gap-2 sm:gap-2.5">
+          <div className="flex items-center gap-2 sm:gap-3 flex-wrap sm:flex-nowrap">
             <a 
               href="/Mau_Nhap_Lieu_TDP.xlsx"
               download="Mau_Nhap_Lieu_TDP.xlsx"
-              className="bg-white hover:bg-slate-50 text-slate-700 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl text-xs font-bold border border-slate-200 transition-all active:scale-95 flex items-center gap-1.5 whitespace-nowrap shadow-sm"
+              className="bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 dark:border-slate-700 transition-all active:scale-95 flex items-center gap-1.5 whitespace-nowrap shadow-sm"
             >
-              <Download className="w-3.5 h-3.5 text-slate-500" /> Tải mẫu Excel
+              <Download className="w-4 h-4 text-slate-500" /> Tải mẫu Excel
             </a>
             <button 
               onClick={() => setIsImportModalOpen(true)}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl text-xs font-bold shadow-sm shadow-emerald-500/20 transition-all active:scale-95 flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-md shadow-emerald-500/20 transition-all active:scale-95 flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
             >
-              <Upload className="w-3.5 h-3.5" /> Nhập nhanh (Excel)
+              <Upload className="w-4 h-4" /> Nhập nhanh (Excel)
             </button>
             <button 
               onClick={openAddModal}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs font-bold shadow-sm shadow-blue-500/20 transition-all active:scale-95 flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-md shadow-blue-500/20 transition-all active:scale-95 flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
             >
-              <Plus className="w-3.5 h-3.5" /> Thêm TDP
+              <Plus className="w-4 h-4" /> Thêm TDP
             </button>
           </div>
         </div>
+
 
       </div>
 
