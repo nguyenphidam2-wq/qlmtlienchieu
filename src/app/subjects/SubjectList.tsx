@@ -144,7 +144,6 @@ export function SubjectList() {
     loadSubjects();
   };
 
-  // Bulk approve handlers
   const handleBulkApprove = async () => {
     if (selectedIds.length === 0) return;
     if (!confirm(`Bạn có chắc muốn duyệt ${selectedIds.length} đối tượng này không?`)) return;
@@ -157,11 +156,23 @@ export function SubjectList() {
     loadSubjects();
   };
 
+  const handleBulkDelete = async () => {
+    if (selectedIds.length === 0) return;
+    if (!confirm(`Bạn có chắc chắn muốn XÓA VĨNH VIỄN ${selectedIds.length} đối tượng đã chọn không?`)) return;
+    const result = await bulkDeleteSubjects(selectedIds);
+    if (!result.success) {
+      alert(result.error || "Không thể xóa các đối tượng đã chọn");
+      return;
+    }
+    setSelectedIds([]);
+    loadSubjects();
+  };
+
   const toggleSelectAll = () => {
-    if (selectedIds.length === filteredSubjects.filter(s => s.approval_status === "Pending").length) {
+    if (selectedIds.length === filteredSubjects.length && filteredSubjects.length > 0) {
       setSelectedIds([]);
     } else {
-      setSelectedIds(filteredSubjects.filter(s => s.approval_status === "Pending").map(s => s._id!.toString()));
+      setSelectedIds(filteredSubjects.map(s => s._id!.toString()));
     }
   };
 
@@ -231,24 +242,54 @@ export function SubjectList() {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          {canApprove && selectedIds.length > 0 && (
-            <button
-              onClick={handleBulkApprove}
-              className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-xl text-sm font-bold shadow-md transition-colors whitespace-nowrap"
-            >
-              <CheckCircle className="w-4 h-4" />
-              Duyệt {selectedIds.length} mục đã chọn
-            </button>
-          )}
         </div>
-        <div className="flex overflow-x-auto pb-1 gap-2 custom-scrollbar">
+
+        {/* Selected Items Bulk Bar */}
+        {selectedIds.length > 0 && (
+          <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-blue-50 dark:bg-slate-900 border border-blue-200 dark:border-blue-800 rounded-xl text-xs animate-in fade-in duration-200">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+              <span className="font-bold text-slate-800 dark:text-white">
+                Đã chọn <span className="text-blue-600 dark:text-blue-400 font-mono text-sm">{selectedIds.length}</span> / {filteredSubjects.length} đối tượng
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              {canApprove && (
+                <button
+                  onClick={handleBulkApprove}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg shadow-sm transition-all active:scale-95 cursor-pointer"
+                >
+                  <CheckCircle className="w-3.5 h-3.5" />
+                  Duyệt đã chọn ({selectedIds.length})
+                </button>
+              )}
+              {canDelete && (
+                <button
+                  onClick={handleBulkDelete}
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg shadow-sm transition-all active:scale-95 cursor-pointer"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                  Xóa ({selectedIds.length})
+                </button>
+              )}
+              <button
+                onClick={() => setSelectedIds([])}
+                className="px-2.5 py-1.5 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 font-bold transition-colors cursor-pointer"
+              >
+                Bỏ chọn
+              </button>
+            </div>
+          </div>
+        )}
+
+        <div className="flex overflow-x-auto pb-1 gap-2 custom-scrollbar items-center">
           {STATUS_OPTIONS.map((opt) => (
             <button
               key={opt.value}
               className={`whitespace-nowrap px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
                 statusFilter === opt.value
                 ? "bg-slate-900 text-white border-slate-900 shadow-md"
-                : "bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100"
+                : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100"
               }`}
               onClick={() => setStatusFilter(opt.value)}
             >
@@ -268,17 +309,17 @@ export function SubjectList() {
               Chờ duyệt ({subjects.filter(s => s.approval_status === "Pending").length})
             </button>
           )}
-          {canApprove && statusFilter === "Pending" && filteredSubjects.length > 0 && (
+          {filteredSubjects.length > 0 && (
             <button
               onClick={toggleSelectAll}
-              className="whitespace-nowrap px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold hover:bg-slate-200 transition-colors flex items-center gap-2"
+              className="whitespace-nowrap px-3.5 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold hover:bg-slate-200 transition-colors flex items-center gap-1.5 ml-auto cursor-pointer"
             >
-              {selectedIds.length === filteredSubjects.filter(s => s.approval_status === "Pending").length ? (
-                <CheckSquare className="w-4 h-4" />
+              {selectedIds.length > 0 && selectedIds.length === filteredSubjects.length ? (
+                <CheckSquare className="w-4 h-4 text-blue-600" />
               ) : (
-                <Square className="w-4 h-4" />
+                <Square className="w-4 h-4 text-slate-400" />
               )}
-              Chọn tất cả
+              {selectedIds.length === filteredSubjects.length ? "Bỏ chọn tất cả" : "Chọn tất cả"}
             </button>
           )}
         </div>
@@ -290,19 +331,17 @@ export function SubjectList() {
           <thead>
             <tr>
               <th className="w-12">
-                {canApprove && (
-                  <button
-                    onClick={toggleSelectAll}
-                    className="p-1 hover:bg-slate-100 rounded transition-colors"
-                    title="Chọn tất cả"
-                  >
-                    {selectedIds.length === filteredSubjects.filter(s => s.approval_status === "Pending").length && filteredSubjects.some(s => s.approval_status === "Pending") ? (
-                      <CheckSquare className="w-4 h-4 text-blue-600" />
-                    ) : (
-                      <Square className="w-4 h-4 text-slate-400" />
-                    )}
-                  </button>
-                )}
+                <button
+                  onClick={toggleSelectAll}
+                  className="p-1 hover:bg-slate-100 dark:hover:bg-slate-700 rounded transition-colors cursor-pointer"
+                  title="Chọn tất cả"
+                >
+                  {selectedIds.length > 0 && selectedIds.length === filteredSubjects.length ? (
+                    <CheckSquare className="w-4 h-4 text-blue-600" />
+                  ) : (
+                    <Square className="w-4 h-4 text-slate-400" />
+                  )}
+                </button>
               </th>
               <th className="w-12">#</th>
               <th>Họ và tên</th>
@@ -333,25 +372,19 @@ export function SubjectList() {
               </tr>
             ) : (
               filteredSubjects.map((s, i) => (
-                <tr key={s._id?.toString()} className="hover:bg-slate-50 transition-colors">
+                <tr key={s._id?.toString()} className={`hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors ${selectedIds.includes(s._id!.toString()) ? "bg-blue-50/40 dark:bg-blue-950/20" : ""}`}>
                   <td>
-                    {canApprove && (
-                      <button
-                        onClick={() => toggleSelectOne(s._id!.toString())}
-                        className="p-1 hover:bg-slate-100 rounded transition-colors"
-                        disabled={s.approval_status !== "Pending"}
-                      >
-                        {s.approval_status === "Pending" ? (
-                          selectedIds.includes(s._id!.toString()) ? (
-                            <CheckSquare className="w-4 h-4 text-blue-600" />
-                          ) : (
-                            <Square className="w-4 h-4 text-slate-400" />
-                          )
-                        ) : (
-                          <CheckSquare className="w-4 h-4 text-slate-300 cursor-not-allowed" />
-                        )}
-                      </button>
-                    )}
+                    <button
+                      onClick={() => toggleSelectOne(s._id!.toString())}
+                      className="p-1 hover:bg-slate-200 dark:hover:bg-slate-700 rounded transition-colors cursor-pointer"
+                      title="Chọn đối tượng này"
+                    >
+                      {selectedIds.includes(s._id!.toString()) ? (
+                        <CheckSquare className="w-4 h-4 text-blue-600" />
+                      ) : (
+                        <Square className="w-4 h-4 text-slate-400 hover:text-slate-600" />
+                      )}
+                    </button>
                   </td>
                   <td className="text-slate-400 font-mono text-xs">{i + 1}</td>
                   <td>

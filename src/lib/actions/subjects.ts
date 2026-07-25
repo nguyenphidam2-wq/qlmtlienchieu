@@ -215,6 +215,31 @@ export async function bulkApproveSubjects(ids: string[]): Promise<{ success: boo
   return { success: true };
 }
 
+// Xóa nhiều đối tượng cùng lúc - chỉ admin được phép
+export async function bulkDeleteSubjects(ids: string[]): Promise<{ success: boolean; error?: string }> {
+  const currentUser = await getCurrentUser();
+
+  if (!currentUser) {
+    return { success: false, error: "Người dùng chưa đăng nhập" };
+  }
+
+  if (!ALLOWED_ROLES_FOR_DELETE.includes(currentUser.role)) {
+    return { success: false, error: "Chỉ admin mới có quyền xóa đối tượng" };
+  }
+
+  if (!ids || ids.length === 0) {
+    return { success: false, error: "Không có đối tượng nào được chọn" };
+  }
+
+  await connectDB();
+  await Subject.deleteMany({ _id: { $in: ids } });
+
+  revalidatePath("/subjects");
+  revalidatePath("/");
+  return { success: true };
+}
+
+
 // Lấy thông tin user hiện tại (dùng cho client)
 export async function getCurrentUserInfo() {
   return await getCurrentUser();
