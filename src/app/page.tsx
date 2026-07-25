@@ -84,73 +84,98 @@ export default async function DashboardPage({ searchParams }: { searchParams: { 
         {/* Secondary Stat Grid (Spans 7 cols) */}
         <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Card: Đang nghiện */}
-          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 flex flex-col justify-between hover:border-red-500/30 transition-colors">
+          <Link
+            href="/subjects?status=Nghi%E1%BB%87n"
+            className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 flex flex-col justify-between hover:border-red-500 hover:shadow-lg transition-all group cursor-pointer"
+          >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-red-500"></span>
-                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Đang nghiện</span>
+                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400 group-hover:text-red-500 transition-colors">Đang nghiện</span>
               </div>
-              <AlertCircle className="w-4 h-4 text-red-500/70" />
+              <AlertCircle className="w-4 h-4 text-red-500/70 group-hover:scale-110 transition-transform" />
             </div>
             <div className="mt-4">
-              <div className="text-3xl font-mono font-bold text-slate-900 dark:text-white">
-                {statusCounts["Nghiện"] || 0}
+              <div className="text-3xl font-mono font-bold text-slate-900 dark:text-white flex items-baseline justify-between">
+                <span>{statusCounts["Nghiện"] || 0}</span>
+                <span className="text-xs text-red-500 font-sans font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-0.5">
+                  Xem danh sách <ArrowUpRight className="w-3 h-3" />
+                </span>
               </div>
               <span className="text-[11px] text-slate-400 mt-1 block">Diện quản lý trọng điểm</span>
             </div>
-          </div>
+          </Link>
 
           {/* Card: Sử dụng */}
-          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 flex flex-col justify-between hover:border-amber-500/30 transition-colors">
+          <Link
+            href="/subjects?status=S%E1%BB%AD%20d%E1%BB%A5ng"
+            className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 flex flex-col justify-between hover:border-amber-500 hover:shadow-lg transition-all group cursor-pointer"
+          >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-amber-500"></span>
-                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Sử dụng trái phép</span>
+                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400 group-hover:text-amber-500 transition-colors">Sử dụng trái phép</span>
               </div>
-              <Clock className="w-4 h-4 text-amber-500/70" />
+              <Clock className="w-4 h-4 text-amber-500/70 group-hover:scale-110 transition-transform" />
             </div>
             <div className="mt-4">
-              <div className="text-3xl font-mono font-bold text-slate-900 dark:text-white">
-                {statusCounts["Sử dụng"] || 0}
+              <div className="text-3xl font-mono font-bold text-slate-900 dark:text-white flex items-baseline justify-between">
+                <span>{statusCounts["Sử dụng"] || 0}</span>
+                <span className="text-xs text-amber-500 font-sans font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-0.5">
+                  Xem danh sách <ArrowUpRight className="w-3 h-3" />
+                </span>
               </div>
               <span className="text-[11px] text-slate-400 mt-1 block">Theo dõi hành vi định kỳ</span>
             </div>
-          </div>
+          </Link>
 
           {/* Card: Sau cai */}
-          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 flex flex-col justify-between hover:border-emerald-500/30 transition-colors">
+          <Link
+            href="/subjects?status=Sau%20cai"
+            className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 flex flex-col justify-between hover:border-emerald-500 hover:shadow-lg transition-all group cursor-pointer"
+          >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Quản lý sau cai</span>
+                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400 group-hover:text-emerald-500 transition-colors">Quản lý sau cai</span>
               </div>
-              <CheckCircle2 className="w-4 h-4 text-emerald-500/70" />
+              <CheckCircle2 className="w-4 h-4 text-emerald-500/70 group-hover:scale-110 transition-transform" />
             </div>
             <div className="mt-4">
-              <div className="text-3xl font-mono font-bold text-slate-900 dark:text-white">
-                {statusCounts["Sau cai"] || 0}
+              <div className="text-3xl font-mono font-bold text-slate-900 dark:text-white flex items-baseline justify-between">
+                <span>{statusCounts["Sau cai"] || 0}</span>
+                <span className="text-xs text-emerald-500 font-sans font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-0.5">
+                  Xem danh sách <ArrowUpRight className="w-3 h-3" />
+                </span>
               </div>
               <span className="text-[11px] text-slate-400 mt-1 block">Hỗ trợ hòa nhập cộng đồng</span>
             </div>
-          </div>
+          </Link>
 
           {/* Card: Cơ sở kinh doanh */}
-          <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 flex flex-col justify-between hover:border-blue-500/30 transition-colors">
+          <Link
+            href="/businesses"
+            className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800/80 flex flex-col justify-between hover:border-blue-500 hover:shadow-lg transition-all group cursor-pointer"
+          >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-blue-500"></span>
-                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">Cơ sở kinh doanh chú ý</span>
+                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400 group-hover:text-blue-500 transition-colors">Cơ sở kinh doanh chú ý</span>
               </div>
-              <Store className="w-4 h-4 text-blue-500/70" />
+              <Store className="w-4 h-4 text-blue-500/70 group-hover:scale-110 transition-transform" />
             </div>
             <div className="mt-4">
-              <div className="text-3xl font-mono font-bold text-slate-900 dark:text-white">
-                {totalBusinesses}
+              <div className="text-3xl font-mono font-bold text-slate-900 dark:text-white flex items-baseline justify-between">
+                <span>{totalBusinesses}</span>
+                <span className="text-xs text-blue-500 font-sans font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-0.5">
+                  Xem danh sách <ArrowUpRight className="w-3 h-3" />
+                </span>
               </div>
               <span className="text-[11px] text-slate-400 mt-1 block">Địa điểm có điều kiện an ninh</span>
             </div>
-          </div>
+          </Link>
         </div>
+
       </div>
 
       {/* Dashboard Charts Section */}

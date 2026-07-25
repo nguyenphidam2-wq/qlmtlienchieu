@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useTransition } from "react";
+import { useSearchParams } from "next/navigation";
 import { Plus, Search, Eye, Edit2, Trash2, CheckCircle, CheckSquare, Square } from "lucide-react";
 import { Button, Modal, StatusBadge } from "@/components/ui";
 import {
@@ -21,6 +22,7 @@ const STATUS_OPTIONS = [
   { value: "Sử dụng", label: "Sử dụng", color: "var(--warning)" },
   { value: "Sau cai", label: "Sau cai", color: "var(--success)" },
   { value: "Khởi tố", label: "Khởi tố", color: "var(--purple)" },
+  { value: "Thanh loại", label: "Thanh loại", color: "var(--slate)" },
 ];
 
 // Các vai trò được phép tạo/sửa đối tượng
@@ -33,10 +35,21 @@ const ALLOWED_ROLES_FOR_DELETE = ["admin"];
 const ALLOWED_ROLES_FOR_APPROVE = ["admin", "leader"];
 
 export function SubjectList() {
+  const searchParams = useSearchParams();
+  const initialStatus = searchParams.get("status") || "";
+
   const [subjects, setSubjects] = useState<ISubject[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-  const [statusFilter, setStatusFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState(initialStatus);
+
+  useEffect(() => {
+    const s = searchParams.get("status");
+    if (s !== null) {
+      setStatusFilter(s);
+    }
+  }, [searchParams]);
+
   const [isPending, startTransition] = useTransition();
   const [currentUser, setCurrentUser] = useState<{ id: string; username: string; role: string } | null>(null);
 

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { SubjectList } from "./SubjectList";
 
 export const metadata = {
@@ -5,5 +6,9 @@ export const metadata = {
 };
 
 export default function SubjectsPage() {
-  return <SubjectList />;
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-slate-400 animate-pulse">Đang tải danh sách đối tượng...</div>}>
+      <SubjectList />
+    </Suspense>
+  );
 }
