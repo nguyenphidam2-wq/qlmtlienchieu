@@ -381,7 +381,7 @@ export function SubjectList() {
                   </td>
                   <td>
                     <span className="inline-flex items-center px-2 py-1 bg-slate-100 text-slate-700 rounded-lg text-xs font-bold">
-                      Tổ {s.tdp || "—"}
+                      {s.tdp ? `Tổ ${s.tdp.replace(/^(Tổ\s+)+/i, "").replace(/^Dân\s+Phố\s+/i, "")}` : "—"}
                     </span>
                   </td>
                   <td>
@@ -454,7 +454,9 @@ export function SubjectList() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-2 mb-1">
-                       <span className="text-[10px] font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full uppercase">Tổ {s.tdp || "—"}</span>
+                       <span className="text-[10px] font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full uppercase">
+                         {s.tdp ? `Tổ ${s.tdp.replace(/^(Tổ\s+)+/i, "").replace(/^Dân\s+Phố\s+/i, "")}` : "—"}
+                       </span>
                        <StatusBadge status={s.status || ""} />
                     </div>
                     <h3 className="text-lg font-black text-slate-900 dark:text-white truncate leading-tight">{s.full_name}</h3>

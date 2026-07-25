@@ -99,9 +99,15 @@ export default function DashboardCharts({ stats }: DashboardChartsProps) {
           {sortedTdp.length > 0 ? (
             <ResponsiveContainer width="100%" height={280}>
               <BarChart
-                data={sortedTdp.map(([tdp, count]) => ({ name: `Tổ ${tdp}`, count }))}
+                data={sortedTdp.map(([tdp, count]) => {
+                  let cleanName = (tdp || "").trim();
+                  cleanName = cleanName.replace(/^(Tổ\s+)+/i, "");
+                  cleanName = cleanName.replace(/^Dân\s+Phố\s+/i, "");
+                  return { name: `Tổ ${cleanName}`, count };
+                })}
                 margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
               >
+
                 <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.3} />
                 <XAxis
                   dataKey="name"
