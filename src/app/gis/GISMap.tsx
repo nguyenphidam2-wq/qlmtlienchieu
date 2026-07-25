@@ -995,7 +995,9 @@ export function GISMap() {
                     fillOpacity: isSelected ? 0.5 : 0.2,
                     className: isSelected ? 'animate-pulse' : ''
                   }}
+                  pointToLayer={(_, latlng) => L.circleMarker(latlng, { radius: 0, stroke: false, fill: false })}
                 >
+
                   <Popup>
                     <div className="p-2 min-w-[200px]">
                        <div className="flex items-center gap-2 mb-2 border-b pb-1">
@@ -1036,6 +1038,7 @@ export function GISMap() {
                     fillOpacity: isSelected ? 0.5 : ((zone.riskCount || 0) > 0 ? 0.35 : 0.15),
                     className: isSelected ? 'animate-pulse shadow-2xl' : ''
                   }}
+                  pointToLayer={(_, latlng) => L.circleMarker(latlng, { radius: 0, stroke: false, fill: false })}
                   eventHandlers={{
                     add: (e) => {
                       if (isSelected) {
@@ -1044,6 +1047,7 @@ export function GISMap() {
                     }
                   }}
                 >
+
                   <Popup>
                     <ZonePopupComponent 
                       zone={zone} 
