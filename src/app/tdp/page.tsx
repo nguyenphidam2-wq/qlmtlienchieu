@@ -151,27 +151,28 @@ export default function TDPPage() {
               Quản lý thông tin hành chính, nhân khẩu và ranh giới không gian các TDP
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex items-center gap-2.5 flex-nowrap overflow-x-auto pb-1 md:pb-0 custom-scrollbar">
             <a 
               href="/Mau_Nhap_Lieu_TDP.xlsx"
               download="Mau_Nhap_Lieu_TDP.xlsx"
-              className="bg-white hover:bg-slate-50 text-slate-600 px-4 py-2.5 rounded-xl text-sm font-bold border border-slate-200 transition-all active:scale-95 flex items-center gap-2"
+              className="bg-white hover:bg-slate-50 text-slate-700 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold border border-slate-200 transition-all active:scale-95 flex items-center gap-1.5 whitespace-nowrap shadow-sm"
             >
-              <Download className="w-4 h-4" /> Tải mẫu Excel
+              <Download className="w-4 h-4 text-slate-500" /> Tải mẫu Excel
             </a>
             <button 
               onClick={() => setIsImportModalOpen(true)}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-emerald-500/20 transition-all active:scale-95 flex items-center gap-2"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-md shadow-emerald-500/20 transition-all active:scale-95 flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
             >
               <Upload className="w-4 h-4" /> Nhập nhanh (Excel)
             </button>
             <button 
               onClick={openAddModal}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-blue-500/20 transition-all active:scale-95 flex items-center gap-2"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-md shadow-blue-500/20 transition-all active:scale-95 flex items-center gap-1.5 whitespace-nowrap cursor-pointer"
             >
               <Plus className="w-4 h-4" /> Thêm TDP
             </button>
           </div>
+
         </div>
       </div>
 
