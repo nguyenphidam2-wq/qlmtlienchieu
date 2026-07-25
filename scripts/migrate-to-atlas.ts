@@ -40,21 +40,22 @@ async function migrate() {
     const localCollection = localConn.db.collection(collName);
     const atlasCollection = atlasConn.db.collection(collName);
 
-    // Đọc tất cả documents từ local
     const docs = await localCollection.find({}).toArray();
+
+    // Xóa dữ liệu cũ trên Atlas để đồng bộ tuyệt đối với Local
+    await atlasCollection.deleteMany({});
     
     if (docs.length === 0) {
-      console.log(`📭 Collection "${collName}": trống, bỏ qua`);
+
+      console.log(`🧹 Collection "${collName}": trống ở Local → Đã xóa sạch trên Atlas`);
       continue;
     }
 
     console.log(`📋 Collection "${collName}": ${docs.length} documents`);
-
-    // Xóa dữ liệu cũ trên Atlas (nếu có) và insert mới
-    await atlasCollection.deleteMany({});
     const result = await atlasCollection.insertMany(docs);
     console.log(`✅ Đã migrate ${result.insertedCount} documents lên Atlas`);
     totalMigrated += result.insertedCount;
+
   }
 
   console.log(`\n🎉 Hoàn tất! Tổng cộng đã migrate ${totalMigrated} documents lên MongoDB Atlas`);
