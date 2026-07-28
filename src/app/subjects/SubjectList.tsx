@@ -12,6 +12,7 @@ import {
   getCurrentUserInfo,
   approveSubject,
   bulkApproveSubjects,
+  bulkDeleteSubjects,
 } from "@/lib/actions/subjects";
 import { ISubject } from "@/lib/models";
 import { SubjectForm } from "./components/SubjectForm";
@@ -351,13 +352,14 @@ export function SubjectList() {
               <th>Loại ĐT</th>
               <th>Tổ dân phố</th>
               <th>Tình trạng</th>
+              <th>Thời gian phát hiện & QĐ</th>
               <th className="text-right">Thao tác</th>
             </tr>
           </thead>
           <tbody>
             {loading || isPending ? (
               <tr>
-                <td colSpan={10} className="text-center py-20 text-slate-400">
+                <td colSpan={11} className="text-center py-20 text-slate-400">
                   <div className="animate-pulse flex flex-col items-center">
                     <div className="h-8 w-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
                     Đang tải dữ liệu...
@@ -366,7 +368,7 @@ export function SubjectList() {
               </tr>
             ) : filteredSubjects.length === 0 ? (
               <tr>
-                <td colSpan={10} className="text-center py-20 text-slate-400 italic">
+                <td colSpan={11} className="text-center py-20 text-slate-400 italic">
                   Không tìm thấy đối tượng nào.
                 </td>
               </tr>
@@ -419,6 +421,29 @@ export function SubjectList() {
                   </td>
                   <td>
                     {s.status && <StatusBadge status={s.status} />}
+                  </td>
+                  <td>
+                    {s.violation_histories && s.violation_histories.length > 0 ? (
+                      <div className="flex flex-col text-xs max-w-[200px]">
+                        {s.violation_histories[s.violation_histories.length - 1].date && (
+                          <span className="font-semibold text-slate-700 dark:text-slate-200">
+                            📅 {s.violation_histories[s.violation_histories.length - 1].date}
+                          </span>
+                        )}
+                        {s.violation_histories[s.violation_histories.length - 1].duration && (
+                          <span className="text-[11px] text-amber-700 dark:text-amber-400 font-medium truncate" title={s.violation_histories[s.violation_histories.length - 1].duration}>
+                            ⏱️ {s.violation_histories[s.violation_histories.length - 1].duration}
+                          </span>
+                        )}
+                        {s.violation_histories[s.violation_histories.length - 1].decision_num_date && (
+                          <span className="text-[10px] text-slate-500 truncate" title={s.violation_histories[s.violation_histories.length - 1].decision_num_date}>
+                            📜 {s.violation_histories[s.violation_histories.length - 1].decision_num_date}
+                          </span>
+                        )}
+                      </div>
+                    ) : (
+                      <span className="text-xs text-slate-400 italic">—</span>
+                    )}
                   </td>
                   <td>
                     <div className="flex justify-end gap-1">
@@ -705,11 +730,43 @@ function SubjectDetail({ subject }: { subject: ISubject }) {
         )}
       </div>
 
+      {/* Violation History & Management Dates */}
+      {subject.violation_histories && subject.violation_histories.length > 0 && (
+        <div className="mb-6">
+          <h4 className="text-base font-bold text-slate-800 dark:text-white mb-3 pb-2 border-b-2 border-slate-200 dark:border-slate-700 uppercase tracking-wide flex items-center justify-between">
+            <span>⚖️ Lịch sử xử lý & Thời gian quản lý</span>
+            <span className="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-semibold">{subject.violation_histories.length} đợt</span>
+          </h4>
+          <div className="space-y-3">
+            {subject.violation_histories.map((v: any, idx: number) => (
+              <div key={idx} className="bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/50 p-3.5 rounded-xl text-xs space-y-1.5">
+                <div className="flex justify-between items-center font-bold text-slate-800 dark:text-white border-b border-amber-200/60 pb-1">
+                  <span className="text-amber-900 dark:text-amber-300 font-extrabold">Đợt {idx + 1}: {v.action || "Quản lý / Xử lý"}</span>
+                  {v.date && <span className="bg-amber-200/70 text-amber-900 px-2 py-0.5 rounded font-mono text-[11px]">📅 Ngày phát hiện: {v.date}</span>}
+                </div>
+                {v.decision_num_date && (
+                  <div className="flex gap-2">
+                    <span className="font-semibold text-slate-600 dark:text-slate-400 min-w-[120px]">📜 Quyết định quản lý:</span>
+                    <span className="font-medium text-slate-900 dark:text-white">{v.decision_num_date}</span>
+                  </div>
+                )}
+                {v.duration && (
+                  <div className="flex gap-2">
+                    <span className="font-semibold text-slate-600 dark:text-slate-400 min-w-[120px]">⏱️ Thời hạn quản lý:</span>
+                    <span className="font-bold text-amber-700 dark:text-amber-400">{v.duration}</span>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* History */}
       {(subject.processing_history || subject.criminal_record) && (
         <div className="mb-6">
           <h4 className="text-base font-bold text-slate-800 dark:text-white mb-3 pb-2 border-b-2 border-slate-200 dark:border-slate-700 uppercase tracking-wide">
-            Lịch sử & Tiền án
+            Lịch sử khác & Tiền án
           </h4>
           <div className="space-y-3">
             {subject.processing_history && (

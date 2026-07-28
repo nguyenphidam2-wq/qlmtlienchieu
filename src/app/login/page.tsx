@@ -252,6 +252,9 @@ export default function LoginPage() {
           <p className="text-[10px] text-slate-400">
             Bảo mật thông tin dữ liệu địa bàn theo quy định Ngành Công An
           </p>
+          <p className="text-[10px] text-slate-500/70 font-medium tracking-wider pt-1 select-none">
+            Design by <span className="text-slate-400 font-semibold">NPĐ</span>
+          </p>
         </div>
 
       </div>

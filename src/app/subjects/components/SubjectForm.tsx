@@ -340,22 +340,25 @@ export function SubjectForm({ subject, onSubmit, onCancel }: any) {
         </div>
       </div>
 
-      {/* 5. LICH SU VI PHAM */}
+      {/* 5. LỊCH SỬ VI PHẠM & THỜI GIAN QUẢN LÝ */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
         <div className="bg-slate-50 px-6 py-3 border-b border-slate-200 flex justify-between items-center">
-          <h3 className="font-bold text-slate-800 flex items-center gap-2">⚖️ 5. LỊCH SỬ VI PHẠM</h3>
+          <div>
+            <h3 className="font-bold text-slate-800 flex items-center gap-2">⚖️ 5. LỊCH SỬ XỬ LÝ & THỜI GIAN QUẢN LÝ</h3>
+            <p className="text-xs text-slate-500 mt-0.5">Thời gian phát hiện, Số/ngày Quyết định và Thời hạn quản lý đối tượng</p>
+          </div>
           <button type="button" onClick={addViolation} className="flex items-center gap-1 text-sm bg-orange-100 text-orange-700 px-3 py-1.5 rounded-lg hover:bg-orange-200 transition-colors font-medium">
-            <Plus className="w-4 h-4" /> Thêm vi phạm
+            <Plus className="w-4 h-4" /> Thêm đợt quản lý
           </button>
         </div>
         <div className="p-0 overflow-x-auto">
           <table className="w-full text-left text-sm whitespace-nowrap">
             <thead className="bg-slate-50 text-slate-500 border-b border-slate-200">
               <tr>
-                <th className="px-4 py-3 font-semibold">Hành vi vi phạm</th>
-                <th className="px-4 py-3 font-semibold">Ngày vi phạm</th>
-                <th className="px-4 py-3 font-semibold min-w-[200px]">Quyết định / Ngày (dd/mm/yyyy)</th>
-                <th className="px-4 py-3 font-semibold min-w-[250px]">Thời hạn áp dụng</th>
+                <th className="px-4 py-3 font-semibold">Tình trạng / Hành vi</th>
+                <th className="px-4 py-3 font-semibold">Ngày phát hiện / Xét nghiệm</th>
+                <th className="px-4 py-3 font-semibold min-w-[200px]">Số & Ngày Quyết định quản lý</th>
+                <th className="px-4 py-3 font-semibold min-w-[250px]">Thời hạn quản lý</th>
                 <th className="px-4 py-3 font-semibold w-10"></th>
               </tr>
             </thead>

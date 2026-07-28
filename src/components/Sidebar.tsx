@@ -372,6 +372,11 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
         >
           <Shield className="w-3.5 h-3.5" /> Đăng xuất
         </button>
+        <div className="text-center pt-1 pb-0.5">
+          <span className="text-[10px] text-slate-500/70 font-medium tracking-wider select-none">
+            Design by <span className="text-slate-400 font-semibold">NPĐ</span>
+          </span>
+        </div>
       </div>
       
       <style jsx global>{`
