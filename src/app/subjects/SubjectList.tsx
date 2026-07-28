@@ -742,36 +742,59 @@ function SubjectDetail({ subject }: { subject: ISubject }) {
       </div>
 
       {/* Violation History & Management Dates */}
-      {subject.violation_histories && subject.violation_histories.length > 0 && (
-        <div className="mb-6">
-          <h4 className="text-base font-bold text-slate-800 dark:text-white mb-3 pb-2 border-b-2 border-slate-200 dark:border-slate-700 uppercase tracking-wide flex items-center justify-between">
-            <span>⚖️ Lịch sử xử lý & Thời gian quản lý</span>
-            <span className="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-semibold">{subject.violation_histories.length} đợt</span>
-          </h4>
+      <div className="mb-6">
+        <h4 className="text-base font-bold text-slate-800 dark:text-white mb-3 pb-2 border-b-2 border-slate-200 dark:border-slate-700 uppercase tracking-wide flex items-center justify-between">
+          <span>⚖️ Lịch sử xử lý & Thời gian quản lý</span>
+          <span className="text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 px-2.5 py-0.5 rounded-full font-bold">
+            {subject.violation_histories && subject.violation_histories.length > 0 ? `${subject.violation_histories.length} đợt` : "Thông tin quản lý"}
+          </span>
+        </h4>
+        
+        {subject.violation_histories && subject.violation_histories.length > 0 ? (
           <div className="space-y-3">
             {subject.violation_histories.map((v: any, idx: number) => (
-              <div key={idx} className="bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/50 p-3.5 rounded-xl text-xs space-y-1.5">
-                <div className="flex justify-between items-center font-bold text-slate-800 dark:text-white border-b border-amber-200/60 pb-1">
-                  <span className="text-amber-900 dark:text-amber-300 font-extrabold">Đợt {idx + 1}: {v.action || "Quản lý / Xử lý"}</span>
-                  {v.date && <span className="bg-amber-200/70 text-amber-900 px-2 py-0.5 rounded font-mono text-[11px]">📅 Ngày phát hiện: {v.date}</span>}
+              <div key={idx} className="bg-gradient-to-r from-amber-50/80 to-orange-50/40 dark:from-amber-950/30 dark:to-slate-900 border border-amber-200/80 dark:border-amber-800/50 p-4 rounded-2xl text-xs space-y-2 shadow-sm">
+                <div className="flex justify-between items-center font-bold text-slate-800 dark:text-white border-b border-amber-200/60 dark:border-amber-800/40 pb-2">
+                  <span className="text-amber-900 dark:text-amber-300 font-extrabold text-sm flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                    Đợt {idx + 1}: {v.action || subject.status || "Quản lý / Xử lý"}
+                  </span>
+                  <span className="bg-amber-200/70 dark:bg-amber-900/60 text-amber-950 dark:text-amber-200 px-2.5 py-1 rounded-lg font-mono text-[11px] font-bold">
+                    📅 Ngày PH: {v.date || "Chưa có ngày"}
+                  </span>
                 </div>
-                {v.decision_num_date && (
-                  <div className="flex gap-2">
-                    <span className="font-semibold text-slate-600 dark:text-slate-400 min-w-[120px]">📜 Quyết định quản lý:</span>
-                    <span className="font-medium text-slate-900 dark:text-white">{v.decision_num_date}</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-1">
+                  <div className="flex flex-col gap-0.5">
+                    <span className="font-bold text-slate-500 dark:text-slate-400 text-[10px] uppercase tracking-wider">📜 Quyết định quản lý:</span>
+                    <span className="font-semibold text-slate-900 dark:text-white">{v.decision_num_date || "Chưa ghi nhận số QĐ"}</span>
                   </div>
-                )}
-                {v.duration && (
-                  <div className="flex gap-2">
-                    <span className="font-semibold text-slate-600 dark:text-slate-400 min-w-[120px]">⏱️ Thời hạn quản lý:</span>
-                    <span className="font-bold text-amber-700 dark:text-amber-400">{v.duration}</span>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="font-bold text-slate-500 dark:text-slate-400 text-[10px] uppercase tracking-wider">⏱️ Thời hạn quản lý:</span>
+                    <span className="font-bold text-amber-700 dark:text-amber-400">{v.duration || "Chưa ghi nhận thời hạn"}</span>
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
-        </div>
-      )}
+        ) : (
+          <div className="bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60 p-4 rounded-2xl text-xs">
+            <div className="flex justify-between items-center mb-1.5">
+              <span className="font-bold text-slate-700 dark:text-slate-200">Trạng thái hiện tại:</span>
+              <StatusBadge status={subject.status || "Chưa cập nhật"} />
+            </div>
+            <p className="text-slate-500 dark:text-slate-400 italic">
+              Chưa ghi nhận chi tiết lịch sử các đợt ra quyết định xử lý trước đó.
+            </p>
+          </div>
+        )}
+
+        {subject.notes && (
+          <div className="mt-3 bg-blue-50/60 dark:bg-blue-950/20 border border-blue-200/80 dark:border-blue-800/40 p-3.5 rounded-xl text-xs">
+            <span className="font-bold text-blue-900 dark:text-blue-300 block mb-1 uppercase text-[10px] tracking-wider">📌 Biến động & Ghi chú bổ sung:</span>
+            <span className="text-slate-800 dark:text-slate-200 font-medium leading-relaxed">{subject.notes}</span>
+          </div>
+        )}
+      </div>
 
       {/* History */}
       {(subject.processing_history || subject.criminal_record) && (
