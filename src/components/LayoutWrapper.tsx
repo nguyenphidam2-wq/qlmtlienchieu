@@ -24,10 +24,12 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
            <div className="w-10 h-10 rounded-full bg-white p-1 shadow-inner border border-yellow-500/50">
              <img src="/logo.png?v=2" alt="Logo" className="w-full h-full object-contain" />
            </div>
-           <div className="flex flex-col">
-             <span className="font-black text-xs text-yellow-500 leading-none">CA P.LIÊN CHIỂU</span>
-             <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Hệ thống nghiệp vụ</span>
-           </div>
+            <div className="flex flex-col">
+              <span className="font-black text-xs text-yellow-500 leading-none">CA P.LIÊN CHIỂU</span>
+              <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider flex items-center gap-1 mt-0.5">
+                Hệ thống nghiệp vụ <span className="text-amber-400 font-semibold">• Design by NPĐ</span>
+              </span>
+            </div>
         </div>
         <button 
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 

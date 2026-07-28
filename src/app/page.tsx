@@ -21,11 +21,13 @@ export default async function DashboardPage({ searchParams }: { searchParams: { 
       {/* Header Section */}
       <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 mb-1">
+          <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400 mb-1">
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span>HỆ THỐNG GIÁM SÁT SỐ GEOSPATIAL</span>
             <span className="text-slate-300 dark:text-slate-700">•</span>
             <span>PHƯỜNG LIÊN CHIỂU</span>
+            <span className="text-slate-300 dark:text-slate-700">•</span>
+            <span className="text-amber-500 font-bold bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">DESIGN BY NPĐ</span>
           </div>
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
             Báo cáo tổng quát địa bàn

@@ -116,6 +116,10 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
             <span style={{ color: '#94a3b8', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em' }} className="font-semibold mt-0.5 leading-none">
               Hệ thống nghiệp vụ
             </span>
+            <span className="text-[10px] text-amber-400 font-bold tracking-wider mt-1.5 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+              Design by NPĐ
+            </span>
           </div>
         </div>
       </div>
@@ -372,9 +376,9 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
         >
           <Shield className="w-3.5 h-3.5" /> Đăng xuất
         </button>
-        <div className="text-center pt-1 pb-0.5">
-          <span className="text-[10px] text-slate-500/70 font-medium tracking-wider select-none">
-            Design by <span className="text-slate-400 font-semibold">NPĐ</span>
+        <div className="text-center pt-2 pb-1">
+          <span className="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-300 font-bold text-xs rounded-full shadow-sm tracking-wider select-none">
+            🎨 Design by <span className="text-amber-400 font-extrabold">NPĐ</span>
           </span>
         </div>
       </div>
