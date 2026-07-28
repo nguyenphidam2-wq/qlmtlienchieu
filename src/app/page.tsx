@@ -196,28 +196,28 @@ export default async function DashboardPage({ searchParams }: { searchParams: { 
       {/* Dashboard Charts Section */}
       <DashboardCharts stats={stats} />
 
-      {/* Quick Actions (Clean Solid Surface - No Aurora Blobs) */}
-      <div className="bg-slate-900 dark:bg-slate-950 rounded-2xl p-6 text-white border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+      {/* Quick Actions */}
+      <div className="bg-white dark:bg-slate-900/90 rounded-3xl p-6 border border-slate-200/90 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
         <div>
-          <h3 className="text-base font-bold flex items-center gap-2 text-white">
-            <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+          <h3 className="text-base font-bold flex items-center gap-2 !text-slate-900 dark:!text-white">
+            <span className="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
             Lối tắt thao tác nghiệp vụ
           </h3>
-          <p className="text-xs text-slate-400 mt-1">Truy cập nhanh danh mục dữ liệu và phân hệ bản đồ GIS không gian.</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Truy cập nhanh danh mục dữ liệu và phân hệ bản đồ GIS không gian.</p>
         </div>
         <div className="flex flex-wrap gap-3">
           <Link
             href="/subjects"
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-semibold border border-slate-700 transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-white rounded-xl text-xs font-semibold border border-slate-200 dark:border-slate-700 transition-colors"
           >
-            <Users className="w-4 h-4 text-blue-400" />
+            <Users className="w-4 h-4 text-blue-500 dark:text-blue-400" />
             Quản lý Đối tượng
           </Link>
           <Link
             href="/businesses"
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-semibold border border-slate-700 transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-white rounded-xl text-xs font-semibold border border-slate-200 dark:border-slate-700 transition-colors"
           >
-            <Store className="w-4 h-4 text-emerald-400" />
+            <Store className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
             Cơ sở kinh doanh
           </Link>
           <Link

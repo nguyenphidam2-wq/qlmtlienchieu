@@ -102,9 +102,9 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
   );
 
   return (
-    <aside className="m-4 w-72 h-[calc(100vh-2rem)] bg-slate-900/60 backdrop-blur-xl text-white flex flex-col border border-white/10 shadow-2xl rounded-3xl overflow-hidden">
+    <aside className="m-4 w-72 h-[calc(100vh-2rem)] bg-slate-950/90 backdrop-blur-xl text-white flex flex-col border border-slate-800/80 shadow-2xl rounded-3xl overflow-hidden">
       {/* Logo */}
-      <div className="p-6 border-b border-slate-700/50 bg-slate-900/20">
+      <div className="p-6 border-b border-slate-800/60 bg-slate-900/20">
         <div className="flex items-center gap-3 mb-2">
           <div className="w-14 h-14 relative flex-shrink-0 bg-white rounded-full p-1 shadow-[0_0_15px_rgba(234,179,8,0.3)] border-2 border-yellow-500/80 overflow-hidden transform transition-transform hover:scale-105">
             <img src="/logo.png?v=2" alt="Logo CA" className="w-full h-full object-contain p-0.5" />
@@ -326,10 +326,10 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
       </nav>
 
       {/* Theme Toggle */}
-      <div className="p-4 border-t border-slate-700/50 bg-slate-900/10">
+      <div className="p-4 border-t border-slate-800/60 bg-transparent">
         <button
           onClick={toggleTheme}
-          className="w-full flex items-center justify-between px-4 py-3 rounded-2xl bg-slate-700/50 hover:bg-slate-700 transition-all duration-300 group border border-slate-700"
+          className="w-full flex items-center justify-between px-4 py-3 rounded-2xl bg-slate-900/60 hover:bg-slate-900 transition-all duration-300 group border border-slate-800/80"
         >
           <div className="flex items-center gap-3">
             <div className={`p-2 rounded-xl transition-all ${theme === "dark" ? "bg-blue-500/20 text-blue-400" : "bg-amber-500/20 text-amber-400"}`}>
@@ -341,7 +341,7 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
           </div>
           <div className={`
             w-8 h-4 rounded-full p-1 transition-all duration-300 relative
-            ${theme === "dark" ? "bg-blue-600" : "bg-slate-500"}
+            ${theme === "dark" ? "bg-blue-600" : "bg-slate-600"}
           `}>
             <div className={`
               absolute top-1 w-2 h-2 rounded-full bg-white transition-all duration-300
@@ -352,8 +352,8 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
       </div>
 
       {/* Footer / User Info */}
-      <div className="p-4 border-t border-slate-700/50 bg-slate-900/30 flex flex-col gap-2">
-        <div className="flex items-center gap-3 px-4 py-3 text-slate-400 text-sm bg-slate-800/40 rounded-2xl border border-slate-700/30">
+      <div className="p-4 border-t border-slate-800/60 bg-transparent flex flex-col gap-2">
+        <div className="flex items-center gap-3 px-4 py-3 text-slate-300 text-sm bg-slate-900/60 rounded-2xl border border-slate-800/80">
           <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg transform rotate-3">
             <Users className="w-5 h-5 text-white transform -rotate-3" />
           </div>
