@@ -120,9 +120,19 @@ export function SubjectList() {
     setIsModalOpen(true);
   };
 
-  const handleView = (subject: ISubject) => {
+  const handleView = async (subject: ISubject) => {
     setViewingSubject(subject);
     setIsDrawerOpen(true);
+    if (subject._id) {
+      try {
+        const fullSubject = await getSubject(subject._id.toString());
+        if (fullSubject) {
+          setViewingSubject(fullSubject);
+        }
+      } catch (err) {
+        console.error("Error fetching full subject:", err);
+      }
+    }
   };
 
   const handleDelete = async (id: string) => {
@@ -593,7 +603,21 @@ export function SubjectList() {
   );
 }
 
-function SubjectDetail({ subject }: { subject: ISubject }) {
+function SubjectDetail({ subject: initialSubject }: { subject: ISubject }) {
+  const [subject, setSubject] = useState<ISubject>(initialSubject);
+
+  useEffect(() => {
+    let isMounted = true;
+    if (initialSubject._id) {
+      getSubject(initialSubject._id.toString()).then((full) => {
+        if (isMounted && full) {
+          setSubject(full);
+        }
+      });
+    }
+    return () => { isMounted = false; };
+  }, [initialSubject._id]);
+
   return (
     <div className="text-sm">
       {/* Images */}
