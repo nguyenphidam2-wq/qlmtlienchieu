@@ -50,14 +50,39 @@ export async function getSubjects(status?: string, startDate?: string, endDate?:
   }
 
   const subjects = await Subject.find(query).sort({ created_at: -1 }).lean();
-  return JSON.parse(JSON.stringify(subjects));
+  const formatted = subjects.map((s: any) => {
+    let histories = Array.isArray(s.violation_histories) ? s.violation_histories : [];
+    if (histories.length === 0 && (s.decision_num_date || s.duration)) {
+      histories = [{
+        action: s.status || "Quản lý / Xử lý",
+        date: s.date || "",
+        decision_num_date: s.decision_num_date || "",
+        duration: s.duration || "",
+      }];
+    }
+    return {
+      ...s,
+      violation_histories: histories,
+    };
+  });
+  return JSON.parse(JSON.stringify(formatted));
 }
 
 // Get single subject by ID
 export async function getSubject(id: string): Promise<ISubject | null> {
   await connectDB();
-  const subject = await Subject.findById(id).lean();
-  return JSON.parse(JSON.stringify(subject));
+  const subject: any = await Subject.findById(id).lean();
+  if (!subject) return null;
+  let histories = Array.isArray(subject.violation_histories) ? subject.violation_histories : [];
+  if (histories.length === 0 && (subject.decision_num_date || subject.duration)) {
+    histories = [{
+      action: subject.status || "Quản lý / Xử lý",
+      date: subject.date || "",
+      decision_num_date: subject.decision_num_date || "",
+      duration: subject.duration || "",
+    }];
+  }
+  return JSON.parse(JSON.stringify({ ...subject, violation_histories: histories }));
 }
 
 // Create new subject - chỉ admin, leader, officer được phép
