@@ -6,6 +6,7 @@ import { Plus, Search, Eye, Edit2, Trash2, CheckCircle, CheckSquare, Square } fr
 import { Button, Modal, StatusBadge } from "@/components/ui";
 import {
   getSubjects,
+  getSubject,
   createSubject,
   updateSubject,
   deleteSubject,
