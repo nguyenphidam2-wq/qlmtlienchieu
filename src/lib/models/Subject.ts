@@ -141,6 +141,8 @@ const SubjectSchema = new Schema<ISubject>(
   }
 );
 
-SubjectSchema.index({ lat: 1, lng: 1 });
+if (process.env.NODE_ENV === "development" && mongoose.models.Subject) {
+  delete (mongoose.models as any).Subject;
+}
 
 export const Subject = mongoose.models.Subject || mongoose.model<ISubject>("Subject", SubjectSchema);

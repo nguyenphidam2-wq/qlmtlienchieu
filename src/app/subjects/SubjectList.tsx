@@ -768,8 +768,9 @@ function SubjectDetail({ subject: initialSubject }: { subject: ISubject }) {
 
       {/* Violation History & Management Dates */}
       {(() => {
-        const histories = (subject.violation_histories && subject.violation_histories.length > 0)
-          ? subject.violation_histories
+        const rawHistories = subject.violation_histories;
+        const histories = (rawHistories && Array.isArray(rawHistories) && rawHistories.length > 0)
+          ? rawHistories
           : ((subject as any).decision_num_date || (subject as any).duration)
             ? [{ action: subject.status || "Quản lý / Xử lý", date: "", decision_num_date: (subject as any).decision_num_date || "", duration: (subject as any).duration || "" }]
             : [];
