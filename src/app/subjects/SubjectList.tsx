@@ -423,27 +423,38 @@ export function SubjectList() {
                     {s.status && <StatusBadge status={s.status} />}
                   </td>
                   <td>
-                    {s.violation_histories && s.violation_histories.length > 0 ? (
-                      <div className="flex flex-col text-xs max-w-[200px]">
-                        {s.violation_histories[s.violation_histories.length - 1].date && (
-                          <span className="font-semibold text-slate-700 dark:text-slate-200">
-                            📅 {s.violation_histories[s.violation_histories.length - 1].date}
-                          </span>
-                        )}
-                        {s.violation_histories[s.violation_histories.length - 1].duration && (
-                          <span className="text-[11px] text-amber-700 dark:text-amber-400 font-medium truncate" title={s.violation_histories[s.violation_histories.length - 1].duration}>
-                            ⏱️ {s.violation_histories[s.violation_histories.length - 1].duration}
-                          </span>
-                        )}
-                        {s.violation_histories[s.violation_histories.length - 1].decision_num_date && (
-                          <span className="text-[10px] text-slate-500 truncate" title={s.violation_histories[s.violation_histories.length - 1].decision_num_date}>
-                            📜 {s.violation_histories[s.violation_histories.length - 1].decision_num_date}
-                          </span>
-                        )}
-                      </div>
-                    ) : (
-                      <span className="text-xs text-slate-400 italic">—</span>
-                    )}
+                    {(() => {
+                      const v = s.violation_histories && s.violation_histories.length > 0
+                        ? s.violation_histories[s.violation_histories.length - 1]
+                        : null;
+                      if (!v && !s.notes) {
+                        return <span className="text-xs text-slate-400 italic">—</span>;
+                      }
+                      return (
+                        <div className="flex flex-col text-xs max-w-[220px]">
+                          {v?.date && (
+                            <span className="font-bold text-slate-800 dark:text-slate-200">
+                              📅 PH: {v.date}
+                            </span>
+                          )}
+                          {v?.decision_num_date && (
+                            <span className="text-[11px] text-blue-700 dark:text-blue-400 font-semibold truncate" title={v.decision_num_date}>
+                              📜 QĐ: {v.decision_num_date}
+                            </span>
+                          )}
+                          {v?.duration && (
+                            <span className="text-[10px] text-amber-700 dark:text-amber-400 font-medium truncate" title={v.duration}>
+                              ⏱️ TH: {v.duration}
+                            </span>
+                          )}
+                          {!v && s.notes && (
+                            <span className="text-[11px] text-slate-500 italic truncate" title={s.notes}>
+                              📝 {s.notes}
+                            </span>
+                          )}
+                        </div>
+                      );
+                    })()}
                   </td>
                   <td>
                     <div className="flex justify-end gap-1">

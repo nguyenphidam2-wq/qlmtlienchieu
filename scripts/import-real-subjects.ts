@@ -136,21 +136,36 @@ async function runImport() {
       }
 
       const violationHistories: any[] = [];
-      const col7 = row[7] ? String(row[7]).trim() : '';
+      const col7 = row[7] ? parseExcelDate(row[7]) : '';
       const col8 = row[8] ? String(row[8]).trim() : '';
       const col9 = row[9] ? String(row[9]).trim() : '';
       const col10 = row[10] ? String(row[10]).trim() : '';
+      const col11 = row[11] ? String(row[11]).trim() : '';
 
-      if (col8 || col9 || col10) {
+      let dateVal = col7;
+      let decisionVal = '';
+      let durationVal = '';
+
+      if (config.sheetName === 'Mẫu 1' || config.sheetName === 'Thanh loại') {
+        dateVal = col7;
+        decisionVal = col8;
+        durationVal = col9 || col10;
+      } else {
+        dateVal = col7;
+        decisionVal = [col8, col9, col10].filter(Boolean).join(' - ');
+        durationVal = col11;
+      }
+
+      if (dateVal || decisionVal || durationVal) {
         violationHistories.push({
           action: status,
-          date: col7,
-          decision_num_date: [col8, col9].filter(Boolean).join(' - '),
-          duration: col10
+          date: dateVal,
+          decision_num_date: decisionVal,
+          duration: durationVal
         });
       }
 
-      const notes = [row[13], row[14]].filter(Boolean).map(x => String(x).trim()).join(' | ');
+      const notes = [row[12], row[13], row[14]].filter(Boolean).map(x => String(x).trim()).join(' | ');
 
       // --- LOGIC ĐỊNH VỊ THÔNG MINH ---
       const matchedTDP = calculateSmartCoordinates(addressCurr, addressPerm, 0, tdpList).matchedTdpName;
