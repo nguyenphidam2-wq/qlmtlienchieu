@@ -597,7 +597,7 @@ export function SubjectList() {
         size="xl"
       >
         {viewingSubject && (
-          <SubjectDetail subject={viewingSubject} />
+          <SubjectDetail key={viewingSubject._id?.toString()} subject={viewingSubject} />
         )}
       </Modal>
     </div>
@@ -608,16 +608,18 @@ function SubjectDetail({ subject: initialSubject }: { subject: ISubject }) {
   const [subject, setSubject] = useState<ISubject>(initialSubject);
 
   useEffect(() => {
+    setSubject(initialSubject);
     let isMounted = true;
     if (initialSubject._id) {
       getSubject(initialSubject._id.toString()).then((full) => {
+        console.log("[SubjectDetail] Fetched full subject:", full?.full_name, "histories:", full?.violation_histories);
         if (isMounted && full) {
           setSubject(full);
         }
       });
     }
     return () => { isMounted = false; };
-  }, [initialSubject._id]);
+  }, [initialSubject]);
 
   return (
     <div className="text-sm">
