@@ -141,7 +141,7 @@ const SubjectSchema = new Schema<ISubject>(
   }
 );
 
-if (process.env.NODE_ENV === "development" && mongoose.models.Subject) {
+if (process.env.NODE_ENV === "development" && mongoose.models && mongoose.models.Subject) {
   delete (mongoose.models as any).Subject;
 }
 
