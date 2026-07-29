@@ -49,8 +49,8 @@ export async function getSubjects(status?: string, startDate?: string, endDate?:
     }
   }
 
-  await connectDB();
-  const db = mongoose.connection.db;
+  const conn = await connectDB();
+  const db = conn.connection?.db || mongoose.connection?.db;
   if (!db) {
     const subjects = await Subject.find(query).sort({ created_at: -1 }).lean();
     return subjects.map(sanitizeSubject);
@@ -126,8 +126,8 @@ function sanitizeSubject(s: any): any {
 
 // Get single subject by ID
 export async function getSubject(id: string): Promise<ISubject | null> {
-  await connectDB();
-  const db = mongoose.connection.db;
+  const conn = await connectDB();
+  const db = conn.connection?.db || mongoose.connection?.db;
   if (!db) {
     const subject: any = await Subject.findById(id).lean();
     return sanitizeSubject(subject);
