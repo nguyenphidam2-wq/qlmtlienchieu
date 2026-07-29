@@ -50,26 +50,64 @@ export async function getSubjects(status?: string, startDate?: string, endDate?:
   }
 
   const subjects = await Subject.find(query).sort({ created_at: -1 }).lean();
-  return subjects.map(sanitizeSubject);
+  const sanitized = subjects.map(sanitizeSubject);
+  console.log(`[getSubjects] count=${sanitized.length}, sample#1=${sanitized[0]?.full_name}, vh=${JSON.stringify(sanitized[0]?.violation_histories)}`);
+  return sanitized;
+}
+
+function parseAndCalculateDates(rawDate: string, decisionStr: string, rawDuration: string) {
+  let date = (rawDate || "").trim();
+  const decision = (decisionStr || "").trim();
+  let duration = (rawDuration || "").trim();
+
+  // Tự động bóc tách ngày áp dụng / ngày QĐ nếu chưa có ngày phát hiện
+  if (!date && decision) {
+    const dateMatch = decision.match(/\b(\d{1,2})[\/\.-](\d{1,2})[\/\.-](\d{4})\b/);
+    if (dateMatch) {
+      const d = dateMatch[1].padStart(2, '0');
+      const m = dateMatch[2].padStart(2, '0');
+      const y = dateMatch[3];
+      date = `${d}/${m}/${y}`;
+    }
+  }
+
+  // Tự động tính mốc thời hạn 02 năm nếu có ngày bắt đầu mà chưa có thời hạn kết thúc
+  if (!duration && date) {
+    const parts = date.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+    if (parts) {
+      const d = parts[1].padStart(2, '0');
+      const m = parts[2].padStart(2, '0');
+      const startYear = parseInt(parts[3], 10);
+      const endYear = startYear + 2;
+      duration = `${d}/${m}/${startYear} - ${d}/${m}/${endYear} (02 năm)`;
+    }
+  }
+
+  return { date, decision, duration };
 }
 
 function sanitizeSubject(s: any): any {
   if (!s) return null;
-  const histories = Array.isArray(s.violation_histories)
-    ? s.violation_histories.map((vh: any) => ({
-        action: String(vh.action || ""),
-        date: String(vh.date || ""),
-        decision_num_date: String(vh.decision_num_date || ""),
-        duration: String(vh.duration || ""),
-      }))
+
+  let histories = Array.isArray(s.violation_histories)
+    ? s.violation_histories.map((vh: any) => {
+        const parsed = parseAndCalculateDates(vh.date, vh.decision_num_date, vh.duration);
+        return {
+          action: String(vh.action || s.status || "Quản lý / Xử lý"),
+          date: parsed.date,
+          decision_num_date: parsed.decision,
+          duration: parsed.duration,
+        };
+      })
     : [];
 
-  if (histories.length === 0 && (s.decision_num_date || s.duration)) {
+  if (histories.length === 0 && (s.decision_num_date || s.duration || s.date)) {
+    const parsed = parseAndCalculateDates(s.date, s.decision_num_date, s.duration);
     histories.push({
       action: String(s.status || "Quản lý / Xử lý"),
-      date: String(s.date || ""),
-      decision_num_date: String(s.decision_num_date || ""),
-      duration: String(s.duration || ""),
+      date: parsed.date,
+      decision_num_date: parsed.decision,
+      duration: parsed.duration,
     });
   }
 
