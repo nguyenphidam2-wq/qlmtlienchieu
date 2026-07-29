@@ -62,14 +62,16 @@ export async function getSubjects(status?: string, startDate?: string, endDate?:
   return sanitized;
 }
 
-function parseAndCalculateDates(rawDate: string, decisionStr: string, rawDuration: string) {
+function parseAndCalculateDates(rawDate: string, decisionStr: string, rawDuration: string, notesStr: string = "") {
   let date = (rawDate || "").trim();
   const decision = (decisionStr || "").trim();
   let duration = (rawDuration || "").trim();
+  const notes = (notesStr || "").trim();
 
-  // Tự động bóc tách ngày áp dụng / ngày QĐ nếu chưa có ngày phát hiện
-  if (!date && decision) {
-    const dateMatch = decision.match(/\b(\d{1,2})[\/\.-](\d{1,2})[\/\.-](\d{4})\b/);
+  // Tự động bóc tách ngày áp dụng / ngày QĐ từ quyết định hoặc ghi chú nếu chưa có ngày phát hiện
+  if (!date && (decision || notes)) {
+    const textToSearch = `${decision} ${notes}`;
+    const dateMatch = textToSearch.match(/\b(\d{1,2})[\/\.-](\d{1,2})[\/\.-](\d{4})\b/);
     if (dateMatch) {
       const d = dateMatch[1].padStart(2, '0');
       const m = dateMatch[2].padStart(2, '0');
@@ -88,6 +90,8 @@ function parseAndCalculateDates(rawDate: string, decisionStr: string, rawDuratio
       const endYear = startYear + 2;
       duration = `${d}/${m}/${startYear} - ${d}/${m}/${endYear} (02 năm)`;
     }
+  } else if (duration && !duration.includes("02 năm") && duration.includes(" - ")) {
+    duration = `${duration} (02 năm)`;
   }
 
   return { date, decision, duration };
@@ -98,7 +102,12 @@ function sanitizeSubject(s: any): any {
 
   let histories = Array.isArray(s.violation_histories) && s.violation_histories.length > 0
     ? s.violation_histories.map((vh: any) => {
-        const parsed = parseAndCalculateDates(vh.date, vh.decision_num_date, vh.duration);
+        const parsed = parseAndCalculateDates(
+          vh.date || s.date,
+          vh.decision_num_date || s.decision_num_date,
+          vh.duration || s.duration,
+          s.notes
+        );
         return {
           action: String(vh.action || s.status || "Quản lý / Xử lý"),
           date: parsed.date,
@@ -108,8 +117,8 @@ function sanitizeSubject(s: any): any {
       })
     : [];
 
-  if (histories.length === 0 && (s.decision_num_date || s.duration || s.date)) {
-    const parsed = parseAndCalculateDates(s.date, s.decision_num_date, s.duration);
+  if (histories.length === 0 && (s.decision_num_date || s.duration || s.date || s.notes)) {
+    const parsed = parseAndCalculateDates(s.date, s.decision_num_date, s.duration, s.notes);
     histories.push({
       action: String(s.status || "Quản lý / Xử lý"),
       date: parsed.date,
