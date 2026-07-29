@@ -89,7 +89,7 @@ function parseAndCalculateDates(rawDate: string, decisionStr: string, rawDuratio
 function sanitizeSubject(s: any): any {
   if (!s) return null;
 
-  let histories = Array.isArray(s.violation_histories)
+  let histories = Array.isArray(s.violation_histories) && s.violation_histories.length > 0
     ? s.violation_histories.map((vh: any) => {
         const parsed = parseAndCalculateDates(vh.date, vh.decision_num_date, vh.duration);
         return {
