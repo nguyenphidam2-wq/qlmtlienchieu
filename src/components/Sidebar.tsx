@@ -30,6 +30,7 @@ const navItems = [
   { href: "/quan-ly-ma-tuy", label: "Quản lý ma túy", icon: Shield, section: "Quản lý", roles: ["admin", "leader", "officer", "guest"], isParent: true, children: [
     { href: "/subjects", label: "Đối tượng ma túy" },
     { href: "/businesses", label: "Cơ sở có dấu hiệu cần chú ý" },
+    { href: "/schedules", label: "Lịch kiểm danh & Thử test" },
   ]},
   { href: "/subjects-nghiepvu", label: "Đối tượng nghiệp vụ", icon: ShieldCheck, section: "Quản lý", roles: ["admin", "leader", "officer"] },
   { href: "/pccc", label: "An toàn PCCC", icon: Flame, section: "Quản lý", roles: ["admin", "leader", "officer"] },
@@ -48,6 +49,7 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
   const [quanLyMatuyOpen, setQuanLyMatuyOpen] = useState(
     pathname === "/subjects" || pathname.startsWith("/subjects/") || 
     pathname === "/businesses" || pathname.startsWith("/businesses/") || 
+    pathname === "/schedules" || pathname.startsWith("/schedules/") ||
     pathname === "/quan-ly-ma-tuy"
   );
 
@@ -73,6 +75,7 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
   useEffect(() => {
     const isMaTuyPath = pathname === "/subjects" || pathname.startsWith("/subjects/") || 
                        pathname === "/businesses" || pathname.startsWith("/businesses/") || 
+                       pathname === "/schedules" || pathname.startsWith("/schedules/") ||
                        pathname === "/quan-ly-ma-tuy";
     if (isMaTuyPath) {
       setQuanLyMatuyOpen(true);
