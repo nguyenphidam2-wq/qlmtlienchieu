@@ -141,8 +141,20 @@ const SubjectSchema = new Schema<ISubject>(
   }
 );
 
-if (process.env.NODE_ENV === "development" && mongoose.models && mongoose.models.Subject) {
-  delete (mongoose.models as any).Subject;
+if (process.env.NODE_ENV === "development") {
+  if (mongoose.models && mongoose.models.Subject) {
+    delete (mongoose.models as any).Subject;
+  }
+  if (mongoose.connection && mongoose.connection.models && mongoose.connection.models.Subject) {
+    delete (mongoose.connection.models as any).Subject;
+  }
+  if (mongoose.connections) {
+    mongoose.connections.forEach((conn) => {
+      if (conn.models && conn.models.Subject) {
+        delete (conn.models as any).Subject;
+      }
+    });
+  }
 }
 
 export const Subject = mongoose.models.Subject || mongoose.model<ISubject>("Subject", SubjectSchema);

@@ -25,7 +25,6 @@ export async function connectDB(): Promise<typeof mongoose> {
 
   if (!cached.promise) {
     const opts = {
-      dbName: "qlmt-lienchieu",
       bufferCommands: false,
     };
 
