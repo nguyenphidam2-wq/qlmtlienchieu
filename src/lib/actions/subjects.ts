@@ -49,8 +49,15 @@ export async function getSubjects(status?: string, startDate?: string, endDate?:
     }
   }
 
-  const subjects = await Subject.find(query).sort({ created_at: -1 }).lean();
-  const sanitized = subjects.map(sanitizeSubject);
+  await connectDB();
+  const db = mongoose.connection.db;
+  if (!db) {
+    const subjects = await Subject.find(query).sort({ created_at: -1 }).lean();
+    return subjects.map(sanitizeSubject);
+  }
+
+  const rawSubjects = await db.collection("subjects").find(query).sort({ created_at: -1 }).toArray();
+  const sanitized = rawSubjects.map(sanitizeSubject);
   console.log(`[getSubjects] count=${sanitized.length}, sample#1=${sanitized[0]?.full_name}, vh=${JSON.stringify(sanitized[0]?.violation_histories)}`);
   return sanitized;
 }
@@ -120,7 +127,13 @@ function sanitizeSubject(s: any): any {
 // Get single subject by ID
 export async function getSubject(id: string): Promise<ISubject | null> {
   await connectDB();
-  const subject: any = await Subject.findById(id).lean();
+  const db = mongoose.connection.db;
+  if (!db) {
+    const subject: any = await Subject.findById(id).lean();
+    return sanitizeSubject(subject);
+  }
+  const { ObjectId } = await import("mongodb");
+  const subject: any = await db.collection("subjects").findOne({ _id: new ObjectId(id) });
   return sanitizeSubject(subject);
 }
 
