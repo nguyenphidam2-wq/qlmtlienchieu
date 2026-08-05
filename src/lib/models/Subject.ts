@@ -15,6 +15,19 @@ export interface IViolationHistory {
   duration: string;
 }
 
+export interface IVehicle {
+  vehicle_type?: string;
+  license_plate?: string;
+  brand_color?: string;
+}
+
+export interface IAttachedFile {
+  file_name: string;
+  file_url: string;
+  file_type?: string;
+  uploaded_at: Date;
+}
+
 export interface ISubject extends Document {
   full_name: string;
   alias?: string;
@@ -26,53 +39,64 @@ export interface ISubject extends Document {
   ethnicity?: string;
   face_image_url?: string;
 
-  // New Personal Info
   job?: string;
   education?: string;
+  residence_status?: "Permanent" | "Temporary" | "Absent" | "Unknown";
   pathology?: string;
   health_status?: string;
 
   // Family
   family_members: IFamilyMember[];
 
-  // Drug Classification (Checkbox Array)
+  // Drug & Medical Classification
   drug_types_used: string[];
+  consumption_method?: string[];
+  addiction_date?: string;
+  is_methadone_treatment?: boolean;
+  methadone_facility?: string;
+  latest_test_result?: {
+    date?: string;
+    result?: "Negative" | "Positive" | "Refused" | "Pending";
+    substances?: string[];
+  };
 
   // Residence
   tdp?: string;
   address_permanent?: string;
   address_current?: string;
-
-  // Violations
-  violation_histories: IViolationHistory[];
-
-  status?: string; // Derived status for map
-  is_criminal?: number;
-  is_drug?: number;
-  is_economic?: number;
-  father_name?: string;
-  mother_name?: string;
-  spouse_name?: string;
-  phone_father?: string;
-  phone_mother?: string;
-  phone_spouse?: string;
-  drug_type?: string;
-  processing_history?: string;
-  criminal_record?: string;
-  notes?: string;
-  relationships?: string;
-
-  house_image_url?: string;
-  subject_images?: string[];
-
   lat?: number;
   lng?: number;
 
-  // Approval workflow - trạng thái duyệt của đối tượng
+  // Violations & Legal
+  violation_histories: IViolationHistory[];
+  convictions_count?: number;
+  priors_count?: number;
+  criminal_record?: string;
+  processing_history?: string;
+  notes?: string;
+  relationships?: string;
+
+  status?: string; // Derived status for map
+  risk_level?: "red" | "yellow" | "green";
+  is_criminal?: number;
+  is_drug?: number;
+  is_economic?: number;
+
+  // Officer in charge
+  assigned_officer_id?: string;
+  assigned_officer_name?: string;
+
+  // Media & Files
+  house_image_url?: string;
+  subject_images?: string[];
+  registered_vehicles?: IVehicle[];
+  attached_files?: IAttachedFile[];
+
+  // Approval workflow
   approval_status?: "Pending" | "Approved";
-  created_by?: string;       // ID của user tạo
-  approved_by?: string;      // ID của user duyệt
-  approved_at?: Date;        // Thời gian duyệt
+  created_by?: string;
+  approved_by?: string;
+  approved_at?: Date;
 
   created_at: Date;
   updated_at: Date;
@@ -100,35 +124,70 @@ const SubjectSchema = new Schema<ISubject>(
     dob: { type: String },
     yob: { type: Number },
     gender: { type: String },
-    id_card: { type: String },
+    id_card: { type: String, index: true },
     phone: { type: String },
     ethnicity: { type: String, default: "Kinh" },
     face_image_url: { type: String },
 
     job: { type: String },
     education: { type: String },
+    residence_status: { type: String, enum: ["Permanent", "Temporary", "Absent", "Unknown"], default: "Permanent" },
     pathology: { type: String },
     health_status: { type: String },
 
     family_members: { type: [FamilyMemberSchema], default: [] },
 
     drug_types_used: { type: [String], default: [] },
+    consumption_method: { type: [String], default: [] },
+    addiction_date: { type: String },
+    is_methadone_treatment: { type: Boolean, default: false },
+    methadone_facility: { type: String },
+    latest_test_result: {
+      date: { type: String },
+      result: { type: String, enum: ["Negative", "Positive", "Refused", "Pending"] },
+      substances: { type: [String], default: [] }
+    },
 
     tdp: { type: String, index: true },
     address_permanent: { type: String },
     address_current: { type: String },
+    lat: { type: Number },
+    lng: { type: Number },
 
     violation_histories: { type: [ViolationHistorySchema], default: [] },
-
-    status: { type: String, index: true },
+    convictions_count: { type: Number, default: 0 },
+    priors_count: { type: Number, default: 0 },
+    criminal_record: { type: String },
+    processing_history: { type: String },
     notes: { type: String },
     relationships: { type: String },
 
-    house_image_url: { type: String },
-    subject_images: { type: [String] },
+    status: { type: String, index: true },
+    risk_level: { type: String, enum: ["red", "yellow", "green"], default: "green", index: true },
+    is_criminal: { type: Number, default: 0 },
+    is_drug: { type: Number, default: 1 },
+    is_economic: { type: Number, default: 0 },
 
-    lat: { type: Number },
-    lng: { type: Number },
+    assigned_officer_id: { type: String, index: true },
+    assigned_officer_name: { type: String },
+
+    house_image_url: { type: String },
+    subject_images: { type: [String], default: [] },
+    registered_vehicles: [
+      {
+        vehicle_type: String,
+        license_plate: String,
+        brand_color: String
+      }
+    ],
+    attached_files: [
+      {
+        file_name: String,
+        file_url: String,
+        file_type: String,
+        uploaded_at: { type: Date, default: Date.now }
+      }
+    ],
 
     // Approval workflow fields
     approval_status: { type: String, enum: ["Pending", "Approved"], default: "Pending", index: true },
@@ -140,6 +199,9 @@ const SubjectSchema = new Schema<ISubject>(
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
   }
 );
+
+SubjectSchema.index({ tdp: 1, status: 1 });
+SubjectSchema.index({ "registered_vehicles.license_plate": 1 });
 
 if (process.env.NODE_ENV === "development") {
   if (mongoose.models && mongoose.models.Subject) {

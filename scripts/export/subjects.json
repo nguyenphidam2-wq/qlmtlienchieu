@@ -1,1207 +1,5212 @@
 [
   {
-    "_id": "69e90f236898e2f02c27c83c",
-    "full_name": "Nguyễn Văn Duy",
-    "dob": "26/10/1989",
-    "yob": 1989,
+    "_id": "6a6495b4c13152a7d05e591f",
+    "full_name": "Đào Việt Huy",
+    "dob": "15/09/2002",
+    "yob": 2002,
     "gender": "Nam",
-    "id_card": "048089005630",
+    "id_card": "048202001325",
     "ethnicity": "Kinh",
-    "drug_types_used": [
-      "THC",
-      "MDMA"
-    ],
-    "tdp": "17",
-    "address_permanent": "Tổ 17, Phường Hòa Khánh Bắc, Quận Liên Chiểu",
-    "address_current": "Tổ 17, Phường Hòa Khánh Bắc, Quận Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "19/3/2025",
-        "decision_num_date": "Số 126, ngày 24/03/2025",
-        "duration": "21/03/2025 - 21/03/2026",
-        "_id": "69e90f236898e2f02c27c83d"
-      }
-    ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.07591147341191,
-    "lng": 108.08701419286793,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.037Z",
-    "updated_at": "2026-04-22T18:14:46.390Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c83e",
-    "full_name": "Đinh Tấn Xuân",
-    "dob": "25/06/1982",
-    "yob": 1982,
-    "gender": "Nam",
-    "id_card": "048082002069",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "KET"
-    ],
-    "tdp": "77",
-    "address_permanent": "Tổ 21, Phường Hải Vân",
-    "address_current": "Tổ 77, Phường Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "28/4/2025",
-        "decision_num_date": "Số 292, ngày 05/05/2025",
-        "duration": "29/04/2025 - 29/04/2026",
-        "_id": "69e90f236898e2f02c27c83f"
-      }
-    ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.074566255159198,
-    "lng": 108.09436991849414,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.038Z",
-    "updated_at": "2026-04-22T18:14:46.397Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c840",
-    "full_name": "Nguyễn Trung Gia Bảo",
-    "dob": "02/07/2007",
-    "yob": 2007,
-    "gender": "Nam",
-    "id_card": "048207005465",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "KET",
-      "MDMA"
-    ],
-    "tdp": "82",
-    "address_permanent": "Tổ 07, Phường Thạc Gián, Quận Thanh Khê",
-    "address_current": "Tổ 82, Phường Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "26/4/2025",
-        "decision_num_date": "Số 293, ngày 05/05/2025",
-        "duration": "27/04/2025 - 27/04/2026",
-        "_id": "69e90f236898e2f02c27c841"
-      }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.073593424946,
-    "lng": 108.09132816112638,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.038Z",
-    "updated_at": "2026-04-22T18:14:46.398Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c842",
-    "full_name": "Phạm Kim Long",
-    "dob": "15/06/2005",
-    "yob": 2005,
-    "gender": "Nam",
-    "id_card": "048205002721",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "KET",
-      "AMP"
-    ],
-    "tdp": "17",
-    "address_permanent": "Tổ 31, Phường Liên Chiểu",
-    "address_current": "Tổ 17, Phường Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "5/5/2025",
-        "decision_num_date": "Số 297, ngày 09/05/2025",
-        "duration": "07/05/2025 - 07/05/2026",
-        "_id": "69e90f236898e2f02c27c843"
-      }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.07733159092486,
-    "lng": 108.09316831165563,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.038Z",
-    "updated_at": "2026-04-22T18:14:46.399Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c844",
-    "full_name": "Lương Phương Nam",
-    "dob": "17/01/2007",
-    "yob": 2007,
-    "gender": "Nam",
-    "id_card": "048207005343",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "AMP"
-    ],
-    "tdp": "12",
-    "address_permanent": "Tổ 12, Phường Liên Chiểu",
-    "address_current": "Tổ 12, Phường Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "13/5/2025",
-        "decision_num_date": "Số 305, ngày 14/05/2025",
-        "duration": "14/05/2025 - 14/05/2026",
-        "_id": "69e90f236898e2f02c27c845"
-      }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.07783271262497,
-    "lng": 108.09054467325889,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.038Z",
-    "updated_at": "2026-04-22T18:14:46.400Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c846",
-    "full_name": "Trần Anh Vũ",
-    "dob": "01/11/1989",
-    "yob": 1989,
-    "gender": "Nam",
-    "id_card": "049089013437",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "OPI"
-    ],
-    "tdp": "83",
-    "address_permanent": "Phước Hội, Quế Lâm, Quế Sơn, Quảng Nam",
-    "address_current": "Tổ 83, Phường Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "19/5/2025",
-        "decision_num_date": "Số 316, ngày 14/05/2025",
-        "duration": "21/05/2025 - 21/05/2026",
-        "_id": "69e90f236898e2f02c27c847"
-      }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.0742993594155,
-    "lng": 108.09469118194242,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.038Z",
-    "updated_at": "2026-04-22T18:14:46.401Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c848",
-    "full_name": "Nguyễn Hà Trang",
-    "dob": "08/06/2005",
-    "yob": 2005,
-    "gender": "Nữ",
-    "id_card": "075305004259",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "MDMA"
-    ],
-    "tdp": "31",
-    "address_permanent": "446/43 KP5A, Long Bình, Biên Hòa, Đồng Nai",
-    "address_current": "Tổ 31, Phường Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "24/5/2025",
-        "decision_num_date": "Số 326, ngày 27/05/2025",
-        "duration": "27/05/2025 - 27/05/2026",
-        "_id": "69e90f236898e2f02c27c849"
-      }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.074330667446006,
-    "lng": 108.09472707083705,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.038Z",
-    "updated_at": "2026-04-22T18:14:46.402Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c84a",
-    "full_name": "Mai Phước Thuận",
-    "dob": "23/04/2005",
-    "yob": 2005,
-    "gender": "Nam",
-    "id_card": "",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "OPI"
-    ],
-    "tdp": "71",
-    "address_permanent": "Tân Ninh, Liên Chiểu",
-    "address_current": "Tân Ninh, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "24/10/2024",
-        "decision_num_date": "Số 241, ngày 02/6/2025",
-        "duration": "02/05/2025 - 02/5/2026",
-        "_id": "69e90f236898e2f02c27c84b"
-      }
-    ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.078080852041726,
-    "lng": 108.14212115406967,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.038Z",
-    "updated_at": "2026-04-22T18:10:43.038Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c84c",
-    "full_name": "Nguyễn Hữu Anh",
-    "dob": "01/01/1996",
-    "yob": 1996,
-    "gender": "Nam",
-    "id_card": "",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "OPI"
-    ],
-    "tdp": "2",
-    "address_permanent": "Hưởng Phước, Liên Chiểu",
-    "address_current": "Hưởng Phước, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "27/4/2025",
-        "decision_num_date": "Số 195, ngày 05/5/2025",
-        "duration": "29/05/2025 - 29/5/2026",
-        "_id": "69e90f236898e2f02c27c84d"
-      }
-    ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.096701816021962,
-    "lng": 108.10521112432052,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.038Z",
-    "updated_at": "2026-04-22T18:14:46.403Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c84e",
-    "full_name": "Đặng Văn Pháp",
-    "dob": "05/03/1994",
-    "yob": 1994,
-    "gender": "Nam",
-    "id_card": "",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "THC",
-      "KET"
-    ],
-    "tdp": "24",
-    "address_permanent": "Tân Ninh, Liên Chiểu",
-    "address_current": "Tân Ninh, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "23/4/2025",
-        "decision_num_date": "Số 193, ngày 29/4/2025",
-        "duration": "28/04/2025 -  28/4/2026",
-        "_id": "69e90f236898e2f02c27c84f"
-      }
-    ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.093919314963394,
-    "lng": 108.09312844872578,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.038Z",
-    "updated_at": "2026-04-22T18:14:46.404Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c850",
-    "full_name": "Trương Vĩnh Trung",
-    "dob": "15/01/1994",
-    "yob": 1994,
-    "gender": "Nam",
-    "id_card": "",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "OPI",
-      "MET"
-    ],
-    "tdp": "34",
-    "address_permanent": "Tổ 42, phường Tam Thuận",
-    "address_current": "Quan Nam 4, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "23/4/2025",
-        "decision_num_date": "Số 192, ngày 29/4/2025",
-        "duration": "28/04/2025 -  28/4/2026",
-        "_id": "69e90f236898e2f02c27c851"
-      }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.09835365615301,
-    "lng": 108.10057719824873,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.405Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c852",
-    "full_name": "Lê Thanh Ngân",
-    "dob": "15/4/1992",
-    "yob": 1992,
-    "gender": "Nam",
-    "id_card": "",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "KET",
-      "AMP"
-    ],
-    "tdp": "48",
-    "address_permanent": "Tổ 73, phường Liên Chiểu",
-    "address_current": "Vân Dương 1, Hòa Liên",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "15/5/2025",
-        "decision_num_date": "Số 224, ngày 20/5/2025",
-        "duration": "20/05/2025 - 20/5/2026",
-        "_id": "69e90f236898e2f02c27c853"
-      }
-    ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.102659796785645,
-    "lng": 108.09497917031894,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.405Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c854",
-    "full_name": "Nguyễn Minh Lơ",
-    "dob": "18/9/1986",
-    "yob": 1986,
-    "gender": "Nam",
-    "id_card": "",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "MDMA",
-      "MET"
-    ],
-    "tdp": "63",
-    "address_permanent": "Quan Nam 4, Liên Chiểu",
-    "address_current": "Quan Nam 4, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "27/5/2025",
-        "decision_num_date": "Số 235, ngày 20/5/2025",
-        "duration": "28/05/2025 - 28/5/2026",
-        "_id": "69e90f236898e2f02c27c855"
-      }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.089799824061156,
-    "lng": 108.09575132064894,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.406Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c856",
-    "full_name": "Trương Thị Thu Thảo",
-    "dob": "03/10/1994",
-    "yob": 1994,
-    "gender": "Nam",
-    "id_card": "",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "KET"
-    ],
-    "tdp": "42",
-    "address_permanent": "Vân Dương 1, Liên Chiểu",
-    "address_current": "Vân Dương 1, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "27/4/2025",
-        "decision_num_date": "Số 240, ngày 02/6/2025",
-        "duration": "02/05/2025 -  02/6/2026",
-        "_id": "69e90f236898e2f02c27c857"
-      }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.1038644773258,
-    "lng": 108.09710440491126,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.407Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c858",
-    "full_name": "Nguyễn Thành Tân",
-    "dob": "21/04/1983",
-    "yob": 1983,
-    "gender": "Nam",
-    "id_card": "049083015495",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "KET"
-    ],
-    "tdp": "68",
-    "address_permanent": "Tổ 25, Liên Chiểu",
-    "address_current": "27 Phạm Văn Ngôn, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "30/7/2025",
-        "decision_num_date": "Số 154, ngày 11/8/2025",
-        "duration": "28/7/2025 - 28/7/2026",
-        "_id": "69e90f236898e2f02c27c859"
-      }
-    ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.09296978720208,
-    "lng": 108.10748302810107,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.407Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c85a",
-    "full_name": "Đinh Ngọc Lâm",
-    "dob": "03/12/2009",
-    "yob": 2009,
-    "gender": "Nam",
-    "id_card": "044209001668",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "THC"
-    ],
-    "tdp": "77",
-    "address_permanent": "Tuyên Lâm, Quảng Trị",
-    "address_current": "Tổ 77, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "30/7/2025",
-        "decision_num_date": "Số 153, ngày 11/8/2025",
-        "duration": "28/7/2025 - 28/7/2026",
-        "_id": "69e90f236898e2f02c27c85b"
-      }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.085718133125287,
-    "lng": 108.06388787162246,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.408Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c85c",
-    "full_name": "Phạm Quang Hiệp",
-    "dob": "13/07/1998",
-    "yob": 1998,
-    "gender": "Nam",
-    "id_card": "048098001915",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "THC",
-      "MDMA"
-    ],
-    "tdp": "25",
-    "address_permanent": "Vân Dương 1, Liên Chiểu",
-    "address_current": "Vân Dương 1, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "31/7/2025",
-        "decision_num_date": "Số 155, ngày 11/8/2025",
-        "duration": "28/7/2025 - 28/7/2026",
-        "_id": "69e90f236898e2f02c27c85d"
-      }
-    ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.075841650014322,
-    "lng": 108.14953712606841,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.409Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c85e",
-    "full_name": "Nguyễn Văn Kỳ Anh",
-    "dob": "13/11/1996",
-    "yob": 1996,
-    "gender": "Nam",
-    "id_card": "048096006300",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "MET"
-    ],
-    "tdp": "70",
-    "address_permanent": "Tổ 79, Liên Chiểu",
-    "address_current": "Tổ 70, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "12/8/2025",
-        "decision_num_date": "Số 297, ngày 06/9/2025",
-        "duration": "21/8/2025-21/8/2026",
-        "_id": "69e90f236898e2f02c27c85f"
-      }
-    ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.07648520205127,
-    "lng": 108.14912666490633,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.409Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c860",
-    "full_name": "Bùi Đức Hiền Em",
-    "dob": "15/07/1981",
-    "yob": 1981,
-    "gender": "Nam",
-    "id_card": "048081001041",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "MDMA"
-    ],
-    "tdp": "2",
-    "address_permanent": "Hiền Phước, Liên Chiểu",
-    "address_current": "Hiền Phước, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "45999",
-        "decision_num_date": "Số 292, ngày 04/9/2025",
-        "duration": "21/8/2025-21/8/2026",
-        "_id": "69e90f236898e2f02c27c861"
-      }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.07930588486707,
-    "lng": 108.15246426274216,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.410Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c862",
-    "full_name": "Nguyễn Minh Phúc",
-    "dob": "14/7/1987",
-    "yob": 1987,
-    "gender": "Nam",
-    "id_card": "044087001764",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "MET",
-      "MDMA"
-    ],
-    "tdp": "61",
-    "address_permanent": "Tổ7, phường Đồng Thuận, Quảng Trị",
-    "address_current": "Không xác định",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "45999",
-        "decision_num_date": "Số 343, ngày 18/9/2025",
-        "duration": "21/8/2025-21/8/2026",
-        "_id": "69e90f236898e2f02c27c863"
-      }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.075826094439282,
-    "lng": 108.15466284537123,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.410Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c864",
-    "full_name": "Đặng Vũ Hoàng Gian",
-    "dob": "05/01/1994",
-    "yob": 1994,
-    "gender": "Nữ",
-    "id_card": "048194006505",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "THC"
-    ],
-    "tdp": "59",
-    "address_permanent": "Hiền Phước, Liên Chiểu",
-    "address_current": "Hưởng Phước, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "45878",
-        "decision_num_date": "Số 373, ngày 24/9/2025",
-        "duration": "16/9/2025-16/9/2026",
-        "_id": "69e90f236898e2f02c27c865"
-      }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.078363607897753,
-    "lng": 108.14807166564836,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.411Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c866",
-    "full_name": "Nguyễn Thế Công",
-    "dob": "20/12/1984",
-    "yob": 1984,
-    "gender": "Nam",
-    "id_card": "048084001283",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "THC"
-    ],
-    "tdp": "13",
-    "address_permanent": "Hưởng Phước, Liên Chiểu",
-    "address_current": "Vân Dương 2, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "45878",
-        "decision_num_date": "Số 374, ngày 24/9/2025",
-        "duration": "16/9/2025-16/9/2026",
-        "_id": "69e90f236898e2f02c27c867"
-      }
-    ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.07707797243257,
-    "lng": 108.14934876040483,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.412Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c868",
-    "full_name": "Bùi Đức Quý",
-    "dob": "10/10/1962",
-    "yob": 1962,
-    "gender": "Nam",
-    "id_card": "048062003849",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "MDMA",
-      "MET"
-    ],
-    "tdp": "51",
-    "address_permanent": "Hưởng Phước, Liên Chiểu",
-    "address_current": "Hưởng Phước, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "45726",
-        "decision_num_date": "Số 530, ngày 20/10/2025",
-        "duration": "10/10/2025-10/10/2026",
-        "_id": "69e90f236898e2f02c27c869"
-      }
-    ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.079276595016875,
-    "lng": 108.15035453233737,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.413Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c86a",
-    "full_name": "Mai Tấn Hiếu",
-    "dob": "12/05/2007",
-    "yob": 2007,
-    "gender": "Nam",
-    "id_card": "049207005856",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "KET"
-    ],
-    "tdp": "8",
-    "address_permanent": "Trung Sơn, Liên Chiểu",
-    "address_current": "Quan Nam 5, Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "45910",
-        "decision_num_date": "Số 548, ngày 24/10/2025",
-        "duration": "20/10/2025-20/10/2026",
-        "_id": "69e90f236898e2f02c27c86b"
-      }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.073083451295496,
-    "lng": 108.14971103989012,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.413Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c86c",
-    "full_name": "Nguyễn Mạnh Tiên",
-    "dob": "09/02/1988",
-    "yob": 1988,
-    "gender": "Nam",
-    "id_card": "049088017288",
-    "ethnicity": "Kinh",
+    "address_permanent": "tổ 78, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "tổ 78, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Hưởng Phước",
     "drug_types_used": [
       "MET",
       "OPI"
     ],
-    "tdp": "34",
-    "address_permanent": "Hanh Tây, Phú Thuận, Đà Nẵng",
-    "address_current": "51 Thanh Vinh 10, Liên Chiểu",
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-007294",
+    "lat": 16.0759,
+    "lng": 108.096931,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "22/01/2025",
+    "decision_num_date": "Số 03, ngày 23/01/2025",
+    "duration": "23/01/2025 - 23/01/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:25.989000",
     "violation_histories": [
       {
-        "action": "Sử dụng",
-        "date": "45975",
-        "decision_num_date": "Số 672, ngày 21/11/2025",
-        "duration": "14/11/2025-14/11/2026",
-        "_id": "69e90f236898e2f02c27c86d"
+        "action": "Thanh loại",
+        "date": "22/01/2025",
+        "decision_num_date": "Số 03, ngày 23/01/2025",
+        "duration": "23/01/2025 - 23/01/2026 (02 năm)"
       }
     ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.074215817179848,
-    "lng": 108.1492215574215,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.414Z"
+    "family_members": [
+      {
+        "full_name": "ĐÀO QUỐC VIỆT",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "HUỲNH THỊ KIM HƯƠNG",
+        "relation": "Mẹ"
+      }
+    ]
   },
   {
-    "_id": "69e90f236898e2f02c27c86e",
-    "full_name": "Nguyễn Thị Mỹ Dung",
-    "dob": "05/10/1998",
-    "yob": 1998,
-    "gender": "Nữ",
-    "id_card": "049198004187",
+    "_id": "6a6495b4c13152a7d05e5922",
+    "full_name": "Nguyễn Hoài Phong",
+    "dob": "26/6/2002",
+    "yob": 2002,
+    "gender": "Nam",
+    "id_card": "048202004881",
     "ethnicity": "Kinh",
+    "address_permanent": "Tổ VÂN DƯƠNG 2, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Nhà bà Nguyễn Thị Thảo - Thôn Tân Phú, Xã Tây Hồ, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
     "drug_types_used": [
       "MET",
-      "THC"
+      "OPI"
     ],
-    "tdp": "2",
-    "address_permanent": "xã Thượng Đức, TP Đà Nẵng",
-    "address_current": "Chung cư Hòa Khánh, Liên Chiểu",
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-013238",
+    "lat": 16.082841,
+    "lng": 108.102642,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "14/01/2025",
+    "decision_num_date": "Số 39, ngày 22/01/2025",
+    "duration": "22/01/2025 - 22/01/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:26.032000",
     "violation_histories": [
       {
-        "action": "Sử dụng",
-        "date": "17/11/2025",
-        "decision_num_date": "Số 787, ngày 10/12/2025",
-        "duration": "17/11/2025-17/11/2026",
-        "_id": "69e90f236898e2f02c27c86f"
+        "action": "Thanh loại",
+        "date": "14/01/2025",
+        "decision_num_date": "Số 39, ngày 22/01/2025",
+        "duration": "22/01/2025 - 22/01/2026 (02 năm)"
       }
     ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.074623172370828,
-    "lng": 108.14913125222546,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.414Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c870",
-    "full_name": "Hồ Thị Anh Việt",
-    "dob": "20/6/1990",
-    "yob": 1990,
-    "gender": "Nữ",
-    "id_card": "048190001293",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "AMP",
-      "KET"
-    ],
-    "tdp": "22",
-    "address_permanent": "Quan Nam 2, Liên Chiểu",
-    "address_current": "Quan Nam 5, Liên Chiểu",
-    "violation_histories": [
+    "family_members": [
       {
-        "action": "Sử dụng",
-        "date": "17/11/2025",
-        "decision_num_date": "Số 786, ngày 10/12/2025",
-        "duration": "17/11/2025-17/11/2026",
-        "_id": "69e90f236898e2f02c27c871"
+        "full_name": "NGUYỄN VĂN SƠN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGÔ THỊ MINH",
+        "relation": "Mẹ"
       }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.07424889634892,
-    "lng": 108.1465363446692,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.415Z"
+    ]
   },
   {
-    "_id": "69e90f236898e2f02c27c872",
-    "full_name": "Hồ Kỳ Trung",
-    "dob": "13/08/2000",
+    "_id": "6a6495b4c13152a7d05e5925",
+    "full_name": "Phạm Văn Mỷ",
+    "dob": "07/08/2000",
     "yob": 2000,
     "gender": "Nam",
-    "id_card": "048200003150",
+    "id_card": "048200001587",
     "ethnicity": "Kinh",
+    "address_permanent": "Tổ 65, phường Hòa Minh, quận Liên Chiểu",
+    "address_current": "Tổ 17, Phường Hòa Khánh Bắc, Quận Liên Chiểu",
+    "tdp": "Tổ dân phố Chung Cư 1",
     "drug_types_used": [
-      "AMP"
+      "MET",
+      "OPI"
     ],
-    "tdp": "20",
-    "address_permanent": "Quan Nam 3, Liên Chiểu",
-    "address_current": "Quan Nam 5, Liên Chiểu",
+    "status": "Thanh loại",
+    "notes": "",
+    "lat": 16.074811,
+    "lng": 108.134589,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Tự nguyện",
+    "duration": "Số 39, ngày 23/01/2025",
+    "updated_at": "2026-08-03T08:43:26.073000",
     "violation_histories": [
       {
-        "action": "Sử dụng",
-        "date": "17/11/2025",
-        "decision_num_date": "Số 782, ngày 10/12/2025",
-        "duration": "17/11/2025-17/11/2026",
-        "_id": "69e90f236898e2f02c27c873"
+        "action": "Thanh loại",
+        "date": "",
+        "decision_num_date": "Tự nguyện",
+        "duration": "Số 39, ngày 23/01/2025"
       }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.076256155475065,
-    "lng": 108.1483986018443,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.415Z"
+    ]
   },
   {
-    "_id": "69e90f236898e2f02c27c874",
-    "full_name": "Trần Văn Bảo",
-    "dob": "30/01/1997",
-    "yob": 1997,
+    "_id": "6a6495b4c13152a7d05e5926",
+    "full_name": "Đỗ Minh Trí",
+    "dob": "09/08/2006",
+    "yob": 2006,
     "gender": "Nam",
-    "id_card": "048097003561",
+    "id_card": "048206002185",
     "ethnicity": "Kinh",
+    "address_permanent": "Thôn Quan Nam 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Tổ 1, thôn Quan Nam 4, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 4",
     "drug_types_used": [
-      "AMP"
+      "MET",
+      "OPI"
     ],
-    "tdp": "67",
-    "address_permanent": "Tổ 67, Phường Liên Chiểu",
-    "address_current": "Tổ 67, Phường Liên Chiểu",
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-010111",
+    "lat": 16.088394,
+    "lng": 108.096844,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Tự nguyện",
+    "duration": "Số 448, ngày 24/12/2024",
+    "updated_at": "2026-08-03T08:43:26.115000",
     "violation_histories": [
       {
-        "action": "Sử dụng",
-        "date": "16/10/2025",
-        "decision_num_date": "Số 783, ngày 10/12/2025",
-        "duration": "16/10/2025-16/10/2026",
-        "_id": "69e90f236898e2f02c27c875"
+        "action": "Thanh loại",
+        "date": "",
+        "decision_num_date": "Tự nguyện",
+        "duration": "Số 448, ngày 24/12/2024"
       }
     ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.08450941068627,
-    "lng": 108.14410525183092,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.416Z"
+    "family_members": [
+      {
+        "full_name": "ĐỖ KU CHI",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "LÊ THỊ THANH HOÀI",
+        "relation": "Mẹ"
+      }
+    ]
   },
   {
-    "_id": "69e90f236898e2f02c27c876",
-    "full_name": "Ngô Tấn Cao",
-    "dob": "22/10/1992",
-    "yob": 1992,
+    "_id": "6a6495b4c13152a7d05e5927",
+    "full_name": "Trần Hữu Nghĩa",
+    "dob": "22/05/1982",
+    "yob": 1982,
     "gender": "Nam",
-    "id_card": "048092001281",
+    "id_card": "048082004331",
     "ethnicity": "Kinh",
+    "address_permanent": "TỔ 42, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở cai nghiện TP Đà Nẵng, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
     "drug_types_used": [
-      "THC"
+      "MET",
+      "OPI"
     ],
-    "tdp": "50",
-    "address_permanent": "Tổ 50, Phường Liên Chiểu",
-    "address_current": "Tổ 50, Phường Liên Chiểu",
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-003118",
+    "lat": 16.075048,
+    "lng": 108.119551,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Bắt buộc",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:26.154000",
     "violation_histories": [
       {
-        "action": "Sử dụng",
-        "date": "25/11/2025",
-        "decision_num_date": "Số 788, ngày 10/12/2025",
-        "duration": "25/11/2025-25/11/2026",
-        "_id": "69e90f236898e2f02c27c877"
+        "action": "Thanh loại",
+        "date": "",
+        "decision_num_date": "Bắt buộc",
+        "duration": ""
       }
     ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.08128352644109,
-    "lng": 108.1462471499108,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.417Z"
+    "family_members": [
+      {
+        "full_name": "TRẦN HỮU ĐÍNH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ KIM OANH",
+        "relation": "Mẹ"
+      }
+    ]
   },
   {
-    "_id": "69e90f236898e2f02c27c878",
+    "_id": "6a6495b4c13152a7d05e592a",
     "full_name": "Đinh Minh Ta",
     "dob": "30/03/1995",
     "yob": 1995,
     "gender": "Nam",
     "id_card": "048095004378",
     "ethnicity": "Kinh",
-    "drug_types_used": [
-      "AMP",
-      "THC"
-    ],
-    "tdp": "77",
-    "address_permanent": "Tổ 77, Phường Liên Chiểu",
-    "address_current": "Tổ 77, Phường Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "45996",
-        "decision_num_date": "Số 844, ngày 17/12/2025",
-        "duration": "05/12/2025-05/12/2026",
-        "_id": "69e90f236898e2f02c27c879"
-      }
-    ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.085633099600585,
-    "lng": 108.14878220025076,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.418Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c87a",
-    "full_name": "Đỗ Hoàng Long",
-    "dob": "23/11/1996",
-    "yob": 1996,
-    "gender": "Nam",
-    "id_card": "048096007094",
-    "ethnicity": "Kinh",
+    "address_permanent": "SỐ NHÀ 16, ĐẶNG CHIÊM, TỔ 77, THANH VINH, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Thôn An Trung, Xã Cam Lộ, Tỉnh Quảng Trị",
+    "tdp": "Tổ dân phố Vân Dương 2",
     "drug_types_used": [
       "MET",
-      "THC"
-    ],
-    "tdp": "66",
-    "address_permanent": "Tổ 66, Phường Liên Chiểu",
-    "address_current": "Tổ 66, Phường Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "17/12/2025",
-        "decision_num_date": "Số 918, ngày 24/12/2025",
-        "duration": "17/12/2025-17/12/2026",
-        "_id": "69e90f236898e2f02c27c87b"
-      }
-    ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.081332189648663,
-    "lng": 108.1478091396567,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.418Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c87c",
-    "full_name": "Hồ Thanh Tây",
-    "dob": "20/07/1995",
-    "yob": 1995,
-    "gender": "Nam",
-    "id_card": "048095003519",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
-      "THC",
-      "KET"
-    ],
-    "tdp": "83",
-    "address_permanent": "TDP Quan Nam 5, phường Liên Chiểu",
-    "address_current": "TDP Quan Nam 5, phường Liên Chiểu",
-    "violation_histories": [
-      {
-        "action": "Sử dụng",
-        "date": "45950",
-        "decision_num_date": "Số 941, ngày 26/12/2025",
-        "duration": "20/10/2025-20/10/2026",
-        "_id": "69e90f236898e2f02c27c87d"
-      }
-    ],
-    "status": "Sử dụng",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.083465671519882,
-    "lng": 108.1488032105845,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.419Z"
-  },
-  {
-    "_id": "69e90f236898e2f02c27c87e",
-    "full_name": "Biện Minh Thành",
-    "dob": "20/07/1992",
-    "yob": 1992,
-    "gender": "Nam",
-    "id_card": "049092006618",
-    "ethnicity": "Kinh",
-    "drug_types_used": [
       "OPI"
     ],
-    "tdp": "69",
-    "address_permanent": "Thạnh Đại, xã Thượng Đức, Tp Đà Nẵng",
-    "address_current": "187 Thanh Vinh 10, phường Liên Chiểu",
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-007122",
+    "lat": 16.08806,
+    "lng": 108.096996,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "05/12/2025",
+    "decision_num_date": "Số 844, ngày 17/12/2025",
+    "duration": "05/12/2025-05/12/2026",
+    "updated_at": "2026-08-03T08:43:26.197000",
     "violation_histories": [
       {
-        "action": "Sử dụng",
-        "date": "46022",
-        "decision_num_date": "Số 01, ngày 05/01/2026",
-        "duration": "31/12/2025-31/12/2026",
-        "_id": "69e90f236898e2f02c27c87f"
+        "action": "Thanh loại",
+        "date": "05/12/2025",
+        "decision_num_date": "Số 844, ngày 17/12/2025",
+        "duration": "05/12/2025-05/12/2026"
       }
     ],
-    "status": "Nghiện",
-    "notes": "",
-    "subject_images": [],
-    "lat": 16.08419037836561,
-    "lng": 108.14858024424535,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.420Z"
+    "family_members": [
+      {
+        "full_name": "ĐINH VIẾT THAO",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGÔ THỊ KIM HOA",
+        "relation": "Mẹ"
+      }
+    ]
   },
   {
-    "_id": "69e90f236898e2f02c27c880",
-    "full_name": "Trần Đình Tâm Nghĩa",
-    "dob": "28/04/1998",
-    "yob": 1998,
+    "_id": "6a6495b4c13152a7d05e592b",
+    "full_name": "Lê Văn Cảnh",
+    "dob": "01/01/2002",
+    "yob": 2002,
     "gender": "Nam",
-    "id_card": "0480980057816",
+    "id_card": "048202006921",
     "ethnicity": "Kinh",
+    "address_permanent": "THÔN VÂN DƯƠNG 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN VÂN DƯƠNG 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 1",
     "drug_types_used": [
       "MET",
-      "THC"
+      "OPI"
     ],
-    "tdp": "59",
-    "address_permanent": "Tổ 14, phường Liên Chiểu",
-    "address_current": "206 Nguyễn Lương Bằng",
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-012736",
+    "lat": 16.088109,
+    "lng": 108.102693,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Bắt buộc",
+    "duration": "Số 95, ngày 14/3/2024",
+    "updated_at": "2026-08-03T08:43:26.252000",
     "violation_histories": [
       {
-        "action": "Sử dụng",
-        "date": "46035",
-        "decision_num_date": "Số 171, ngày 26/01/2026",
-        "duration": "13/01/2026-13/01/2027",
-        "_id": "69e90f236898e2f02c27c881"
+        "action": "Thanh loại",
+        "date": "",
+        "decision_num_date": "Bắt buộc",
+        "duration": "Số 95, ngày 14/3/2024"
       }
+    ],
+    "family_members": [
+      {
+        "full_name": "LÊ VĂN TÙNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHẠM THỊ CHƠI",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e592f",
+    "full_name": "Đặng Văn Pháp",
+    "dob": "05/03/1994",
+    "yob": 1994,
+    "gender": "Nam",
+    "id_card": "048094002074",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 2, THÔN TÂN NINH, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN TÂN NINH, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Tân Hiền",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-010889",
+    "lat": 16.07722,
+    "lng": 108.062405,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "23/4/2025",
+    "decision_num_date": "Số 193, ngày 29/4/2025",
+    "duration": "28/04/2025 -  28/4/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:26.291000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "23/4/2025",
+        "decision_num_date": "Số 193, ngày 29/4/2025",
+        "duration": "28/04/2025 -  28/4/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "ĐẶNG HAI",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHAN THỊ LUYỆN",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5931",
+    "full_name": "Trần Văn Phụ",
+    "dob": "29/07/1988",
+    "yob": 1988,
+    "gender": "Nam",
+    "id_card": "048088000978",
+    "ethnicity": "Kinh",
+    "address_permanent": "Tổ 14, An Phú, An Khê, Gia Lai",
+    "address_current": "K82/15/23 Nguyễn Lương Bằng, Hòa Khánh Bắc",
+    "tdp": "Tổ dân phố Quang Thành 9",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "",
+    "lat": 16.084332,
+    "lng": 108.150158,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Bắt buộc",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:26.332000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "",
+        "decision_num_date": "Bắt buộc",
+        "duration": ""
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5935",
+    "full_name": "Nguyễn Hà Trang",
+    "dob": "08/06/2005",
+    "yob": 2005,
+    "gender": "Nữ",
+    "id_card": "075305004259",
+    "ethnicity": "Kinh",
+    "address_permanent": "446/43 KP5A, Long Bình, Biên Hòa, Đồng Nai",
+    "address_current": "Tổ 31, Phường Liên Chiểu",
+    "tdp": "Tổ dân phố Quang Thành 9",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "",
+    "lat": 16.084097,
+    "lng": 108.149756,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "24/5/2025",
+    "decision_num_date": "Số 326, ngày 27/05/2025",
+    "duration": "27/05/2025 - 27/05/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:26.371000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "24/5/2025",
+        "decision_num_date": "Số 326, ngày 27/05/2025",
+        "duration": "27/05/2025 - 27/05/2026 (02 năm)"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5938",
+    "full_name": "Nguyễn Minh Lơ",
+    "dob": "18/9/1986",
+    "yob": 1986,
+    "gender": "Nam",
+    "id_card": "048086001966",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 2, QUAN NAM 4, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "TỔ 2, QUAN NAM 4, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 4",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-013069",
+    "lat": 16.088123,
+    "lng": 108.097212,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "27/5/2025",
+    "decision_num_date": "Số 235, ngày 20/5/2025",
+    "duration": "28/05/2025 - 28/5/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:26.422000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "27/5/2025",
+        "decision_num_date": "Số 235, ngày 20/5/2025",
+        "duration": "28/05/2025 - 28/5/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "LÊ THANH TẨN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHẠM THỊ PHỐ",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e593b",
+    "full_name": "Ngô Tấn Cao",
+    "dob": "22/10/1992",
+    "yob": 1992,
+    "gender": "Nam",
+    "id_card": "048092001281",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 50, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "TỔ 50, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Quản lý sau cai",
+    "notes": "HSCT: 20197-004637",
+    "lat": 16.088558,
+    "lng": 108.0969,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:26.463000",
+    "violation_histories": [
+      {
+        "action": "Quản lý sau cai",
+        "date": "",
+        "decision_num_date": "",
+        "duration": ""
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGÔ TẤN THÊM",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRẦN THỊ HOA",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5940",
+    "full_name": "Lê Trung Tiến",
+    "dob": "08/06/2006",
+    "yob": 2006,
+    "gender": "Nam",
+    "id_card": "048206008224",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN HƯỞNG PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN HƯỞNG PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Hưởng Phước",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Khởi tố",
+    "notes": "HSCT: 20197-010759",
+    "lat": 16.075629,
+    "lng": 108.097299,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "13/03/2024",
+    "decision_num_date": "Số 94, ngày 13/3/2024 - Số 82, ngày 13/3/2024",
+    "duration": "13/3/2024 - 13/3/2025 (02 năm)",
+    "updated_at": "2026-08-03T08:43:26.504000",
+    "violation_histories": [
+      {
+        "action": "Khởi tố",
+        "date": "13/03/2024",
+        "decision_num_date": "Số 94, ngày 13/3/2024 - Số 82, ngày 13/3/2024",
+        "duration": "13/3/2024 - 13/3/2025 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "LÊ VĂN CƯỜNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "ĐỖ THỊ ANH ĐÀO",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5949",
+    "full_name": "Đoàn Ngọc Minh",
+    "dob": "14/11/1994",
+    "yob": 1994,
+    "gender": "Nam",
+    "id_card": "048094008755",
+    "ethnicity": "Kinh",
+    "address_permanent": "361/10 ÂU CƠ, TỔ 66, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "361/10 ÂU CƠ ,TỔ 66, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-005475",
+    "lat": 16.066806,
+    "lng": 108.144374,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "27/09/2024",
+    "decision_num_date": "Bắt buộc - Số 325, ngày 27/09/2024 - Số 989, ngày 01/10/2024",
+    "duration": "27/09/2024 - 27/09/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:26.542000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "27/09/2024",
+        "decision_num_date": "Bắt buộc - Số 325, ngày 27/09/2024 - Số 989, ngày 01/10/2024",
+        "duration": "27/09/2024 - 27/09/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "ĐOÀN NGỌC NGUYÊN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "BÙI THỊ MAI",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e594a",
+    "full_name": "Phạm Ngọc Lân",
+    "dob": "10/04/1985",
+    "yob": 1985,
+    "gender": "Nam",
+    "id_card": "048085005333",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 63, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "SỐ NHÀ 214 ÂU CƠ, TỔ 63, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-004925",
+    "lat": 16.075112,
+    "lng": 108.146314,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "26/09/2024",
+    "decision_num_date": "Bắt buộc - Số 443, ngày 26/09/2024 - Số 1062, ngày 25/10/2024",
+    "duration": "25/10/2024 - 25/10/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:26.595000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "26/09/2024",
+        "decision_num_date": "Bắt buộc - Số 443, ngày 26/09/2024 - Số 1062, ngày 25/10/2024",
+        "duration": "25/10/2024 - 25/10/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "PHẠM ĐÌNH DANH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRẦN THỊ THẬP",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e594b",
+    "full_name": "Lê Đức Hoàng",
+    "dob": "25/02/1997",
+    "yob": 1997,
+    "gender": "Nam",
+    "id_card": "046097008720",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 81, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "K104/20 Mai lão bạng, Phường Hải Châu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-007771",
+    "lat": 16.082908,
+    "lng": 108.10292,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "16/12/2024",
+    "decision_num_date": "Bắt buộc - Số 427, ngày 16/12/2024 - Số 1137, ngày 19/12/2024",
+    "duration": "16/12/2024 - 16/12/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:26.646000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "16/12/2024",
+        "decision_num_date": "Bắt buộc - Số 427, ngày 16/12/2024 - Số 1137, ngày 19/12/2024",
+        "duration": "16/12/2024 - 16/12/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "LÊ ĐỨC ÁNH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "VÕ THỊ MÃO",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5950",
+    "full_name": "Phạm Phú Hiệp",
+    "dob": "16/02/2005",
+    "yob": 2005,
+    "gender": "Nam",
+    "id_card": "048205003076",
+    "ethnicity": "Kinh",
+    "address_permanent": "Bình Thuận, Hải Châu, Đà Nẵng",
+    "address_current": "Tổ 82, Phường Hòa Khánh Bắc, Quận Liên Chiểu",
+    "tdp": "Tổ dân phố Đa Phước 3",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "",
+    "lat": 16.074054,
+    "lng": 108.154391,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "17/06/2025",
+    "decision_num_date": "Tự nguyện - Số 372, ngày 17/06/2025",
+    "duration": "01/06/2025 - 01/06/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:26.689000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "17/06/2025",
+        "decision_num_date": "Tự nguyện - Số 372, ngày 17/06/2025",
+        "duration": "01/06/2025 - 01/06/2026 (02 năm)"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5956",
+    "full_name": "Trần Nhật Tùng",
+    "dob": "09/03/1998",
+    "yob": 1998,
+    "gender": "Nam",
+    "id_card": "048098006730",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 65, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở cai nghiện TP Đà Nẵng, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-004975",
+    "lat": 16.070624,
+    "lng": 108.135804,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "30/09/2025",
+    "decision_num_date": "Tự nguyện - Số 395, ngày 30/9/2025",
+    "duration": "29/09/2025-29/09/2026",
+    "updated_at": "2026-08-03T08:43:26.734000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "30/09/2025",
+        "decision_num_date": "Tự nguyện - Số 395, ngày 30/9/2025",
+        "duration": "29/09/2025-29/09/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "TRẦN NHẬT TUẤN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "LÊ THỊ ÁNH TUYẾT",
+        "relation": "Mẹ"
+      },
+      {
+        "full_name": "NGUYỄN THỊ CHÍNH",
+        "relation": "Chủ hộ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5957",
+    "full_name": "Lê Đức Cảnh",
+    "dob": "13/04/1989",
+    "yob": 1989,
+    "gender": "Nam",
+    "id_card": "048089004319",
+    "ethnicity": "Kinh",
+    "address_permanent": "Chung cư xã hội Hoà Khánh Khu CN Hoà Khánh, Tổ 82, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở cai nghiện TP Đà Nẵng, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-009205",
+    "lat": 16.073927,
+    "lng": 108.154012,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "30/09/2025",
+    "decision_num_date": "Tự nguyện - Số 395, ngày 30/9/2025",
+    "duration": "29/09/2025-29/09/2026",
+    "updated_at": "2026-08-03T08:43:26.775000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "30/09/2025",
+        "decision_num_date": "Tự nguyện - Số 395, ngày 30/9/2025",
+        "duration": "29/09/2025-29/09/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "LÊ TRỌNG PHÚC",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "HUỲNH THỊ THỦY",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5963",
+    "full_name": "Đỗ Thị Thanh Phượng",
+    "dob": "08/01/2001",
+    "yob": 2001,
+    "gender": "Nữ",
+    "id_card": "049301000497",
+    "ethnicity": "Kinh",
+    "address_permanent": "Điện Bàn, TP Đà Nẵng",
+    "address_current": "Điện Bàn, TP Đà Nẵng",
+    "tdp": "Tổ dân phố Chung Cư 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "",
+    "lat": 16.074606,
+    "lng": 108.135101,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "24/12/2025",
+    "decision_num_date": "Bắt buộc - Số 917, ngày 24/12/2025",
+    "duration": "22/12/2025-22/12/2027",
+    "updated_at": "2026-08-03T08:43:26.814000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "24/12/2025",
+        "decision_num_date": "Bắt buộc - Số 917, ngày 24/12/2025",
+        "duration": "22/12/2025-22/12/2027"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5965",
+    "full_name": "Đặng Thị Kim My",
+    "dob": "11/04/2003",
+    "yob": 2003,
+    "gender": "Nữ",
+    "id_card": "049303006134",
+    "ethnicity": "Kinh",
+    "address_permanent": "Xã Quế Sơn Trung, TP Đà Nẵng",
+    "address_current": "Xã Quế Sơn Trung, TP Đà Nẵng",
+    "tdp": "Tổ dân phố Quang Thành 9",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "",
+    "lat": 16.072554,
+    "lng": 108.147524,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "24/12/2025",
+    "decision_num_date": "Bắt buộc - Số 915, ngày 24/12/2025",
+    "duration": "22/12/2025-22/12/2027",
+    "updated_at": "2026-08-03T08:43:26.856000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "24/12/2025",
+        "decision_num_date": "Bắt buộc - Số 915, ngày 24/12/2025",
+        "duration": "22/12/2025-22/12/2027"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e596a",
+    "full_name": "Bùi Thanh Long",
+    "dob": "27/07/1994",
+    "yob": 1994,
+    "gender": "Nam",
+    "id_card": "048094008471",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 81, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở Cai nghiện TP. Đà Nẵng - Thôn Lộc Mỹ, phường Hải Vân, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-007712",
+    "lat": 16.083005,
+    "lng": 108.102698,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "13/02/2026",
+    "decision_num_date": "Tự nguyện - Số 308, ngày 13/02/2026",
+    "duration": "12/02/2026-12/02/2027",
+    "updated_at": "2026-08-03T08:43:26.901000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "13/02/2026",
+        "decision_num_date": "Tự nguyện - Số 308, ngày 13/02/2026",
+        "duration": "12/02/2026-12/02/2027"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "BÙI THỊ HƯỜNG",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e596b",
+    "full_name": "Nguyễn Hữu Phú",
+    "dob": "28/08/1998",
+    "yob": 1998,
+    "gender": "Nam",
+    "id_card": "048098004079",
+    "ethnicity": "Kinh",
+    "address_permanent": "K120/H02/14 NGUYỄN LƯƠNG BĂNG TỔ 11, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở Cai nghiện TP. Đà Nẵng - Thôn Lộc Mỹ, phường Hải Vân, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quang Thành 8",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-003096",
+    "lat": 16.104107,
+    "lng": 108.110258,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "06/03/2026",
+    "decision_num_date": "Bắt buộc - Số 353, ngày 06/03/2026",
+    "duration": "05/03/2026-05/03/2028",
+    "updated_at": "2026-08-03T08:43:26.969000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "06/03/2026",
+        "decision_num_date": "Bắt buộc - Số 353, ngày 06/03/2026",
+        "duration": "05/03/2026-05/03/2028"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN HÀO",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ TUYẾT",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5970",
+    "full_name": "Nguyễn Thanh Nhựt",
+    "dob": "19/12/2000",
+    "yob": 2000,
+    "gender": "Nam",
+    "id_card": "049200009118",
+    "ethnicity": "Kinh",
+    "address_permanent": "SỐ 07 KIỆT 60 NGUYỄN CHÁNH, TỔ 28, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở cai nghiện TP Đà Nẵng, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-002349",
+    "lat": 16.073894,
+    "lng": 108.154467,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "09/04/2026",
+    "decision_num_date": "Bắt buộc - Số 549, ngày 09/04/2026",
+    "duration": "07/04/2026- 07/04/2028",
+    "updated_at": "2026-08-03T08:43:27.011000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "09/04/2026",
+        "decision_num_date": "Bắt buộc - Số 549, ngày 09/04/2026",
+        "duration": "07/04/2026- 07/04/2028"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN PHÁP",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "ĐẶNG THỊ NGA",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e597c",
+    "full_name": "Nguyễn Văn Chí",
+    "dob": "29/04/1992",
+    "yob": 1992,
+    "gender": "Nam",
+    "id_card": "049092014340",
+    "ethnicity": "Kinh",
+    "address_permanent": "Tam kỳ, Quảng Nam",
+    "address_current": "K72 Phan Văn Định, Hòa Khánh Bắc",
+    "tdp": "Tổ dân phố Quan Nam 5",
+    "drug_types_used": [
+      "MET",
+      "OPI"
     ],
     "status": "Nghiện",
     "notes": "",
-    "subject_images": [],
-    "lat": 16.0855817853116,
-    "lng": 108.15123880672502,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.420Z"
+    "lat": 16.092485,
+    "lng": 108.104992,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Methadone",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:27.050000",
+    "violation_histories": [
+      {
+        "action": "Nghiện",
+        "date": "",
+        "decision_num_date": "Methadone",
+        "duration": ""
+      }
+    ]
   },
   {
-    "_id": "69e90f236898e2f02c27c882",
+    "_id": "6a6495b4c13152a7d05e597e",
+    "full_name": "Nguyễn Ngọc Sơn",
+    "dob": "22/07/1996",
+    "yob": 1996,
+    "gender": "Nam",
+    "id_card": "042096014611",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN HƯỞNG PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN HƯỞNG PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Hưởng Phước",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Nghiện",
+    "notes": "HSCT: 20197-009898",
+    "lat": 16.075908,
+    "lng": 108.09675,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Tự nguyện",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:27.091000",
+    "violation_histories": [
+      {
+        "action": "Nghiện",
+        "date": "",
+        "decision_num_date": "Tự nguyện",
+        "duration": ""
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN VĂN SINH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ ANH ĐÀO",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e597f",
+    "full_name": "Huỳnh Đức Hiệp",
+    "dob": "05/12/1994",
+    "yob": 1994,
+    "gender": "Nam",
+    "id_card": "048094008055",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 46, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "TỔ 46, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Nghiện",
+    "notes": "HSCT: 20197-005875",
+    "lat": 16.10496,
+    "lng": 108.084236,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Tự nguyện",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:27.130000",
+    "violation_histories": [
+      {
+        "action": "Nghiện",
+        "date": "",
+        "decision_num_date": "Tự nguyện",
+        "duration": ""
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "HUỲNH ĐỨC HÒA",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "LÊ THỊ CÚC",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e598a",
+    "full_name": "Mai Tấn Hiếu",
+    "dob": "12/05/2007",
+    "yob": 2007,
+    "gender": "Nam",
+    "id_card": "049207005856",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN TRUNG SƠN, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN TRUNG SƠN, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Trung Sơn - Hồng Phước",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-011243",
+    "lat": 16.092226,
+    "lng": 108.105158,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "10/09/2025",
+    "decision_num_date": "Số 548, ngày 24/10/2025",
+    "duration": "20/10/2025-20/10/2026",
+    "updated_at": "2026-08-03T08:43:27.177000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "10/09/2025",
+        "decision_num_date": "Số 548, ngày 24/10/2025",
+        "duration": "20/10/2025-20/10/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "MAI THANH TÙNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "HÀ THỊ SANG",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e598e",
+    "full_name": "Hồ Kỳ Trung",
+    "dob": "13/08/2000",
+    "yob": 2000,
+    "gender": "Nam",
+    "id_card": "048200003150",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN QUAN NAM 3, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN QUAN NAM 5, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 5",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-011597",
+    "lat": 16.091887,
+    "lng": 108.105248,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "17/11/2025",
+    "decision_num_date": "Số 782, ngày 10/12/2025",
+    "duration": "17/11/2025-17/11/2026",
+    "updated_at": "2026-08-03T08:43:27.216000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "17/11/2025",
+        "decision_num_date": "Số 782, ngày 10/12/2025",
+        "duration": "17/11/2025-17/11/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "HỒ KỲ BỘT",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRƯƠNG THỊ HẰNG",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e598f",
+    "full_name": "Trần Văn Bảo",
+    "dob": "30/01/1997",
+    "yob": 1997,
+    "gender": "Nam",
+    "id_card": "048097003561",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 67 ĐA PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "SỐ NHÀ 457 ÂU CƠ ĐA PHƯỚC TỔ 67, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-004297",
+    "lat": 16.070459,
+    "lng": 108.135748,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "16/10/2025",
+    "decision_num_date": "Số 783, ngày 10/12/2025",
+    "duration": "16/10/2025-16/10/2026",
+    "updated_at": "2026-08-03T08:43:27.257000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "16/10/2025",
+        "decision_num_date": "Số 783, ngày 10/12/2025",
+        "duration": "16/10/2025-16/10/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "TRẦN VĂN HOÀNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "HÀ THỊ HỒNG",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5994",
     "full_name": "Trần Thiên Vũ",
     "dob": "10/11/1993",
     "yob": 1993,
     "gender": "Nam",
     "id_card": "049093015580",
     "ethnicity": "Kinh",
-    "drug_types_used": [
-      "MDMA"
-    ],
-    "tdp": "79",
     "address_permanent": "Thượng Đức, Tp Đà Nẵng",
     "address_current": "Thanh Vinh 8, tổ 79, phường Liên Chiểu",
+    "tdp": "Tổ dân phố Tân Hiền",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "",
+    "lat": 16.077447,
+    "lng": 108.062647,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "13/02/2026",
+    "decision_num_date": "Số 311, ngày 14/02/2026",
+    "duration": "13/02/2026-13/02/2027",
+    "updated_at": "2026-08-03T08:43:27.303000",
     "violation_histories": [
       {
         "action": "Sử dụng",
-        "date": "46066",
+        "date": "13/02/2026",
         "decision_num_date": "Số 311, ngày 14/02/2026",
-        "duration": "13/02/2026-13/02/2027",
-        "_id": "69e90f236898e2f02c27c883"
+        "duration": "13/02/2026-13/02/2027"
       }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5995",
+    "full_name": "Đỗ Văn Thành",
+    "dob": "22/05/1990",
+    "yob": 1990,
+    "gender": "Nam",
+    "id_card": "048090009962",
+    "ethnicity": "Kinh",
+    "address_permanent": "SỐ NHÀ 367, ĐƯỜNG ÂU CƠ, TỔ 66, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "SỐ NHÀ 367 ÂU CƠ TỔ 66, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-004502",
+    "lat": 16.066869,
+    "lng": 108.144591,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "12/12/2025",
+    "decision_num_date": "Số 364, ngày 09/03/2026",
+    "duration": "12/12/2025-12/12/2026",
+    "updated_at": "2026-08-03T08:43:27.344000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "12/12/2025",
+        "decision_num_date": "Số 364, ngày 09/03/2026",
+        "duration": "12/12/2025-12/12/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "ĐỖ VĂN TIẾN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHẠM THỊ TUYẾT",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5924",
+    "full_name": "Nguyễn Thanh Sơn",
+    "dob": "06/08/1987",
+    "yob": 1987,
+    "gender": "Nam",
+    "id_card": "048087001371",
+    "ethnicity": "Kinh",
+    "address_permanent": "tổ 75, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "tổ 75, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quang Thành 9",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-006619",
+    "lat": 16.08393,
+    "lng": 108.150031,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Tự nguyện",
+    "duration": "Số 22, ngày 15/01/2025",
+    "updated_at": "2026-08-03T08:43:27.383000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "",
+        "decision_num_date": "Tự nguyện",
+        "duration": "Số 22, ngày 15/01/2025"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN ĐÊ",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHẠM THỊ HƠN",
+        "relation": "Mẹ"
+      },
+      {
+        "full_name": "ĐỒNG THỊ THẮNG",
+        "relation": "Chủ hộ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5928",
+    "full_name": "Huỳnh Kim Phúc",
+    "dob": "01/01/1990",
+    "yob": 1990,
+    "gender": "Nam",
+    "id_card": "048090002466",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 55, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở cai nghiện TP Đà Nẵng, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-004337",
+    "lat": 16.073991,
+    "lng": 108.154174,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Bắt buộc",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:27.424000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "",
+        "decision_num_date": "Bắt buộc",
+        "duration": ""
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "HUỲNH KIM NUÔI",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRẦN THỊ KIM HOA",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e592c",
+    "full_name": "Nguyễn Văn Linh",
+    "dob": "03/10/1998",
+    "yob": 1998,
+    "gender": "Nam",
+    "id_card": "048098001349",
+    "ethnicity": "Kinh",
+    "address_permanent": "tổ 78, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở xã hội Bầu Bàng, thôn Lộc Mỹ, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Hưởng Phước",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Khởi tố",
+    "notes": "HSCT: 20197-006580",
+    "lat": 16.075566,
+    "lng": 108.097083,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Bắt buộc",
+    "duration": "Số 101, ngày 07/05/2025",
+    "updated_at": "2026-08-03T08:43:27.466000",
+    "violation_histories": [
+      {
+        "action": "Khởi tố",
+        "date": "",
+        "decision_num_date": "Bắt buộc",
+        "duration": "Số 101, ngày 07/05/2025"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN THỊ SINH",
+        "relation": "Mẹ"
+      },
+      {
+        "full_name": "NGUYỄN THỊ HIỀN",
+        "relation": "Chủ hộ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e592d",
+    "full_name": "Nguyễn Trung Gia Bảo",
+    "dob": "02/07/2007",
+    "yob": 2007,
+    "gender": "Nam",
+    "id_card": "048207005465",
+    "ethnicity": "Kinh",
+    "address_permanent": "Tổ 07, Phường Thạc Gián, Quận Thanh Khê",
+    "address_current": "Tổ 82, Phường Liên Chiểu",
+    "tdp": "Tổ dân phố Đa Phước 3",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "",
+    "lat": 16.074393,
+    "lng": 108.154301,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "26/4/2025",
+    "decision_num_date": "Số 293, ngày 05/05/2025",
+    "duration": "27/04/2025 - 27/04/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:27.517000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "26/4/2025",
+        "decision_num_date": "Số 293, ngày 05/05/2025",
+        "duration": "27/04/2025 - 27/04/2026 (02 năm)"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e592e",
+    "full_name": "Đinh Tấn Xuân",
+    "dob": "25/06/1982",
+    "yob": 1982,
+    "gender": "Nam",
+    "id_card": "048082002069",
+    "ethnicity": "Kinh",
+    "address_permanent": "Tổ 21, Phường Hải Vân",
+    "address_current": "Tổ 77, Phường Liên Chiểu",
+    "tdp": "Tổ dân phố Quan Nam 4",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "",
+    "lat": 16.088462,
+    "lng": 108.097122,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "28/4/2025",
+    "decision_num_date": "Số 292, ngày 05/05/2025",
+    "duration": "29/04/2025 - 29/04/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:27.595000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "28/4/2025",
+        "decision_num_date": "Số 292, ngày 05/05/2025",
+        "duration": "29/04/2025 - 29/04/2026 (02 năm)"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5930",
+    "full_name": "Trương Vĩnh Trung",
+    "dob": "15/01/1994",
+    "yob": 1994,
+    "gender": "Nam",
+    "id_card": null,
+    "ethnicity": "Kinh",
+    "address_permanent": "Tổ 42, phường Tam Thuận",
+    "address_current": "Quan Nam 4, Liên Chiểu",
+    "tdp": "Tổ dân phố Quan Nam 4",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "",
+    "lat": 16.088227,
+    "lng": 108.096721,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "23/4/2025",
+    "decision_num_date": "Số 192, ngày 29/4/2025",
+    "duration": "28/04/2025 -  28/4/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:27.640000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "23/4/2025",
+        "decision_num_date": "Số 192, ngày 29/4/2025",
+        "duration": "28/04/2025 -  28/4/2026 (02 năm)"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5932",
+    "full_name": "Phạm Kim Long",
+    "dob": "15/06/2005",
+    "yob": 2005,
+    "gender": "Nam",
+    "id_card": "048205002721",
+    "ethnicity": "Kinh",
+    "address_permanent": "Tổ 31, Phường Liên Chiểu",
+    "address_current": "Tổ 17, Phường Liên Chiểu",
+    "tdp": "Tổ dân phố Chung Cư 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "",
+    "lat": 16.074879,
+    "lng": 108.134867,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "5/5/2025",
+    "decision_num_date": "Số 297, ngày 09/05/2025",
+    "duration": "07/05/2025 - 07/05/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:27.679000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "5/5/2025",
+        "decision_num_date": "Số 297, ngày 09/05/2025",
+        "duration": "07/05/2025 - 07/05/2026 (02 năm)"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5933",
+    "full_name": "Lương Phương Nam",
+    "dob": "17/01/2007",
+    "yob": 2007,
+    "gender": "Nam",
+    "id_card": "048207005343",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 12, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "TỔ 12, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quang Thành 8",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-002130",
+    "lat": 16.06714,
+    "lng": 108.144223,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "13/5/2025",
+    "decision_num_date": "Số 305, ngày 14/05/2025",
+    "duration": "14/05/2025 - 14/05/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:27.718000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "13/5/2025",
+        "decision_num_date": "Số 305, ngày 14/05/2025",
+        "duration": "14/05/2025 - 14/05/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "LƯƠNG PHƯƠNG ĐÔNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ XUÂN",
+        "relation": "Mẹ"
+      },
+      {
+        "full_name": "NGUYỄN THỊ PHƯƠNG THẢO",
+        "relation": "Chủ hộ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5934",
+    "full_name": "Trương Thị Thu Thảo",
+    "dob": "03/10/1994",
+    "yob": 1994,
+    "gender": "Nam",
+    "id_card": "048194003406",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN VÂN DƯƠNG 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN VÂN DƯƠNG 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-009966",
+    "lat": 16.088511,
+    "lng": 108.10282,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "27/4/2025",
+    "decision_num_date": "Số 240, ngày 02/6/2025",
+    "duration": "02/05/2025 -  02/6/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:27.758000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "27/4/2025",
+        "decision_num_date": "Số 240, ngày 02/6/2025",
+        "duration": "02/05/2025 -  02/6/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "TRƯƠNG VĂN THANH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGÔ THỊ HAI",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5939",
+    "full_name": "Trần Nhật Quân",
+    "dob": "25/09/1989",
+    "yob": 1989,
+    "gender": "Nam",
+    "id_card": "048089005090",
+    "ethnicity": "Kinh",
+    "address_permanent": "K47/8, ĐƯỜNG NGUYỄN LƯƠNG BẰNG, TỔ 19, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Số nhà 47/8 đường Nguyễn Lương Bằng, Tổ 19, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-002176",
+    "lat": 16.097964,
+    "lng": 108.075964,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Tự nguyện",
+    "duration": "Số 784, ngày 10/12/2025",
+    "updated_at": "2026-08-03T08:43:27.800000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "",
+        "decision_num_date": "Tự nguyện",
+        "duration": "Số 784, ngày 10/12/2025"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "TRẦN VĂN TUÂN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "ĐOÀN THỊ LỆ KIỀU",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e593c",
+    "full_name": "Lê Hoàng Anh",
+    "dob": "03/09/1989",
+    "yob": 1989,
+    "gender": "Nam",
+    "id_card": "048089003643",
+    "ethnicity": "Kinh",
+    "address_permanent": "SỐ NHÀ 13 K117 ĐỒNG KÈ, TỔ 44, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "SỐ NHÀ 13 K117 ĐỒNG KÈ, TỔ 44, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Khởi tố",
+    "notes": "HSCT: 20197-004294",
+    "lat": 16.074645,
+    "lng": 108.134466,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "09/06/2023",
+    "decision_num_date": "Bắt buộc - Số 122, ngày 09/6/2023 - Số 275, ngày 12/06/2023",
+    "duration": "09/06/2023 - 09/06/2025 (02 năm)",
+    "updated_at": "2026-08-03T08:43:27.845000",
+    "violation_histories": [
+      {
+        "action": "Khởi tố",
+        "date": "09/06/2023",
+        "decision_num_date": "Bắt buộc - Số 122, ngày 09/6/2023 - Số 275, ngày 12/06/2023",
+        "duration": "09/06/2023 - 09/06/2025 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "LÊ VĂN THƯƠNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ THU HUỆ",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e593e",
+    "full_name": "Nguyễn Văn Thi",
+    "dob": "02/01/1999",
+    "yob": 1999,
+    "gender": "Nam",
+    "id_card": "049099004758",
+    "ethnicity": "Kinh",
+    "address_permanent": "KIỆT 34/12 ĐOÀN PHÚ TỨ TỔ 54, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "KIỆT 34/12 ĐOÀN PHÚ TỨ TỔ 54, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Khởi tố",
+    "notes": "HSCT: 20197-005552",
+    "lat": 16.082507,
+    "lng": 108.102794,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "",
+    "duration": "27/10/2023 - 27/10/2024 (02 năm)",
+    "updated_at": "2026-08-03T08:43:27.885000",
+    "violation_histories": [
+      {
+        "action": "Khởi tố",
+        "date": "",
+        "decision_num_date": "",
+        "duration": "27/10/2023 - 27/10/2024 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN HAI",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRƯƠNG THỊ NGHỊ",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e593f",
+    "full_name": "Phan Thương",
+    "dob": "12/12/1968",
+    "yob": 1968,
+    "gender": "Nam",
+    "id_card": "048068001678",
+    "ethnicity": "Kinh",
+    "address_permanent": "tổ 45, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 4",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Khởi tố",
+    "notes": "HSCT: 20197-004209",
+    "lat": 16.087996,
+    "lng": 108.096833,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "",
+    "duration": "09/06/2022 - 09/06/2024 (02 năm)",
+    "updated_at": "2026-08-03T08:43:27.927000",
+    "violation_histories": [
+      {
+        "action": "Khởi tố",
+        "date": "",
+        "decision_num_date": "",
+        "duration": "09/06/2022 - 09/06/2024 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "PHAN KÝ",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ NHỚ",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e594d",
+    "full_name": "Nguyễn Quang Trung",
+    "dob": "22/08/1996",
+    "yob": 1996,
+    "gender": "Nam",
+    "id_card": "064096013992",
+    "ethnicity": "Kinh",
+    "address_permanent": "Khóm 1, Bến Quan, Vĩnh Linh, Quảng Trị",
+    "address_current": "541 Âu Cơ, Hòa Khánh Bắc, Liên Chiểu, Đà Nẵng",
+    "tdp": "Tổ dân phố Quang Thành 9",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "",
+    "lat": 16.08966,
+    "lng": 108.145826,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "08/03/2025",
+    "decision_num_date": "Bắt buộc - Số 101, ngày 08/03/2025",
+    "duration": "07/03/2025 - 07/03/2027 (02 năm)",
+    "updated_at": "2026-08-03T08:43:27.966000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "08/03/2025",
+        "decision_num_date": "Bắt buộc - Số 101, ngày 08/03/2025",
+        "duration": "07/03/2025 - 07/03/2027 (02 năm)"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5951",
+    "full_name": "Trần Hiền",
+    "dob": "17/6/1988",
+    "yob": 1988,
+    "gender": "Nam",
+    "id_card": "048088007940",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN VÂN DƯƠNG 2, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở xã hội Bầu Bàng, thôn Lộc Mỹ, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-012621",
+    "lat": 16.097797,
+    "lng": 108.075841,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "12/07/2025",
+    "decision_num_date": "Bắt buộc - 183, ngày 12/7/2025 - Số 72, ngày 15/7/2025",
+    "duration": "12/07/2025 - 12/07/2027 (02 năm)",
+    "updated_at": "2026-08-03T08:43:28.008000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "12/07/2025",
+        "decision_num_date": "Bắt buộc - 183, ngày 12/7/2025 - Số 72, ngày 15/7/2025",
+        "duration": "12/07/2025 - 12/07/2027 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "TRẦN HIẾU",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "LÊ THỊ HỒNG",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e595c",
+    "full_name": "Phan Đình Bảo",
+    "dob": "01/02/1988",
+    "yob": 1988,
+    "gender": "Nam",
+    "id_card": "44088010129",
+    "ethnicity": "Kinh",
+    "address_permanent": "Trường Phú Sơn, Quảng Trị",
+    "address_current": "Trường Phú Sơn, Quảng Trị",
+    "tdp": "Tổ dân phố Quang Thành 7",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "",
+    "lat": 16.074626,
+    "lng": 108.128916,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "21/11/2025",
+    "decision_num_date": "Bắt buộc - Số 673, ngày 21/11/2025",
+    "duration": "19/11/2025-19/11/2026",
+    "updated_at": "2026-08-03T08:43:28.050000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "21/11/2025",
+        "decision_num_date": "Bắt buộc - Số 673, ngày 21/11/2025",
+        "duration": "19/11/2025-19/11/2026"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e595d",
+    "full_name": "Lương Văn Trung",
+    "dob": "23/3/1991",
+    "yob": 1991,
+    "gender": "Nam",
+    "id_card": "048091001838",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 20, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở cai nghiện TP Đà Nẵng, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-001657",
+    "lat": 16.083993,
+    "lng": 108.150248,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "25/11/2025",
+    "decision_num_date": "Tự nguyện - Số 695, ngày 25/11/2025",
+    "duration": "23/11/2025-23/11/2026",
+    "updated_at": "2026-08-03T08:43:28.091000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "25/11/2025",
+        "decision_num_date": "Tự nguyện - Số 695, ngày 25/11/2025",
+        "duration": "23/11/2025-23/11/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "LƯƠNG VĂN TÀI",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRẦN THỊ LÝ",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e595e",
+    "full_name": "Bùi Phan Min",
+    "dob": "01/01/1993",
+    "yob": 1993,
+    "gender": "Nam",
+    "id_card": "048093006610",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 5 ,THÔN HƯỞNG PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN HƯỞNG PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Hưởng Phước",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-009682",
+    "lat": 16.07589,
+    "lng": 108.097371,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "10/12/2025",
+    "decision_num_date": "Tự nguyện - Số 785, ngày 10/12/2025",
+    "duration": "09/12/2025-09/12/2026",
+    "updated_at": "2026-08-03T08:43:28.135000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "10/12/2025",
+        "decision_num_date": "Tự nguyện - Số 785, ngày 10/12/2025",
+        "duration": "09/12/2025-09/12/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "BÙI ĐỨC TÂM",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHAN THỊ LỰC",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5961",
+    "full_name": "Phan Xuân Vũ",
+    "dob": "08/01/2002",
+    "yob": 2002,
+    "gender": "Nam",
+    "id_card": "049202003303",
+    "ethnicity": "Kinh",
+    "address_permanent": "Xã Quế Phước, TP Đà Nẵng",
+    "address_current": "Xã Quế Phước, TP Đà Nẵng",
+    "tdp": "Tổ dân phố Quang Thành 9",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "",
+    "lat": 16.075339,
+    "lng": 108.146556,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "04/12/2025",
+    "decision_num_date": "Bắt buộc - Số 746, ngày 04/12/2025",
+    "duration": "03/12/2025-03/12/2027",
+    "updated_at": "2026-08-03T08:43:28.179000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "04/12/2025",
+        "decision_num_date": "Bắt buộc - Số 746, ngày 04/12/2025",
+        "duration": "03/12/2025-03/12/2027"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5966",
+    "full_name": "Nguyễn Thị Phượng",
+    "dob": "14/10/1985",
+    "yob": 1985,
+    "gender": "Nữ",
+    "id_card": "049185004869",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 4, THÔN VÂN DƯƠNG 2, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "VÂN DƯƠNG 2, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-010561",
+    "lat": 16.074252,
+    "lng": 108.143345,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "24/12/2025",
+    "decision_num_date": "Bắt buộc - Số 914, ngày 24/12/2025",
+    "duration": "21/12/2025-21/12/2027",
+    "updated_at": "2026-08-03T08:43:28.229000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "24/12/2025",
+        "decision_num_date": "Bắt buộc - Số 914, ngày 24/12/2025",
+        "duration": "21/12/2025-21/12/2027"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN GIA",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHẠM THỊ CHI",
+        "relation": "Mẹ"
+      },
+      {
+        "full_name": "LÊ VĂN MỸ",
+        "relation": "Chủ hộ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5968",
+    "full_name": "Lê Tấn Hạnh",
+    "dob": "10/06/1987",
+    "yob": 1987,
+    "gender": "Nam",
+    "id_card": "048084005588",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 63, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở Cai nghiện TP. Đà Nẵng - Thôn Lộc Mỹ, phường Hải Vân, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-004364",
+    "lat": 16.074778,
+    "lng": 108.146465,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "02/02/2026",
+    "decision_num_date": "Tự nguyện - Số 230, ngày 02/02/2026",
+    "duration": "30/01/2026-30/01/2027",
+    "updated_at": "2026-08-03T08:43:28.272000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "02/02/2026",
+        "decision_num_date": "Tự nguyện - Số 230, ngày 02/02/2026",
+        "duration": "30/01/2026-30/01/2027"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "LÊ TẤN PHÚC",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRẦN THỊ SANG",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e596f",
+    "full_name": "Lê Anh Tài",
+    "dob": "03/06/1992",
+    "yob": 1992,
+    "gender": "Nam",
+    "id_card": "040092027181",
+    "ethnicity": "Kinh",
+    "address_permanent": "KIỆT 151, ĐƯỜNG ÂU CƠ, TỔ 57, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở Cai nghiện TP. Đà Nẵng - TDP Lộc Mỹ, phường Hải Vân, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-006218",
+    "lat": 16.079285,
+    "lng": 108.149451,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "10/04/2026",
+    "decision_num_date": "Tự nguyện - Số 559, ngày 10/04/2026",
+    "duration": "30/03/2026- 30/03/2027",
+    "updated_at": "2026-08-03T08:43:28.312000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "10/04/2026",
+        "decision_num_date": "Tự nguyện - Số 559, ngày 10/04/2026",
+        "duration": "30/03/2026- 30/03/2027"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "LÊ VĂN DŨNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ THU THỦY",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5972",
+    "full_name": "Trần Quốc Tân",
+    "dob": "20/07/1993",
+    "yob": 1993,
+    "gender": "Nam",
+    "id_card": "049093008903",
+    "ethnicity": "Kinh",
+    "address_permanent": "K87/28 NGUYỄN LƯƠNG BẰNG TỔ 20, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở cai nghiện TP Đà Nẵng, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-000122",
+    "lat": 16.094193,
+    "lng": 108.102704,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "15/05/2026",
+    "decision_num_date": "Bắt buộc - Số 739, ngày 15/05/2026",
+    "duration": "15/05/2026- 15/05/2028",
+    "updated_at": "2026-08-03T08:43:28.357000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "15/05/2026",
+        "decision_num_date": "Bắt buộc - Số 739, ngày 15/05/2026",
+        "duration": "15/05/2026- 15/05/2028"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "TRẦN PHƯỚC HẢI",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRẦN THỊ TUYẾT NHUNG",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5973",
+    "full_name": "Huỳnh Văn Long",
+    "dob": "12/07/1995",
+    "yob": 1995,
+    "gender": "Nam",
+    "id_card": "048095006782",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 56, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "TỔ 56, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-004974",
+    "lat": 16.077653,
+    "lng": 108.150945,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "26/05/2026",
+    "decision_num_date": "Bắt buộc - Số 793, ngày 26/05/2026",
+    "duration": "25/05/2026- 25/05/2028",
+    "updated_at": "2026-08-03T08:43:28.401000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "26/05/2026",
+        "decision_num_date": "Bắt buộc - Số 793, ngày 26/05/2026",
+        "duration": "25/05/2026- 25/05/2028"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "HUỲNH VĂN BÌNH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "ĐÀO THỊ CHIẾN",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5975",
+    "full_name": "Hà Ngọc Đồng",
+    "dob": "21/04/1989",
+    "yob": 1989,
+    "gender": "Nam",
+    "id_card": "042089007399",
+    "ethnicity": "Kinh",
+    "address_permanent": "K57/03 NGÔ THÌ NHẬM, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở xã hội Bầu Bàng, thôn Lộc Mỹ, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quang Thành 9",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Nghiện",
+    "notes": "HSCT: 20197-003637",
+    "lat": 16.089827,
+    "lng": 108.14595,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Bắt buộc",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:28.441000",
+    "violation_histories": [
+      {
+        "action": "Nghiện",
+        "date": "",
+        "decision_num_date": "Bắt buộc",
+        "duration": ""
+      },
+      {
+        "action": "Kiểm tra ma túy: 🟢 Âm tính (Chấp hành tốt)",
+        "date": "29/07/2026",
+        "decision_num_date": "Đợt kiểm tra test ma túy ngày 29/7/2026",
+        "duration": "Kiểm tra định kỳ/đột xuất"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "HÀ NGỌC SƠN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "LÊ THỊ PHƯƠNG LAN",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5977",
+    "full_name": "Phan Thông Nghĩa",
+    "dob": "10/08/1993",
+    "yob": 1993,
+    "gender": "Nam",
+    "id_card": "048093006785",
+    "ethnicity": "Kinh",
+    "address_permanent": "SỐ 42, PHAN VĂN ĐẠT, TỔ 25, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "SỐ 42 ĐƯỜNG PHAN VĂN ĐẠT, TỔ 25, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Tân Hiền",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Nghiện",
+    "notes": "HSCT: 20197-003569",
+    "lat": 16.077211,
+    "lng": 108.062844,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Bắt buộc",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:28.488000",
+    "violation_histories": [
+      {
+        "action": "Nghiện",
+        "date": "",
+        "decision_num_date": "Bắt buộc",
+        "duration": ""
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "PHAN THANH HÙNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRẦN THỊ XUÂN ÁNH",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5978",
+    "full_name": "Hà Tiến Sĩ",
+    "dob": "21/3/1996",
+    "yob": 1996,
+    "gender": "Nam",
+    "id_card": "048096007033",
+    "ethnicity": "Kinh",
+    "address_permanent": "150 ĐỒNG KÈ, TỔ 44, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở cai nghiện TP Đà Nẵng, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Nghiện",
+    "notes": "HSCT: 20197-004353",
+    "lat": 16.074976,
+    "lng": 108.134645,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Bắt buộc",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:28.531000",
+    "violation_histories": [
+      {
+        "action": "Nghiện",
+        "date": "",
+        "decision_num_date": "Bắt buộc",
+        "duration": ""
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "HÀ VĂN NHỨT",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGÔ THỊ NGỌC",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5979",
+    "full_name": "Phan Văn Trầm",
+    "dob": "08/06/1991",
+    "yob": 1991,
+    "gender": "Nam",
+    "id_card": "048091007347",
+    "ethnicity": "Kinh",
+    "address_permanent": "SỐ NHÀ 345 ÂU CƠ, TỔ 66, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "SỐ NHÀ 345 ĐƯỜNG ÂU CƠ TỔ 66, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Nghiện",
+    "notes": "HSCT: 20197-004622",
+    "lat": 16.067208,
+    "lng": 108.144501,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Methadone",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:28.576000",
+    "violation_histories": [
+      {
+        "action": "Nghiện",
+        "date": "",
+        "decision_num_date": "Methadone",
+        "duration": ""
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "PHAN VĂN HƯƠNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "LÊ THỊ HOA",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5981",
+    "full_name": "Nguyễn Văn Trọng",
+    "dob": "05/05/1974",
+    "yob": 1974,
+    "gender": "Nam",
+    "id_card": "48074008683",
+    "ethnicity": "Kinh",
+    "address_permanent": "Tổ 09 Thanh Khê",
+    "address_current": "P714, E1 Chung cư Hòa Khánh",
+    "tdp": "Tổ dân phố Quang Thành 9",
+    "drug_types_used": [
+      "MET",
+      "OPI"
     ],
     "status": "Nghiện",
     "notes": "",
+    "lat": 16.07518,
+    "lng": 108.146592,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Methadone",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:28.619000",
+    "violation_histories": [
+      {
+        "action": "Nghiện",
+        "date": "",
+        "decision_num_date": "Methadone",
+        "duration": ""
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5985",
+    "full_name": "Bùi Đức Hiền Em",
+    "dob": "15/07/1981",
+    "yob": 1981,
+    "gender": "Nam",
+    "id_card": "048081001041",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN HIỀN PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN HIỀN PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Tân Hiền",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-013850",
+    "lat": 16.076779,
+    "lng": 108.062687,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "08/12/2025",
+    "decision_num_date": "Số 292, ngày 04/9/2025",
+    "duration": "21/8/2025-21/8/2026",
+    "updated_at": "2026-08-03T08:43:28.658000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "08/12/2025",
+        "decision_num_date": "Số 292, ngày 04/9/2025",
+        "duration": "21/8/2025-21/8/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "BÙI ĐỨC ĐẢNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHẠM THỊ VUI",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5987",
+    "full_name": "Đặng Vũ Hoàng Gian",
+    "dob": "05/01/1994",
+    "yob": 1994,
+    "gender": "Nữ",
+    "id_card": "048194006505",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN HIỀN PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN HƯỞNG PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Hưởng Phước",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-013544",
+    "lat": 16.075459,
+    "lng": 108.097214,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "09/08/2025",
+    "decision_num_date": "Số 373, ngày 24/9/2025",
+    "duration": "16/9/2025-16/9/2026",
+    "updated_at": "2026-08-03T08:43:28.697000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "09/08/2025",
+        "decision_num_date": "Số 373, ngày 24/9/2025",
+        "duration": "16/9/2025-16/9/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "ĐẶNG VĂN ANH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "VÕ THỊ PHƯƠNG LAN",
+        "relation": "Mẹ"
+      },
+      {
+        "full_name": "TRẦN THANH VŨ",
+        "relation": "Chủ hộ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e598b",
+    "full_name": "Nguyễn Mạnh Tiên",
+    "dob": "09/02/1988",
+    "yob": 1988,
+    "gender": "Nam",
+    "id_card": "049088017288",
+    "ethnicity": "Kinh",
+    "address_permanent": "Hanh Tây, Phú Thuận, Đà Nẵng",
+    "address_current": "51 Thanh Vinh 10, Liên Chiểu",
+    "tdp": "Tổ dân phố Thanh Vinh 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "",
+    "lat": 16.075116,
+    "lng": 108.119829,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "14/11/2025",
+    "decision_num_date": "Số 672, ngày 21/11/2025",
+    "duration": "14/11/2025-14/11/2026",
+    "updated_at": "2026-08-03T08:43:28.746000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "14/11/2025",
+        "decision_num_date": "Số 672, ngày 21/11/2025",
+        "duration": "14/11/2025-14/11/2026"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e598c",
+    "full_name": "Nguyễn Thị Mỹ Dung",
+    "dob": "05/10/1998",
+    "yob": 1998,
+    "gender": "Nữ",
+    "id_card": "049198004187",
+    "ethnicity": "Kinh",
+    "address_permanent": "xã Thượng Đức, TP Đà Nẵng",
+    "address_current": "Chung cư Hòa Khánh, Liên Chiểu",
+    "tdp": "Tổ dân phố Quan Nam 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "",
+    "lat": 16.097905,
+    "lng": 108.076559,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "17/11/2025",
+    "decision_num_date": "Số 787, ngày 10/12/2025",
+    "duration": "17/11/2025-17/11/2026",
+    "updated_at": "2026-08-03T08:43:28.789000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "17/11/2025",
+        "decision_num_date": "Số 787, ngày 10/12/2025",
+        "duration": "17/11/2025-17/11/2026"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e598d",
+    "full_name": "Hồ Thị Anh Việt",
+    "dob": "20/6/1990",
+    "yob": 1990,
+    "gender": "Nữ",
+    "id_card": "048190001293",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN QUAN NAM 2, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN QUAN NAM 2, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-012899",
+    "lat": 16.091991,
+    "lng": 108.104757,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "17/11/2025",
+    "decision_num_date": "Số 786, ngày 10/12/2025",
+    "duration": "17/11/2025-17/11/2026",
+    "updated_at": "2026-08-03T08:43:28.829000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "17/11/2025",
+        "decision_num_date": "Số 786, ngày 10/12/2025",
+        "duration": "17/11/2025-17/11/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "HỒ KỲ BỘT",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRƯƠNG THỊ HẰNG",
+        "relation": "Mẹ"
+      },
+      {
+        "full_name": "NGÔ TẤN THẮNG",
+        "relation": "Chủ hộ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5996",
+    "full_name": "Dương Văn Tân",
+    "dob": "03/01/2002",
+    "yob": 2002,
+    "gender": "Nam",
+    "id_card": "049202004587",
+    "ethnicity": "Kinh",
+    "address_permanent": "Việt An, Đà Nẵng",
+    "address_current": "K856/21/19 Tôn Đức Thắng",
+    "tdp": "Tổ dân phố Hưởng Phước",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "",
+    "lat": 16.07605,
+    "lng": 108.096674,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "26/02/2026",
+    "decision_num_date": "Số 389, ngày 12/03/2026",
+    "duration": "26/02/2026-26/02/2027",
+    "updated_at": "2026-08-03T08:43:28.868000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "26/02/2026",
+        "decision_num_date": "Số 389, ngày 12/03/2026",
+        "duration": "26/02/2026-26/02/2027"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5997",
+    "full_name": "Nguyễn Hữu Sang",
+    "dob": "12/09/1988",
+    "yob": 1988,
+    "gender": "Nam",
+    "id_card": "048088004066",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN QUAN NAM 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN QUAN NAM 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-011992",
+    "lat": 16.097566,
+    "lng": 108.075953,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "28/03/2026",
+    "decision_num_date": "Số 576, ngày 13/04/2026",
+    "duration": "28/03/2026-28/03/2027",
+    "updated_at": "2026-08-03T08:43:28.944000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "28/03/2026",
+        "decision_num_date": "Số 576, ngày 13/04/2026",
+        "duration": "28/03/2026-28/03/2027"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN HỮU TÁM",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHẠM THỊ NỞ",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5920",
+    "full_name": "Huỳnh Văn Thông",
+    "dob": "21/01/2003",
+    "yob": 2003,
+    "gender": "Nam",
+    "id_card": "048203008720",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 56, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "1120 Tỉnh Lộ 10, Khu Phố 33, Phường Tân Tạo, Thành phố Hồ Chí Minh",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-004974",
+    "lat": 16.077585,
+    "lng": 108.150667,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "22/01/2025",
+    "decision_num_date": "Số 04, ngày 23/01/2025",
+    "duration": "23/01/2025 - 23/01/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:28.983000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "22/01/2025",
+        "decision_num_date": "Số 04, ngày 23/01/2025",
+        "duration": "23/01/2025 - 23/01/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "HUỲNH VĂN BÌNH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "ĐÀO THỊ CHIẾN",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5923",
+    "full_name": "Lê Văn Dũng",
+    "dob": "08/10/1993",
+    "yob": 1993,
+    "gender": "Nam",
+    "id_card": "048093005672",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN VÂN DƯƠNG 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN VÂN DƯƠNG 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-012729",
+    "lat": 16.088443,
+    "lng": 108.102542,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "23/12/2024",
+    "decision_num_date": "Số 960, ngày 28/12/2024",
+    "duration": "28/12/2024 - 28/12/2025 (02 năm)",
+    "updated_at": "2026-08-03T08:43:29.022000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "23/12/2024",
+        "decision_num_date": "Số 960, ngày 28/12/2024",
+        "duration": "28/12/2024 - 28/12/2025 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "LÊ VĂN HÙNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHẠM THỊ ĐINH",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5929",
+    "full_name": "Nguyễn Văn Duy",
+    "dob": "26/10/1989",
+    "yob": 1989,
+    "gender": "Nam",
+    "id_card": "048089005630",
+    "ethnicity": "Kinh",
+    "address_permanent": "K80/36/16 NGUYỄN CHÁNH, TỔ 17, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "K80/H36/4 NGUYỄN CHÁNH, TỔ 17, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quang Thành 6",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-003078",
+    "lat": 16.074478,
+    "lng": 108.13474,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "19/3/2025",
+    "decision_num_date": "Số 126, ngày 24/03/2025",
+    "duration": "21/03/2025 - 21/03/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:29.064000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "19/3/2025",
+        "decision_num_date": "Số 126, ngày 24/03/2025",
+        "duration": "21/03/2025 - 21/03/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN THOẢNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TỐNG THỊ QUÝ HOA",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5942",
+    "full_name": "Ngô Quốc Khánh",
+    "dob": "25/12/1998",
+    "yob": 1998,
+    "gender": "Nam",
+    "id_card": "048098004744",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN QUAN NAM 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN QUAN NAM 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Khởi tố",
+    "notes": "HSCT: 20197-012023",
+    "lat": 16.09763,
+    "lng": 108.076115,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Bắt buộc",
+    "duration": "09/09/2022 - 09/09/2024 (02 năm)",
+    "updated_at": "2026-08-03T08:43:29.102000",
+    "violation_histories": [
+      {
+        "action": "Khởi tố",
+        "date": "",
+        "decision_num_date": "Bắt buộc",
+        "duration": "09/09/2022 - 09/09/2024 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGÔ VĂN HOA",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHAN THỊ HUỆ",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5945",
+    "full_name": "Huỳnh Ngọc Sơn",
+    "dob": "26/4/1999",
+    "yob": 1999,
+    "gender": "Nam",
+    "id_card": "048099005706",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN VÂN DƯƠNG 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN QUAN NAM 5, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 5",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Khởi tố",
+    "notes": "HSCT: 20197-013761",
+    "lat": 16.092158,
+    "lng": 108.10488,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Tự nguyện",
+    "duration": "22/12/2023 - 22/12/2024 (02 năm)",
+    "updated_at": "2026-08-03T08:43:29.145000",
+    "violation_histories": [
+      {
+        "action": "Khởi tố",
+        "date": "",
+        "decision_num_date": "Tự nguyện",
+        "duration": "22/12/2023 - 22/12/2024 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "HUỲNH KHÁNH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "BÙI THỊ NGỌT",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5947",
+    "full_name": "Nguyễn Thành Trung",
+    "dob": "21/01/1999",
+    "yob": 1999,
+    "gender": "Nam",
+    "id_card": "048099002413",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN TÂN NINH, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở xã hội Bầu Bàng, thôn Lộc Mỹ, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Khởi tố",
+    "notes": "HSCT: 20197-010872",
+    "lat": 16.098032,
+    "lng": 108.076242,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "05/05/2025",
+    "decision_num_date": "Tự nguyện - Số 99, ngày 05/05/2025 - Số 194, ngày 05/05/2025",
+    "duration": "05/05/2025 - 05/05/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:29.184000",
+    "violation_histories": [
+      {
+        "action": "Khởi tố",
+        "date": "05/05/2025",
+        "decision_num_date": "Tự nguyện - Số 99, ngày 05/05/2025 - Số 194, ngày 05/05/2025",
+        "duration": "05/05/2025 - 05/05/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN VĂN NHÂN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGÔ THỊ BÊ",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5948",
+    "full_name": "Phan Thông Cường",
+    "dob": "09/02/1987",
+    "yob": 1987,
+    "gender": "Nam",
+    "id_card": "048087005563",
+    "ethnicity": "Kinh",
+    "address_permanent": "SỐ 42, PHAN VĂN ĐẠT, TỔ 25, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "42 Phan Văn Đạt, tổ 25, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Tân Hiền",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-003569",
+    "lat": 16.076949,
+    "lng": 108.062773,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "26/07/2024",
+    "decision_num_date": "Bắt buộc - Số 255, ngày 26/7/2024 - Số 698, ngày 29/07/2024",
+    "duration": "26/07/2024 - 26/07/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:29.226000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "26/07/2024",
+        "decision_num_date": "Bắt buộc - Số 255, ngày 26/7/2024 - Số 698, ngày 29/07/2024",
+        "duration": "26/07/2024 - 26/07/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "PHAN THANH HÙNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRẦN THỊ XUÂN ÁNH",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e594c",
+    "full_name": "Phan Viết Tình",
+    "dob": "01/03/1989",
+    "yob": 1989,
+    "gender": "Nam",
+    "id_card": "040089017325",
+    "ethnicity": "Kinh",
+    "address_permanent": "xóm Đại Đồng, xã Thịnh Sơn, huyện Đô Lương, tỉnh Nghệ An",
+    "address_current": "Tổ 42, Phường Hòa Khánh Bắc, Quận Liên Chiểu",
+    "tdp": "Tổ dân phố Quang Thành 7",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "",
+    "lat": 16.074714,
+    "lng": 108.119702,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "21/01/2025",
+    "decision_num_date": "Bắt buộc - Số 30, ngày 21/01/2025 - Số 72, ngày 05/02/2025",
+    "duration": "21/01/2025 - 21/01/2027 (02 năm)",
+    "updated_at": "2026-08-03T08:43:29.264000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "21/01/2025",
+        "decision_num_date": "Bắt buộc - Số 30, ngày 21/01/2025 - Số 72, ngày 05/02/2025",
+        "duration": "21/01/2025 - 21/01/2027 (02 năm)"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e594e",
+    "full_name": "Hồ Minh Tuấn",
+    "dob": "11/06/1993",
+    "yob": 1993,
+    "gender": "Nam",
+    "id_card": "048093006769",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 54, K34/10 ĐOÀN PHÚ TỨ, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở xã hội Bầu Bàng, thôn Lộc Mỹ, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-008733",
+    "lat": 16.082674,
+    "lng": 108.102519,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "alias": "",
+    "education": "",
+    "family_members": [
+      {
+        "full_name": "HỒ VĂN TRƯƠNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "VÕ THỊ THUẬN",
+        "relation": "Mẹ"
+      }
+    ],
+    "health_status": "",
+    "job": "",
+    "pathology": "",
+    "phone": "",
     "subject_images": [],
-    "lat": 16.086080912048487,
-    "lng": 108.15106982008926,
-    "family_members": [],
-    "__v": 0,
-    "created_at": "2026-04-22T18:10:43.039Z",
-    "updated_at": "2026-04-22T18:14:46.421Z"
+    "updated_at": "2026-08-03T08:43:29.308000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "28/03/2025",
+        "decision_num_date": "Bắt buộc - Số 53, ngày 28/03/2025 - Số 139, ngày 29/03/2025",
+        "duration": "28/03/2025 - 28/03/2027 (02 năm)"
+      }
+    ],
+    "date": "28/03/2025",
+    "decision_num_date": "Bắt buộc - Số 53, ngày 28/03/2025 - Số 139, ngày 29/03/2025",
+    "duration": "28/03/2025 - 28/03/2027 (02 năm)"
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5952",
+    "full_name": "Ngô Tấn Minh",
+    "dob": "27/8/1991",
+    "yob": 1991,
+    "gender": "Nam",
+    "id_card": "048091005251",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN QUAN NAM 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN QUAN NAM 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-009897",
+    "lat": 16.097693,
+    "lng": 108.076332,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "17/06/2025",
+    "decision_num_date": "Tự nguyện - 265, ngày 17/6/2025",
+    "duration": "12/06/2025 - 12/06/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:29.353000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "17/06/2025",
+        "decision_num_date": "Tự nguyện - 265, ngày 17/6/2025",
+        "duration": "12/06/2025 - 12/06/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGÔ VĂN HÙNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRƯƠNG THỊ THANH",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5954",
+    "full_name": "Phạm Thế Thi",
+    "dob": "09/09/1996",
+    "yob": 1996,
+    "gender": "Nam",
+    "id_card": "048096006829",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN VÂN DƯƠNG 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN VÂN DƯƠNG 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-010732",
+    "lat": 16.088276,
+    "lng": 108.102418,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "01/07/2024",
+    "decision_num_date": "Bắt buộc - Số 220, ngày 01/07/2024 - Số 406, ngày 01/07/2024",
+    "duration": "01/07/2024 - 01/07/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:29.394000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "01/07/2024",
+        "decision_num_date": "Bắt buộc - Số 220, ngày 01/07/2024 - Số 406, ngày 01/07/2024",
+        "duration": "01/07/2024 - 01/07/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "PHẠM CAM",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ HỒNG",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5955",
+    "full_name": "Đỗ Văn Ngọc",
+    "dob": "05/10/1990",
+    "yob": 1990,
+    "gender": "Nam",
+    "id_card": "048090009429",
+    "ethnicity": "Kinh",
+    "address_permanent": "VÂN DƯƠNG 2, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "TỔ 5,VÂN DƯƠNG 2, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-010621",
+    "lat": 16.082569,
+    "lng": 108.10301,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "28/03/2025",
+    "decision_num_date": "Bắt buộc - Số 118, ngày 28/3/2025",
+    "duration": "28/3/2025 - 28/3/2027 (02 năm)",
+    "updated_at": "2026-08-03T08:43:29.433000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "28/03/2025",
+        "decision_num_date": "Bắt buộc - Số 118, ngày 28/3/2025",
+        "duration": "28/3/2025 - 28/3/2027 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "ĐỖ VĂN QUÝ",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "LÊ THỊ TÁM",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5959",
+    "full_name": "Trần Văn Quý",
+    "dob": "10/02/1996",
+    "yob": 1996,
+    "gender": "Nam",
+    "id_card": "048096002614",
+    "ethnicity": "Kinh",
+    "address_permanent": "SỐ NHÀ 2 K127 ĐỒNG KÈ, TỔ 44, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở cai nghiện Ma túy, TP. Đà Nẵng, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-004241",
+    "lat": 16.07454,
+    "lng": 108.134957,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "30/09/2025",
+    "decision_num_date": "Tự nguyện - Số 394, ngày 30/9/2025",
+    "duration": "19/09/2025-19/09/2026",
+    "updated_at": "2026-08-03T08:43:29.471000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "30/09/2025",
+        "decision_num_date": "Tự nguyện - Số 394, ngày 30/9/2025",
+        "duration": "19/09/2025-19/09/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "TRẦN VĂN NGHĨA",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "ĐOÀN THỊ LƯỢNG",
+        "relation": "Mẹ"
+      },
+      {
+        "full_name": "ĐINH THỊ LAN",
+        "relation": "Chủ hộ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e595a",
+    "full_name": "Hoàng Khắc Quyền",
+    "dob": "08/05/1990",
+    "yob": 1990,
+    "gender": "Nam",
+    "id_card": "38090005761",
+    "ethnicity": "Kinh",
+    "address_permanent": "Hà Tỉnh",
+    "address_current": "Tổ 33, Liên Chiểu, TP Đà Nẵng",
+    "tdp": "Tổ dân phố Quang Thành 9",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "",
+    "lat": 16.070329,
+    "lng": 108.14664,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "24/10/2025",
+    "decision_num_date": "Tự nguyện - Số 549, ngày 24/10/2025",
+    "duration": "23/10/2025-23/10/2026",
+    "updated_at": "2026-08-03T08:43:29.511000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "24/10/2025",
+        "decision_num_date": "Tự nguyện - Số 549, ngày 24/10/2025",
+        "duration": "23/10/2025-23/10/2026"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e595f",
+    "full_name": "Cao Xuân Long",
+    "dob": "10/10/1993",
+    "yob": 1993,
+    "gender": "Nam",
+    "id_card": "049093004949",
+    "ethnicity": "Kinh",
+    "address_permanent": "Xã Quế Phước, TP Đà Nẵng",
+    "address_current": "Xã Quế Phước, TP Đà Nẵng",
+    "tdp": "Tổ dân phố Quang Thành 3",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "",
+    "lat": 16.076054,
+    "lng": 108.144284,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "04/12/2025",
+    "decision_num_date": "Bắt buộc - Số 745, ngày 04/12/2025",
+    "duration": "03/12/2025-03/12/2027",
+    "updated_at": "2026-08-03T08:43:29.550000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "04/12/2025",
+        "decision_num_date": "Bắt buộc - Số 745, ngày 04/12/2025",
+        "duration": "03/12/2025-03/12/2027"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5960",
+    "full_name": "Ngô Văn Anh",
+    "dob": "05/10/1992",
+    "yob": 1992,
+    "gender": "Nam",
+    "id_card": "048092008353",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN QUAN NAM 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở xã hội Bầu Bàng, thôn Lộc Mỹ, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-013488",
+    "lat": 16.098128,
+    "lng": 108.07602,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "04/12/2025",
+    "decision_num_date": "Bắt buộc - Số 723, ngày 04/12/2025",
+    "duration": "02/12/2025-02/12/2027",
+    "updated_at": "2026-08-03T08:43:29.602000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "04/12/2025",
+        "decision_num_date": "Bắt buộc - Số 723, ngày 04/12/2025",
+        "duration": "02/12/2025-02/12/2027"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGÔ HÙNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ ĐÂY",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5962",
+    "full_name": "Nguyễn Anh Kiệt",
+    "dob": "04/07/2001",
+    "yob": 2001,
+    "gender": "Nam",
+    "id_card": "048201003813",
+    "ethnicity": "Kinh",
+    "address_permanent": "24/6 NGÔ SĨ LIÊN, TỔ 9, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở cai nghiện TP Đà Nẵng, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quang Thành 9",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-007457",
+    "lat": 16.078246,
+    "lng": 108.12427,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "24/12/2025",
+    "decision_num_date": "Tự nguyện - Số 912, ngày 24/12/2025",
+    "duration": "24/12/2025-24/12/2026",
+    "updated_at": "2026-08-03T08:43:29.647000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "24/12/2025",
+        "decision_num_date": "Tự nguyện - Số 912, ngày 24/12/2025",
+        "duration": "24/12/2025-24/12/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN THANH PHÚ",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ PHÚC HẠNH",
+        "relation": "Mẹ"
+      },
+      {
+        "full_name": "NGUYỄN HOA",
+        "relation": "Chủ hộ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5964",
+    "full_name": "Nguyễn Thị Kim Huệ",
+    "dob": "18/03/1994",
+    "yob": 1994,
+    "gender": "Nữ",
+    "id_card": "046194014725",
+    "ethnicity": "Kinh",
+    "address_permanent": "Xã Chân Mây, Thành phố Huế",
+    "address_current": "Xã Chân Mây, Thành phố Huế",
+    "tdp": "Tổ dân phố Quang Thành 9",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "",
+    "lat": 16.070534,
+    "lng": 108.146543,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "24/12/2025",
+    "decision_num_date": "Bắt buộc - Số 916, ngày 24/12/2025",
+    "duration": "22/12/2025-22/12/2027",
+    "updated_at": "2026-08-03T08:43:29.689000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "24/12/2025",
+        "decision_num_date": "Bắt buộc - Số 916, ngày 24/12/2025",
+        "duration": "22/12/2025-22/12/2027"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5967",
+    "full_name": "Võ Văn Ninh",
+    "dob": "01/02/1998",
+    "yob": 1998,
+    "gender": "Nam",
+    "id_card": "049098011130",
+    "ethnicity": "Kinh",
+    "address_permanent": "SỐ NHÀ 104/12 ĐƯỜNG ĐOÀN PHÚ TỨ, TỔ 53., Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "SỐ NHÀ 104/12 ĐƯỜNG ĐOÀN PHÚ TỨ, TỔ 53, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-005316",
+    "lat": 16.088172,
+    "lng": 108.10291,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "24/12/2025",
+    "decision_num_date": "Tự nguyện - Số 913, ngày 24/12/2025",
+    "duration": "23/12/2025-23/12/2026",
+    "updated_at": "2026-08-03T08:43:29.729000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "24/12/2025",
+        "decision_num_date": "Tự nguyện - Số 913, ngày 24/12/2025",
+        "duration": "23/12/2025-23/12/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "VÕ TRÀ",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ LĨNH",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5969",
+    "full_name": "Từ Ngọc Thái",
+    "dob": "12/05/1983",
+    "yob": 1983,
+    "gender": "Nam",
+    "id_card": "048083006180",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 80, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở xã hội Bầu Bàng, thôn Lộc Mỹ, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-007080",
+    "lat": 16.078557,
+    "lng": 108.124464,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "10/02/2026",
+    "decision_num_date": "Bắt buộc - Số 286, ngày 10/02/2026",
+    "duration": "07/02/2026-07/02/2028",
+    "updated_at": "2026-08-03T08:43:29.769000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "10/02/2026",
+        "decision_num_date": "Bắt buộc - Số 286, ngày 10/02/2026",
+        "duration": "07/02/2026-07/02/2028"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "TỪ NGỌC ĐOẢN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRẦN THỊ CHIẾN",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e596c",
+    "full_name": "Nguyễn Hữu Phú",
+    "dob": "29/09/2001",
+    "yob": 2001,
+    "gender": "Nam",
+    "id_card": "048201003868",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 56, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở cai nghiện Ma túy, TP. Đà Nẵng, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-005078",
+    "lat": 16.077251,
+    "lng": 108.150819,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "06/03/2026",
+    "decision_num_date": "Bắt buộc - Số 353, ngày 06/03/2026",
+    "duration": "05/03/2026-05/03/2028",
+    "updated_at": "2026-08-03T08:43:29.807000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "06/03/2026",
+        "decision_num_date": "Bắt buộc - Số 353, ngày 06/03/2026",
+        "duration": "05/03/2026-05/03/2028"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN HỮU CHÍNH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHAN THỊ ÁNH",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5974",
+    "full_name": "Hà Trọng Tài",
+    "dob": "31/05/1997",
+    "yob": 1997,
+    "gender": "Nam",
+    "id_card": "048097001421",
+    "ethnicity": "Kinh",
+    "address_permanent": "tổ 75, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở cai nghiện Ma túy, TP. Đà Nẵng, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 5",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Nghiện",
+    "notes": "HSCT: 20197-006741",
+    "lat": 16.091824,
+    "lng": 108.105031,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Bắt buộc",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:29.846000",
+    "violation_histories": [
+      {
+        "action": "Nghiện",
+        "date": "",
+        "decision_num_date": "Bắt buộc",
+        "duration": ""
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "HÀ VĂN THUẬN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGÔ THỊ LỘC",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5976",
+    "full_name": "Nguyễn Thanh Đại",
+    "dob": "08/11/1978",
+    "yob": 1978,
+    "gender": "Nam",
+    "id_card": "048078005939",
+    "ethnicity": "Kinh",
+    "address_permanent": "SỐ NHÀ 43, ĐƯỜNG ĐẶNG CHIÊM, TỔ 77, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "SỐ NHÀ 43 ĐƯỜNG ĐẶNG CHIÊM TỔ 77 THANH VINH 3, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Thanh Vinh 3",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Chưa chấp hành quyết định của TAND",
+    "notes": "HSCT: 20197-007177",
+    "lat": 16.087953,
+    "lng": 108.097127,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Bắt buộc",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:29.885000",
+    "violation_histories": [
+      {
+        "action": "Chưa chấp hành quyết định của TAND",
+        "date": "",
+        "decision_num_date": "Bắt buộc",
+        "duration": ""
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN THANH TÙNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHAN THỊ HẠNH",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e597a",
+    "full_name": "Trịnh Xuân Tuấn",
+    "dob": "14/03/1989",
+    "yob": 1989,
+    "gender": "Nam",
+    "id_card": "027089012499",
+    "ethnicity": "Kinh",
+    "address_permanent": "07 Bạch Thái Bưởi Tổ 59 Hòa Khánh Bắc",
+    "address_current": "07 Bạch Thái Bưởi Tổ 59 Hòa Khánh Bắc",
+    "tdp": "Tổ dân phố Quang Thành 9",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Nghiện",
+    "notes": "",
+    "lat": 16.089493,
+    "lng": 108.146101,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Methadone",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:29.932000",
+    "violation_histories": [
+      {
+        "action": "Nghiện",
+        "date": "",
+        "decision_num_date": "Methadone",
+        "duration": ""
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e597d",
+    "full_name": "Đoàn Đại Đạt",
+    "dob": "01/05/2000",
+    "yob": 2000,
+    "gender": "Nam",
+    "id_card": "49200001298",
+    "ethnicity": "Kinh",
+    "address_permanent": "Khâm Đức, Đà Nẵng",
+    "address_current": "Quan Nam 4, Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 4",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Nghiện",
+    "notes": "",
+    "lat": 16.088621,
+    "lng": 108.097086,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Tự nguyện",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:29.974000",
+    "violation_histories": [
+      {
+        "action": "Nghiện",
+        "date": "",
+        "decision_num_date": "Tự nguyện",
+        "duration": ""
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5980",
+    "full_name": "Lê Thanh Ngân",
+    "dob": "15/4/1992",
+    "yob": 1992,
+    "gender": "Nam",
+    "id_card": "048092001912",
+    "ethnicity": "Kinh",
+    "address_permanent": "Tổ 73, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Tổ 73, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Nghiện",
+    "notes": "HSCT: 20197-006889",
+    "lat": 16.088607,
+    "lng": 108.102598,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Tự nguyện",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:30.014000",
+    "violation_histories": [
+      {
+        "action": "Nghiện",
+        "date": "",
+        "decision_num_date": "Tự nguyện",
+        "duration": ""
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "LÊ THANH HUYNH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "ĐỒNG THỊ LIÊN",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5984",
+    "full_name": "Nguyễn Văn Kỳ Anh",
+    "dob": "13/11/1996",
+    "yob": 1996,
+    "gender": "Nam",
+    "id_card": "048096006300",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 79, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "TỔ 79, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-007286",
+    "lat": 16.078625,
+    "lng": 108.124742,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "12/8/2025",
+    "decision_num_date": "Số 297, ngày 06/9/2025",
+    "duration": "21/8/2025-21/8/2026",
+    "updated_at": "2026-08-03T08:43:30.052000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "12/8/2025",
+        "decision_num_date": "Số 297, ngày 06/9/2025",
+        "duration": "21/8/2025-21/8/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN VĂN HỘI",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "LÊ THỊ HỒNG HƯƠNG",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5989",
+    "full_name": "Bùi Đức Quý",
+    "dob": "10/10/1962",
+    "yob": 1962,
+    "gender": "Nam",
+    "id_card": "048062003849",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN HƯỞNG PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN HƯỞNG PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Hưởng Phước",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-011228",
+    "lat": 16.076127,
+    "lng": 108.097173,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "10/03/2025",
+    "decision_num_date": "Số 530, ngày 20/10/2025",
+    "duration": "10/10/2025-10/10/2026",
+    "updated_at": "2026-08-03T08:43:30.101000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "10/03/2025",
+        "decision_num_date": "Số 530, ngày 20/10/2025",
+        "duration": "10/10/2025-10/10/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "BÙI BÍCH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "ĐẶNG THỊ HỒNG",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5998",
+    "full_name": "Nguyễn Đăng Công",
+    "dob": "07/06/1996",
+    "yob": 1996,
+    "gender": "Nam",
+    "id_card": "066096017459",
+    "ethnicity": "Kinh",
+    "address_permanent": "xã Ea Phê, tỉnh Đăk Lăk",
+    "address_current": "K256/85 Âu Cơ, Liên Chiểu",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "",
+    "lat": 16.082247,
+    "lng": 108.102881,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "06/04/2026",
+    "decision_num_date": "Số 593, ngày 14/04/2026",
+    "duration": "06/04/2026-06/04/2027",
+    "updated_at": "2026-08-03T08:43:30.144000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "06/04/2026",
+        "decision_num_date": "Số 593, ngày 14/04/2026",
+        "duration": "06/04/2026-06/04/2027"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e591e",
+    "full_name": "Nguyễn Thị Diệu Linh",
+    "dob": "19/03/1996",
+    "yob": 1996,
+    "gender": "Nữ",
+    "id_card": "036196018456",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 42, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "TỔ 42, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-002487",
+    "lat": 16.084264,
+    "lng": 108.14988,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "15/01/2025",
+    "decision_num_date": "Số 01, ngày 16/01/2025",
+    "duration": "16/01/2025 - 16/01/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:30.183000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "15/01/2025",
+        "decision_num_date": "Số 01, ngày 16/01/2025",
+        "duration": "16/01/2025 - 16/01/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN VĂN CẨN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "ĐINH THỊ THỦY",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5921",
+    "full_name": "Tôn Thất Duy",
+    "dob": "09/07/2002",
+    "yob": 2002,
+    "gender": "Nam",
+    "id_card": "048202002106",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 38 ,QUANG THÀNH 4 A, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "TỔ 38, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-003051",
+    "lat": 16.077585,
+    "lng": 108.150667,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "22/01/2025",
+    "decision_num_date": "Số 05, ngày 23/01/2025",
+    "duration": "23/01/2025 - 23/01/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:30.224000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "22/01/2025",
+        "decision_num_date": "Số 05, ngày 23/01/2025",
+        "duration": "23/01/2025 - 23/01/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "TÔN THẤT TRY",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "LÊ THỊ THẮM",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5936",
+    "full_name": "Mai Phước Thuận",
+    "dob": "23/04/2005",
+    "yob": 2005,
+    "gender": "Nam",
+    "id_card": "048205000237",
+    "ethnicity": "Kinh",
+    "address_permanent": "Tổ 4, thôn Tân Ninh, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Tổ 4, thôn Tân Ninh, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Tân Hiền",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-012682",
+    "lat": 16.076886,
+    "lng": 108.062556,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "24/10/2024",
+    "decision_num_date": "Số 241, ngày 02/6/2025",
+    "duration": "02/05/2025 - 02/5/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:30.272000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "24/10/2024",
+        "decision_num_date": "Số 241, ngày 02/6/2025",
+        "duration": "02/05/2025 - 02/5/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "MAI VĂN HÀ",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRẦN THỊ HÀ",
+        "relation": "Mẹ"
+      },
+      {
+        "full_name": "THÁI MINH HẢI",
+        "relation": "Chủ hộ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5937",
+    "full_name": "Nguyễn Hữu Anh",
+    "dob": "01/01/1996",
+    "yob": 1996,
+    "gender": "Nam",
+    "id_card": "048096005292",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN HƯỞNG PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN HƯỞNG PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Hưởng Phước",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Thanh loại",
+    "notes": "HSCT: 20197-010282",
+    "lat": 16.075968,
+    "lng": 108.097209,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "27/4/2025",
+    "decision_num_date": "Số 195, ngày 05/5/2025",
+    "duration": "29/05/2025 - 29/5/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:30.330000",
+    "violation_histories": [
+      {
+        "action": "Thanh loại",
+        "date": "27/4/2025",
+        "decision_num_date": "Số 195, ngày 05/5/2025",
+        "duration": "29/05/2025 - 29/5/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN HỮU HÙNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGÔ THỊ HOA",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e593a",
+    "full_name": "Nguyễn Thành Tân",
+    "dob": "21/04/1983",
+    "yob": 1983,
+    "gender": "Nam",
+    "id_card": "049083015495",
+    "ethnicity": "Kinh",
+    "address_permanent": "Tổ 25, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Tổ 25, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Tân Hiền",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Quản lý sau cai",
+    "notes": "HSCT: 20197-004023",
+    "lat": 16.077288,
+    "lng": 108.062683,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:30.379000",
+    "violation_histories": [
+      {
+        "action": "Quản lý sau cai",
+        "date": "",
+        "decision_num_date": "",
+        "duration": ""
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN HƯỜNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "LÊ THỊ VÂN",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e593d",
+    "full_name": "Nguyễn Ngọc Tín",
+    "dob": "20/6/1993",
+    "yob": 1993,
+    "gender": "Nam",
+    "id_card": "048093007250",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 51, ĐA PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "138 ÂU CƠ TỔ 51, ĐA PHƯỚC 5, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Khởi tố",
+    "notes": "HSCT: 20197-005055",
+    "lat": 16.075733,
+    "lng": 108.096808,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "",
+    "duration": "09/06/2022 - 09/06/2024 (02 năm)",
+    "updated_at": "2026-08-03T08:43:30.417000",
+    "violation_histories": [
+      {
+        "action": "Khởi tố",
+        "date": "",
+        "decision_num_date": "",
+        "duration": "09/06/2022 - 09/06/2024 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN KIÊN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "HUỲNH THỊ NGỌC HOA",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5941",
+    "full_name": "Phan Văn Duẩn",
+    "dob": "11/12/1995",
+    "yob": 1995,
+    "gender": "Nam",
+    "id_card": "048095001577",
+    "ethnicity": "Kinh",
+    "address_permanent": "HƯỞNG PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "205/39 Huỳnh Tấn Phát, Phường Tân Thuận, Thành phố Hồ Chí Minh",
+    "tdp": "Tổ dân phố Hưởng Phước",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Khởi tố",
+    "notes": "HSCT: 20197-012680",
+    "lat": 16.076064,
+    "lng": 108.096987,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "17/04/2024",
+    "decision_num_date": "Tự nguyện - Số 136, ngày 17/4/2024 - Số 321, ngày 17/4/2024",
+    "duration": "17/4/2024 - 17/4/2025 (02 năm)",
+    "updated_at": "2026-08-03T08:43:30.457000",
+    "violation_histories": [
+      {
+        "action": "Khởi tố",
+        "date": "17/04/2024",
+        "decision_num_date": "Tự nguyện - Số 136, ngày 17/4/2024 - Số 321, ngày 17/4/2024",
+        "duration": "17/4/2024 - 17/4/2025 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "PHAN VĂN TUẤN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "LÊ THỊ MỸ",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5943",
+    "full_name": "Lê Quốc Toàn",
+    "dob": "20/10/1995",
+    "yob": 1995,
+    "gender": "Nam",
+    "id_card": "072095013337",
+    "ethnicity": "Kinh",
+    "address_permanent": "HIỀN PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN HIỀN PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Tân Hiền",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Khởi tố",
+    "notes": "HSCT: 20197-012463",
+    "lat": 16.077053,
+    "lng": 108.062281,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "15/08/2023",
+    "decision_num_date": "Bắt buộc - Số 196, ngày 15/8/2023 - Số 267, ngày 23/8/2023",
+    "duration": "15/8/2023 - 15/8/2025 (02 năm)",
+    "updated_at": "2026-08-03T08:43:30.496000",
+    "violation_histories": [
+      {
+        "action": "Khởi tố",
+        "date": "15/08/2023",
+        "decision_num_date": "Bắt buộc - Số 196, ngày 15/8/2023 - Số 267, ngày 23/8/2023",
+        "duration": "15/8/2023 - 15/8/2025 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "LÊ XUÂN THẠNH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRẦN THỊ CÚC",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5944",
+    "full_name": "Phan Đắc Nguyên",
+    "dob": "16/10/2000",
+    "yob": 2000,
+    "gender": "Nam",
+    "id_card": "048200001388",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN QUAN NAM 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "TỔ 6,THÔN QUAN NAM 4, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 4",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Khởi tố",
+    "notes": "HSCT: 20197-013683",
+    "lat": 16.088384,
+    "lng": 108.097284,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "30/08/2023",
+    "decision_num_date": "Bắt buộc - Số 215, ngày 30/8/2023 - Số 286, ngày 31/8/2023",
+    "duration": "30/8/2023 - 30/8/2025 (02 năm)",
+    "updated_at": "2026-08-03T08:43:30.535000",
+    "violation_histories": [
+      {
+        "action": "Khởi tố",
+        "date": "30/08/2023",
+        "decision_num_date": "Bắt buộc - Số 215, ngày 30/8/2023 - Số 286, ngày 31/8/2023",
+        "duration": "30/8/2023 - 30/8/2025 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "PHAN LƯU",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "LÊ THỊ YÊN",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5946",
+    "full_name": "Nguyễn Phước Bảo Hưng",
+    "dob": "23/11/2001",
+    "yob": 2001,
+    "gender": "Nam",
+    "id_card": "048201003108",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 4 THÔN QUAN NAM 4, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "TỔ 4 THÔN QUAN NAM 4, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 4",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Khởi tố",
+    "notes": "HSCT: 20197-012524",
+    "lat": 16.088402,
+    "lng": 108.096663,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "04/10/2024",
+    "decision_num_date": "Tự nguyện - Số 330, ngày 4/10/2024 - Số 520, ngày 4/10/2024",
+    "duration": "4/10/2024 - 4/10/2025 (02 năm)",
+    "updated_at": "2026-08-03T08:43:30.590000",
+    "violation_histories": [
+      {
+        "action": "Khởi tố",
+        "date": "04/10/2024",
+        "decision_num_date": "Tự nguyện - Số 330, ngày 4/10/2024 - Số 520, ngày 4/10/2024",
+        "duration": "4/10/2024 - 4/10/2025 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "VĨNH KHƯƠNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ NHUNG",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e594f",
+    "full_name": "Bùi Quang Huy",
+    "dob": "17/9/1991",
+    "yob": 1991,
+    "gender": "Nam",
+    "id_card": "048091003229",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 20, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở xã hội Bầu Bàng, thôn Lộc Mỹ, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-001723",
+    "lat": 16.094527,
+    "lng": 108.102553,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "26/05/2025",
+    "decision_num_date": "Tự nguyện - Số 320, ngày 26/05/2025",
+    "duration": "20/05/2025 - 20/05/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:30.633000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "26/05/2025",
+        "decision_num_date": "Tự nguyện - Số 320, ngày 26/05/2025",
+        "duration": "20/05/2025 - 20/05/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "BÙI QUANG SANH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHAN THỊ NGỌC",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5953",
+    "full_name": "Nguyễn Anh Tuấn",
+    "dob": "20/4/1998",
+    "yob": 1998,
+    "gender": "Nam",
+    "id_card": "048098006142",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 5 ,THÔN TÂN NINH, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở xã hội Bầu Bàng, thôn Lộc Mỹ, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quang Thành 9",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-012797",
+    "lat": 16.077385,
+    "lng": 108.062461,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "07/02/2025",
+    "decision_num_date": "Bắt buộc - Số 61, ngày 07/02/2025 - Số 58, ngày 10/02/2025",
+    "duration": "07/02/2025 -  07/02/2027 (02 năm)",
+    "updated_at": "2026-08-03T08:43:30.672000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "07/02/2025",
+        "decision_num_date": "Bắt buộc - Số 61, ngày 07/02/2025 - Số 58, ngày 10/02/2025",
+        "duration": "07/02/2025 -  07/02/2027 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN VĂN CHIẾN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ HÀ",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5958",
+    "full_name": "Nguyễn Minh Thông",
+    "dob": "23/07/2002",
+    "yob": 2002,
+    "gender": "Nam",
+    "id_card": "048202008194",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 78, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "TỔ 78 SỐ NHÀ 558 ĐƯỜNG ÂU CƠ, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-006725",
+    "lat": 16.075502,
+    "lng": 108.09692,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "07/10/2025",
+    "decision_num_date": "Tự nguyện - Số 425, ngày 07/10/2025",
+    "duration": "01/10/2025-01/10/2026",
+    "updated_at": "2026-08-03T08:43:30.720000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "07/10/2025",
+        "decision_num_date": "Tự nguyện - Số 425, ngày 07/10/2025",
+        "duration": "01/10/2025-01/10/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN BÌNH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "ĐÀO THỊ MỐC",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e595b",
+    "full_name": "Phạm Văn Đạt",
+    "dob": "15/11/1993",
+    "yob": 1993,
+    "gender": "Nam",
+    "id_card": "44093001121",
+    "ethnicity": "Kinh",
+    "address_permanent": "Tân Mỹ, Quảng Trị",
+    "address_current": "Tân Mỹ, Quảng Trị",
+    "tdp": "Tổ dân phố Quang Thành 7",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "",
+    "lat": 16.075039,
+    "lng": 108.11999,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "21/11/2025",
+    "decision_num_date": "Bắt buộc - Số 674, ngày 21/11/2025",
+    "duration": "19/11/2025-19/11/2026",
+    "updated_at": "2026-08-03T08:43:30.758000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "21/11/2025",
+        "decision_num_date": "Bắt buộc - Số 674, ngày 21/11/2025",
+        "duration": "19/11/2025-19/11/2026"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e596d",
+    "full_name": "Phạm Nguyễn Phú Phước",
+    "dob": "18/02/1997",
+    "yob": 1997,
+    "gender": "Nam",
+    "id_card": "048097001017",
+    "ethnicity": "Kinh",
+    "address_permanent": "K180/15 ĐỒNG KÈ, TỔ 43, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở cai nghiện TP Đà Nẵng, Phường Hải Vân, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-005100",
+    "lat": 16.078223,
+    "lng": 108.124615,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "19/03/2026",
+    "decision_num_date": "Bắt buộc - Số 422, ngày 19/03/2026",
+    "duration": "17/03/2026-17/03/2028",
+    "updated_at": "2026-08-03T08:43:30.804000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "19/03/2026",
+        "decision_num_date": "Bắt buộc - Số 422, ngày 19/03/2026",
+        "duration": "17/03/2026-17/03/2028"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "PHẠM PHÚ THÀNH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ HẠNH",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e596e",
+    "full_name": "Dương Văn Vương",
+    "dob": "01/01/1989",
+    "yob": 1989,
+    "gender": "Nam",
+    "id_card": "049089004868",
+    "ethnicity": "Kinh",
+    "address_permanent": "",
+    "address_current": "Tổ 81, Phường Liên Chiểu",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "",
+    "lat": 16.082443,
+    "lng": 108.102631,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "31/03/2026",
+    "decision_num_date": "Tự nguyện - Số 501, ngày 31/03/2026",
+    "duration": "27/03/2026- 27/03/2027",
+    "updated_at": "2026-08-03T08:43:30.842000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "31/03/2026",
+        "decision_num_date": "Tự nguyện - Số 501, ngày 31/03/2026",
+        "duration": "27/03/2026- 27/03/2027"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5971",
+    "full_name": "Nguyễn Văn Quân",
+    "dob": "12/04/2002",
+    "yob": 2002,
+    "gender": "Nam",
+    "id_card": "049202014950",
+    "ethnicity": "Kinh",
+    "address_permanent": "TỔ 2, THÔN TÂN NINH, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN TÂN NINH, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Tân Hiền",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-013169",
+    "lat": 16.076822,
+    "lng": 108.062394,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "14/04/2026",
+    "decision_num_date": "Cai nghiện tại Cộng đồng - Số 587, ngày 14/04/2026",
+    "duration": "10/04/2026- 10/04/2027",
+    "updated_at": "2026-08-03T08:43:30.887000",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "14/04/2026",
+        "decision_num_date": "Cai nghiện tại Cộng đồng - Số 587, ngày 14/04/2026",
+        "duration": "10/04/2026- 10/04/2027"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN VĂN HẠNH",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ KHÁNH LY",
+        "relation": "Mẹ"
+      },
+      {
+        "full_name": "NGUYỄN THỊ BỤT",
+        "relation": "Chủ hộ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e597b",
+    "full_name": "Dương Thái Sơn",
+    "dob": "01/10/1986",
+    "yob": 1986,
+    "gender": "Nam",
+    "id_card": "040086008847",
+    "ethnicity": "Kinh",
+    "address_permanent": "Tổ 25, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Tổ 25, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Tân Hiền",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Nghiện",
+    "notes": "HSCT: 20197-008946",
+    "lat": 16.077228,
+    "lng": 108.062223,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "",
+    "decision_num_date": "Methadone",
+    "duration": "",
+    "updated_at": "2026-08-03T08:43:30.928000",
+    "violation_histories": [
+      {
+        "action": "Nghiện",
+        "date": "",
+        "decision_num_date": "Methadone",
+        "duration": ""
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "DƯƠNG VĂN HỒNG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "TRẦN THỊ NGA",
+        "relation": "Mẹ"
+      },
+      {
+        "full_name": "DƯƠNG VĂN ĐỨC",
+        "relation": "Chủ hộ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5982",
+    "full_name": "Đinh Ngọc Lâm",
+    "dob": "03/12/2009",
+    "yob": 2009,
+    "gender": "Nam",
+    "id_card": "044209001668",
+    "ethnicity": "Kinh",
+    "address_permanent": "Tuyên Lâm, Quảng Trị",
+    "address_current": "Tổ 77, Liên Chiểu",
+    "tdp": "Tổ dân phố Quan Nam 4",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "",
+    "lat": 16.088083,
+    "lng": 108.096651,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "30/7/2025",
+    "decision_num_date": "Số 153, ngày 11/8/2025",
+    "duration": "28/7/2025 - 28/7/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:30.990000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "30/7/2025",
+        "decision_num_date": "Số 153, ngày 11/8/2025",
+        "duration": "28/7/2025 - 28/7/2026 (02 năm)"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5983",
+    "full_name": "Phạm Quang Hiệp",
+    "dob": "13/07/1998",
+    "yob": 1998,
+    "gender": "Nam",
+    "id_card": "048098001915",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN VÂN DƯƠNG 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN VÂN DƯƠNG 1, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-009933",
+    "lat": 16.088045,
+    "lng": 108.102531,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "31/7/2025",
+    "decision_num_date": "Số 155, ngày 11/8/2025",
+    "duration": "28/7/2025 - 28/7/2026 (02 năm)",
+    "updated_at": "2026-08-03T08:43:31.069000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "31/7/2025",
+        "decision_num_date": "Số 155, ngày 11/8/2025",
+        "duration": "28/7/2025 - 28/7/2026 (02 năm)"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "PHẠM VĂN NHỨT",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "LÊ THỊ NIỆM",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5986",
+    "full_name": "Nguyễn Minh Phúc",
+    "dob": "14/7/1987",
+    "yob": 1987,
+    "gender": "Nam",
+    "id_card": "044087001764",
+    "ethnicity": "Kinh",
+    "address_permanent": "Tổ7, phường Đồng Thuận, Quảng Trị",
+    "address_current": "Không xác định",
+    "tdp": "Tổ dân phố Quang Thành 9",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "",
+    "lat": 16.073082,
+    "lng": 108.147444,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "08/12/2025",
+    "decision_num_date": "Số 343, ngày 18/9/2025",
+    "duration": "21/8/2025-21/8/2026",
+    "updated_at": "2026-08-03T08:43:31.114000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "08/12/2025",
+        "decision_num_date": "Số 343, ngày 18/9/2025",
+        "duration": "21/8/2025-21/8/2026"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5988",
+    "full_name": "Nguyễn Thế Công",
+    "dob": "20/12/1984",
+    "yob": 1984,
+    "gender": "Nam",
+    "id_card": "048084001283",
+    "ethnicity": "Kinh",
+    "address_permanent": "HƯỞNG PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "HƯỞNG PHƯỚC, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Hưởng Phước",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-012936",
+    "lat": 16.082831,
+    "lng": 108.103082,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "09/08/2025",
+    "decision_num_date": "Số 374, ngày 24/9/2025",
+    "duration": "16/9/2025-16/9/2026",
+    "updated_at": "2026-08-03T08:43:31.153000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "09/08/2025",
+        "decision_num_date": "Số 374, ngày 24/9/2025",
+        "duration": "16/9/2025-16/9/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "NGUYỄN TÙNG SƠN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "ĐẶNG THỊ HOA",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5990",
+    "full_name": "Đỗ Hoàng Long",
+    "dob": "23/11/1996",
+    "yob": 1996,
+    "gender": "Nam",
+    "id_card": "048096007094",
+    "ethnicity": "Kinh",
+    "address_permanent": "SỐ NHÀ 367, ĐƯỜNG ÂU CƠ, TỔ 66, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "SỐ NHÀ 367 ÂU CƠ, TỔ 66, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-004502",
+    "lat": 16.066973,
+    "lng": 108.144099,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "17/12/2025",
+    "decision_num_date": "Số 918, ngày 24/12/2025",
+    "duration": "17/12/2025-17/12/2026",
+    "updated_at": "2026-08-03T08:43:31.192000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "17/12/2025",
+        "decision_num_date": "Số 918, ngày 24/12/2025",
+        "duration": "17/12/2025-17/12/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "ĐỖ VĂN TIẾN",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "PHẠM THỊ TUYẾT",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5991",
+    "full_name": "Hồ Thanh Tây",
+    "dob": "20/07/1995",
+    "yob": 1995,
+    "gender": "Nam",
+    "id_card": "048095003519",
+    "ethnicity": "Kinh",
+    "address_permanent": "THÔN TÂN NINH, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "THÔN QUAN NAM 5, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quan Nam 5",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-010662",
+    "lat": 16.092322,
+    "lng": 108.104936,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "20/10/2025",
+    "decision_num_date": "Số 941, ngày 26/12/2025",
+    "duration": "20/10/2025-20/10/2026",
+    "updated_at": "2026-08-03T08:43:31.249000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "20/10/2025",
+        "decision_num_date": "Số 941, ngày 26/12/2025",
+        "duration": "20/10/2025-20/10/2026"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "HỒ THANH SĨ",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ IM",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5992",
+    "full_name": "Biện Minh Thành",
+    "dob": "20/07/1992",
+    "yob": 1992,
+    "gender": "Nam",
+    "id_card": "049092006618",
+    "ethnicity": "Kinh",
+    "address_permanent": "Thạnh Đại, xã Thượng Đức, Tp Đà Nẵng",
+    "address_current": "187 Thanh Vinh 10, phường Liên Chiểu",
+    "tdp": "Tổ dân phố Thanh Vinh 1",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "",
+    "lat": 16.074881,
+    "lng": 108.119428,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "31/12/2025",
+    "decision_num_date": "Số 01, ngày 05/01/2026",
+    "duration": "31/12/2025-31/12/2026",
+    "updated_at": "2026-08-03T08:43:31.290000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "31/12/2025",
+        "decision_num_date": "Số 01, ngày 05/01/2026",
+        "duration": "31/12/2025-31/12/2026"
+      }
+    ]
+  },
+  {
+    "_id": "6a6495b4c13152a7d05e5993",
+    "full_name": "Trần Đình Tâm Nghĩa",
+    "dob": "28/04/1998",
+    "yob": 1998,
+    "gender": "Nam",
+    "id_card": "048098005716",
+    "ethnicity": "Kinh",
+    "address_permanent": "SỐ 206 NGUYỄN LƯƠNG BẰNG, TỔ 14, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "SỐ 206 NGUYỄN LƯƠNG BẰNG, TỔ 14 QUANG THÀNH 3, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "tdp": "Tổ dân phố Quang Thành 3",
+    "drug_types_used": [
+      "MET",
+      "OPI"
+    ],
+    "status": "Sử dụng",
+    "notes": "HSCT: 20197-003404",
+    "lat": 16.084429,
+    "lng": 108.149936,
+    "is_drug": 1,
+    "approval_status": "Approved",
+    "date": "13/01/2026",
+    "decision_num_date": "Số 171, ngày 26/01/2026",
+    "duration": "13/01/2026-13/01/2027",
+    "updated_at": "2026-08-03T08:43:31.329000",
+    "violation_histories": [
+      {
+        "action": "Sử dụng",
+        "date": "13/01/2026",
+        "decision_num_date": "Số 171, ngày 26/01/2026",
+        "duration": "13/01/2026-13/01/2027"
+      }
+    ],
+    "family_members": [
+      {
+        "full_name": "TRẦN ĐÌNH LONG",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGUYỄN THỊ MỸ DUNG",
+        "relation": "Mẹ"
+      }
+    ]
+  },
+  {
+    "_id": "6a6b656cba85f6291b35fe36",
+    "full_name": "HÀ TIẾN SĨ",
+    "alias": "",
+    "dob": "21/03/1996",
+    "yob": 1996,
+    "gender": "Nam",
+    "id_card": "048096007033",
+    "phone": "",
+    "ethnicity": "Kinh",
+    "job": "KHÔNG",
+    "education": "9/12",
+    "pathology": "",
+    "health_status": "",
+    "family_members": [
+      {
+        "full_name": "HÀ VĂN NHỨT",
+        "relation": "Cha"
+      },
+      {
+        "full_name": "NGÔ THỊ NGỌC",
+        "relation": "Mẹ"
+      }
+    ],
+    "drug_types_used": [
+      "OPI",
+      "MET",
+      "MDMA",
+      "THC",
+      "AMP",
+      "KET"
+    ],
+    "tdp": "Tổ dân phố Vân Dương 2",
+    "address_permanent": "150 ĐỒNG KÈ, TỔ 44, Phường Liên Chiểu, Thành phố Đà Nẵng",
+    "address_current": "Cơ sở cai nghiện TP Đà Nẵng, Phường Hải Vân, Thành phố Đà Nẵng",
+    "violation_histories": [
+      {
+        "action": "Sau cai",
+        "date": "03/07/2026",
+        "decision_num_date": "số 1051/QĐ-UBND ngày 3/7/2026",
+        "duration": "28/7/2026-28/7/2028",
+        "_id": "6a6b799cba85f6291b35fe39"
+      }
+    ],
+    "status": "Sau cai",
+    "notes": "HSCT: 20197-004353",
+    "subject_images": [],
+    "lat": 0,
+    "lng": 0,
+    "approval_status": "Approved",
+    "created_by": "6a637635cd1df40d9554e120",
+    "created_at": "2026-07-30T14:53:32.514000",
+    "updated_at": "2026-08-03T08:43:31.369000",
+    "__v": 0
   }
 ]

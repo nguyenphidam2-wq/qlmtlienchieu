@@ -71,7 +71,7 @@ export default async function DashboardPage({ searchParams }: { searchParams: { 
               <span className="text-xs font-semibold text-slate-400">hồ sơ thực tế địa bàn</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed font-normal">
-              Dữ liệu đối tượng nghiện, sử dụng trái phép, sau cai và đối tượng nghiệp vụ được cập nhật chính xác trên 27 Tổ dân phố mới.
+              Dữ liệu đối tượng nghiện, sử dụng trái phép và sau cai được cập nhật chính xác trên 27 Tổ dân phố mới.
             </p>
           </div>
 

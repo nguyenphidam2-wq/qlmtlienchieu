@@ -1,3 +1,31 @@
+export interface FamilyMember {
+  full_name: string;
+  relation: string;
+  yob?: string;
+  address?: string;
+  phone?: string;
+}
+
+export interface ViolationHistory {
+  action: string;
+  date: string;
+  decision_num_date: string;
+  duration: string;
+}
+
+export interface Vehicle {
+  vehicle_type?: string;
+  license_plate?: string;
+  brand_color?: string;
+}
+
+export interface AttachedFile {
+  file_name: string;
+  file_url: string;
+  file_type?: string;
+  uploaded_at: Date;
+}
+
 export interface Subject {
   _id?: string;
   full_name: string;
@@ -10,33 +38,57 @@ export interface Subject {
   ethnicity?: string;
   face_image_url?: string;
 
-  father_name?: string;
-  mother_name?: string;
-  spouse_name?: string;
-  phone_father?: string;
-  phone_mother?: string;
-  phone_spouse?: string;
+  job?: string;
+  education?: string;
+  residence_status?: "Permanent" | "Temporary" | "Absent" | "Unknown";
+  pathology?: string;
+  health_status?: string;
 
-  is_criminal: number;
-  is_drug: number;
-  is_economic: number;
+  family_members?: FamilyMember[];
+
+  drug_types_used?: string[];
+  consumption_method?: string[];
+  addiction_date?: string;
+  is_methadone_treatment?: boolean;
+  methadone_facility?: string;
+  latest_test_result?: {
+    date?: string;
+    result?: "Negative" | "Positive" | "Refused" | "Pending";
+    substances?: string[];
+  };
+
+  is_criminal?: number;
+  is_drug?: number;
+  is_economic?: number;
 
   tdp?: string;
-  address_permanent: string;
+  address_permanent?: string;
   address_current?: string;
+  lat?: number;
+  lng?: number;
 
   status?: string;
-  drug_type?: string;
-  processing_history?: string;
+  risk_level?: "red" | "yellow" | "green";
+  violation_histories?: ViolationHistory[];
+  convictions_count?: number;
+  priors_count?: number;
   criminal_record?: string;
-  relationships?: string;
+  processing_history?: string;
   notes?: string;
+  relationships?: string;
+
+  assigned_officer_id?: string;
+  assigned_officer_name?: string;
 
   house_image_url?: string;
   subject_images?: string[];
+  registered_vehicles?: Vehicle[];
+  attached_files?: AttachedFile[];
 
-  lat?: number;
-  lng?: number;
+  approval_status?: "Pending" | "Approved";
+  created_by?: string;
+  approved_by?: string;
+  approved_at?: Date;
 
   created_at?: Date;
   updated_at?: Date;

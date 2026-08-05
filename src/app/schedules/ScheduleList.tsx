@@ -27,6 +27,7 @@ import {
 import { getTestSchedules, getTestSchedule, createTestSchedule, updateParticipantResult } from "@/lib/actions/schedules";
 import { getSubjects, getCurrentUserInfo } from "@/lib/actions/subjects";
 import { getCustomZones } from "@/lib/actions/zones";
+import { getTDPs } from "@/lib/actions/tdp";
 
 export function ScheduleList() {
   const [schedules, setSchedules] = useState<any[]>([]);
@@ -34,6 +35,7 @@ export function ScheduleList() {
   const [statusFilter, setStatusFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentUser, setCurrentUser] = useState<any>(null);
+  const [allTdps, setAllTdps] = useState<any[]>([]);
 
   // Modals
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
@@ -46,7 +48,7 @@ export function ScheduleList() {
   const [createTestType, setCreateTestType] = useState<"UrinaryTest" | "RollCall" | "Interview">("UrinaryTest");
   const [createLocation, setCreateLocation] = useState("Trụ sở Công an phường Liên Chiểu");
   const [createDate, setCreateDate] = useState("");
-  const [createOfficers, setCreateOfficers] = useState("CSKV Tổ 1-10, Cán bộ y tế CAP");
+  const [createOfficers, setCreateOfficers] = useState("CSKV Phường Liên Chiểu");
   const [createNotes, setCreateNotes] = useState("");
 
   // Subjects picker state
@@ -65,14 +67,16 @@ export function ScheduleList() {
 
   const loadData = async () => {
     setLoading(true);
-    const [scheds, subs, user] = await Promise.all([
+    const [scheds, subs, user, tdpsData] = await Promise.all([
       getTestSchedules(statusFilter),
       getSubjects(),
       getCurrentUserInfo(),
+      getTDPs(),
     ]);
     setSchedules(scheds);
     setAllSubjects(subs);
     setCurrentUser(user);
+    setAllTdps(tdpsData || []);
     setLoading(false);
   };
 
@@ -520,11 +524,16 @@ export function ScheduleList() {
                       className="px-2.5 py-1.5 bg-slate-100 dark:bg-slate-800 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700"
                     >
                       <option value="">Tất cả TDP</option>
-                      {Array.from(new Set(allSubjects.map((s) => s.tdp).filter(Boolean))).map((t) => (
-                        <option key={t} value={t}>
-                          {t}
-                        </option>
-                      ))}
+                      {(allTdps.length > 0
+                        ? Array.from(new Set(allTdps.map((t) => t.name)))
+                        : Array.from(new Set(allSubjects.map((s) => s.tdp).filter(Boolean)))
+                      )
+                        .sort((a: string, b: string) => a.localeCompare(b, "vi"))
+                        .map((t) => (
+                          <option key={t} value={t}>
+                            {t}
+                          </option>
+                        ))}
                     </select>
 
                     <select

@@ -15,7 +15,7 @@ import { ISubject, IBusiness, ICustomZone, ITDP } from "@/lib/models";
 import { IPCCCRecord } from "@/lib/models/PCCC";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import * as turf from "@turf/turf";
-import { PenTool, X, CheckCircle2, Eye, EyeOff, MapPin, Layers } from "lucide-react";
+import { PenTool, X, CheckCircle2, Eye, EyeOff, MapPin, Layers, Circle as CircleIcon, Ruler, Square, Trash2, Users, Store, Flame, Crosshair, Compass, Info } from "lucide-react";
 
 
 // Status colors
@@ -259,6 +259,28 @@ export function GISMap() {
   const [lastDrawnLayer, setLastDrawnLayer] = useState<L.Layer | null>(null); // To store the layer before manual save
   const [saving, setSaving] = useState(false);
   const [activeBaseMap, setActiveBaseMap] = useState<"voyager" | "osm" | "light">("voyager");
+  const [activeSpatialTool, setActiveSpatialTool] = useState<"none" | "circle" | "distance" | "polygon">("none");
+  const [analysisResult, setAnalysisResult] = useState<{
+    type: "circle" | "distance" | "polygon";
+    radius?: number;
+    distance?: number;
+    areaSqm?: number;
+    center?: [number, number];
+    subjects: ISubject[];
+    businesses: IBusiness[];
+    pccc: IPCCCRecord[];
+  } | null>(null);
+  const spatialLayersRef = useRef<L.Layer[]>([]);
+
+  // Refs to maintain current state inside event listeners
+  const activeSpatialToolRef = useRef(activeSpatialTool);
+  activeSpatialToolRef.current = activeSpatialTool;
+  const subjectsRef = useRef(subjects);
+  subjectsRef.current = subjects;
+  const businessesRef = useRef(businesses);
+  businessesRef.current = businesses;
+  const pcccRecordsRef = useRef(pcccRecords);
+  pcccRecordsRef.current = pcccRecords;
 
   // Fetch current user
   useEffect(() => {
@@ -539,16 +561,122 @@ export function GISMap() {
     // Handle draw created event (Geoman uses pm:create)
     const handleDrawCreated = async (e: any) => {
       const layer = e.layer;
-      const shape = e.shape; // e.g., 'Polygon', 'Marker'
+      const shape = e.shape; // 'Circle', 'Line', 'Polygon', 'Rectangle', 'Marker'
 
-      if (drawnItemsRef.current && shape === 'Polygon') {
-        // layer is automatically added to drawnItemsRef by Geoman because of setGlobalOptions
+      spatialLayersRef.current.push(layer);
+
+      const currentTool = activeSpatialToolRef.current;
+      const currentSubjects = subjectsRef.current;
+      const currentBusinesses = businessesRef.current;
+      const currentPccc = pcccRecordsRef.current;
+
+      // 1. SPATIAL TOOL: CIRCLE (Radius analysis)
+      if (shape === 'Circle' || currentTool === 'circle') {
+        const centerLatLng = layer.getLatLng ? layer.getLatLng() : null;
+        const radiusMeters = layer.getRadius ? layer.getRadius() : 0;
+        
+        if (centerLatLng && radiusMeters > 0) {
+          const centerPoint: [number, number] = [centerLatLng.lng, centerLatLng.lat];
+          const turfCircle = turf.circle(centerPoint, radiusMeters / 1000, { units: "kilometers" });
+          const areaSqm = Math.PI * radiusMeters * radiusMeters;
+
+          const insideSubjects = currentSubjects.filter(s => s.lat && s.lng && turf.booleanPointInPolygon(turf.point([s.lng, s.lat]), turfCircle));
+          const insideBusinesses = currentBusinesses.filter(b => b.lat && b.lng && turf.booleanPointInPolygon(turf.point([b.lng, b.lat]), turfCircle));
+          const insidePccc = currentPccc.filter(p => p.lat && p.lng && turf.booleanPointInPolygon(turf.point([p.lng, p.lat]), turfCircle));
+
+          setAnalysisResult({
+            type: "circle",
+            radius: radiusMeters,
+            areaSqm,
+            center: [centerLatLng.lat, centerLatLng.lng],
+            subjects: insideSubjects,
+            businesses: insideBusinesses,
+            pccc: insidePccc,
+          });
+
+          layer.bindPopup(`
+            <div style="font-family: sans-serif; font-size: 12px; padding: 4px;">
+              <b style="color: #2563eb;">VÙNG BÁN KÍNH ẢNH HƯỞNG</b><br/>
+              Bán kính: <b>${radiusMeters < 1000 ? radiusMeters.toFixed(0) + ' m' : (radiusMeters/1000).toFixed(2) + ' km'}</b><br/>
+              Diện tích: <b>${(areaSqm / 10000).toFixed(2)} ha</b><br/>
+              <hr style="margin: 4px 0; border: 0; border-top: 1px solid #e2e8f0;"/>
+              🔴 Đối tượng: <b>${insideSubjects.length}</b> | 🏢 Cơ sở: <b>${insideBusinesses.length}</b> | 🚒 PCCC: <b>${insidePccc.length}</b>
+            </div>
+          `).openPopup();
+        }
+
+        setActiveSpatialTool("none");
+        if (mapRef.current) mapRef.current.pm.disableDraw();
+        return;
       }
 
+      // 2. SPATIAL TOOL: DISTANCE LINE
+      if (shape === 'Line' || currentTool === 'distance') {
+        const latlngs: L.LatLng[] = layer.getLatLngs ? layer.getLatLngs() : [];
+        if (latlngs && latlngs.length >= 2) {
+          const coordinates = latlngs.map(l => [l.lng, l.lat]);
+          const turfLine = turf.lineString(coordinates);
+          const totalDistanceMeters = turf.length(turfLine, { units: "kilometers" }) * 1000;
+
+          setAnalysisResult({
+            type: "distance",
+            distance: totalDistanceMeters,
+            subjects: [],
+            businesses: [],
+            pccc: [],
+          });
+
+          layer.bindPopup(`
+            <div style="font-family: sans-serif; font-size: 12px; padding: 4px;">
+              <b style="color: #059669;">KẾT QUẢ ĐO KHOẢNG CÁCH</b><br/>
+              Tổng chiều dài: <b style="font-size: 14px; color: #047857;">${totalDistanceMeters < 1000 ? totalDistanceMeters.toFixed(1) + ' m' : (totalDistanceMeters/1000).toFixed(2) + ' km'}</b><br/>
+              Số điểm mốc: <b>${latlngs.length}</b>
+            </div>
+          `).openPopup();
+        }
+
+        setActiveSpatialTool("none");
+        if (mapRef.current) mapRef.current.pm.disableDraw();
+        return;
+      }
+
+      // 3. SPATIAL TOOL: POLYGON BOUNDING
+      if (currentTool === 'polygon') {
+        const polyGeoJSON = layer.toGeoJSON ? layer.toGeoJSON() : null;
+        if (polyGeoJSON) {
+          const areaSqm = turf.area(polyGeoJSON);
+
+          const insideSubjects = currentSubjects.filter(s => s.lat && s.lng && turf.booleanPointInPolygon(turf.point([s.lng, s.lat]), polyGeoJSON));
+          const insideBusinesses = currentBusinesses.filter(b => b.lat && b.lng && turf.booleanPointInPolygon(turf.point([b.lng, b.lat]), polyGeoJSON));
+          const insidePccc = currentPccc.filter(p => p.lat && p.lng && turf.booleanPointInPolygon(turf.point([p.lng, p.lat]), polyGeoJSON));
+
+          setAnalysisResult({
+            type: "polygon",
+            areaSqm,
+            subjects: insideSubjects,
+            businesses: insideBusinesses,
+            pccc: insidePccc,
+          });
+
+          layer.bindPopup(`
+            <div style="font-family: sans-serif; font-size: 12px; padding: 4px;">
+              <b style="color: #7c3aed;">KHU VỰC ĐÓNG KHUNG KHOANH VÙNG</b><br/>
+              Diện tích: <b>${(areaSqm / 10000).toFixed(2)} ha (${areaSqm.toLocaleString('vi-VN', { maximumFractionDigits: 0 })} m²)</b><br/>
+              <hr style="margin: 4px 0; border: 0; border-top: 1px solid #e2e8f0;"/>
+              🔴 Đối tượng: <b>${insideSubjects.length}</b> | 🏢 Cơ sở: <b>${insideBusinesses.length}</b> | 🚒 PCCC: <b>${insidePccc.length}</b>
+            </div>
+          `).openPopup();
+        }
+
+        setActiveSpatialTool("none");
+        if (mapRef.current) mapRef.current.pm.disableDraw();
+        return;
+      }
+
+      // Default TDP boundary / Custom zone creation logic
       const geojson = layer.toGeoJSON();
       
        if (drawTdpId) {
-          // Instead of auto-saving, we keep the layer and show the Save button
           setLastDrawnLayer(layer);
           return;
        }
@@ -579,7 +707,6 @@ export function GISMap() {
         const zones = await getCustomZones();
         setCustomZones(zones);
 
-        // Remove the temporary drawn layer since it will be re-rendered from the DB
         if (drawnItemsRef.current) drawnItemsRef.current.removeLayer(layer);
         map.removeLayer(layer);
       } catch (error) {
@@ -594,7 +721,65 @@ export function GISMap() {
     };
   }, [loading, drawMode, drawTdpId, targetTdp]);
 
+  const activateCircleTool = () => {
+    if (!mapRef.current) return;
+    setAnalysisResult(null);
+    setActiveSpatialTool("circle");
+    mapRef.current.pm.enableDraw("Circle", {
+      snappable: true,
+      pathOptions: {
+        color: "#3b82f6",
+        fillColor: "#3b82f6",
+        fillOpacity: 0.2,
+        weight: 2,
+        dashArray: "4, 4"
+      }
+    });
+  };
 
+  const activateDistanceTool = () => {
+    if (!mapRef.current) return;
+    setAnalysisResult(null);
+    setActiveSpatialTool("distance");
+    mapRef.current.pm.enableDraw("Line", {
+      snappable: true,
+      pathOptions: {
+        color: "#10b981",
+        weight: 3.5,
+        dashArray: "6, 6"
+      }
+    });
+  };
+
+  const activatePolygonTool = () => {
+    if (!mapRef.current) return;
+    setAnalysisResult(null);
+    setActiveSpatialTool("polygon");
+    mapRef.current.pm.enableDraw("Polygon", {
+      snappable: true,
+      pathOptions: {
+        color: "#8b5cf6",
+        fillColor: "#8b5cf6",
+        fillOpacity: 0.25,
+        weight: 2
+      }
+    });
+  };
+
+  const clearSpatialMeasurements = () => {
+    if (mapRef.current) {
+      mapRef.current.pm.disableDraw();
+    }
+    spatialLayersRef.current.forEach(layer => {
+      try {
+        if (drawnItemsRef.current) drawnItemsRef.current.removeLayer(layer);
+        if (mapRef.current) mapRef.current.removeLayer(layer);
+      } catch(e) {}
+    });
+    spatialLayersRef.current = [];
+    setAnalysisResult(null);
+    setActiveSpatialTool("none");
+  };
 
   const handleFileUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -709,6 +894,180 @@ export function GISMap() {
       />
 
 
+
+      {/* Spatial Analysis Floating Toolbar */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[1000] animate-in slide-in-from-bottom-5 duration-300">
+        <div className="bg-slate-950/85 backdrop-blur-2xl p-2 rounded-2xl border border-white/15 shadow-2xl flex items-center gap-2 text-white">
+          <div className="px-3 py-1.5 border-r border-white/10 flex items-center gap-2">
+            <Compass className="w-4 h-4 text-blue-400 animate-spin-slow" />
+            <span className="text-[11px] font-black tracking-wider uppercase text-slate-300">Công cụ GIS</span>
+          </div>
+
+          {/* Circle Radius Tool */}
+          <button
+            onClick={activateCircleTool}
+            className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+              activeSpatialTool === "circle"
+                ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30 ring-2 ring-blue-400"
+                : "bg-white/5 hover:bg-white/10 text-slate-300"
+            }`}
+            title="Vẽ vòng tròn bán kính ảnh hưởng xung quanh điểm"
+          >
+            <CircleIcon className="w-4 h-4 text-blue-400" />
+            <span>Vẽ Bán Kính</span>
+          </button>
+
+          {/* Distance Ruler Tool */}
+          <button
+            onClick={activateDistanceTool}
+            className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+              activeSpatialTool === "distance"
+                ? "bg-emerald-600 text-white shadow-lg shadow-emerald-500/30 ring-2 ring-emerald-400"
+                : "bg-white/5 hover:bg-white/10 text-slate-300"
+            }`}
+            title="Đo khoảng cách giữa các điểm trên bản đồ"
+          >
+            <Ruler className="w-4 h-4 text-emerald-400" />
+            <span>Đo Khoảng Cách</span>
+          </button>
+
+          {/* Polygon Bounding Tool */}
+          <button
+            onClick={activatePolygonTool}
+            className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+              activeSpatialTool === "polygon"
+                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/30 ring-2 ring-purple-400"
+                : "bg-white/5 hover:bg-white/10 text-slate-300"
+            }`}
+            title="Đóng khung khoanh vùng khu vực"
+          >
+            <Square className="w-4 h-4 text-purple-400" />
+            <span>Đóng Khung Khu Vực</span>
+          </button>
+
+          {(spatialLayersRef.current.length > 0 || analysisResult) && (
+            <>
+              <div className="w-px h-6 bg-white/10 mx-1"></div>
+              <button
+                onClick={clearSpatialMeasurements}
+                className="px-3 py-2 rounded-xl text-xs font-bold bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/30 transition-all flex items-center gap-1.5"
+                title="Xóa tất cả các phép đo và nét vẽ"
+              >
+                <Trash2 className="w-4 h-4" />
+                <span>Xóa Phép Đo</span>
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* Spatial Analysis Result Floating Card */}
+      {analysisResult && (
+        <div className="absolute top-20 left-6 z-[1000] max-w-sm w-full animate-in slide-in-from-left-4 duration-300">
+          <div className="bg-slate-950/90 backdrop-blur-2xl p-4 rounded-3xl border border-white/15 shadow-2xl text-white">
+            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+              <div className="flex items-center gap-2">
+                {analysisResult.type === "circle" && <CircleIcon className="w-5 h-5 text-blue-400" />}
+                {analysisResult.type === "distance" && <Ruler className="w-5 h-5 text-emerald-400" />}
+                {analysisResult.type === "polygon" && <Square className="w-5 h-5 text-purple-400" />}
+                <h3 className="font-black text-sm uppercase tracking-tight text-slate-100">
+                  {analysisResult.type === "circle" && "Vùng Bán Kính Tác Động"}
+                  {analysisResult.type === "distance" && "Kết Quả Đo Khoảng Cách"}
+                  {analysisResult.type === "polygon" && "Kết Quả Khoanh Vùng Đóng Khung"}
+                </h3>
+              </div>
+              <button
+                onClick={() => setAnalysisResult(null)}
+                className="w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="mt-3 space-y-3">
+              {/* Core Measurements */}
+              <div className="grid grid-cols-2 gap-2">
+                {analysisResult.radius !== undefined && (
+                  <div className="bg-blue-500/10 p-2.5 rounded-2xl border border-blue-500/20">
+                    <span className="text-[10px] uppercase font-bold text-blue-400 block leading-none mb-1">Bán kính ảnh hưởng</span>
+                    <span className="text-blue-300 font-extrabold text-base">
+                      {analysisResult.radius < 1000 
+                        ? `${analysisResult.radius.toFixed(0)} m` 
+                        : `${(analysisResult.radius / 1000).toFixed(2)} km`}
+                    </span>
+                  </div>
+                )}
+
+                {analysisResult.distance !== undefined && (
+                  <div className="bg-emerald-500/10 p-2.5 rounded-2xl border border-emerald-500/20 col-span-2">
+                    <span className="text-[10px] uppercase font-bold text-emerald-400 block leading-none mb-1">Chiều dài đo được</span>
+                    <span className="text-emerald-300 font-extrabold text-lg">
+                      {analysisResult.distance < 1000 
+                        ? `${analysisResult.distance.toFixed(1)} mét` 
+                        : `${(analysisResult.distance / 1000).toFixed(3)} kilomet`}
+                    </span>
+                  </div>
+                )}
+
+                {analysisResult.areaSqm !== undefined && (
+                  <div className="bg-purple-500/10 p-2.5 rounded-2xl border border-purple-500/20">
+                    <span className="text-[10px] uppercase font-bold text-purple-400 block leading-none mb-1">Diện tích bao phủ</span>
+                    <span className="text-purple-300 font-extrabold text-base">
+                      {(analysisResult.areaSqm / 10000).toFixed(2)} <small className="text-xs font-normal">ha</small>
+                    </span>
+                    <span className="text-[10px] text-slate-400 block">({analysisResult.areaSqm.toLocaleString("vi-VN", { maximumFractionDigits: 0 })} m²)</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Entities Inside Area */}
+              {analysisResult.type !== "distance" && (
+                <div className="bg-white/5 p-3 rounded-2xl border border-white/10 space-y-2">
+                  <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center justify-between">
+                    <span>Thống kê thực địa trong vùng</span>
+                    <span className="bg-white/10 px-2 py-0.5 rounded-full text-white font-bold">
+                      {analysisResult.subjects.length + analysisResult.businesses.length + analysisResult.pccc.length} thực thể
+                    </span>
+                  </h4>
+
+                  <div className="grid grid-cols-3 gap-2 pt-1 text-center">
+                    <div className="bg-red-500/10 p-2 rounded-xl border border-red-500/20">
+                      <Users className="w-4 h-4 text-red-400 mx-auto mb-1" />
+                      <span className="text-xs font-bold text-red-300 block">{analysisResult.subjects.length}</span>
+                      <span className="text-[9px] text-slate-400 block">Đối tượng MT</span>
+                    </div>
+                    <div className="bg-amber-500/10 p-2 rounded-xl border border-amber-500/20">
+                      <Store className="w-4 h-4 text-amber-400 mx-auto mb-1" />
+                      <span className="text-xs font-bold text-amber-300 block">{analysisResult.businesses.length}</span>
+                      <span className="text-[9px] text-slate-400 block">Cơ sở KD</span>
+                    </div>
+                    <div className="bg-orange-500/10 p-2 rounded-xl border border-orange-500/20">
+                      <Flame className="w-4 h-4 text-orange-400 mx-auto mb-1" />
+                      <span className="text-xs font-bold text-orange-300 block">{analysisResult.pccc.length}</span>
+                      <span className="text-[9px] text-slate-400 block">Trạm/Trụ PCCC</span>
+                    </div>
+                  </div>
+
+                  {/* List snippet if any */}
+                  {analysisResult.subjects.length > 0 && (
+                    <div className="mt-2 pt-2 border-t border-white/10">
+                      <span className="text-[10px] text-slate-400 uppercase font-bold block mb-1">Một số đối tượng tiêu biểu:</span>
+                      <div className="max-h-24 overflow-y-auto space-y-1 custom-scrollbar">
+                        {analysisResult.subjects.slice(0, 5).map((s, idx) => (
+                          <div key={idx} className="text-[11px] bg-white/5 px-2 py-1 rounded flex justify-between items-center text-slate-300">
+                            <span className="truncate max-w-[180px] font-medium">{s.full_name}</span>
+                            <span className="text-[9px] px-1.5 py-0.5 rounded bg-red-500/20 text-red-300 font-bold">{s.status}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Quick Marker & Layer Toggle Bar */}
       <div className="absolute top-6 right-6 z-[1000] flex flex-col gap-2 items-end animate-in fade-in duration-300">

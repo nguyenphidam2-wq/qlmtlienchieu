@@ -426,8 +426,8 @@ export function SubjectList() {
                     </div>
                   </td>
                   <td>
-                    <span className="inline-flex items-center px-2 py-1 bg-slate-100 text-slate-700 rounded-lg text-xs font-bold">
-                      {s.tdp ? `Tổ ${s.tdp.replace(/^(Tổ\s+)+/i, "").replace(/^Dân\s+Phố\s+/i, "")}` : "—"}
+                    <span className="inline-flex items-center px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-bold">
+                      {s.tdp || "—"}
                     </span>
                   </td>
                   <td>
@@ -535,7 +535,7 @@ export function SubjectList() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-2 mb-1">
                        <span className="text-[10px] font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full uppercase">
-                         {s.tdp ? `Tổ ${s.tdp.replace(/^(Tổ\s+)+/i, "").replace(/^Dân\s+Phố\s+/i, "")}` : "—"}
+                         {s.tdp || "—"}
                        </span>
                        <StatusBadge status={s.status || ""} />
                     </div>
@@ -688,30 +688,18 @@ function SubjectDetail({ subject: initialSubject }: { subject: ISubject }) {
       </div>
 
       {/* Family Info */}
-      {(subject.father_name || subject.mother_name || subject.spouse_name) && (
+      {subject.family_members && subject.family_members.length > 0 && (
         <div className="mb-6">
           <h4 className="text-base font-bold text-slate-800 dark:text-white mb-3 pb-2 border-b-2 border-slate-200 dark:border-slate-700 uppercase tracking-wide">
-            Thông tin gia đình
+            Thông tin người thân & Gia đình
           </h4>
           <div className="grid grid-cols-1 gap-2">
-            {subject.father_name && (
-              <div className="flex justify-between py-2 border-b border-dashed border-slate-200 dark:border-slate-700">
-                <span className="font-semibold text-slate-600 dark:text-slate-400">Họ tên cha</span>
-                <span className="font-medium text-slate-900 dark:text-white">{subject.father_name} ({subject.phone_father || "—"})</span>
+            {subject.family_members.map((m: any, idx: number) => (
+              <div key={idx} className="flex justify-between py-2 border-b border-dashed border-slate-200 dark:border-slate-700 text-xs">
+                <span className="font-semibold text-slate-600 dark:text-slate-400">{m.relation}: {m.full_name} ({m.yob || "—"})</span>
+                <span className="font-medium text-slate-900 dark:text-white">{m.phone || m.address || "—"}</span>
               </div>
-            )}
-            {subject.mother_name && (
-              <div className="flex justify-between py-2 border-b border-dashed border-slate-200 dark:border-slate-700">
-                <span className="font-semibold text-slate-600 dark:text-slate-400">Họ tên mẹ</span>
-                <span className="font-medium text-slate-900 dark:text-white">{subject.mother_name} ({subject.phone_mother || "—"})</span>
-              </div>
-            )}
-            {subject.spouse_name && (
-              <div className="flex justify-between py-2 border-b border-dashed border-slate-200 dark:border-slate-700">
-                <span className="font-semibold text-slate-600 dark:text-slate-400">Vợ/Chồng</span>
-                <span className="font-medium text-slate-900 dark:text-white">{subject.spouse_name} ({subject.phone_spouse || "—"})</span>
-              </div>
-            )}
+            ))}
           </div>
         </div>
       )}
@@ -762,7 +750,7 @@ function SubjectDetail({ subject: initialSubject }: { subject: ISubject }) {
             </div>
             <div className="flex justify-between py-2 border-b border-dashed border-slate-200 dark:border-slate-700">
               <span className="font-semibold text-slate-600 dark:text-slate-400">Loại ma túy</span>
-              <span className="font-medium text-slate-900 dark:text-white">{subject.drug_type || "—"}</span>
+              <span className="font-medium text-slate-900 dark:text-white">{subject.drug_types_used?.join(", ") || "—"}</span>
             </div>
           </div>
         )}

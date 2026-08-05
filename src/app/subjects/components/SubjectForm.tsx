@@ -8,16 +8,37 @@ import { Plus, Trash2, MapPin } from "lucide-react";
 
 const MapPicker = dynamic(() => import("@/components/map/MapPicker"), { ssr: false });
 
-const TDP_OPTIONS = [
-  ...Array.from({ length: 83 }, (_, i) => ({ value: String(i + 1), label: `Tổ ${i + 1}` })),
-  ...["Quan Nam 1", "Quan Nam 2", "Quan Nam 3", "Quan Nam 4", "Quan Nam 5", "Quan Nam 6"].map((t) => ({ value: t, label: t })),
-  { value: "Hiền Phước", label: "Tổ Hiền Phước" },
-  { value: "Hưởng Phước", label: "Tổ Hưởng Phước" },
-  { value: "Trung Sơn", label: "Tổ Trung Sơn" },
-  { value: "Tân Ninh", label: "Tổ Tân Ninh" },
-  { value: "Vân Dương 1", label: "Tổ Vân Dương 1" },
-  { value: "Vân Dương 2", label: "Tổ Vân Dương 2" },
+export const OFFICIAL_27_TDPS = [
+  "Tổ dân phố Vân Dương 1",
+  "Tổ dân phố Vân Dương 2",
+  "Tổ dân phố Hưởng Phước",
+  "Tổ dân phố Tân Hiền",
+  "Tổ dân phố Trung Sơn - Hồng Phước",
+  "Tổ dân phố Chung Cư 1",
+  "Tổ dân phố Quan Nam 1",
+  "Tổ dân phố Quan Nam 2",
+  "Tổ dân phố Quan Nam 3",
+  "Tổ dân phố Quan Nam 4",
+  "Tổ dân phố Quan Nam 5",
+  "Tổ dân phố Quang Thành 1",
+  "Tổ dân phố Quang Thành 2",
+  "Tổ dân phố Quang Thành 3",
+  "Tổ dân phố Quang Thành 4",
+  "Tổ dân phố Quang Thành 5",
+  "Tổ dân phố Quang Thành 6",
+  "Tổ dân phố Quang Thành 7",
+  "Tổ dân phố Quang Thành 8",
+  "Tổ dân phố Quang Thành 9",
+  "Tổ dân phố Đa Phước 1",
+  "Tổ dân phố Đa Phước 2",
+  "Tổ dân phố Đa Phước 3",
+  "Tổ dân phố Đa Phước 4",
+  "Tổ dân phố Thanh Vinh 1",
+  "Tổ dân phố Thanh Vinh 2",
+  "Tổ dân phố Thanh Vinh 3",
 ];
+
+const TDP_OPTIONS = OFFICIAL_27_TDPS.map((t) => ({ value: t, label: t }));
 
 const DRUG_OPTIONS = [
   { value: "OPI", label: "OPI (Opiate): Thuốc phiện, Heroin, Morphine" },

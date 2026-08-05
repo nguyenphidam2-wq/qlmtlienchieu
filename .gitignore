@@ -38,6 +38,8 @@ yarn-error.log*
 
 # archived/unused files
 _archive/
+archives/
+*.zip
 
 # typescript
 *.tsbuildinfo
@@ -45,4 +47,4 @@ next-env.d.ts
 
 .vercel
 .gemini
-
+scratch/
