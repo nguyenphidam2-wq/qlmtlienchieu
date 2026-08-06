@@ -5,7 +5,12 @@ $RepoOwner = "nguyenphidam2-wq"
 $RepoName = "qlmtlienchieu"
 $Branch = "release-build"
 
+# Doc Token tu file an nam tren Server PC (De tranh lo Token len Github)
+$TokenFile = "C:\New folder\github_token.txt"
 $GitHubToken = ""
+if (Test-Path $TokenFile) {
+    $GitHubToken = (Get-Content $TokenFile | Out-String).Trim()
+}
 
 $ApiUrl = "https://api.github.com/repos/$RepoOwner/$RepoName/commits/$Branch"
 $DownloadUrl = "https://raw.githubusercontent.com/$RepoOwner/$RepoName/$Branch/update.zip"
