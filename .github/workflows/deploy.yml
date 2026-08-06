@@ -1,0 +1,63 @@
+name: Build and Deploy Portable App
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build Next.js Standalone
+        run: npm run build
+        
+      - name: Prepare Portable Update Package
+        run: |
+          mkdir portable_update
+          
+          # Copy standalone output
+          cp -r .next/standalone/* portable_update/
+          
+          # Copy public and static assets
+          cp -r public portable_update/
+          mkdir -p portable_update/.next/static
+          cp -r .next/static/* portable_update/.next/static/
+          
+          # Create environment variables file for the server
+          echo "MONGODB_URI=mongodb://127.0.0.1:27017/qlmt-lienchieu" >> portable_update/.env.local
+          echo "JWT_SECRET=qlmt-lienchieu-secret-key-2026" >> portable_update/.env.local
+          echo "PORT=3000" >> portable_update/.env.local
+          echo "HOSTNAME=127.0.0.1" >> portable_update/.env.local
+          
+      - name: Compress to update.zip
+        run: |
+          cd portable_update
+          zip -r ../update.zip ./*
+          cd ..
+          
+      - name: Publish update.zip to release-build branch
+        run: |
+          git config --global user.name "GitHub Actions Auto-Builder"
+          git config --global user.email "actions@github.com"
+          git checkout --orphan release-build
+          git rm -rf .
+          mv update.zip .
+          git add update.zip
+          git commit -m "Auto-build update.zip for Portable Server"
+          git push -f origin release-build
