@@ -1,0 +1,4395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>ĐỀ ÁN SÁT NHẬP TỔ DÂN PHỐ 25.6.kmz</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin00">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin3</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl5</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin12</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl18</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin01">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin00</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl10</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin02">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin6</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl6</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin5</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl3</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin10">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin100">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin0000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl00</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin19">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin20</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl15</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin190">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin2012</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl1510</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin1900">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin2013</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl1511</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin1901">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin201</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl151</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin1902">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin2011</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl1513</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin1903">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin2010</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl1512</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin191">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin200</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl150</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin192">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin202</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl1520</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin1920">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin2020</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl152</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl01</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin20">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin232</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl201</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin200">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin23</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl200</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin201">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin231</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl20</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin202">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin230</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl202</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin21">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin10</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl50</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin100</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl4</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin4">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin01</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin5">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="m_ylw-pushpin6">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl51</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="ms_ylw-pushpin120">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin120</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness000</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness8</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness6</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness9</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness00">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness50</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness40</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness01">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness6</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness7</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness02">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness00</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness7</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness9</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness10">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness10</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness8</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness12">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness4</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness130">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness16</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness18</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness14">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness90</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness140">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness30</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness5</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness15">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness18</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness12</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness17</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness20">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness13</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness16</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness14</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness14</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness30">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness60</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness4">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness60</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness20</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness5">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness3</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness6">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness3</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness60">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness12</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness13</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness7">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness110</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness70">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness01</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness111</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness71">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness00</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness11</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness8">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness11</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness15</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_homegardenbusiness9">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_homegardenbusiness5</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_homegardenbusiness10</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin0">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin0</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin4</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin3</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin00">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin10</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin14</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin01">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin8</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin8</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin02">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin000</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin110</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin10">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin14</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin20</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin11">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin18</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin16</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin12">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin3</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin4</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin14">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin9</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin12</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin15">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin6</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin13</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin16">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin7</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin11</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin17">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin40</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin00</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin19">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin01</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin5</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin2">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin2</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin2</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin20">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin5</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin9</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin3">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin1</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin30">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin00</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin30</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin4">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin13</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin6</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin5">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin17</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin01</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin6">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin20</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin111</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin7">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin12</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin15</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin8">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin50</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin10</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin9">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin15</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin19</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="msn_ylw-pushpin90">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_ylw-pushpin16</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_ylw-pushpin17</styleUrl>
+		</Pair>
+	</StyleMap>
+	<StyleMap id="poly-9C27B0-4101-48-nodesc">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#poly-9C27B0-4101-48-nodesc-normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#poly-9C27B0-4101-48-nodesc-highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="poly-9C27B0-4101-48-nodesc-highlight">
+		<BalloonStyle>
+			<text><![CDATA[<h3>$[name]</h3>]]></text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff7fffff</color>
+			<width>5</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>30b0279c</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="poly-9C27B0-4101-48-nodesc-normal">
+		<BalloonStyle>
+			<text><![CDATA[<h3>$[name]</h3>]]></text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff7fffff</color>
+			<width>5</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>30b0279c</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="poly-AFB42B-8500-0-nodesc">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#poly-AFB42B-8500-0-nodesc-normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#poly-AFB42B-8500-0-nodesc-highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="poly-AFB42B-8500-0-nodesc-highlight">
+		<BalloonStyle>
+			<text><![CDATA[<h3>$[name]</h3>]]></text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff2bb4af</color>
+			<width>5</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>002bb4af</color>
+		</PolyStyle>
+	</Style>
+	<Style id="poly-AFB42B-8500-0-nodesc-normal">
+		<BalloonStyle>
+			<text><![CDATA[<h3>$[name]</h3>]]></text>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff2bb4af</color>
+			<width>5</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>002bb4af</color>
+		</PolyStyle>
+	</Style>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<color>ff7f55ff</color>
+			<scale>2</scale>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7f55ff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin0">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7fffff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin00">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin000">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00aa55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin0000">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin01">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7fff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin1">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin10">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin100">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<scale>1.8</scale>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin12">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin120">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffaa55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin2">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin20">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+			<scale>0.7</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin200">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffff0000</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin201">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7fffff</color>
+			<scale>0.9</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin2010">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7f00aa</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin2011">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7fff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin2012">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffff0055</color>
+			<scale>1.2</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin2013">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7fffff</color>
+			<scale>0.9</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin202">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin2020">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffff55ff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin23">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7fffff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin230">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7f00aa</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin231">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7f00aa</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin232">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7f00aa</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin3">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffff0055</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin4">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin5">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin6">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff55ff</color>
+		</LineStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<color>ff7f55ff</color>
+			<scale>2.36364</scale>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7f55ff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl0">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7fff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl00">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl000">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00aa55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl01">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl1">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7fffff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl10">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl15">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+			<scale>0.7</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl150">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffff0000</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl151">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7fffff</color>
+			<scale>0.9</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl1510">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffff0055</color>
+			<scale>1.2</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl1511">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7fffff</color>
+			<scale>0.9</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl1512">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7f00aa</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl1513">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7fff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl152">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffff55ff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl1520">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl18">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl2">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl20">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7f00aa</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl200">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7fffff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl201">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7f00aa</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl202">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7f00aa</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl3">
+		<IconStyle>
+			<scale>0.7</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl4">
+		<IconStyle>
+			<color>ff0000ff</color>
+			<scale>1.8</scale>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl5">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffff0055</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl50">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl51">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffff55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl6">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff55ff</color>
+		</LineStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.7</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness0">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffaaff</color>
+			<scale>0.7</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness00">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffff5555</color>
+			<scale>0.9</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness000">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffaa55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness1">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00aaaa</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness10">
+		<IconStyle>
+			<scale>0.583333</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0055ff</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness11">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness110">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness111">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffaaff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness12">
+		<IconStyle>
+			<scale>1.16667</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7fff55</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness13">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness14">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffaa55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness15">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00aa00</color>
+			<scale>0.9</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness16">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00aaaa</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness18">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness2">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffff0000</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness20">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00aaff</color>
+			<scale>1.2</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness3">
+		<IconStyle>
+			<scale>0.933333</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness4">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness40">
+		<IconStyle>
+			<scale>0.945455</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness5">
+		<IconStyle>
+			<scale>0.933333</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffaa55</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness6">
+		<IconStyle>
+			<scale>0.933333</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffaa55</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness60">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00aa00</color>
+			<scale>1.2</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness7">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7faaff</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness8">
+		<IconStyle>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffaa55</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_homegardenbusiness9">
+		<IconStyle>
+			<scale>1.05</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0055ff</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff7fff55</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffffaa00</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin3">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff7f55ff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin00">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffffff00</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin01">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin1">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin10">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff7fff00</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin11">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffffff55</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin110">
+		<LineStyle>
+			<color>ff5b18c2</color>
+			<width>5</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>005b18c2</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin111">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin12">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin13">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin14">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff7fffff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin15">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin16">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin17">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00aa55</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin19">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff5555</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin2">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin20">
+		<LineStyle>
+			<color>ff7faaff</color>
+			<width>5</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00ab4939</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin30">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffffaa55</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin4">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff5555</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin5">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffffaaff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin6">
+		<LineStyle>
+			<color>ff7f00aa</color>
+			<width>6.0015</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>4d25a8f9</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin8">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00aa55</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sh_ylw-pushpin9">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness0">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness00">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness01">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffaaff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness1">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffff5555</color>
+			<scale>0.9</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness10">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffaa55</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness11">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00aa00</color>
+			<scale>0.9</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness12">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness13">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00aaaa</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness14">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffaa55</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness16">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness17">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffff0000</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness18">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7fff55</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness2">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00aa00</color>
+			<scale>1.2</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness3">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00aaaa</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness30">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffaa55</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness4">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness5">
+		<IconStyle>
+			<scale>0.5</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0055ff</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness50">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0000ff</color>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness6">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff7faaff</color>
+			<scale>0.8</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness60">
+		<IconStyle>
+			<Icon>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00aaff</color>
+			<scale>1.2</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness7">
+		<IconStyle>
+			<scale>0.9</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff0055ff</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness8">
+		<IconStyle>
+			<scale>0.8</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffaa55</color>
+			<scale>0.5</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness9">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ff00ffff</color>
+			<scale>0.7</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_homegardenbusiness90">
+		<IconStyle>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/shapes/homegardenbusiness.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<LabelStyle>
+			<color>ffffaaff</color>
+			<scale>0.7</scale>
+		</LabelStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin0">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ffffaa00</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin4">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff7f55ff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<LineStyle>
+			<color>ff7fff55</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin00">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffffaa55</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin000">
+		<LineStyle>
+			<color>ff5b18c2</color>
+			<width>5</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>005b18c2</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin01">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffffaaff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin1">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>4</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin10">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff7fffff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin12">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff0000</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin13">
+		<LineStyle>
+			<color>ff7f00aa</color>
+			<width>4.001</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>4d25a8f9</color>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin14">
+		<LineStyle>
+			<color>ff7faaff</color>
+			<width>5</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>00ab4939</color>
+		</PolyStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin15">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff5555</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin16">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00aa55</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin17">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin18">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin2">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin20">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin3">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffff5555</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin40">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffffff00</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin5">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00ffff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin50">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff7fff00</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin6">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin7">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ffffff55</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin8">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff00aa55</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Style id="sn_ylw-pushpin9">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>5</width>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>ĐỀ ÁN SÁT NHẬP TỔ DÂN PHỐ</name>
+		<open>1</open>
+		<Placemark>
+			<name>TỔ 1</name>
+			<styleUrl>#msn_ylw-pushpin11</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1509282771577,16.07327666156262,0 108.1511186531191,16.07335591258203,0 108.15135654351,16.07343721751646,0 108.1518891227885,16.07364292643436,0 108.1521168174118,16.073747717211,0 108.1525305600934,16.07388729753912,0 108.1529164190927,16.07403833448005,0 108.153108830988,16.07411513915233,0 108.1524582112376,16.07386120012547,0 108.1530240024004,16.07408781494075,0 108.1535269958317,16.07430061221352,0 108.1536617695463,16.07433001329001,0 108.1539865024609,16.0744485673032,0 108.1542148644625,16.0745284516858,0 108.1542546922667,16.0745388173943,0 108.154320767187,16.07457448582103,0 108.1544088370746,16.07459476046814,0 108.1545602685079,16.07463663853181,0 108.1546976842197,16.07469568873927,0 108.1547112328218,16.07470018269943,0 108.1547354386785,16.07470740117254,0 108.1547649867798,16.07471571941089,0 108.1549240821283,16.07477053356316,0 108.1549187085537,16.07476832395974,0 108.1549111854878,16.07476611940166,0 108.1549069184331,16.07476391983411,0 108.1549016138029,16.07476062984128,0 108.154892059834,16.07475626059199,0 108.1548899467848,16.0747551713597,0 108.1548750845523,16.07475082681837,0 108.1548698208014,16.07474866187542,0 108.1548634990109,16.07474650182074,0 108.1548561227549,16.07474434664952,0 108.1548519068129,16.07474327087648,0 108.1548455606257,16.0747421963446,0 108.1548381546827,16.0747411230203,0 108.1548317533555,16.07474112308254,0 108.1548285526951,16.07474112311367,0 108.1548213121926,16.07473791024557,0 108.1548149216522,16.07473791030995,0 108.1548086968069,16.07473577442031,0 108.1548045263189,16.07473470828049,0 108.1548004477728,16.07473257951244,0 108.1547975280014,16.0747293952709,0 108.1547946180103,16.0747262216536,0 108.1547917177131,16.07472305865035,0 108.1547887339533,16.07472095583115,0 108.1549329925269,16.07477233938228,0 108.1549359870973,16.07477164019194,0 108.154990573892,16.0747940424033,0 108.1548711324893,16.07474327069443,0 108.1549079041824,16.07475523425059,0 108.1549079041824,16.07475523425059,0 108.154988499028,16.07479871361387,0 108.1550369837304,16.07459200109532,0 108.155055906228,16.07447637734833,0 108.1551083227121,16.07402359246594,0 108.1552314633865,16.07363447295773,0 108.1553793205214,16.07298393568404,0 108.1555548952515,16.07218474278007,0 108.1556722622474,16.07167454644597,0 108.1557316206801,16.07133651484358,0 108.1544811130513,16.07078261029208,0 108.15345051645,16.07026398753078,0 108.1515011684936,16.06926890394989,0 108.150016568248,16.07296267132573,0 108.1501159905695,16.07299470924832,0 108.1504740079309,16.07311726740129,0 108.1506126033932,16.07316833436787,0 108.1508020967359,16.07323427385967,0 108.1509282771577,16.07327666156262,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 1 - QUANG THÀNH 9</name>
+			<LookAt>
+				<longitude>108.1522485534008</longitude>
+				<latitude>16.07265316820321</latitude>
+				<altitude>0</altitude>
+				<heading>-0.07782170813186207</heading>
+				<tilt>14.99103348137545</tilt>
+				<range>1780.934343457945</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin100</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1522485534008,16.07265316820321,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ BK</name>
+			<LookAt>
+				<longitude>108.1521438631901</longitude>
+				<latitude>16.07283178726311</latitude>
+				<altitude>0</altitude>
+				<heading>-0.09035309459607456</heading>
+				<tilt>23.22839921331513</tilt>
+				<range>506.4196737348666</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin000</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1521192860235,16.07313238606171,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCD QT2</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2026-05-24T03:18:43.340879199Z</begin>
+					<end>2026-05-24T03:18:43.540880899Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1513261601251</longitude>
+				<latitude>16.0713955701653</latitude>
+				<altitude>0</altitude>
+				<heading>0.003522543777287597</heading>
+				<tilt>26.99549230679978</tilt>
+				<range>145.4314697659145</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness6</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1512196988052,16.07137757996556,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 2</name>
+			<open>1</open>
+			<styleUrl>#msn_ylw-pushpin90</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1549041151783,16.07485620366826,0 108.1548566945868,16.07511958349849,0 108.1546474361934,16.07580234797839,0 108.1542282679514,16.0767586873203,0 108.1534741735638,16.0780724015464,0 108.1526348430162,16.07953584934962,0 108.1520418457767,16.08051412456522,0 108.1519968525117,16.08055303365423,0 108.1515669340735,16.08032577401305,0 108.1512209689986,16.08052426641123,0 108.1508985079495,16.08006731465556,0 108.1508053071164,16.07981714493446,0 108.1509476262273,16.07900511382268,0 108.1509465997122,16.07894858121223,0 108.1507353327812,16.07888656152071,0 108.1506239317959,16.07837408239114,0 108.1505348317642,16.07805168060499,0 108.1504336149267,16.07774283788487,0 108.1502185325389,16.07750230090312,0 108.1498754536215,16.07724572388101,0 108.1496074052238,16.07700727101505,0 108.1495997759745,16.07698472615662,0 108.1495911995811,16.07692536506074,0 108.1494097718845,16.07700189543042,0 108.1493004335688,16.0770419705555,0 108.1489852504656,16.07698387756809,0 108.1489271517321,16.07716196100701,0 108.1488750592345,16.07728960941142,0 108.1488335753506,16.07739274945364,0 108.1487482784904,16.07753787272877,0 108.1482562100795,16.0773342760083,0 108.1490149048474,16.07544241505733,0 108.1499672939038,16.07299419595138,0 108.1499846627862,16.07296589112429,0 108.1513062908444,16.07344611911141,0 108.1549041151783,16.07485620366826,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 2 - QUANG THÀNH 8</name>
+			<open>1</open>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2025-04-10T23:59:59Z</begin>
+					<end>2025-04-11</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.152224674687</longitude>
+				<latitude>16.07580608220882</latitude>
+				<altitude>0</altitude>
+				<heading>0.01268505249575544</heading>
+				<tilt>28.78450799780912</tilt>
+				<range>544.6323066776447</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin10</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1522246746871,16.07580608220883,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NSHCĐ QT3B1</name>
+			<open>1</open>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1504679990011</longitude>
+				<latitude>16.07662233429804</latitude>
+				<altitude>0</altitude>
+				<heading>-23.96848333144974</heading>
+				<tilt>26.83246964870573</tilt>
+				<range>117.8581696522444</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness140</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1504679990011,16.07662233429804,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 3</name>
+			<styleUrl>#msn_ylw-pushpin30</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1502243031126,16.07753226901463,0 108.1503693946062,16.07770171378973,0 108.1504433478828,16.07779531479042,0 108.1505162779126,16.0780407509599,0 108.1505745517927,16.07822130935874,0 108.1506224453037,16.07840260961652,0 108.1506610583332,16.07855738355424,0 108.1507264485964,16.07890205917725,0 108.1509206997991,16.07896947630736,0 108.1507677658911,16.07980637085157,0 108.1508754472018,16.08005688772617,0 108.1512031942253,16.08055208041525,0 108.1516082936693,16.08038301494356,0 108.1519661707387,16.08058120926638,0 108.1519228741052,16.08068567256629,0 108.1515253522177,16.08144754022932,0 108.1510790296118,16.08137139648946,0 108.1500379462575,16.08141836859625,0 108.1496623688825,16.08087926985094,0 108.1457237949392,16.08369165031505,0 108.1456228191463,16.083561708616,0 108.1460740096611,16.08248490704161,0 108.1467541216872,16.08089441018074,0 108.1472355648036,16.07970863031806,0 108.1477257821364,16.07851470550922,0 108.1482036395989,16.0773557201292,0 108.1484905643965,16.07746644287421,0 108.1486845848529,16.0775536606004,0 108.1487708531103,16.07757947839481,0 108.1489897802451,16.07700771387455,0 108.1490261832366,16.0770379379625,0 108.1491645847587,16.07705682550209,0 108.1493823690542,16.07704033144539,0 108.1495447961226,16.07695931681666,0 108.149809275009,16.07722496640748,0 108.1501204264322,16.07744242070752,0 108.1502243031126,16.07753226901463,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 3 - QUANG THÀNH 7</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.149708046216</longitude>
+				<latitude>16.07867592333131</latitude>
+				<altitude>0</altitude>
+				<heading>-23.96889439039836</heading>
+				<tilt>28.60339728496979</tilt>
+				<range>572.1655161847582</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#ms_ylw-pushpin120</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.149708046216,16.07867592333131,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ QT3B2</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2026-05-24T03:34:01.806791299Z</begin>
+					<end>2026-05-24T03:34:02.006795099Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.149200020635</longitude>
+				<latitude>16.07882559202921</latitude>
+				<altitude>0</altitude>
+				<heading>0.001907358260665094</heading>
+				<tilt>27.62359184917347</tilt>
+				<range>131.6950888604809</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1491536281963,16.07870064807049,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 4</name>
+			<styleUrl>#msn_ylw-pushpin17</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1522616870297,16.09122844833897,0 108.1497991310376,16.08824458286168,0 108.145786554888,16.08372789695562,0 108.1460710084244,16.08351483592947,0 108.1477707821982,16.08232404855609,0 108.1496531918697,16.08093586779067,0 108.1500487242296,16.08143721429262,0 108.1511167427357,16.08140701303748,0 108.1514818910053,16.08147625160035,0 108.1508999085085,16.08252237117402,0 108.1501554039362,16.08378885172465,0 108.155105026448,16.08910530759313,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 4 - QUANG THÀNH 6</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1501791998196</longitude>
+				<latitude>16.08571983002427</latitude>
+				<altitude>0</altitude>
+				<heading>-24.52182624798178</heading>
+				<tilt>20.63505098348932</tilt>
+				<range>582.4209756160051</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin21</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1501791998197,16.08571983002427,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>KHU TCVH QT4B3</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.152112813964</longitude>
+				<latitude>16.08871594162748</latitude>
+				<altitude>0</altitude>
+				<heading>-16.55741117825061</heading>
+				<tilt>21.45439315936691</tilt>
+				<range>159.5501972286684</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin1</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.152112813964,16.08871594162748,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 5</name>
+			<styleUrl>#msn_ylw-pushpin6</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1474083013326,16.09503319638058,0 108.1439833196766,16.09120443691101,0 108.1453342550208,16.09000502813353,0 108.1439970623439,16.08904698788961,0 108.1438147679785,16.08895943587306,0 108.1435981360025,16.08886081498302,0 108.1435377189759,16.08883734595118,0 108.1456180231082,16.08357565102181,0 108.1513372453717,16.0902323217567,0 108.1521949753915,16.09130029504613,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 5- QUANG THÀNH 5</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1474854309599</longitude>
+				<latitude>16.08908625053222</latitude>
+				<altitude>0</altitude>
+				<heading>-16.55963321470514</heading>
+				<tilt>26.69557300147395</tilt>
+				<range>564.6195062634473</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin01</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1474854309599,16.08908625053222,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NSHCĐ QT4A3,4</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1467404637701</longitude>
+				<latitude>16.08755083398595</latitude>
+				<altitude>0</altitude>
+				<heading>-16.56048682532234</heading>
+				<tilt>28.15405927647023</tilt>
+				<range>119.3692911321808</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin5</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1467404637702,16.08755083398595,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NSHCĐ QT4A1</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1496239430556</longitude>
+				<latitude>16.09039980399152</latitude>
+				<altitude>0</altitude>
+				<heading>-16.55872687391992</heading>
+				<tilt>25.82939660922895</tilt>
+				<range>46.5563644074042</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin2</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1496239430556,16.09039980399152,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 11</name>
+			<styleUrl>#msn_ylw-pushpin14</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1454774364275,16.0838026931999,0 108.1434867916991,16.0886870074606,0 108.1426100241488,16.0883679365351,0 108.1424810058274,16.08856439972999,0 108.141447326295,16.08820829961271,0 108.1416035380136,16.08779829656672,0 108.1416527592251,16.08755929789473,0 108.1416480461458,16.08745619603724,0 108.1416064532462,16.08741611174404,0 108.1417702008858,16.08730506009419,0 108.1418194790694,16.0872692846767,0 108.1415048645085,16.08696455083349,0 108.141395734899,16.08678753229398,0 108.1414405592109,16.08668161015569,0 108.1411059925137,16.08641526901707,0 108.141063485175,16.08635391790465,0 108.1411806028229,16.0861796643152,0 108.1408600114436,16.08607110847026,0 108.1402836385872,16.08639581887093,0 108.1399329776098,16.08631513512709,0 108.1394368353539,16.08660356623597,0 108.1388672669011,16.08699671501907,0 108.1385015848337,16.08758472706371,0 108.1382260535965,16.0877217621575,0 108.1378698049865,16.08820786290246,0 108.1340623621704,16.08538721878107,0 108.1333980922652,16.08572271666375,0 108.1319580598471,16.08396425945226,0 108.1398252393807,16.0772745751447,0 108.143263759554,16.08114285851798,0 108.1439570005418,16.08199360601258,0 108.145456386013,16.08364557016183,0 108.1455114570396,16.0836959934789,0 108.1454774364275,16.0838026931999,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 11- QUANG THÀNH 4</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1405389073351</longitude>
+				<latitude>16.08382393233765</latitude>
+				<altitude>0</altitude>
+				<heading>-0.3819745814200949</heading>
+				<tilt>27.99789319053757</tilt>
+				<range>1050.872272282236</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin3</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1405389073351,16.08382393233765,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NSHCĐ 1 QT4A6</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2026-05-24T07:17:37.763122099Z</begin>
+					<end>2026-05-24T07:17:37.963124399Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.14187706971</longitude>
+				<latitude>16.08473290082671</latitude>
+				<altitude>0</altitude>
+				<heading>-0.003363489491882533</heading>
+				<tilt>30.00078583911727</tilt>
+				<range>171.7477679040261</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness12</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1420818661266,16.08440363127374,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NSHCĐ 2 QT4A5</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1427430490464</longitude>
+				<latitude>16.0880274007747</latitude>
+				<altitude>0</altitude>
+				<heading>-0.004036416364925591</heading>
+				<tilt>25.12559982060158</tilt>
+				<range>108.6602265714902</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1427430490464,16.0880274007747,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 13</name>
+			<styleUrl>#msn_ylw-pushpin01</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1321139173797,16.07597430458106,0 108.1319218747568,16.07572685517668,0 108.1317445136721,16.07549859702601,0 108.1319979470459,16.07525626256211,0 108.1320801702242,16.0751639753314,0 108.1321298104221,16.07504817405904,0 108.1321986252157,16.07504177022421,0 108.1327407727963,16.07463605945579,0 108.1328421121786,16.07457703730001,0 108.1327330323699,16.0740576827317,0 108.1326397589037,16.07365060382424,0 108.1325569333437,16.07321537117225,0 108.1323950398287,16.07313655922927,0 108.1319355467016,16.06878246399661,0 108.1313063185871,16.06323935849829,0 108.1321357681054,16.06369503879421,0 108.1325413716432,16.06385784493359,0 108.1330200373732,16.06386724130831,0 108.1334268816006,16.06414006308036,0 108.1335027745856,16.06380863578354,0 108.1336883107783,16.06364945933032,0 108.1341584181552,16.06353919898674,0 108.1344324308147,16.06363177847105,0 108.1349101815989,16.06360962309297,0 108.1352158238737,16.06354489120706,0 108.1356097463781,16.06413173729733,0 108.1359690993533,16.06440376515609,0 108.1363970352814,16.06439846634833,0 108.1373777432865,16.06428762824992,0 108.1385237133894,16.06445065906586,0 108.1390835149094,16.06442145026117,0 108.1393163593739,16.06498447782171,0 108.139753612745,16.06590409414647,0 108.1402432860114,16.06684260511621,0 108.1408336971676,16.06797008595704,0 108.1411988661813,16.0684521828046,0 108.1419194978623,16.06912729380249,0 108.1425757111836,16.06949801098363,0 108.1429699470239,16.06985562543096,0 108.1433562922407,16.07027589758837,0 108.1437550378802,16.07071146287566,0 108.1422636320359,16.07158108408138,0 108.1415257962582,16.07182105107749,0 108.1411980164435,16.07195823614522,0 108.1406002625516,16.07216316973802,0 108.1399854533415,16.07247654077985,0 108.1390773944709,16.07291942631294,0 108.1380418095393,16.07339702308717,0 108.1376631323186,16.07279639962834,0 108.1370102828529,16.07309868392586,0 108.1363736454445,16.07339868149572,0 108.1358534657581,16.07363592931603,0 108.1354672802792,16.07382352056618,0 108.1348974379735,16.07420093482254,0 108.1344397457992,16.07456411341968,0 108.133863768682,16.0749989000691,0 108.1336373591052,16.07516693481154,0 108.1332768109731,16.07541520273989,0 108.1328369395525,16.07571535947103,0 108.1326060345988,16.07587276160744,0 108.1324854611191,16.07591113486428,0 108.1322338459949,16.0759631655593,0 108.1321139173797,16.07597430458106,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 13 - ĐA PHƯỚC 1</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1362945049128</longitude>
+				<latitude>16.07152690073323</latitude>
+				<altitude>0</altitude>
+				<heading>13.72678574308205</heading>
+				<tilt>25.74106729932557</tilt>
+				<range>345.9584428476895</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness30</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1362945049128,16.07152690073323,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NSHCĐ ĐP1B</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1403516372204</longitude>
+				<latitude>16.07021561324459</latitude>
+				<altitude>0</altitude>
+				<heading>-8.136378938748736</heading>
+				<tilt>30.00055088490762</tilt>
+				<range>127.81602545971</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness8</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1401582961243,16.07011031465259,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 12</name>
+			<styleUrl>#msn_ylw-pushpin4</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							108.1431355,16.0699614,0 108.1428078582693,16.06963266057357,0 108.142371,16.0693342,0 108.1415598,16.0687486,0 108.140744,16.0677274,0 108.1391087564427,16.06439465481724,0 108.1400066396117,16.06477939990221,0 108.1414972884288,16.06491219714289,0 108.1432076203799,16.06504240428724,0 108.1451706428723,16.06518567441667,0 108.1458545573642,16.06617557363044,0 108.146067538474,16.06656796744409,0 108.1460451550346,16.06652950238903,0 108.1460949130438,16.06662034715823,0 108.1461103286163,16.06664343078162,0 108.1461125150638,16.06664411299934,0 108.1463778700321,16.06653291756372,0 108.1465842710501,16.06703850390635,0 108.1469613193784,16.06796760202918,0 108.1467517382621,16.06752307806471,0 108.1469618520075,16.06796974522312,0 108.1462885,16.068469,0 108.1431355,16.0699614,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 12 - ĐA PHƯỚC 4</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1444208421114</longitude>
+				<latitude>16.06706639577281</latitude>
+				<altitude>0</altitude>
+				<heading>9.712026220733858</heading>
+				<tilt>22.37055455916823</tilt>
+				<range>1069.930352465565</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness4</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1444208421114,16.0670663957728,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 15</name>
+			<styleUrl>#msn_ylw-pushpin7</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1160248987413,16.08008715975596,0 108.1157830023626,16.07978811321287,0 108.1169637270775,16.07711727306665,0 108.11742714336,16.07719509603233,0 108.1174478377609,16.07699126540191,0 108.1175025795376,16.0768473152831,0 108.1175588656388,16.07678720561376,0 108.1176834740906,16.07668763343349,0 108.1177379972493,16.07662198559575,0 108.1177644739711,16.07652678199356,0 108.1177447485542,16.07645607208199,0 108.1177483100011,16.07638383461488,0 108.1175459644779,16.07636278553461,0 108.1175626656861,16.07615752968488,0 108.1175675753049,16.07605919519574,0 108.1175889311777,16.07590859756671,0 108.1176624075984,16.07571796295062,0 108.117691007952,16.0750471007566,0 108.1171600050371,16.07501226529829,0 108.1170938269022,16.07435007184008,0 108.1166519656424,16.07442048982682,0 108.1165779342864,16.07383676255716,0 108.1170578662941,16.07378362419387,0 108.1172785891867,16.07340928364927,0 108.1173424886644,16.07269759326013,0 108.1174477801307,16.07213433330224,0 108.117600764121,16.07178531329949,0 108.1176124972723,16.07159107695165,0 108.1175263888338,16.07114041974913,0 108.1173618465748,16.06935757260811,0 108.1176260612888,16.06782403421398,0 108.1183074786827,16.06792173840421,0 108.1187798237826,16.06790887699942,0 108.1189550008735,16.06798469092048,0 108.1192875297269,16.0678769381528,0 108.1195834410702,16.06798798751048,0 108.119983507487,16.06795499529435,0 108.120223249324,16.06776730083811,0 108.1206617321107,16.06791515891218,0 108.121156495233,16.06769388611011,0 108.1216140082468,16.06754912808222,0 108.1218721605244,16.06745767110499,0 108.122065725812,16.0674214713783,0 108.1223620012853,16.06738520663028,0 108.1229516863644,16.06722342215284,0 108.1233594308138,16.06726224641383,0 108.1236851764677,16.06733610950596,0 108.1240818180292,16.06745022769411,0 108.1251505518348,16.07210553621726,0 108.1247103849145,16.07335288000605,0 108.1254781974595,16.07466890900902,0 108.1246060519624,16.07480924724912,0 108.1238575853664,16.07492869823999,0 108.1235079465933,16.07479400015,0 108.1219832420205,16.0748339726224,0 108.1220810850433,16.07567603466625,0 108.1223537663076,16.07668118488522,0 108.1223670747099,16.07690352016727,0 108.1219633123388,16.0773718030423,0 108.1216334544178,16.0780555130558,0 108.1213679446803,16.07810193549825,0 108.1211660022849,16.07868929512898,0 108.1211485733617,16.07880872865534,0 108.1210677318076,16.07908674275303,0 108.1210251135855,16.07925230035365,0 108.1209722878155,16.07933564762993,0 108.1209200246783,16.07956413844715,0 108.1208004683281,16.07982263308999,0 108.1207174488364,16.08007651965039,0 108.1205515869958,16.08034575243362,0 108.1203386906305,16.08058895232831,0 108.1200032457825,16.08084956566364,0 108.1197638192796,16.08103919693176,0 108.11952093431,16.08125607739768,0 108.1192542508801,16.081464906184,0 108.1189488139443,16.08173085311348,0 108.1186632307547,16.08194911570016,0 108.118441652769,16.08214877845018,0 108.1182097982512,16.08233396141488,0 108.1180470185868,16.08242334074063,0 108.1174852980557,16.08183714059011,0 108.1160248987413,16.08008715975596,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 15 - THANH VINH 1</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1208807090743</longitude>
+				<latitude>16.07652805311453</latitude>
+				<altitude>0</altitude>
+				<heading>9.185537548688512</heading>
+				<tilt>27.5194845866996</tilt>
+				<range>312.1759444473148</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin191</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1208807090743,16.07652805311453,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ  SHCĐ TV1,4</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1210944391085</longitude>
+				<latitude>16.07824867058175</latitude>
+				<altitude>0</altitude>
+				<heading>9.19126904572205</heading>
+				<tilt>27.16200407153273</tilt>
+				<range>111.5556439979084</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness2</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1210944391085,16.07824867058176,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 14</name>
+			<styleUrl>#poly-9C27B0-4101-48-nodesc</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							108.1278196959249,16.07745083110479,0 108.1277640126351,16.07732997973228,0 108.1277311425017,16.0770849338994,0 108.1276416903393,16.07640378478895,0 108.1272249810449,16.07646017768309,0 108.1271020207431,16.07621944132569,0 108.126868755573,16.0762104009039,0 108.126682367292,16.07530081125343,0 108.1257335772991,16.07494576092087,0 108.1257030091645,16.07479487638881,0 108.1256767265966,16.07463082471515,0 108.1254907033485,16.07465131402446,0 108.1247766774581,16.07330820220851,0 108.1252685085575,16.07206482836631,0 108.1241370410207,16.06737887242321,0 108.1260655113069,16.06685373163142,0 108.1270146006457,16.0661457365024,0 108.1276445393455,16.06645951850684,0 108.1287507362963,16.06545686499832,0 108.1301502804378,16.06432251532546,0 108.1312312971835,16.06339431397278,0 108.1322775310545,16.0731539781648,0 108.1324847087052,16.07325076956617,0 108.1327836289158,16.07453013776741,0 108.1320974534519,16.07502492348365,0 108.1316872447014,16.07548310803319,0 108.1320874415188,16.07603417547694,0 108.1326245025622,16.0759444156146,0 108.1327810231451,16.07617218237659,0 108.1326365718893,16.07627536133743,0 108.1330515472133,16.07670273611304,0 108.1331517467613,16.07681434546627,0 108.1332513369167,16.07692423451414,0 108.1360878421778,16.08027066040833,0 108.132462102912,16.08332285731817,0 108.1290434913378,16.07946399080303,0 108.1288421136153,16.07889977634559,0 108.1287604849174,16.07870659078651,0 108.1286325753668,16.07836718177871,0 108.1280011240576,16.07764052140571,0 108.1278196959249,16.07745083110479,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 14 - THANH VINH 3</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1298088162857</longitude>
+				<latitude>16.0724664312029</latitude>
+				<altitude>0</altitude>
+				<heading>9.410589480004379</heading>
+				<tilt>21.88793494818437</tilt>
+				<range>1159.523460909932</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin1920</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1298088162857,16.0724664312029,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 10</name>
+			<styleUrl>#msn_ylw-pushpin02</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							108.1455211294614,16.0836056601565,0 108.1398658502816,16.07718071898187,0 108.1413943030384,16.07592480656081,0 108.1422303050024,16.07529553199201,0 108.1428855873226,16.07481271506426,0 108.1430217117602,16.07472898491882,0 108.1431744814044,16.07461628604207,0 108.1433093944121,16.07497019237097,0 108.1435338082724,16.07542860268559,0 108.1439048206952,16.07578038325524,0 108.1457821004487,16.07639626129335,0 108.1462155009974,16.0765310129529,0 108.146347251249,16.07656822500332,0 108.1466068913034,16.07663697218019,0 108.1482269168784,16.07712986742406,0 108.1455211294614,16.0836056601565,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 10- QUANG THÀNH 3</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1455810672949</longitude>
+				<latitude>16.07826295351922</latitude>
+				<altitude>0</altitude>
+				<heading>0.00239416541611187</heading>
+				<tilt>30.00190882179002</tilt>
+				<range>424.9483488341671</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin20</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1455810672949,16.07826295351922,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>KHU TCVH</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1466923296836</longitude>
+				<latitude>16.0788854407235</latitude>
+				<altitude>0</altitude>
+				<heading>0.002769470327110704</heading>
+				<tilt>27.63234035505261</tilt>
+				<range>83.83095239079526</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin202</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1466923296836,16.0788854407235,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 9</name>
+			<styleUrl>#msn_ylw-pushpin5</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1439227840026,16.07575682342527,0 108.1451947412385,16.07619857778189,0 108.1459321785942,16.07643107711114,0 108.146764733493,16.07668268175847,0 108.1482285745568,16.07711240481553,0 108.1491242562043,16.07493918784709,0 108.1491159795938,16.07490520985167,0 108.1485666963394,16.074707757162,0 108.1482135614468,16.07456601989238,0 108.1477018253351,16.07438219587805,0 108.1471891591488,16.07418690705707,0 108.1469837336882,16.0741118302224,0 108.1469022826476,16.07412859188324,0 108.1468035541752,16.07410058254442,0 108.1466768541777,16.07398755854747,0 108.1466223341268,16.07395684771407,0 108.1462533653557,16.0742229109329,0 108.1460105078684,16.0744217988067,0 108.1458155554742,16.07466065598254,0 108.145702941669,16.0747495210867,0 108.1455094855157,16.07489638938651,0 108.1451787131714,16.07503456415719,0 108.1447288940685,16.07527704614768,0 108.1441108861024,16.07562761571869,0 108.1439143437687,16.07572497753534,0 108.1439227840026,16.07575682342527,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 9 - QUANG THÀNH 2</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1471925457459</longitude>
+				<latitude>16.07559585413853</latitude>
+				<altitude>0</altitude>
+				<heading>0.002967580934248857</heading>
+				<tilt>26.31603919840805</tilt>
+				<range>486.7966014794686</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1468764901871,16.07586832507537,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NSHCĐ QT3A1</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1478788765264</longitude>
+				<latitude>16.0749048176926</latitude>
+				<altitude>0</altitude>
+				<heading>0.002979467332188128</heading>
+				<tilt>30.00024772701659</tilt>
+				<range>52.13273633340135</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin201</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1478788765264,16.07490481769261,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>Untitled Path</name>
+			<styleUrl>#m_ylw-pushpin02</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 16</name>
+			<open>1</open>
+			<styleUrl>#msn_ylw-pushpin15</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1244746585608,16.08990308818126,0 108.132387645866,16.08339362118553,0 108.1290401333751,16.07951424040594,0 108.1288540896051,16.07904430413636,0 108.1288149097619,16.07888812173059,0 108.1286860169116,16.07858241072402,0 108.128566477958,16.0783524885154,0 108.1280498885377,16.07771883108032,0 108.1278673953901,16.07755349483261,0 108.1277812495545,16.07745014288964,0 108.1277382366093,16.07731703314662,0 108.1276400544055,16.0764771112184,0 108.1271921222562,16.0764972747437,0 108.1270950292501,16.07625982368624,0 108.1268536128042,16.07626244679192,0 108.1266828281749,16.07534705669457,0 108.125701764491,16.07497172817984,0 108.1256685674713,16.07465457039476,0 108.1238513600794,16.07494959817625,0 108.1234957589512,16.07483054870322,0 108.1220260353658,16.07487671505327,0 108.1220283070891,16.07510770587801,0 108.122083916746,16.07546011269396,0 108.1222010237836,16.07603547507424,0 108.1223785806021,16.07670788626833,0 108.1223947064336,16.07690138076272,0 108.1220093831593,16.07735138149268,0 108.1216601044311,16.07807001917008,0 108.1213914602297,16.07812021302481,0 108.1212392180463,16.07858216793593,0 108.1208097892641,16.08003310663982,0 108.1198223414636,16.0810920577448,0 108.1181209341271,16.0824386868784,0 108.1180816317783,16.08247789448339,0 108.120396444243,16.08501546620676,0 108.1223904373232,16.08743078800385,0 108.1244746585608,16.08990308818126,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 16 - THANH VINH 2</name>
+			<open>1</open>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2026-06-08T17:48:56.267285099Z</begin>
+					<end>2026-06-08T17:48:56.467289799Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.125788403203</longitude>
+				<latitude>16.08096645708098</latitude>
+				<altitude>0</altitude>
+				<heading>0.02527538820496299</heading>
+				<tilt>26.19214704286577</tilt>
+				<range>1280.151167793352</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin192</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.125788403203,16.08096645708098,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ TV2</name>
+			<open>1</open>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.126594162763</longitude>
+				<latitude>16.07791869738312</latitude>
+				<altitude>0</altitude>
+				<heading>9.326292299445136</heading>
+				<tilt>27.85226796237704</tilt>
+				<range>248.4123365080256</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin19</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.126594162763,16.07791869738312,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 17 -CC</name>
+			<styleUrl>#msn_ylw-pushpin16</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1326789117461,16.07595450117503,0 108.1328016548678,16.07616386122766,0 108.1363011124322,16.07428158696344,0 108.1380342303279,16.07339779734446,0 108.1376567517808,16.07280494449892,0 108.1366283549637,16.07328738219098,0 108.1355006545035,16.07381084590006,0 108.1349931955304,16.07414786353377,0 108.133567506166,16.07523395149092,0 108.1330703247415,16.07556961444215,0 108.1327897783862,16.07576336231195,0 108.1326394005008,16.07586261591091,0 108.1326789117461,16.07595450117503,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 17 -CHUNG CƯ 1</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1363354642171</longitude>
+				<latitude>16.07360578984878</latitude>
+				<altitude>0</altitude>
+				<heading>0.004214862370214009</heading>
+				<tilt>27.31309642299162</tilt>
+				<range>332.5854992615422</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin6</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1362041831701,16.07383749024938,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 6 - ĐA PHƯỚC 3</name>
+			<LookAt>
+				<longitude>108.1483216856525</longitude>
+				<latitude>16.06969677150035</latitude>
+				<altitude>0</altitude>
+				<heading>-0.005207002986999718</heading>
+				<tilt>30.00436296909064</tilt>
+				<range>971.3601822630262</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin200</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1478209744046,16.06903656029634,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 6</name>
+			<styleUrl>#msn_ylw-pushpin00</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1432160522705,16.07003236188936,0 108.14383249729,16.0707079677029,0 108.1458782487776,16.06966567032725,0 108.1463156774182,16.06989203422834,0 108.1464153062949,16.07040794202393,0 108.1464612883241,16.07066811528665,0 108.1465033855502,16.07099047146175,0 108.1467047799609,16.07152943947113,0 108.1470127624805,16.07201370024884,0 108.1475005174399,16.07174058138164,0 108.1478498486147,16.07162171565264,0 108.1481755883349,16.07134632837298,0 108.1486674337828,16.07101890217222,0 108.15043381832,16.0717641571183,0 108.1514722841938,16.06922265897205,0 108.148104113522,16.0678243386969,0 108.1477044059889,16.06744939725558,0 108.1469337137616,16.06807836273462,0 108.1464053415019,16.06849538085321,0 108.1433568302061,16.0699231480809,0 108.1432783000635,16.06996290123207,0 108.1432160522705,16.07003236188936,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>NSHCĐ ĐP4</name>
+			<LookAt>
+				<longitude>108.1453531529469</longitude>
+				<latitude>16.06930328494795</latitude>
+				<altitude>0</altitude>
+				<heading>-0.09666305942587984</heading>
+				<tilt>30.00102156662792</tilt>
+				<range>227.4461735303678</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin1900</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1451969653599,16.06916106146888,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ ĐP3</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2026-05-24T02:36:25.772192799Z</begin>
+					<end>2026-05-24T02:36:25.972194899Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1478687285295</longitude>
+				<latitude>16.0712923373469</latitude>
+				<altitude>0</altitude>
+				<heading>-0.001159008471204469</heading>
+				<tilt>24.30782688643527</tilt>
+				<range>121.1341420114875</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin1901</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1477085713957,16.07137919289145,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 7</name>
+			<styleUrl>#msn_ylw-pushpin8</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1490624962834,16.07484834379334,0 108.1469839720323,16.07410140335129,0 108.1468971254846,16.07412307313385,0 108.1468108272769,16.0740975565543,0 108.146707426074,16.07400441843816,0 108.1464383119818,16.07369068765282,0 108.1461371907086,16.07326966210962,0 108.1459745839871,16.07306273478223,0 108.1458461498319,16.07285691648953,0 108.1458017994691,16.07277368471119,0 108.1461968135855,16.0725150283977,0 108.1466247663585,16.07228005119623,0 108.1470149297804,16.0720666802041,0 108.1473666660827,16.07186932213379,0 108.1477954091024,16.07169184744374,0 108.1479963466465,16.07153439408063,0 108.1487079345933,16.07105664755677,0 108.1493416092289,16.07133473264935,0 108.1504397726303,16.07180632676513,0 108.149911403363,16.07311568896543,0 108.1494573759487,16.07414900167894,0 108.1491711933825,16.07487653204608,0 108.1490624962834,16.07484834379334,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 7 - QUANG THÀNH 1</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2026-05-24T02:42:41.912752099Z</begin>
+					<end>2026-05-24T02:42:42.112759199Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1485880988355</longitude>
+				<latitude>16.07318602789188</latitude>
+				<altitude>0</altitude>
+				<heading>0.0001009680989087746</heading>
+				<tilt>28.82802467837006</tilt>
+				<range>360.1400004977226</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin1902</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1485880988355,16.07318602789188,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 8</name>
+			<styleUrl>#msn_ylw-pushpin9</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1422798952347,16.07519726734952,0 108.1431859478959,16.0745812354069,0 108.1435248106229,16.07536982862519,0 108.1438909509243,16.075713587275,0 108.1454976762713,16.07488053511266,0 108.1457909508249,16.07466578909608,0 108.1461304091448,16.07427824729072,0 108.1466108368702,16.0739489919652,0 108.1460639278501,16.07322582140796,0 108.1459398921612,16.07305340376713,0 108.1457627777922,16.07275691237415,0 108.1469745635371,16.07202225112575,0 108.1466567510856,16.07151204926642,0 108.1464716947196,16.07097335226814,0 108.1462859900373,16.06990589237887,0 108.145902713509,16.06976030853239,0 108.1456458782407,16.06983489750903,0 108.1422126240026,16.07165624857721,0 108.141507557211,16.07191619780646,0 108.1377793182377,16.07364288831166,0 108.1326711481792,16.07627632055737,0 108.1343754569706,16.07813504347525,0 108.136159195208,16.08024848547823,0 108.1398610832782,16.07709456372815,0 108.1399142566145,16.07707048066023,0 108.1415261154589,16.07579445871086,0 108.1422798952347,16.07519726734952,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 8- ĐA PHƯỚC 2</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2026-05-24T02:40:54.388088299Z</begin>
+					<end>2026-05-24T02:40:54.588089999Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1452020333205</longitude>
+				<latitude>16.07364920792626</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0009259475236962846</heading>
+				<tilt>28.28458137602754</tilt>
+				<range>1629.375687136901</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin190</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1419367812387,16.07435259613194,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ ĐP1A</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2026-05-24T02:38:26.472399899Z</begin>
+					<end>2026-05-24T02:38:26.672406999Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1439036026869</longitude>
+				<latitude>16.075353392001</latitude>
+				<altitude>0</altitude>
+				<heading>-0.002273362184898774</heading>
+				<tilt>23.86118101531205</tilt>
+				<range>128.892110027501</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin1903</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1436503167984,16.07523016721479,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 18</name>
+			<styleUrl>#msn_ylw-pushpin10</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							108.1244193090696,16.08999620038117,0 108.1210704367789,16.09275528261437,0 108.1158994,16.0953939,0 108.1180881,16.0982596,0 108.1152515,16.1013262,0 108.1145542,16.1021921,0 108.1141558,16.102652,0 108.1181248,16.1052034,0 108.1163509,16.1078661,0 108.1179173,16.1090102,0 108.11884,16.1097833,0 108.1197095,16.1115532,0 108.1196615,16.1144756,0 108.1191973,16.1163906,0 108.1173734,16.1159783,0 108.1155924,16.1156484,0 108.1126741,16.1151949,0 108.1100563,16.11503,0 108.1070952,16.1146177,0 108.10621,16.1128191,0 108.1062609,16.1116569,0 108.1063762,16.1104122,0 108.105988578031,16.10851877281128,0 108.1031156522534,16.10603383494775,0 108.1021037795322,16.10490872296495,0 108.1016532345343,16.10444838521127,0 108.101507467691,16.1041767230084,0 108.1013919650931,16.10393646138447,0 108.1010731399432,16.10318914088768,0 108.1011163435258,16.10214221311841,0 108.1014996816803,16.1014130196736,0 108.1015339258498,16.10083905886233,0 108.1016657002039,16.10037781249309,0 108.1040482,16.098414,0 108.1072455,16.0958885,0 108.1088655,16.0945845,0 108.1093903,16.0941591,0 108.1100348,16.0936413,0 108.1101716,16.0935485,0 108.1201985480995,16.08513234020687,0 108.1244193090696,16.08999620038117,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ TS</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1150814779672</longitude>
+				<latitude>16.09755154609273</latitude>
+				<altitude>0</altitude>
+				<heading>-0.002847673764131509</heading>
+				<tilt>28.88220126630149</tilt>
+				<range>63.52818954796781</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness02</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1150814779672,16.09755154609273,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 18,TRUNG SƠN-HỒNG PHƯỚC</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.11074683459</longitude>
+				<latitude>16.10219229921115</latitude>
+				<altitude>0</altitude>
+				<heading>-0.004055805684406273</heading>
+				<tilt>24.69309811983547</tilt>
+				<range>737.1841512714682</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness01</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.11074683459,16.10219229921115,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 20</name>
+			<styleUrl>#msn_ylw-pushpin19</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1018256006725,16.10015835990778,0 108.0999987879223,16.09801303253927,0 108.0991745212031,16.09675636773,0 108.099479436939,16.09624994905464,0 108.0999386054553,16.09570404167358,0 108.1003439717379,16.09482094632769,0 108.1011712414889,16.09291808688824,0 108.1018722073,16.09167737949684,0 108.1020087954522,16.09127654446623,0 108.1019890173956,16.09104438912641,0 108.1021463294765,16.09082898770626,0 108.1023846307085,16.09053780045561,0 108.1026215470823,16.09080477557077,0 108.1028359000753,16.09108665860327,0 108.1031358912659,16.09144190238447,0 108.1036536694189,16.0919786433157,0 108.1042471674138,16.09264992931308,0 108.1048257496418,16.09325446323206,0 108.1053703402448,16.09386920195314,0 108.1061862882405,16.0947699048926,0 108.1071077340408,16.09588638496318,0 108.1057420662942,16.09691751742646,0 108.1040724620748,16.09829761583952,0 108.1028634193464,16.09929303447754,0 108.1021474139542,16.09989594104759,0 108.1018256006725,16.10015835990778,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỎ 20- QUAN NAM 2</name>
+			<open>1</open>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2025-04-10T23:59:59Z</begin>
+					<end>2025-04-11</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.103494712128</longitude>
+				<latitude>16.09498347918044</latitude>
+				<altitude>0</altitude>
+				<heading>0.0002509930778154763</heading>
+				<tilt>26.51163326483893</tilt>
+				<range>594.122737787476</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness70</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.103494712128,16.09498347918044,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ QN2</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.103013692023</longitude>
+				<latitude>16.09632989758855</latitude>
+				<altitude>0</altitude>
+				<heading>-0.006746806804930611</heading>
+				<tilt>21.66371687229689</tilt>
+				<range>59.98697775217459</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness14</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1029593643321,16.09628701324529,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 21</name>
+			<open>1</open>
+			<styleUrl>#msn_ylw-pushpin20</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1023995532965,16.09050538781009,0 108.1025307100409,16.0903571414561,0 108.1033591519254,16.09051730479435,0 108.1046541141979,16.09055817121648,0 108.1050628686515,16.09089645918811,0 108.1066852148753,16.08949564922611,0 108.1102007096098,16.09341905797871,0 108.1071880645059,16.09583176582309,0 108.1071342231172,16.0958574155106,0 108.1060433347027,16.09453322726515,0 108.1043966357234,16.09269929102115,0 108.1029599720773,16.09116602410817,0 108.1025516745495,16.09063542376412,0 108.1023995532965,16.09050538781009,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 21 - QUAN NAM 5</name>
+			<open>1</open>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2025-04-10T23:59:59Z</begin>
+					<end>2025-04-11</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1070245065372</longitude>
+				<latitude>16.09219684524969</latitude>
+				<altitude>0</altitude>
+				<heading>0.001348913577476734</heading>
+				<tilt>26.80540982762921</tilt>
+				<range>520.6385407243816</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness7</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1070245065372,16.09219684524968,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ QN5</name>
+			<open>1</open>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1068869554088</longitude>
+				<latitude>16.09352383199069</latitude>
+				<altitude>0</altitude>
+				<heading>-0.005682606923563772</heading>
+				<tilt>22.23101854770688</tilt>
+				<range>61.35454757323753</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness0</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1068869554088,16.09352383199068,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 22</name>
+			<styleUrl>#poly-AFB42B-8500-0-nodesc</styleUrl>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<tessellate>1</tessellate>
+						<coordinates>
+							108.0653742545227,16.11258276179312,0 108.065315681746,16.11248018143346,0 108.0651993205599,16.11237864085657,0 108.0651190899702,16.11225508073029,0 108.0650516955725,16.11221677998998,0 108.0650058985343,16.11213486782757,0 108.0648093029776,16.111897155091,0 108.0645853535815,16.11137888481197,0 108.0645728298053,16.11120918801155,0 108.0645808953046,16.11095227489198,0 108.0645787887848,16.11037019488453,0 108.064286643792,16.10972987195584,0 108.0641302,16.1095705,0 108.0640788,16.1094636,0 108.0639035,16.1093943,0 108.0640935281238,16.1094717025572,0 108.0638667931913,16.10931986926507,0 108.0639026089736,16.1091973778053,0 108.0638979797989,16.10895694809173,0 108.0638307894359,16.10869669672497,0 108.0638485316653,16.10810003241354,0 108.0638019453807,16.10765373662135,0 108.0637214968857,16.10690714710092,0 108.0636956891866,16.10660740338576,0 108.0636536261349,16.1062886057151,0 108.0636270686566,16.10587878713106,0 108.0635606316644,16.10560471794237,0 108.0739839,16.1035313,0 108.0796703,16.1030366,0 108.0830498,16.1035829,0 108.0856679,16.1033426,0 108.0876949,16.1032633,0 108.0883842,16.1036833,0 108.0891138,16.1030907,0 108.0904442,16.1022197,0 108.0919899,16.1023096,0 108.0925049,16.1024179,0 108.0925696,16.1024077,0 108.0926125,16.102436,0 108.0926473,16.1024376,0 108.0926894,16.1024281,0 108.0927176,16.1024551,0 108.0947775,16.1020016,0 108.0952975948342,16.10088848981922,0 108.0931849423126,16.10021016154465,0 108.0935939627494,16.09975478179941,0 108.0936293989025,16.09847552352044,0 108.0938474719094,16.09832444208153,0 108.093874678264,16.09782843674347,0 108.0944541746824,16.09777842551871,0 108.095053149939,16.09797116136009,0 108.095410891986,16.09827531153663,0 108.0964282382684,16.09796669286591,0 108.0964098409331,16.09787521411961,0 108.0963566733834,16.09775653677195,0 108.096289554085,16.09746101041607,0 108.0961797452126,16.0971628130304,0 108.0959797941596,16.09652352956707,0 108.0959086484576,16.09573902725533,0 108.0961045853315,16.09402680188495,0 108.0965776832646,16.09408017725876,0 108.0976652634296,16.09423391561009,0 108.0984673899476,16.09438686172728,0 108.0987092918355,16.09569466730304,0 108.0989438675788,16.09586981244816,0 108.09927296289,16.09594732459735,0 108.099096393878,16.09679859929951,0 108.1003715159771,16.098618142609,0 108.100763351179,16.09908923120564,0 108.1010675406516,16.09940953712671,0 108.1015878367683,16.10002389843179,0 108.1014154826411,16.10107776192094,0 108.1014075370557,16.10152333095943,0 108.1010292,16.1021369,0 108.1009894195701,16.10317527072158,0 108.1015303187946,16.10439304135364,0 108.1019315877033,16.10481938805213,0 108.1036509085843,16.10655617929649,0 108.1058889760919,16.10854751581037,0 108.1062549918551,16.11045114227014,0 108.1061010911454,16.11271933436081,0 108.1069345409687,16.11463489358415,0 108.1038595,16.1144146,0 108.1011686,16.1141574,0 108.0986712176071,16.1130866734444,0 108.0964412601071,16.10973069994262,0 108.0957688986114,16.10883234339579,0 108.094001773986,16.10707431693107,0 108.0929430708666,16.10656976243563,0 108.0924983050732,16.10659677271654,0 108.0914182,16.1066879,0 108.0893106,16.1072292,0 108.0879648,16.1078942,0 108.0857546,16.1089455,0 108.0834553,16.1098036,0 108.082125,16.1101129,0 108.0809234,16.1102176,0 108.0796895,16.110209,0 108.0772004,16.1101917,0 108.0758056,16.1103051,0 108.0736706,16.1103205,0 108.0719325,16.1105421,0 108.0712352,16.1106659,0 108.0706429,16.1107359,0 108.0692894,16.1109869,0 108.0680326,16.1115368,0 108.0665089,16.1121244,0 108.0654833431085,16.1127587825833,0 108.0653742545227,16.11258276179312,0 
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ QN3</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.0978518303248</longitude>
+				<latitude>16.09964008525658</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01199028029748126</heading>
+				<tilt>25.90649056226159</tilt>
+				<range>85.84461432055268</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness5</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.0978435224529,16.09957795143641,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ QN6</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.0988402381946</longitude>
+				<latitude>16.10403229677888</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01054576329625243</heading>
+				<tilt>28.67746689566412</tilt>
+				<range>63.33966299766114</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness5</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.0988087258461,16.10404638208292,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 22 - QUAN NAM 3</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.0943611199667</longitude>
+				<latitude>16.10304391000254</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01216046856162373</heading>
+				<tilt>26.79594524912346</tilt>
+				<range>1327.329876969984</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness20</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.0937099700468,16.10470458004094,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 19</name>
+			<styleUrl>#msn_ylw-pushpin2</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.03925860216,16.10683105975256,0 108.0393833950505,16.1066935579659,0 108.0396294862907,16.10648796868772,0 108.039872249371,16.10635136665444,0 108.041082102569,16.10547146900158,0 108.0423170034485,16.10567394414202,0 108.0442078943142,16.10608089352824,0 108.0443856749006,16.10608097501462,0 108.0459938592566,16.10649082948807,0 108.0482220617652,16.1071805278376,0 108.0511778473781,16.10663038848725,0 108.0512923125029,16.1065618801102,0 108.0535005463411,16.10663156853369,0 108.0562423528508,16.10718461217645,0 108.057163574107,16.10788239243348,0 108.0572840359886,16.10788245802932,0 108.0597033028433,16.10795400549408,0 108.0599843620261,16.10781383080879,0 108.0617611281128,16.10615782507922,0 108.0633874703569,16.10534657392883,0 108.0797295186225,16.10277399199457,0 108.0830271134245,16.10337750493048,0 108.0877424827125,16.10316105458432,0 108.0876806623125,16.10316100156006,0 108.0883375822645,16.10348897768089,0 108.0902959933715,16.10218828677765,0 108.0926991091305,16.10234081247972,0 108.0947205045319,16.10192636320845,0 108.0951109165916,16.10111657777653,0 108.0952555487223,16.10091736573344,0 108.0932403284016,16.10027623294013,0 108.0931156115592,16.10022807540772,0 108.0935510445852,16.09973401167812,0 108.0936107087635,16.09844003481069,0 108.0937976385364,16.09831714884044,0 108.0938647887328,16.0978242887245,0 108.0944330744836,16.09774891482478,0 108.0948947468641,16.09788338490119,0 108.0950916664269,16.09798635060918,0 108.0954095472814,16.09826812444393,0 108.0961741366372,16.09797356078067,0 108.0963663190171,16.09788114673391,0 108.095951970254,16.09653704983234,0 108.0958918647054,16.09561467081701,0 108.0959703818338,16.09467382917848,0 108.0959921922807,16.09449414639541,0 108.0960636219332,16.09394539136969,0 108.0961307042804,16.09315609198664,0 108.0961539388005,16.09300094556315,0 108.0962080903667,16.09249007825548,0 108.0962572618244,16.09219580673751,0 108.0963004029107,16.09178512013438,0 108.0963587960374,16.09148933919413,0 108.0964078397592,16.09128803331644,0 108.0964729215026,16.09101835675822,0 108.0964870176288,16.09089180047622,0 108.096498693417,16.09077976617251,0 108.0965321734112,16.09068068330235,0 108.0966112425271,16.09040925878622,0 108.0966417736006,16.09028238907616,0 108.0966788274703,16.09019036622511,0 108.0943507098792,16.08981029279332,0 108.0907962794978,16.08952419210273,0 108.090634788076,16.08954228181715,0 108.0903941701473,16.09039160197325,0 108.0885283542465,16.09046503271521,0 108.0871667070205,16.09061113010154,0 108.0864373080394,16.09070693733984,0 108.0852204006153,16.08976343112752,0 108.0838948622489,16.09040291835008,0 108.0788395473255,16.0899564543185,0 108.0726793844672,16.08909269107167,0 108.072370265839,16.08980323848479,0 108.0719786970898,16.09080544144236,0 108.0717825837118,16.09108136673537,0 108.0714406046466,16.09101475979592,0 108.0699736365392,16.09345307871641,0 108.0683423492775,16.09297097315768,0 108.0685138583325,16.09291819324575,0 108.0645964973298,16.09308128138765,0 108.0627152814802,16.09328233900572,0 108.0603265090432,16.09379249022833,0 108.0588771587691,16.09477082225707,0 108.0556321395841,16.09500036302167,0 108.0522053368931,16.09819167738371,0 108.043003621539,16.0944911641438,0 108.0429649516462,16.09666649188723,0 108.0423223659752,16.09832208153022,0 108.0416292189574,16.10058470728205,0 108.0406545475404,16.1027945290683,0 108.0397555807324,16.10441504045321,0 108.03925860216,16.10683105975256,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 19 - QUAN NAM 1</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.089150849649</longitude>
+				<latitude>16.09602248783033</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01927773533641531</heading>
+				<tilt>30.00311227109911</tilt>
+				<range>692.8537137977459</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness71</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.089150849649,16.09602248783033,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ QN1</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.097715333813</longitude>
+				<latitude>16.09297437167393</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01687035076718054</heading>
+				<tilt>30.00034157839978</tilt>
+				<range>72.37030198121394</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness60</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.0977486178961,16.09296959958122,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ QN1</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.095325659427</longitude>
+				<latitude>16.09598015064694</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01499961357479232</heading>
+				<tilt>28.67953792221846</tilt>
+				<range>75.03933231987227</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness60</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.0952899289119,16.09593772340492,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 24 - HƯỞNG PHƯỚC</name>
+			<open>1</open>
+			<styleUrl>#msn_ylw-pushpin</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.093488953926,16.08001331896937,0 108.0950190160993,16.07937731744553,0 108.0952555942696,16.07939355624779,0 108.0954695318867,16.07953574504443,0 108.0957409352586,16.07978351698027,0 108.0958847251649,16.07992077393756,0 108.0960912777436,16.0801220944763,0 108.0963379003086,16.08023126648449,0 108.0966119728472,16.08048433306366,0 108.0969826092773,16.08083754962874,0 108.0970387729972,16.08078072164035,0 108.0971548706663,16.08056391841153,0 108.0972454539216,16.08039990574506,0 108.0973826941864,16.08021179511422,0 108.097522637024,16.08002221986709,0 108.097699254546,16.07960695668862,0 108.0977991470812,16.07950863077257,0 108.0984189576101,16.08005768437239,0 108.0985935447483,16.08010785338557,0 108.1012123281117,16.0804875396136,0 108.1013167240577,16.08011669167674,0 108.1040655519819,16.07927718575614,0 108.1036033945836,16.07891525602355,0 108.1031462072054,16.07878376511046,0 108.1026801427994,16.07871853860972,0 108.1026989928168,16.07825835289519,0 108.1017238954906,16.07808390969065,0 108.1015184577419,16.07797301944727,0 108.101522969033,16.07638359162259,0 108.1014068591943,16.07602107088138,0 108.1009014233062,16.07459095438429,0 108.1001295345044,16.07478251154982,0 108.0997917504012,16.07406954757973,0 108.0994623642623,16.07401747246196,0 108.0994714175136,16.07394284381816,0 108.0993503022755,16.07376297361627,0 108.0991649661665,16.07368079216252,0 108.0990527906663,16.07343998161435,0 108.0989574209303,16.07308671603796,0 108.0987647905758,16.07318467773,0 108.0986246848158,16.07319988690951,0 108.0985300498639,16.07321842397804,0 108.0985099980889,16.07319128260998,0 108.0983896251565,16.07320677470704,0 108.0982749598736,16.07292037709468,0 108.0981397441758,16.07274773332802,0 108.0978138460891,16.07265325470376,0 108.0975526273484,16.07260451827286,0 108.0974570051555,16.0726792055305,0 108.0972966774298,16.07223416664128,0 108.0973458087556,16.07209345300794,0 108.0975267796075,16.07195519805266,0 108.0975471463967,16.0718141868041,0 108.097322827235,16.07181025722194,0 108.0971037954327,16.07177873291693,0 108.0971078783213,16.07165541883198,0 108.0957640052991,16.07160601062475,0 108.0955755205234,16.07153312941875,0 108.0955497581532,16.07147832144367,0 108.0954562261158,16.0714674465357,0 108.0955076574081,16.07110691897578,0 108.0955137535677,16.07101743047816,0 108.0942343497838,16.07087450281514,0 108.0939053647236,16.07069988596579,0 108.0938350931034,16.07079088664247,0 108.0938654102881,16.07133769103209,0 108.0939538100776,16.0717900357328,0 108.0939894538516,16.07206513179692,0 108.094024380112,16.0726117574079,0 108.0942642436841,16.07295042754199,0 108.0944523713636,16.07333923002959,0 108.0944920226142,16.07367489876262,0 108.0945271466849,16.07387110004452,0 108.0945076189623,16.07402919119725,0 108.094879135059,16.07441498100198,0 108.0952499356032,16.07496862095093,0 108.0955900381393,16.07570032590623,0 108.0958677779163,16.07679648612257,0 108.0959067970961,16.07723866881292,0 108.0958782078867,16.07745902073629,0 108.0958584579423,16.07769062419694,0 108.0958489092975,16.07782447704831,0 108.0957843975675,16.07789747345702,0 108.0957423299626,16.07793421565076,0 108.0956891460512,16.0779184688476,0 108.095684480533,16.07792372065859,0 108.0926469908216,16.07647573173104,0 108.0914597275537,16.07909108227367,0 108.0918914877108,16.07915491425518,0 108.0923482377019,16.0790910203455,0 108.0928620966643,16.0797044040441,0 108.093488953926,16.08001331896937,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 24 - HƯỞNG PHƯỚC</name>
+			<open>1</open>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2026-06-12T15:18:18.080055799Z</begin>
+					<end>2026-06-12T15:18:18.280058999Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.0992928917961</longitude>
+				<latitude>16.07687843243428</latitude>
+				<altitude>0</altitude>
+				<heading>-0.007712982579950858</heading>
+				<tilt>25.76134073507262</tilt>
+				<range>617.1101656653998</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.0992793521045,16.0782844133434,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ HƯỞNG PHƯỚC</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.0985783835222</longitude>
+				<latitude>16.07733057377197</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0003667326320308423</heading>
+				<tilt>26.29145561638462</tilt>
+				<range>153.6621460064802</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness9</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.0986785739357,16.07723309457387,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 27</name>
+			<styleUrl>#msn_ylw-pushpin1</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.0973517744048,16.08030058571764,0 108.0972026166405,16.08050614409492,0 108.0970946661788,16.0807238982257,0 108.0970483904568,16.08079272615198,0 108.096834501965,16.08111521682063,0 108.0968053938655,16.08142220309755,0 108.0968140797096,16.08210695450942,0 108.0970559501611,16.08265553860711,0 108.0971049822918,16.08277896375781,0 108.0971179346027,16.08308122050106,0 108.097027030778,16.08332488953043,0 108.0969809857081,16.08356766455004,0 108.0970895544703,16.08397838337983,0 108.0973053462739,16.08384464175901,0 108.0974721102096,16.08377377134035,0 108.0980628598047,16.08353049273007,0 108.0984900520766,16.08338306061181,0 108.0990220076664,16.08346005158879,0 108.0991609787608,16.08350123116426,0 108.0997058731961,16.08408165450566,0 108.099767518032,16.08412311839272,0 108.0993601388933,16.08447908472483,0 108.0991836906542,16.08468346465969,0 108.0990145982443,16.08536850584218,0 108.0987403058528,16.08657055712171,0 108.099424678667,16.08748112961411,0 108.0994210697348,16.08756837870467,0 108.098963375474,16.08897412997764,0 108.0991037883016,16.08908195857456,0 108.0995504146012,16.08948761563792,0 108.0996837165687,16.08926267099455,0 108.0997709758593,16.08911316529724,0 108.0997404591917,16.08894301813648,0 108.0996318179318,16.08864651298716,0 108.0996633522114,16.0882104679215,0 108.0999017012136,16.08783469173334,0 108.1002021249877,16.08767806799275,0 108.1005034382801,16.08736135681567,0 108.1007192401078,16.08719034099767,0 108.1009668123771,16.08690955505398,0 108.1013323534549,16.08653934561415,0 108.101837636172,16.08550618165343,0 108.1020468177125,16.08511353264656,0 108.1022520789983,16.08446487474518,0 108.1100898317658,16.0931646934812,0 108.1199670868032,16.08492169373533,0 108.1157815676452,16.07989902833304,0 108.1135666196638,16.08183324047653,0 108.1115742740642,16.08091428363531,0 108.1115119291188,16.08087011486607,0 108.1117212599027,16.08060433599005,0 108.1112695035577,16.07981728403366,0 108.1109198164265,16.07939910070879,0 108.1101734883316,16.07879458483941,0 108.10998346012,16.07861650350617,0 108.1098446843063,16.07848787236037,0 108.1097224740387,16.07834107519981,0 108.1096085247648,16.07818660078062,0 108.1093298567335,16.0785056927353,0 108.1093186637674,16.07855720961473,0 108.1091175804603,16.07880204692261,0 108.108916090867,16.07896763442002,0 108.1088861258764,16.07897019789891,0 108.1087432786797,16.07916921669959,0 108.1082817670315,16.07974906183337,0 108.107713513501,16.08024157087454,0 108.1076489938139,16.08025415679564,0 108.1073916884497,16.0799793128911,0 108.1074294453189,16.07991963768514,0 108.1072513213608,16.07978078109937,0 108.1069677171568,16.07948562877595,0 108.105881138861,16.08013477160164,0 108.1058965057688,16.08054541671243,0 108.1058749363941,16.08059347042932,0 108.1040821344696,16.07932949852755,0 108.1013612166768,16.08013786673373,0 108.1012275256497,16.08054559920522,0 108.0984163974418,16.08011754834722,0 108.0978039170188,16.07951797515175,0 108.0977470140617,16.07957276929153,0 108.0976993246851,16.07963753445439,0 108.0976683616743,16.07971205368668,0 108.0976470489746,16.07976682430177,0 108.0975407591388,16.08004459087483,0 108.0973517744048,16.08030058571764,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 27 - VÂN DƯƠNG 2</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2026-05-24T02:24:51.856123399Z</begin>
+					<end>2026-05-24T02:24:52.056125299Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1100070753394</longitude>
+				<latitude>16.08414346232544</latitude>
+				<altitude>0</altitude>
+				<heading>-1.225351536362852</heading>
+				<tilt>22.90990303689529</tilt>
+				<range>1311.041353724911</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin4</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1091810155459,16.08520696342309,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ VD2</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1045165755151</longitude>
+				<latitude>16.08504796725842</latitude>
+				<altitude>0</altitude>
+				<heading>0.00283903333832977</heading>
+				<tilt>25.72970946438078</tilt>
+				<range>156.1182555965834</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness15</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1046533192429,16.08498430955117,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 26</name>
+			<styleUrl>#msn_ylw-pushpin12</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.1065717464428,16.08955208506647,0 108.1050709533202,16.0908625325543,0 108.1046618129372,16.09052479176127,0 108.1033956805855,16.09050194800737,0 108.1025247129198,16.09034030933907,0 108.1019669635705,16.09092956522213,0 108.1015147535269,16.09068418218872,0 108.1007073264759,16.09029270948969,0 108.1000421988036,16.08994013470429,0 108.0996473715104,16.08951564437718,0 108.0996806385304,16.0893466874778,0 108.0997701434717,16.08914833581377,0 108.0997974823031,16.08906436788213,0 108.09973542144,16.08882158081219,0 108.0996594354772,16.08862785388984,0 108.0997025292579,16.08821246112783,0 108.0999187317224,16.0878510490001,0 108.1002225626957,16.08770047698424,0 108.1004886297639,16.08740643415773,0 108.1007255619281,16.08721225800476,0 108.1009312189684,16.08697393700134,0 108.1011218262542,16.0867781111859,0 108.1013427259333,16.08656015947706,0 108.1015460675686,16.08615780244186,0 108.1017464701825,16.08576239911253,0 108.1018831518036,16.08551330184394,0 108.1020587396883,16.08516849619371,0 108.1021697671941,16.08486377319117,0 108.1022372224212,16.08456543682069,0 108.103118235237,16.08550470677367,0 108.1037356134701,16.08626103419163,0 108.1045079331232,16.0871094061672,0 108.1053538478768,16.08801278839897,0 108.1059835127473,16.08876199455432,0 108.1066151690023,16.08946094950008,0 108.1065967222622,16.08951297190999,0 108.1065918811703,16.08952409967289,0 108.106584947235,16.08952887404806,0 108.1065796317563,16.08953525319757,0 108.1065740118002,16.08953844395314,0 108.1065703078929,16.08954644282682,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ VD1</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1042007839775</longitude>
+				<latitude>16.09012628162946</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0101133851215965</heading>
+				<tilt>30.00037467916183</tilt>
+				<range>81.95438701836163</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness15</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1040967247218,16.09006659189793,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 26 - VÂN DƯƠNG 1</name>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.1036474679493</longitude>
+				<latitude>16.08853855145932</latitude>
+				<altitude>0</altitude>
+				<heading>0.01392771028378559</heading>
+				<tilt>17.50345089931128</tilt>
+				<range>699.5115819897829</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin00</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.1036474679493,16.08853855145933,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 25</name>
+			<styleUrl>#msn_ylw-pushpin0</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.0521542414742,16.09766411877943,0 108.0432517762497,16.09424962937367,0 108.0435729526349,16.09269357983377,0 108.0435277344374,16.09171939259604,0 108.0440951198969,16.09128147904587,0 108.0446774786452,16.09061544418434,0 108.0449782254688,16.08973446704936,0 108.0453398936843,16.08891247956073,0 108.0457901220626,16.0877872220255,0 108.0475398287675,16.08615053128656,0 108.0477318850961,16.08546292363324,0 108.047581413563,16.08369934213146,0 108.0485304834551,16.0829525136864,0 108.0489394002713,16.08199511676112,0 108.0485684115931,16.08165904183966,0 108.048989269264,16.08165888685958,0 108.0495425707351,16.08127821587821,0 108.0497264790607,16.0807409816429,0 108.050820158203,16.08003804152226,0 108.0506544295914,16.07979649194272,0 108.0498031010965,16.08008719337596,0 108.0493770308831,16.07992529815738,0 108.0500588722055,16.07984470256313,0 108.050856862549,16.07912585353236,0 108.0510099077256,16.07790874521501,0 108.050700582729,16.07776723530594,0 108.0501146569158,16.07817498200703,0 108.0502274822763,16.07772713601618,0 108.0509881689526,16.07715282406826,0 108.0493587392846,16.07782826217277,0 108.0469698305919,16.07836246834946,0 108.0468284874319,16.07869850156567,0 108.0470785623369,16.08001406202473,0 108.0462884702257,16.07985616292204,0 108.0458838278838,16.07921196197952,0 108.046302618183,16.07822016411988,0 108.0478001572883,16.07773303002776,0 108.0483964981333,16.07718113125922,0 108.0488150340449,16.07594068277823,0 108.0485917470815,16.07510092348124,0 108.0482555548768,16.07537666179581,0 108.0480954911281,16.07567679649548,0 108.047890948228,16.07512071825583,0 108.0476220590377,16.07549632236464,0 108.0474945327885,16.07608501094009,0 108.0471025950505,16.07633439890601,0 108.047108196352,16.07627176875687,0 108.0467820394694,16.07623025801175,0 108.0467633310456,16.07559677085029,0 108.0462125394915,16.07598262971888,0 108.0457574554849,16.07684372445364,0 108.0454769879364,16.07658768222082,0 108.0460371574614,16.07573816905517,0 108.046358034964,16.07541706712344,0 108.0457830114964,16.0756574797362,0 108.0448284793478,16.07592596736035,0 108.0444768787157,16.07573583900717,0 108.0446202373589,16.07530271576972,0 108.0438793346609,16.07587194284947,0 108.0434718566317,16.07568563532406,0 108.0438282134786,16.0756182543992,0 108.043715604088,16.07522125024908,0 108.0439173840628,16.07517228836807,0 108.0445067020693,16.07513955526059,0 108.0445389407126,16.07483442993962,0 108.0447662364654,16.07497806181581,0 108.0449308366628,16.07530258931419,0 108.0454726467542,16.07526958158329,0 108.0460236454602,16.07504189851859,0 108.0460440757886,16.07466011674877,0 108.0463383195098,16.07488146655947,0 108.0467310095318,16.07467555473358,0 108.046583559856,16.07431870783916,0 108.0461387478319,16.0740607619823,0 108.0460841545639,16.07391114701742,0 108.0462469086906,16.07376304749612,0 108.0465522286167,16.07388123895784,0 108.0467871424056,16.07382187438873,0 108.0469030739932,16.07416618159059,0 108.0474691276074,16.07401520556903,0 108.0472447956262,16.07450354262456,0 108.0475627245336,16.074596877701,0 108.0478965927746,16.07450329159051,0 108.047873638113,16.07358048903944,0 108.0475748698237,16.07322561785844,0 108.0472073693496,16.0731625851664,0 108.047714432596,16.07307880048758,0 108.0479719148012,16.073047543007,0 108.0477856812831,16.0721734309155,0 108.0473998262358,16.07111151494076,0 108.0477123841462,16.07101389812984,0 108.0479917601371,16.07170106765717,0 108.0482163452823,16.07197423397639,0 108.0482156226752,16.07233485972759,0 108.0485045868351,16.07262274518091,0 108.0487252835942,16.07185617287688,0 108.0487363449611,16.07135840343776,0 108.0489008454483,16.07144616490252,0 108.0493889590817,16.07125859087335,0 108.0490187635544,16.0718040443208,0 108.0489747228174,16.07256718152478,0 108.0492029879424,16.07283234410153,0 108.0492199169933,16.0730601490689,0 108.0486682495603,16.07281845831398,0 108.0483910450377,16.07324866245787,0 108.0484899191776,16.07354364697219,0 108.0483821748014,16.07410789500754,0 108.0484394838799,16.07442324999037,0 108.0489621538863,16.07466454949616,0 108.049163354023,16.07451901733005,0 108.0494294181835,16.07409186388744,0 108.0495769996426,16.07409179961394,0 108.0496091937184,16.07447068728221,0 108.0500313145198,16.0740605121396,0 108.0502516864489,16.07392141613819,0 108.0498367379123,16.07372338907161,0 108.0497114565318,16.07316092111577,0 108.0493401322683,16.07279003009057,0 108.0492048529521,16.07248448804637,0 108.0492961678923,16.07223991504654,0 108.0495688481172,16.07252557548975,0 108.0500000347943,16.0726638409552,0 108.0499633701549,16.0723206265851,0 108.0505247822644,16.0725114377592,0 108.0504007364964,16.07218580042844,0 108.0500435877498,16.07157233852861,0 108.0500813251864,16.07109831525315,0 108.0504104789166,16.07162321944187,0 108.050779731477,16.07137866025472,0 108.0502836936362,16.0707654421192,0 108.0501714589874,16.07000923765761,0 108.0504917994519,16.07059133519547,0 108.0506145054948,16.07088291336243,0 108.0510215464084,16.07124333923057,0 108.0509507912597,16.07161610418989,0 108.0512702473267,16.07205389720513,0 108.0515777438538,16.07235981201089,0 108.0518950755279,16.07134118147507,0 108.0518145633262,16.0710796228688,0 108.0529312562503,16.07028040562142,0 108.0528959247019,16.06980772961715,0 108.0533771860958,16.07028022810574,0 108.0539735249928,16.0699486395132,0 108.0540912651253,16.0699913116331,0 108.0541765390989,16.07000555073147,0 108.054394392988,16.07020703346481,0 108.0541708646311,16.07035313437473,0 108.0531438195934,16.0706057594463,0 108.0528509172032,16.07097076351137,0 108.0529482081132,16.07128296927907,0 108.0530351926612,16.07128293263552,0 108.0533762698607,16.07123546709344,0 108.054067354078,16.07104761231209,0 108.0543310194447,16.07139348400242,0 108.055030475511,16.07118763230705,0 108.0551915579938,16.07153736825532,0 108.0545576259794,16.07174883854976,0 108.0541549427345,16.07189724238801,0 108.0534441768122,16.07160273015366,0 108.0529337894655,16.07186468505158,0 108.0527690643825,16.07249054467736,0 108.053027095081,16.07311027487356,0 108.05369008179,16.07356590595755,0 108.0538415680713,16.07386223659478,0 108.0541297730647,16.07427480818984,0 108.0539611381968,16.07446900548926,0 108.0542712619891,16.07459200362119,0 108.0543158669439,16.07482985192147,0 108.0548958623354,16.07480431562816,0 108.0550235251102,16.07509859541043,0 108.0543252676659,16.07537465290357,0 108.0551393615921,16.07550801625579,0 108.0557069363423,16.07556169953424,0 108.055410077363,16.07593277051404,0 108.0556940208512,16.07614401580542,0 108.0558942395016,16.07650497983714,0 108.0561353894167,16.07663761019281,0 108.0588301277609,16.07478888921243,0 108.0588890553465,16.07395936708374,0 108.0597652261681,16.07352493778763,0 108.0739775769218,16.07294674336075,0 108.0736467314962,16.07144314712222,0 108.0753932418797,16.06417618178609,0 108.0767444488538,16.06417593390713,0 108.0778489866111,16.06200508289575,0 108.085842266313,16.06197651335691,0 108.089228619029,16.06193989167175,0 108.0896745644008,16.06255353671887,0 108.0906617475679,16.06268658526922,0 108.0911424593385,16.06516370429141,0 108.0920398397978,16.06608316726077,0 108.0914882624187,16.06913084838637,0 108.0905225417362,16.07077943545477,0 108.0925124905786,16.07026821143614,0 108.0938898304633,16.07070010443498,0 108.0938277949531,16.07128313531758,0 108.0939911141643,16.07213939540505,0 108.0940014761572,16.07261575563655,0 108.0942088863636,16.07288979020001,0 108.0944185485352,16.07337287821678,0 108.0944876342109,16.07403388826231,0 108.0949204883726,16.07448186450008,0 108.0952449099248,16.07502576647365,0 108.0955893836317,16.07575525675896,0 108.0957930565112,16.07654732961955,0 108.0958769529393,16.07716465823163,0 108.0957860301347,16.07784353359119,0 108.095127296877,16.07753548597653,0 108.094063565483,16.07709172771324,0 108.0926418264098,16.07644630472208,0 108.0925467902422,16.07660480472631,0 108.0922289170613,16.07719839831781,0 108.0920383458224,16.07758438116399,0 108.0919335304663,16.07783115994141,0 108.0917602390053,16.0782096121377,0 108.0913971802106,16.07914290297673,0 108.0917694213116,16.07917845429692,0 108.0923273186094,16.07916188445423,0 108.0928526667836,16.07977729816556,0 108.0934599646466,16.08006531723922,0 108.0950082363125,16.07940342132054,0 108.0952415714132,16.07941279225721,0 108.0955122805423,16.07960253134237,0 108.0960954790861,16.08015463177215,0 108.0963396547909,16.08025332364075,0 108.0969085287484,16.08083127700762,0 108.0968058524663,16.08108741305623,0 108.0967905792348,16.08138863169804,0 108.0967918264057,16.0820997429874,0 108.0968935436712,16.08237413007096,0 108.0969911750526,16.08263915800398,0 108.0970865637893,16.08277897713856,0 108.0971019517275,16.08306565811246,0 108.0970816506319,16.08313862094372,0 108.0970126811878,16.08330087397691,0 108.0969662889794,16.08356120683714,0 108.0958407139581,16.08367756660106,0 108.0953839812579,16.08263396823617,0 108.0948215481687,16.08282866182997,0 108.0932671859603,16.08221450165314,0 108.0919891542103,16.08323290484162,0 108.0914685604977,16.08452636090992,0 108.0916409421083,16.08513478572063,0 108.0918790354741,16.08538017251541,0 108.0923395438808,16.08693533262062,0 108.0927316545132,16.0874098207645,0 108.0922243222109,16.08946888908506,0 108.0920938020784,16.0895861395574,0 108.0916409381905,16.0895494534018,0 108.0912552846063,16.0895078162164,0 108.0909495677564,16.08950841092104,0 108.090538479585,16.08945876995739,0 108.0903731928305,16.09031846029857,0 108.0885484243628,16.09035317794689,0 108.087465255961,16.09047239274974,0 108.0867530048921,16.09053092004805,0 108.0864118301686,16.09062511171829,0 108.0852828220076,16.08954934217022,0 108.0837895044585,16.09024891831172,0 108.0826784511754,16.0900980272969,0 108.0786862259934,16.08986293665522,0 108.0724981243073,16.08883881824491,0 108.0714747709266,16.09064063806,0 108.0699677470338,16.09303788581858,0 108.0684481457402,16.09276247235193,0 108.0601314181472,16.09351846753405,0 108.0588016841412,16.09447780438099,0 108.0556975373235,16.09458041750456,0 108.0526034716336,16.09759437745121,0 108.052365818574,16.09780150847962,0 108.0521542414742,16.09766411877943,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 25- (HIỀN TÂN/ TÂN NINH/HIỀN PHƯỚC)</name>
+			<open>1</open>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.0767393916289</longitude>
+				<latitude>16.0839912192443</latitude>
+				<altitude>0</altitude>
+				<heading>0.01174978628716558</heading>
+				<tilt>19.88289660616336</tilt>
+				<range>1945.094483620356</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness3</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.0767393916289,16.0839912192443,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ TN</name>
+			<open>1</open>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.08943601764</longitude>
+				<latitude>16.07827710244723</latitude>
+				<altitude>0</altitude>
+				<heading>-0.0115566194099454</heading>
+				<tilt>26.48061637693227</tilt>
+				<range>139.1595228900322</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness10</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.0891920119039,16.07837120831267,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ HIỀN PHƯỚC</name>
+			<open>1</open>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.0947434939259</longitude>
+				<latitude>16.07443567215392</latitude>
+				<altitude>0</altitude>
+				<heading>0.001053061242427881</heading>
+				<tilt>25.56668909281692</tilt>
+				<range>87.73313450482097</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness1</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.0945692543385,16.07437380769995,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 23</name>
+			<styleUrl>#msn_ylw-pushpin3</styleUrl>
+			<LineString>
+				<tessellate>1</tessellate>
+				<coordinates>
+					108.0922581906834,16.08947562769512,0 108.0930312905709,16.0895971044498,0 108.0967108083833,16.09017699848676,0 108.0961617018862,16.09392471346202,0 108.0975706064071,16.09414629755067,0 108.0984589057605,16.09432114774205,0 108.0988175572373,16.09571483213814,0 108.0991812889686,16.09590603379393,0 108.099720103929,16.09590178552339,0 108.1000139711547,16.09547244062942,0 108.1010821376279,16.0929739478416,0 108.1018498567049,16.09157088650355,0 108.1019399331278,16.09105718945506,0 108.1012720484158,16.09068769842344,0 108.1000516064848,16.09004808566078,0 108.0989062963124,16.08897239243102,0 108.0993888739159,16.08752782108343,0 108.0986784561253,16.08657149990468,0 108.0991537856154,16.08459363025431,0 108.0997256141046,16.08413552423944,0 108.0991585020405,16.08352820571641,0 108.0984827546773,16.08338359410128,0 108.097075443112,16.08399909683087,0 108.0968545147397,16.08358340951251,0 108.0958125616078,16.08372195953615,0 108.0953598887321,16.08271841783903,0 108.0948246529578,16.08296512456251,0 108.0932444842693,16.0823138266276,0 108.092107347586,16.08332589704312,0 108.0916186909161,16.08431729554742,0 108.0916641371515,16.08503787108388,0 108.0919001913318,16.08532991911061,0 108.092367514496,16.08685388273822,0 108.0927788527478,16.08740120387838,0 108.0922581906834,16.08947562769512,0 
+				</coordinates>
+			</LineString>
+		</Placemark>
+		<Placemark>
+			<name>TỔ 23 - QUAN NAM 4</name>
+			<LookAt>
+				<gx:TimeSpan>
+					<begin>2026-06-09T08:09:13.694404299Z</begin>
+					<end>2026-06-09T08:09:13.894409199Z</end>
+				</gx:TimeSpan>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.0966733414415</longitude>
+				<latitude>16.08659833191659</latitude>
+				<altitude>0</altitude>
+				<heading>0.0141233948565333</heading>
+				<tilt>27.50194995532452</tilt>
+				<range>804.9714932290633</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness130</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.0966733414415,16.08659833191659,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>NHÀ SHCĐ QN4</name>
+			<open>1</open>
+			<LookAt>
+				<gx:TimeStamp><when>2025-04-11</when>
+</gx:TimeStamp>
+				<gx:ViewerOptions>
+					<gx:option name="historicalimagery"></gx:option>
+					<gx:option enabled="0" name="sunlight"></gx:option>
+					<gx:option enabled="0" name="streetview"></gx:option>
+				</gx:ViewerOptions>
+				<longitude>108.0956556838393</longitude>
+				<latitude>16.08534367915437</latitude>
+				<altitude>0</altitude>
+				<heading>-0.01751726512738604</heading>
+				<tilt>29.17532803066081</tilt>
+				<range>101.1490747977536</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#msn_homegardenbusiness10</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>108.0958419379001,16.08531864865143,0</coordinates>
+			</Point>
+		</Placemark>
+		<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1155"></atom:link>
+	</Folder>
+</Document>
+</kml>

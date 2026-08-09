@@ -1,0 +1,3 @@
+module.exports=[84505,a=>{"use strict";let b=(0,a.i(70106).default)("download",[["path",{d:"M12 15V3",key:"m9g1x1"}],["path",{d:"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4",key:"ih7n3h"}],["path",{d:"m7 10 5 5 5-5",key:"brsn70"}]]);a.s(["Download",0,b],84505)},2834,a=>{"use strict";var b=a.i(5050);let c=(0,b.createServerReference)("78a9895edd0af37f880f2fc0e049faa1d070c674f8",b.callServer,void 0,b.findSourceMapURL,"getSubjects");a.s(["getSubjects",0,c])},41675,a=>{"use strict";let b=(0,a.i(70106).default)("calendar",[["path",{d:"M8 2v4",key:"1cmpym"}],["path",{d:"M16 2v4",key:"4m81vk"}],["rect",{width:"18",height:"18",x:"3",y:"4",rx:"2",key:"1hopcy"}],["path",{d:"M3 10h18",key:"8toen8"}]]);a.s(["Calendar",0,b],41675)}];
+
+//# sourceMappingURL=_082r9zb._.js.map

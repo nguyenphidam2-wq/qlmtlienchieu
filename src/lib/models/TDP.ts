@@ -12,6 +12,9 @@ export interface ITDP extends Document {
   center?: [number, number];
   leader_name?: string;
   leader_phone?: string;
+  police_name?: string;
+  police_phone?: string;
+  boundary_info?: string;
   created_at: Date;
   updated_at: Date;
 }
@@ -28,6 +31,9 @@ const TDPSchema = new Schema<ITDP>(
     center: { type: [Number], required: false }, // [lng, lat] or [lat, lng], usually [lat, lng] for leaflet
     leader_name: { type: String },
     leader_phone: { type: String },
+    police_name: { type: String },
+    police_phone: { type: String },
+    boundary_info: { type: String },
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 );

@@ -203,6 +203,8 @@ export default function TDPPage() {
                 <th className="px-6 py-4">Tên Tổ</th>
                 <th className="px-6 py-4 text-center">Số hộ</th>
                 <th className="px-6 py-4 text-center">Nhân khẩu</th>
+                <th className="px-6 py-4 text-center">CSKV Phụ trách</th>
+                <th className="px-6 py-4 text-center">SĐT Liên hệ</th>
                 <th className="px-6 py-4 text-center">Phân loại vùng</th>
                 <th className="px-6 py-4 text-center">Màu sắc</th>
                 <th className="px-6 py-4 text-center">Tọa độ không gian</th>
@@ -239,6 +241,16 @@ export default function TDPPage() {
                       </td>
                       <td className="px-6 py-4 text-center text-blue-600 font-bold">
                         {tdp.population.toLocaleString('vi-VN')}
+                      </td>
+                      <td className="px-6 py-4 text-center text-slate-600 font-medium">
+                        {tdp.police_name || <span className="text-slate-400 italic">Chưa có</span>}
+                      </td>
+                      <td className="px-6 py-4 text-center text-slate-600 font-medium">
+                        {tdp.police_phone ? (
+                          <a href={`tel:${tdp.police_phone}`} className="hover:text-blue-600 transition-colors">{tdp.police_phone}</a>
+                        ) : (
+                          <span className="text-slate-400 italic">Chưa có</span>
+                        )}
                       </td>
                       <td className="px-6 py-4 text-center">
                         <span className={`inline-flex px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider ${

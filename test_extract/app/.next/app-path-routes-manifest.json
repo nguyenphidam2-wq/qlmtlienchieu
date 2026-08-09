@@ -1,0 +1,19 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/accounts/page": "/accounts",
+  "/api/auth/login/route": "/api/auth/login",
+  "/api/auth/setup/route": "/api/auth/setup",
+  "/api/import-data/route": "/api/import-data",
+  "/businesses/page": "/businesses",
+  "/favicon.ico/route": "/favicon.ico",
+  "/gis/page": "/gis",
+  "/login/page": "/login",
+  "/migrate/page": "/migrate",
+  "/page": "/",
+  "/pccc/page": "/pccc",
+  "/schedules/page": "/schedules",
+  "/subjects/page": "/subjects",
+  "/tdp/page": "/tdp",
+  "/test-login/route": "/test-login"
+}

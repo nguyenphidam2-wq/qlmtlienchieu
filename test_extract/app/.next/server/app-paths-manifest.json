@@ -1,0 +1,19 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/accounts/page": "app/accounts/page.js",
+  "/api/auth/login/route": "app/api/auth/login/route.js",
+  "/api/auth/setup/route": "app/api/auth/setup/route.js",
+  "/api/import-data/route": "app/api/import-data/route.js",
+  "/businesses/page": "app/businesses/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/gis/page": "app/gis/page.js",
+  "/login/page": "app/login/page.js",
+  "/migrate/page": "app/migrate/page.js",
+  "/page": "app/page.js",
+  "/pccc/page": "app/pccc/page.js",
+  "/schedules/page": "app/schedules/page.js",
+  "/subjects/page": "app/subjects/page.js",
+  "/tdp/page": "app/tdp/page.js",
+  "/test-login/route": "app/test-login/route.js"
+}

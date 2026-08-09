@@ -1,0 +1,29 @@
+{
+  "node": {
+    "002dfa9e0ca8d6ee0114ad98424b94bd7c3ca65854": {
+      "workers": {
+        "app/_not-found/page": {
+          "moduleId": 40596,
+          "async": false,
+          "exportedName": "getCurrentUserInfo",
+          "filename": "src/lib/actions/subjects.ts"
+        }
+      },
+      "exportedName": "getCurrentUserInfo",
+      "filename": "src/lib/actions/subjects.ts"
+    },
+    "00ab1636caf27ecd0a8290e61933f0a19dfad45af4": {
+      "workers": {
+        "app/_not-found/page": {
+          "moduleId": 40596,
+          "async": false,
+          "exportedName": "getCustomZones",
+          "filename": "src/lib/actions/zones.ts"
+        }
+      },
+      "exportedName": "getCustomZones",
+      "filename": "src/lib/actions/zones.ts"
+    }
+  },
+  "edge": {}
+}

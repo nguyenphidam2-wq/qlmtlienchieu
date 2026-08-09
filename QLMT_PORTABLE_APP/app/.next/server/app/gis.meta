@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/gis/layout,_N_T_/gis/page,_N_T_/gis"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/gis/__PAGE__",
+    "/gis",
+    "/_index",
+    "/_head"
+  ]
+}
