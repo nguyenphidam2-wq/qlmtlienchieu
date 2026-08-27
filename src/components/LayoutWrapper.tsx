@@ -8,6 +8,7 @@ import { Menu, X } from "lucide-react";
 export function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [desktopSidebarOpen, setDesktopSidebarOpen] = useState(true);
   const isLogin = pathname === "/login";
 
   const isGis = pathname.startsWith("/gis");
@@ -50,16 +51,40 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
       {/* Sidebar Container */}
       <div className={`
         fixed inset-y-0 left-0 z-[10002] transform transition-transform duration-500 cubic-bezier(0.4, 0, 0.2, 1)
-        ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+        ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
+        ${desktopSidebarOpen ? "md:translate-x-0" : "md:-translate-x-[110%]"}
       `}>
         <Suspense fallback={<div className="m-4 w-72 bg-slate-900/40 backdrop-blur-md rounded-3xl h-[calc(100vh-2rem)]"></div>}>
           <Sidebar onCloseMobile={() => setMobileMenuOpen(false)} />
         </Suspense>
       </div>
 
+      {/* Desktop Sidebar Toggle Button */}
+      {!isLogin && (
+        <div 
+          className="hidden md:flex fixed top-1/2 -translate-y-1/2 z-[10003] transition-all duration-500"
+          style={{ left: desktopSidebarOpen ? "316px" : "0px", transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)" }}
+        >
+          <button
+            onClick={() => setDesktopSidebarOpen(!desktopSidebarOpen)}
+            className="flex items-center justify-center w-5 h-12 bg-[#1C2434] text-slate-400 hover:text-white hover:w-6 border border-l-0 border-slate-700/80 cursor-pointer transition-all duration-200 rounded-r-lg shadow-[4px_0_12px_rgba(0,0,0,0.5)] group"
+            title={desktopSidebarOpen ? "Thu gọn menu" : "Mở rộng menu"}
+          >
+            <svg
+              className={`w-3.5 h-3.5 transition-transform duration-300 ${desktopSidebarOpen ? "rotate-0" : "rotate-180"}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+        </div>
+      )}
+
       <main className={`
-        flex-1 mt-14 md:mt-0 relative h-screen w-full
-        ${isGis ? 'overflow-hidden' : 'p-4 md:p-6 md:pl-[340px] overflow-y-auto'}
+        flex-1 mt-14 md:mt-0 relative h-screen w-full transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1)
+        ${isGis ? 'overflow-hidden' : `p-4 md:p-6 overflow-y-auto ${desktopSidebarOpen ? 'md:pl-[340px]' : 'md:pl-4'}`}
       `}>
         {children}
       </main>
