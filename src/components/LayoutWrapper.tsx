@@ -63,7 +63,7 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
       {!isLogin && (
         <div 
           className="hidden md:flex fixed top-1/2 -translate-y-1/2 z-[10003] transition-all duration-500"
-          style={{ left: desktopSidebarOpen ? "316px" : "0px", transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)" }}
+          style={{ left: desktopSidebarOpen ? "304px" : "0px", transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)" }}
         >
           <button
             onClick={() => setDesktopSidebarOpen(!desktopSidebarOpen)}
