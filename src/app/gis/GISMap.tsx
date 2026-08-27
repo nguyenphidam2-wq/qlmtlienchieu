@@ -15,42 +15,40 @@ import { ISubject, IBusiness, ICustomZone, ITDP } from "@/lib/models";
 import { IPCCCRecord } from "@/lib/models/PCCC";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import * as turf from "@turf/turf";
-import { PenTool, X, CheckCircle2, Eye, EyeOff, MapPin, Layers, Circle as CircleIcon, Ruler, Square, Trash2, Users, Store, Flame, Crosshair, Compass, Info } from "lucide-react";
+import { PenTool, X, CheckCircle2, Eye, EyeOff, MapPin, Layers, Circle as CircleIcon, Ruler, Square, Trash2, Users, Store, Flame, Crosshair, Compass, Info, ChevronDown } from "lucide-react";
 
 
-// Status colors
+// Status colors - High contrast semantic palette
 const statusColors: Record<string, string> = {
-  "Nghiện": "#ff5252",
-  "Sử dụng": "#ffb300",
-  "Sau cai": "#00e676",
-  "Khởi tố": "#ce93d8",
+  "Nghiện": "#dc2626",    // Red-600 (High contrast)
+  "Sử dụng": "#d97706",   // Amber-600
+  "Sau cai": "#16a34a",   // Green-600
+  "Khởi tố": "#9333ea",   // Purple-600
 };
 
 const riskColors: Record<string, string> = {
-  "Thấp": "#00e676",
-  "Trung bình": "#ffb300",
-  "Cao": "#ff5252",
-  "Rất cao": "#ce93d8",
+  "Thấp": "#16a34a",
+  "Trung bình": "#d97706",
+  "Cao": "#dc2626",
+  "Rất cao": "#9333ea",
 };
 
 // Drug zone colors (based on TDP risk level)
 const drugZoneColors = {
-  red: "#ff5252",    // High risk - many drug subjects
-  yellow: "#ffb300", // Medium risk
-  green: "#00e676",  // Low risk
+  red: "#dc2626",    // High risk - many drug subjects
+  yellow: "#d97706", // Medium risk
+  green: "#16a34a",  // Low risk
 };
 
 // Lien Chieu center coordinates
 const LIEN_CHIEU_CENTER: [number, number] = [16.0664, 108.1408];
 const DEFAULT_ZOOM = 14;
 
-// Lien Chieu center coordinates
-
-// Preset colors for zones
+// Preset colors for custom zones
 const PRESET_COLORS = [
-  "#ff5252", "#ffb300", "#00e676", "#2196f3",
-  "#9c27b0", "#ff9800", "#e91e63", "#00bcd4",
-  "#8bc34a", "#795548",
+  "#dc2626", "#d97706", "#16a34a", "#0284c7",
+  "#9333ea", "#ea580c", "#db2777", "#0891b2",
+  "#65a30d", "#475569",
 ];
 
 // TDP to coordinate mapping (approximate centers for each TDP in Lien Chieu)
@@ -89,34 +87,54 @@ const TDP_COORDINATES: Record<string, [number, number]> = {
 // Special TDP areas
 const SPECIAL_TDPS = ["Quan Nam 1", "Quan Nam 2", "Quan Nam 3", "Quan Nam 4", "Quan Nam 5", "Quan Nam 6", "Hiền Phước", "Hưởng Phước", "Trung Sơn", "Tân Ninh", "Vân Dương 1", "Vân Dương 2"];
 
+// Get TDP center coordinates
+function getTDPCoords(tdp: string | undefined): [number, number] | null {
+  if (!tdp) return null;
+  const tdpNum = tdp.replace(/Tổ |Khu /gi, "").trim();
+  if (TDP_COORDINATES[tdpNum]) {
+    return TDP_COORDINATES[tdpNum];
+  }
+  // Special TDPs - assign coords in Lien Chieu
+  if (SPECIAL_TDPS.includes(tdp)) {
+    return [16.0664, 108.1408];
+  }
+  return null;
+}
+
 const BASE_MAPS = {
   voyager: {
-    name: "Bản đồ Mặc định (Carto)",
-    url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: ["a", "b", "c", "d"],
+    name: "Bản đồ Mặc định (Google)",
+    url: "https://mt1.google.com/vt/lyrs=m&hl=vi&x={x}&y={y}&z={z}",
+    attribution: '&copy; Google Maps',
+    subdomains: ["a"],
   },
   osm: {
     name: "OpenStreetMap Standard",
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     subdomains: ["a", "b", "c"],
   },
   light: {
-    name: "Chế độ tối giản xám (Carto)",
-    url: "https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png",
-    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: ["a", "b", "c", "d"],
+    name: "Chế độ tối giản xám (Esri)",
+    url: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+    attribution: '&copy; Esri',
+    subdomains: [],
   }
 };
 
-function MapController() {
+function MapController({ onMapReady }: { onMapReady?: (map: L.Map) => void }) {
   const map = useMap();
+  const initializedRef = useRef(false);
 
   useEffect(() => {
-    setTimeout(() => {
+    if (!initializedRef.current) {
+      initializedRef.current = true;
+      if (onMapReady) onMapReady(map);
+    }
+    const timer = setTimeout(() => {
       map.invalidateSize();
     }, 300);
+    return () => clearTimeout(timer);
   }, [map]);
 
   return null;
@@ -260,6 +278,9 @@ export function GISMap() {
   const [saving, setSaving] = useState(false);
   const [activeBaseMap, setActiveBaseMap] = useState<"voyager" | "osm" | "light">("voyager");
   const [activeSpatialTool, setActiveSpatialTool] = useState<"none" | "circle" | "distance" | "polygon">("none");
+  const [tdpEditMode, setTdpEditMode] = useState<"draw" | "edit">("draw");
+  const [toolsExpanded, setToolsExpanded] = useState(true);
+  const [mapInstance, setMapInstance] = useState<L.Map | null>(null);
   const [analysisResult, setAnalysisResult] = useState<{
     type: "circle" | "distance" | "polygon";
     radius?: number;
@@ -338,6 +359,7 @@ export function GISMap() {
   const selectedZoneId = searchParams.get("zoneId");
   const neutralMode = searchParams.get("neutral") === "true";
   const drawTdpId = searchParams.get("drawTdpId");
+  const isDrawingOrMeasuring = !!drawTdpId || activeSpatialTool !== "none" || drawMode;
 
 
   // Fetch target TDP info if drawing
@@ -460,9 +482,9 @@ export function GISMap() {
 
   // Initialize Geoman draw control and snapping after map loads
   useEffect(() => {
-    if (loading || !mapRef.current) return;
+    if (loading || !mapInstance) return;
 
-    const map = mapRef.current;
+    const map = mapInstance;
 
     // Initialize drawn items layer
     if (!drawnItemsRef.current) {
@@ -482,79 +504,10 @@ export function GISMap() {
     });
 
     // We don't add the default Geoman toolbar because we use our custom sidebar button
-    // But we still need to set up the global language or specific settings if needed.
-    map.pm.setLang('vi' as any); // Try to set Vietnamese if supported, otherwise defaults to en
+    map.pm.setLang('vi' as any);
 
-    // Handle draw/edit modes based on sidebar state or drawTdpId
-    if (drawMode || drawTdpId) {
-      // Ensure map is ready before enabling draw
-      const timer = setTimeout(() => {
-        // Clear any previous drawn items
-        if (drawnItemsRef.current) {
-          drawnItemsRef.current.clearLayers();
-        }
-
-        // Check if there is an existing geojson in targetTdp to edit
-        let hasExistingBoundary = false;
-        if (drawTdpId && targetTdp && targetTdp.geojson && targetTdp.geojson.features && targetTdp.geojson.features.length > 0) {
-          try {
-            const geojsonLayer = L.geoJSON(targetTdp.geojson, {
-              style: {
-                color: targetTdp.color || '#3388ff',
-                fillOpacity: 0.4,
-                weight: 3,
-                dashArray: '5, 10'
-              }
-            });
-
-            let existingLayer: L.Layer | null = null;
-            geojsonLayer.eachLayer((layer: any) => {
-              existingLayer = layer;
-            });
-
-            if (existingLayer && drawnItemsRef.current) {
-              drawnItemsRef.current.addLayer(existingLayer);
-              
-              // Enable Geoman editing on this layer
-              (existingLayer as any).pm.enable({
-                allowSelfIntersection: false,
-              });
-
-              setLastDrawnLayer(existingLayer);
-              hasExistingBoundary = true;
-
-              // Zoom and fit bounds to the existing shape
-              const bounds = (existingLayer as any).getBounds();
-              map.fitBounds(bounds, { padding: [50, 50] });
-            }
-          } catch (err) {
-            console.error("Error loading existing TDP boundary for editing:", err);
-          }
-        }
-
-        // If no existing boundary, enable drawing tool
-        if (!hasExistingBoundary) {
-          map.pm.enableDraw('Polygon', {
-            snappable: true,
-            snapDistance: 20,
-            finishOn: 'dblclick',
-            pathOptions: {
-              color: targetTdp?.color || PRESET_COLORS[Math.floor(Math.random() * PRESET_COLORS.length)],
-              fillOpacity: 0.4,
-              weight: 3,
-              dashArray: '5, 10'
-            }
-          });
-        }
-        
-        // Disable other layers' popups during drawing to avoid distraction
-        map.eachLayer((l: any) => {
-          if (l.closePopup) l.off('click');
-        });
-      }, 500);
-      
-      return () => clearTimeout(timer);
-    } else {
+    // Disable draw if activeSpatialTool is none and not drawing TDP
+    if (!drawMode && !drawTdpId && activeSpatialToolRef.current === "none") {
       map.pm.disableDraw();
     }
 
@@ -570,6 +523,16 @@ export function GISMap() {
       const currentBusinesses = businessesRef.current;
       const currentPccc = pcccRecordsRef.current;
 
+      // Handle TDP boundary drawing creation
+      if (drawTdpId) {
+        if (drawnItemsRef.current) {
+          drawnItemsRef.current.addLayer(layer);
+        }
+        setLastDrawnLayer(layer);
+        setTdpEditMode("draw");
+        return;
+      }
+
       // 1. SPATIAL TOOL: CIRCLE (Radius analysis)
       if (shape === 'Circle' || currentTool === 'circle') {
         const centerLatLng = layer.getLatLng ? layer.getLatLng() : null;
@@ -584,6 +547,44 @@ export function GISMap() {
           const insideBusinesses = currentBusinesses.filter(b => b.lat && b.lng && turf.booleanPointInPolygon(turf.point([b.lng, b.lat]), turfCircle));
           const insidePccc = currentPccc.filter(p => p.lat && p.lng && turf.booleanPointInPolygon(turf.point([p.lng, p.lat]), turfCircle));
 
+          const radiusKmStr = (radiusMeters / 1000).toFixed(2) + " km";
+          const radiusFormatted = radiusMeters < 1000 
+            ? `${radiusMeters.toFixed(0)} m (${radiusKmStr})` 
+            : radiusKmStr;
+
+          // Draw explicit radius line & label directly on map
+          const targetMap = (layer as any)._map || mapRef.current || map;
+          if (targetMap) {
+            // Calculate edge endpoint (bearing 90 deg / East)
+            const edgeDest = turf.destination(turf.point([centerLatLng.lng, centerLatLng.lat]), radiusMeters / 1000, 90, { units: "kilometers" });
+            const edgeCoord: [number, number] = [edgeDest.geometry.coordinates[1], edgeDest.geometry.coordinates[0]];
+
+            // 1. Center anchor dot
+            const centerMarker = L.circleMarker([centerLatLng.lat, centerLatLng.lng], {
+              radius: 5,
+              fillColor: "#3b82f6",
+              color: "#ffffff",
+              weight: 2,
+              fillOpacity: 1,
+            }).addTo(targetMap);
+            spatialLayersRef.current.push(centerMarker);
+
+            // 2. Dashed radius line with permanent label
+            const radiusLine = L.polyline([[centerLatLng.lat, centerLatLng.lng], edgeCoord], {
+              color: "#2563eb",
+              weight: 3,
+              dashArray: "5, 5",
+            }).addTo(targetMap);
+
+            radiusLine.bindTooltip(`R = ${radiusFormatted}`, {
+              permanent: true,
+              direction: "center",
+              className: "custom-measure-tooltip",
+            }).openTooltip();
+
+            spatialLayersRef.current.push(radiusLine);
+          }
+
           setAnalysisResult({
             type: "circle",
             radius: radiusMeters,
@@ -597,7 +598,7 @@ export function GISMap() {
           layer.bindPopup(`
             <div style="font-family: sans-serif; font-size: 12px; padding: 4px;">
               <b style="color: #2563eb;">VÙNG BÁN KÍNH ẢNH HƯỞNG</b><br/>
-              Bán kính: <b>${radiusMeters < 1000 ? radiusMeters.toFixed(0) + ' m' : (radiusMeters/1000).toFixed(2) + ' km'}</b><br/>
+              Bán kính: <b>${radiusFormatted}</b><br/>
               Diện tích: <b>${(areaSqm / 10000).toFixed(2)} ha</b><br/>
               <hr style="margin: 4px 0; border: 0; border-top: 1px solid #e2e8f0;"/>
               🔴 Đối tượng: <b>${insideSubjects.length}</b> | 🏢 Cơ sở: <b>${insideBusinesses.length}</b> | 🚒 PCCC: <b>${insidePccc.length}</b>
@@ -617,6 +618,32 @@ export function GISMap() {
           const coordinates = latlngs.map(l => [l.lng, l.lat]);
           const turfLine = turf.lineString(coordinates);
           const totalDistanceMeters = turf.length(turfLine, { units: "kilometers" }) * 1000;
+          const distKmStr = (totalDistanceMeters / 1000).toFixed(2) + " km";
+          const distFormatted = totalDistanceMeters < 1000
+            ? `${totalDistanceMeters.toFixed(1)} m (${distKmStr})`
+            : distKmStr;
+
+          const targetMap = (layer as any)._map || mapRef.current || map;
+          if (targetMap) {
+            // Add vertex markers
+            latlngs.forEach((point, idx) => {
+              const vertexDot = L.circleMarker([point.lat, point.lng], {
+                radius: idx === 0 || idx === latlngs.length - 1 ? 5 : 3.5,
+                fillColor: idx === 0 ? "#10b981" : idx === latlngs.length - 1 ? "#ef4444" : "#ffffff",
+                color: "#0f172a",
+                weight: 2,
+                fillOpacity: 1,
+              }).addTo(targetMap);
+              spatialLayersRef.current.push(vertexDot);
+            });
+
+            // Bind permanent distance tooltip to the drawn line
+            layer.bindTooltip(`📏 ${distFormatted}`, {
+              permanent: true,
+              direction: "center",
+              className: "custom-measure-tooltip-green",
+            }).openTooltip();
+          }
 
           setAnalysisResult({
             type: "distance",
@@ -629,7 +656,7 @@ export function GISMap() {
           layer.bindPopup(`
             <div style="font-family: sans-serif; font-size: 12px; padding: 4px;">
               <b style="color: #059669;">KẾT QUẢ ĐO KHOẢNG CÁCH</b><br/>
-              Tổng chiều dài: <b style="font-size: 14px; color: #047857;">${totalDistanceMeters < 1000 ? totalDistanceMeters.toFixed(1) + ' m' : (totalDistanceMeters/1000).toFixed(2) + ' km'}</b><br/>
+              Tổng chiều dài: <b style="font-size: 14px; color: #047857;">${distFormatted}</b><br/>
               Số điểm mốc: <b>${latlngs.length}</b>
             </div>
           `).openPopup();
@@ -719,13 +746,21 @@ export function GISMap() {
     return () => {
       map.off('pm:create', handleDrawCreated);
     };
-  }, [loading, drawMode, drawTdpId, targetTdp]);
+  }, [mapInstance, loading, drawMode, drawTdpId, targetTdp]);
 
   const activateCircleTool = () => {
-    if (!mapRef.current) return;
+    const map = mapInstance || mapRef.current;
+    if (!map) return;
+    if (activeSpatialTool === "circle") {
+      setActiveSpatialTool("none");
+      map.pm.disableDraw();
+      return;
+    }
+    map.closePopup();
+    map.pm.disableDraw();
     setAnalysisResult(null);
     setActiveSpatialTool("circle");
-    mapRef.current.pm.enableDraw("Circle", {
+    map.pm.enableDraw("Circle", {
       snappable: true,
       pathOptions: {
         color: "#3b82f6",
@@ -738,11 +773,21 @@ export function GISMap() {
   };
 
   const activateDistanceTool = () => {
-    if (!mapRef.current) return;
+    const map = mapInstance || mapRef.current;
+    if (!map) return;
+    if (activeSpatialTool === "distance") {
+      setActiveSpatialTool("none");
+      map.pm.disableDraw();
+      return;
+    }
+    map.closePopup();
+    map.pm.disableDraw();
     setAnalysisResult(null);
     setActiveSpatialTool("distance");
-    mapRef.current.pm.enableDraw("Line", {
+    map.pm.enableDraw("Line", {
       snappable: true,
+      snapDistance: 20,
+      finishOn: "dblclick",
       pathOptions: {
         color: "#10b981",
         weight: 3.5,
@@ -752,11 +797,21 @@ export function GISMap() {
   };
 
   const activatePolygonTool = () => {
-    if (!mapRef.current) return;
+    const map = mapInstance || mapRef.current;
+    if (!map) return;
+    if (activeSpatialTool === "polygon") {
+      setActiveSpatialTool("none");
+      map.pm.disableDraw();
+      return;
+    }
+    map.closePopup();
+    map.pm.disableDraw();
     setAnalysisResult(null);
     setActiveSpatialTool("polygon");
-    mapRef.current.pm.enableDraw("Polygon", {
+    map.pm.enableDraw("Polygon", {
       snappable: true,
+      snapDistance: 20,
+      finishOn: "dblclick",
       pathOptions: {
         color: "#8b5cf6",
         fillColor: "#8b5cf6",
@@ -767,19 +822,107 @@ export function GISMap() {
   };
 
   const clearSpatialMeasurements = () => {
-    if (mapRef.current) {
-      mapRef.current.pm.disableDraw();
+    const map = mapInstance || mapRef.current;
+    if (map) {
+      map.pm.disableDraw();
     }
     spatialLayersRef.current.forEach(layer => {
       try {
         if (drawnItemsRef.current) drawnItemsRef.current.removeLayer(layer);
-        if (mapRef.current) mapRef.current.removeLayer(layer);
+        if (map) map.removeLayer(layer);
       } catch(e) {}
     });
     spatialLayersRef.current = [];
     setAnalysisResult(null);
     setActiveSpatialTool("none");
   };
+
+  const startTdpDrawNew = useCallback(() => {
+    const map = mapInstance || mapRef.current;
+    if (!map) return;
+
+    if (drawnItemsRef.current) {
+      drawnItemsRef.current.clearLayers();
+    }
+    map.pm.disableDraw();
+    setLastDrawnLayer(null);
+    setTdpEditMode("draw");
+
+    setTimeout(() => {
+      map.pm.enableDraw('Polygon', {
+        snappable: true,
+        snapDistance: 20,
+        finishOn: 'dblclick',
+        pathOptions: {
+          color: targetTdp?.color || '#3b82f6',
+          fillColor: targetTdp?.color || '#3b82f6',
+          fillOpacity: 0.4,
+          weight: 3,
+          dashArray: '5, 10'
+        }
+      });
+    }, 50);
+  }, [mapInstance, targetTdp]);
+
+  const startTdpEditExisting = useCallback(() => {
+    const map = mapInstance || mapRef.current;
+    if (!map || !targetTdp?.geojson?.features?.length) return;
+
+    if (drawnItemsRef.current) {
+      drawnItemsRef.current.clearLayers();
+    }
+    map.pm.disableDraw();
+
+    try {
+      const geojsonLayer = L.geoJSON(targetTdp.geojson, {
+        style: {
+          color: targetTdp.color || '#3388ff',
+          fillOpacity: 0.4,
+          weight: 3,
+          dashArray: '5, 10'
+        }
+      });
+
+      let existingLayer: L.Layer | null = null;
+      geojsonLayer.eachLayer((layer: any) => {
+        existingLayer = layer;
+      });
+
+      if (existingLayer && drawnItemsRef.current) {
+        drawnItemsRef.current.addLayer(existingLayer);
+        (existingLayer as any).pm.enable({
+          allowSelfIntersection: false,
+        });
+        setLastDrawnLayer(existingLayer);
+        setTdpEditMode("edit");
+        const bounds = (existingLayer as any).getBounds();
+        map.fitBounds(bounds, { padding: [50, 50] });
+      }
+    } catch (err) {
+      console.error("Error loading existing TDP boundary for editing:", err);
+    }
+  }, [mapInstance, targetTdp]);
+
+  // TDP Draw/Edit mode lifecycle
+  useEffect(() => {
+    if (loading || !mapInstance || !drawTdpId || !targetTdp) return;
+    const map = mapInstance;
+
+    if (!drawnItemsRef.current) {
+      drawnItemsRef.current = new L.FeatureGroup();
+      map.addLayer(drawnItemsRef.current);
+    }
+
+    if (targetTdp.geojson && targetTdp.geojson.features && targetTdp.geojson.features.length > 0) {
+      startTdpEditExisting();
+    } else {
+      startTdpDrawNew();
+      const coords = getTDPCoords(targetTdp.name);
+      if (coords) {
+        map.setView(coords, 16);
+      }
+    }
+  }, [mapInstance, loading, drawTdpId, targetTdp, startTdpDrawNew, startTdpEditExisting]);
 
   const handleFileUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -858,26 +1001,14 @@ export function GISMap() {
     }
   };
 
-  // Get TDP center coordinates
-  const getTDPCoords = useCallback((tdp: string | undefined): [number, number] | null => {
-    if (!tdp) return null;
-    const tdpNum = tdp.replace(/Tổ |Khu /gi, "").trim();
-    if (TDP_COORDINATES[tdpNum]) {
-      return TDP_COORDINATES[tdpNum];
-    }
-    // Special TDPs - assign random coords in Lien Chieu
-    if (SPECIAL_TDPS.includes(tdp)) {
-      return [16.0664 + (Math.random() - 0.5) * 0.02, 108.1408 + (Math.random() - 0.5) * 0.04];
-    }
-    return null;
-  }, []);
+
 
   if (loading) {
     return (
-      <div className="h-[calc(100vh-120px)] flex items-center justify-center bg-slate-100 rounded-xl">
+      <div className="h-[calc(100vh-120px)] flex items-center justify-center bg-slate-100 dark:bg-slate-800 rounded-xl">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent mx-auto mb-4"></div>
-          <p className="text-slate-500">Đang tải bản đồ...</p>
+          <p className="text-slate-600 dark:text-slate-400 font-medium">Đang tải bản đồ...</p>
         </div>
       </div>
     );
@@ -895,66 +1026,111 @@ export function GISMap() {
 
 
 
+      {/* Active Spatial Tool Guidance Banner */}
+      {activeSpatialTool !== "none" && (
+        <div className="absolute top-6 left-1/2 -translate-x-1/2 z-[1000] animate-in slide-in-from-top-4 duration-300">
+          <div className="bg-slate-950/95 backdrop-blur-2xl px-4 py-2.5 rounded-2xl border border-white/20 shadow-2xl flex items-center gap-3 text-white">
+            {activeSpatialTool === "distance" && <Ruler className="w-5 h-5 text-emerald-400 animate-pulse" />}
+            {activeSpatialTool === "circle" && <CircleIcon className="w-5 h-5 text-blue-400 animate-pulse" />}
+            {activeSpatialTool === "polygon" && <Square className="w-5 h-5 text-purple-400 animate-pulse" />}
+            <div className="text-xs">
+              <span className="font-black uppercase tracking-wider block text-slate-200">
+                {activeSpatialTool === "distance" && "Đang Đo Khoảng Cách Tuyến Đường"}
+                {activeSpatialTool === "circle" && "Đang Quét Vùng Bán Kính"}
+                {activeSpatialTool === "polygon" && "Đang Khoanh Vùng Đa Giác Tự Do"}
+              </span>
+              <span className="text-[11px] text-slate-300">
+                {activeSpatialTool === "distance" && "Click chuột từng điểm mốc trên bản đồ. Nhấp đúp (hoặc click điểm cuối) để kết thúc."}
+                {activeSpatialTool === "circle" && "Click tâm điểm, kéo chuột chọn bán kính và click lần 2 để hoàn tất."}
+                {activeSpatialTool === "polygon" && "Click các đỉnh đa giác. Nhấp đúp (hoặc click lại điểm đầu) để hoàn tất."}
+              </span>
+            </div>
+            <button
+              onClick={() => {
+                setActiveSpatialTool("none");
+                if (mapInstance || mapRef.current) (mapInstance || mapRef.current)?.pm.disableDraw();
+              }}
+              className="ml-2 px-2.5 py-1 bg-red-500/20 hover:bg-red-500/40 text-red-300 text-[11px] font-bold rounded-lg border border-red-500/30 transition-all cursor-pointer"
+            >
+              Hủy
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Spatial Analysis Floating Toolbar */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[1000] animate-in slide-in-from-bottom-5 duration-300">
-        <div className="bg-slate-950/85 backdrop-blur-2xl p-2 rounded-2xl border border-white/15 shadow-2xl flex items-center gap-2 text-white">
-          <div className="px-3 py-1.5 border-r border-white/10 flex items-center gap-2">
+        <div className="bg-slate-950/90 backdrop-blur-2xl p-1.5 rounded-2xl border border-white/15 shadow-2xl flex items-center gap-1.5 text-white">
+          {/* Collapse/Expand Toggle Button */}
+          <button
+            onClick={() => setToolsExpanded(!toolsExpanded)}
+            className="px-3 py-2 rounded-xl flex items-center gap-2 hover:bg-white/10 active:scale-95 transition-all cursor-pointer text-slate-300 hover:text-white select-none"
+            title={toolsExpanded ? "Thu gọn thanh công cụ" : "Mở rộng thanh công cụ"}
+            aria-label="Công cụ GIS"
+          >
             <Compass className="w-4 h-4 text-blue-400 animate-spin-slow" />
-            <span className="text-[11px] font-black tracking-wider uppercase text-slate-300">Công cụ GIS</span>
-          </div>
-
-          {/* Circle Radius Tool */}
-          <button
-            onClick={activateCircleTool}
-            className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-              activeSpatialTool === "circle"
-                ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30 ring-2 ring-blue-400"
-                : "bg-white/5 hover:bg-white/10 text-slate-300"
-            }`}
-            title="Vẽ vòng tròn bán kính ảnh hưởng xung quanh điểm"
-          >
-            <CircleIcon className="w-4 h-4 text-blue-400" />
-            <span>Vẽ Bán Kính</span>
+            <span className="text-[11px] font-black tracking-wider uppercase">Công cụ GIS</span>
+            <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${toolsExpanded ? "rotate-180" : ""}`} />
           </button>
 
-          {/* Distance Ruler Tool */}
-          <button
-            onClick={activateDistanceTool}
-            className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-              activeSpatialTool === "distance"
-                ? "bg-emerald-600 text-white shadow-lg shadow-emerald-500/30 ring-2 ring-emerald-400"
-                : "bg-white/5 hover:bg-white/10 text-slate-300"
-            }`}
-            title="Đo khoảng cách giữa các điểm trên bản đồ"
-          >
-            <Ruler className="w-4 h-4 text-emerald-400" />
-            <span>Đo Khoảng Cách</span>
-          </button>
+          {/* Tools Group (Collapsible) */}
+          {toolsExpanded && (
+            <div className="flex items-center gap-1.5 pl-1.5 border-l border-white/10 animate-in fade-in duration-200">
+              {/* Circle Radius Tool - Icon Only */}
+              <button
+                onClick={activateCircleTool}
+                className={`p-2.5 rounded-xl transition-all flex items-center justify-center cursor-pointer ${
+                  activeSpatialTool === "circle"
+                    ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30 ring-2 ring-blue-400"
+                    : "bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white"
+                }`}
+                title="Vẽ Bán Kính (Quét đối tượng trong phạm vi)"
+                aria-label="Vẽ Bán Kính"
+              >
+                <CircleIcon className="w-4 h-4 text-blue-400" />
+              </button>
 
-          {/* Polygon Bounding Tool */}
-          <button
-            onClick={activatePolygonTool}
-            className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-              activeSpatialTool === "polygon"
-                ? "bg-purple-600 text-white shadow-lg shadow-purple-500/30 ring-2 ring-purple-400"
-                : "bg-white/5 hover:bg-white/10 text-slate-300"
-            }`}
-            title="Đóng khung khoanh vùng khu vực"
-          >
-            <Square className="w-4 h-4 text-purple-400" />
-            <span>Đóng Khung Khu Vực</span>
-          </button>
+              {/* Distance Ruler Tool - Icon Only */}
+              <button
+                onClick={activateDistanceTool}
+                className={`p-2.5 rounded-xl transition-all flex items-center justify-center cursor-pointer ${
+                  activeSpatialTool === "distance"
+                    ? "bg-emerald-600 text-white shadow-lg shadow-emerald-500/30 ring-2 ring-emerald-400"
+                    : "bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white"
+                }`}
+                title="Đo Khoảng Cách (Tính chiều dài tuyến đường)"
+                aria-label="Đo Khoảng Cách"
+              >
+                <Ruler className="w-4 h-4 text-emerald-400" />
+              </button>
+
+              {/* Polygon Bounding Tool - Icon Only */}
+              <button
+                onClick={activatePolygonTool}
+                className={`p-2.5 rounded-xl transition-all flex items-center justify-center cursor-pointer ${
+                  activeSpatialTool === "polygon"
+                    ? "bg-purple-600 text-white shadow-lg shadow-purple-500/30 ring-2 ring-purple-400"
+                    : "bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white"
+                }`}
+                title="Đóng Khung Khu Vực (Khoanh vùng đa giác tự do)"
+                aria-label="Đóng Khung Khu Vực"
+              >
+                <Square className="w-4 h-4 text-purple-400" />
+              </button>
+            </div>
+          )}
 
           {(spatialLayersRef.current.length > 0 || analysisResult) && (
             <>
               <div className="w-px h-6 bg-white/10 mx-1"></div>
               <button
                 onClick={clearSpatialMeasurements}
-                className="px-3 py-2 rounded-xl text-xs font-bold bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/30 transition-all flex items-center gap-1.5"
+                className="p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-bold bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/30 transition-all flex items-center gap-1.5 cursor-pointer"
                 title="Xóa tất cả các phép đo và nét vẽ"
+                aria-label="Xóa phép đo"
               >
                 <Trash2 className="w-4 h-4" />
-                <span>Xóa Phép Đo</span>
+                <span className="hidden sm:inline">Xóa</span>
               </button>
             </>
           )}
@@ -1214,47 +1390,96 @@ export function GISMap() {
 
       {/* Drawing Mode Overlay */}
       {drawTdpId && targetTdp && (
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 z-[2000] animate-in slide-in-from-top-4 duration-500">
-          <div className="bg-slate-900/80 backdrop-blur-xl px-6 py-4 rounded-3xl border border-blue-500/30 shadow-2xl flex items-center gap-4">
-            <div className="w-10 h-10 bg-blue-500 rounded-2xl flex items-center justify-center animate-pulse">
-              <PenTool className="w-5 h-5 text-white" />
+        <div className="absolute top-6 left-1/2 -translate-x-1/2 z-[2000] animate-in slide-in-from-top-4 duration-500 max-w-3xl w-[95%]">
+          <div className="bg-slate-900/95 backdrop-blur-2xl p-4 sm:px-6 sm:py-4 rounded-3xl border border-blue-500/40 shadow-2xl flex flex-wrap items-center justify-between gap-3 text-white">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30 shrink-0">
+                <PenTool className="w-5 h-5 text-white animate-pulse" />
+              </div>
+              <div>
+                <h3 className="text-white font-black text-sm uppercase tracking-tight leading-none mb-1">
+                  Biên Tập Ranh Giới
+                </h3>
+                <p className="text-blue-400 text-xs font-bold">{targetTdp.name}</p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-white font-black text-sm uppercase tracking-tight leading-none mb-1">Đang vẽ ranh giới</h3>
-              <p className="text-blue-400 text-[11px] font-bold uppercase tracking-widest">{targetTdp.name}</p>
+
+            {/* Mode Switcher */}
+            <div className="flex items-center gap-1.5 bg-slate-950/80 p-1 rounded-2xl border border-white/10">
+              <button
+                type="button"
+                onClick={startTdpDrawNew}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+                  tdpEditMode === "draw"
+                    ? "bg-blue-600 text-white shadow-md shadow-blue-500/30 ring-1 ring-blue-400"
+                    : "text-slate-400 hover:text-white"
+                }`}
+                title="Bật bút vẽ lại ranh giới mới hoàn toàn"
+              >
+                <PenTool className="w-3.5 h-3.5" />
+                Vẽ Mới
+              </button>
+
+              {targetTdp.geojson?.features?.length > 0 && (
+                <button
+                  type="button"
+                  onClick={startTdpEditExisting}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+                    tdpEditMode === "edit"
+                      ? "bg-amber-600 text-white shadow-md shadow-amber-500/30 ring-1 ring-amber-400"
+                      : "text-slate-400 hover:text-white"
+                  }`}
+                  title="Kéo các điểm mốc ranh giới hiện tại"
+                >
+                  <Crosshair className="w-3.5 h-3.5" />
+                  Sửa Mốc Cũ
+                </button>
+              )}
             </div>
-            <div className="h-8 w-px bg-white/10 mx-2"></div>
-            <div className="text-[11px] text-slate-300 font-bold bg-blue-500/10 px-3 py-2 rounded-xl border border-blue-500/20">
-              <span className="text-blue-400">HƯỚNG DẪN:</span> Click các điểm để tạo vùng. 
-              <br />
-              <span className="text-yellow-400 underline decoration-yellow-500/50 underline-offset-4">Click lại ĐIỂM ĐẦU TIÊN để HOÀN TẤT & LƯU TỰ ĐỘNG.</span>
+
+            {/* Instructions */}
+            <div className="text-[11px] text-slate-300 font-medium bg-blue-500/10 px-3 py-1.5 rounded-xl border border-blue-500/20 text-center sm:text-left flex-1 min-w-[220px]">
+              {tdpEditMode === "draw" ? (
+                <>
+                  <span className="text-amber-300 font-bold">VẼ MỚI:</span> Click các điểm trên bản đồ. Nhấp đúp để chốt vùng.
+                </>
+              ) : (
+                <>
+                  <span className="text-amber-300 font-bold">KÉO MỐC:</span> Kéo các chấm tròn trắng để chỉnh góc ranh giới.
+                </>
+              )}
             </div>
-            <div className="flex gap-2">
-              <button 
+
+            {/* Action Buttons */}
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
                 onClick={async () => {
                   if (!drawTdpId) return;
-                  
+
                   let layerToSave = lastDrawnLayer;
-                  
+
                   // If no lastDrawnLayer, check if currently drawing and try to finish it
                   if (!layerToSave && mapRef.current) {
                     const map = mapRef.current;
-                    // @ts-ignore - Accessing internal Geoman Draw instance to finish shape
-                    if (map.pm.Draw.Polygon._shape) {
-                       // @ts-ignore
-                       map.pm.Draw.Polygon._finishShape();
-                       // The pm:create event should have fired now and set lastDrawnLayer
-                       // But since state update is async, we might need to grab it directly if possible
-                       // or wait a tiny bit. Let's try to grab from drawnItemsRef
-                       if (drawnItemsRef.current) {
-                         const layers = drawnItemsRef.current.getLayers();
-                         if (layers.length > 0) layerToSave = layers[layers.length - 1];
-                       }
+                    // @ts-ignore
+                    if (map.pm?.Draw?.Polygon?._shape) {
+                      // @ts-ignore
+                      map.pm.Draw.Polygon._finishShape();
+                      if (drawnItemsRef.current) {
+                        const layers = drawnItemsRef.current.getLayers();
+                        if (layers.length > 0) layerToSave = layers[layers.length - 1];
+                      }
                     }
                   }
 
+                  if (!layerToSave && drawnItemsRef.current) {
+                    const layers = drawnItemsRef.current.getLayers();
+                    if (layers.length > 0) layerToSave = layers[layers.length - 1];
+                  }
+
                   if (!layerToSave) {
-                    alert("Vui lòng vẽ ít nhất 3 điểm trên bản đồ trước khi lưu!");
+                    alert("Vui lòng vẽ hoặc kéo chỉnh ranh giới trên bản đồ trước khi lưu!");
                     return;
                   }
 
@@ -1266,10 +1491,10 @@ export function GISMap() {
                       geojson: {
                         type: "FeatureCollection",
                         features: [geojson as GeoJSON.Feature],
-                      }
+                      },
                     });
                     alert("Đã cập nhật tọa độ cho " + targetTdp?.name + " thành công!");
-                    window.location.href = '/tdp';
+                    window.location.href = "/tdp";
                   } catch (e) {
                     console.error(e);
                     alert("Lỗi khi lưu!");
@@ -1278,40 +1503,21 @@ export function GISMap() {
                   }
                 }}
                 disabled={saving}
-                className={`px-6 py-2 ${lastDrawnLayer ? 'bg-emerald-500 hover:bg-emerald-600 animate-bounce' : 'bg-blue-600 hover:bg-blue-700'} text-white text-xs font-black rounded-xl transition-all shadow-lg flex items-center gap-2 disabled:opacity-50`}
+                className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white text-xs font-black rounded-xl transition-all shadow-lg flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
               >
                 {saving ? (
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent animate-spin rounded-full"></div>
+                  <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent animate-spin rounded-full"></div>
                 ) : (
                   <CheckCircle2 className="w-4 h-4" />
                 )}
-                XÁC NHẬN & LƯU VÙNG
+                LƯU VÙNG
               </button>
 
-              {!lastDrawnLayer && (
-                <button 
-                  onClick={() => {
-                    if (mapRef.current) {
-                      mapRef.current.pm.enableDraw('Polygon', {
-                        snappable: true,
-                        snapDistance: 20,
-                        pathOptions: {
-                          color: targetTdp?.color || '#3388ff',
-                          fillOpacity: 0.4,
-                        }
-                      });
-                    }
-                  }}
-                  className="px-3 py-2 bg-white/5 hover:bg-white/10 text-white/60 text-[10px] font-bold rounded-xl transition-all border border-white/10"
-                >
-                  Kích hoạt lại bút
-                </button>
-              )}
-              
-              <button 
-                onClick={() => window.location.href = '/tdp'}
-                className="p-2 bg-white/5 hover:bg-red-500/20 text-white/50 hover:text-red-400 rounded-xl transition-all"
-                title="Hủy vẽ"
+              <button
+                type="button"
+                onClick={() => (window.location.href = "/tdp")}
+                className="p-2 bg-white/10 hover:bg-red-500/20 text-slate-400 hover:text-red-400 rounded-xl transition-all cursor-pointer"
+                title="Hủy và quay lại danh sách TDP"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -1335,7 +1541,7 @@ export function GISMap() {
             subdomains={BASE_MAPS[neutralMode ? "light" : activeBaseMap].subdomains}
             maxZoom={19}
           />
-          <MapController />
+          <MapController onMapReady={(m) => { mapRef.current = m; setMapInstance(m); }} />
           <FeatureGroup>
             {/* Draw control */}
           </FeatureGroup>
@@ -1346,8 +1552,9 @@ export function GISMap() {
               const isSelected = selectedZoneId === tdp._id?.toString();
               return (
                 <GeoJSON
-                  key={tdp._id?.toString() + (isSelected ? '-selected' : '')}
+                  key={tdp._id?.toString() + (isSelected ? '-selected' : '') + (isDrawingOrMeasuring ? '-measuring' : '')}
                   data={tdp.geojson}
+                  interactive={!isDrawingOrMeasuring}
                   style={{
                     color: isSelected ? '#eab308' : (tdp.color || '#3388ff'),
                     weight: isSelected ? 4 : 2,
@@ -1356,29 +1563,30 @@ export function GISMap() {
                   }}
                   pointToLayer={(_, latlng) => L.circleMarker(latlng, { radius: 0, stroke: false, fill: false })}
                 >
-
-                  <Popup>
-                    <div className="p-2 min-w-[200px]">
-                       <div className="flex items-center gap-2 mb-2 border-b pb-1">
-                         <div className="w-3 h-3 rounded" style={{ backgroundColor: tdp.color }}></div>
-                         <b className="text-slate-800">{tdp.name}</b>
-                       </div>
-                       <div className="space-y-1 text-xs">
-                          <p><b>Số hộ:</b> {tdp.households || "—"}</p>
-                          <p><b>Nhân khẩu:</b> {tdp.population || "—"}</p>
-                          <p><b>Diện tích:</b> {tdp.area_sqm ? (tdp.area_sqm).toLocaleString() + " m²" : "—"}</p>
-                          <p><b>Phân loại:</b> 
-                            <span className={`ml-2 px-2 py-0.5 rounded-full font-bold ${
-                              tdp.risk_status === 'red' ? 'bg-red-100 text-red-600' : 
-                              tdp.risk_status === 'yellow' ? 'bg-yellow-100 text-yellow-600' : 
-                              'bg-green-100 text-green-600'
-                            }`}>
-                              {tdp.risk_status === 'red' ? 'Vùng Đỏ' : tdp.risk_status === 'yellow' ? 'Vùng Vàng' : 'Vùng Xanh'}
-                            </span>
-                          </p>
-                       </div>
-                    </div>
-                  </Popup>
+                  {!isDrawingOrMeasuring && (
+                    <Popup>
+                      <div className="p-2 min-w-[200px]">
+                         <div className="flex items-center gap-2 mb-2 border-b pb-1">
+                           <div className="w-3 h-3 rounded" style={{ backgroundColor: tdp.color }}></div>
+                           <b className="text-slate-800">{tdp.name}</b>
+                         </div>
+                         <div className="space-y-1 text-xs">
+                            <p><b>Số hộ:</b> {tdp.households || "—"}</p>
+                            <p><b>Nhân khẩu:</b> {tdp.population || "—"}</p>
+                            <p><b>Diện tích:</b> {tdp.area_sqm ? (tdp.area_sqm).toLocaleString() + " m²" : "—"}</p>
+                            <p><b>Phân loại:</b> 
+                              <span className={`ml-2 px-2 py-0.5 rounded-full font-bold ${
+                                tdp.risk_status === 'red' ? 'bg-red-100 text-red-600' : 
+                                tdp.risk_status === 'yellow' ? 'bg-yellow-100 text-yellow-600' : 
+                                'bg-green-100 text-green-600'
+                              }`}>
+                                {tdp.risk_status === 'red' ? 'Vùng Đỏ' : tdp.risk_status === 'yellow' ? 'Vùng Vàng' : 'Vùng Xanh'}
+                              </span>
+                            </p>
+                         </div>
+                      </div>
+                    </Popup>
+                  )}
                 </GeoJSON>
               );
             })}
@@ -1389,8 +1597,9 @@ export function GISMap() {
               const isSelected = selectedZoneId === zone._id?.toString();
               return (
                 <GeoJSON
-                  key={zone._id?.toString() + (isSelected ? '-selected' : '')}
+                  key={zone._id?.toString() + (isSelected ? '-selected' : '') + (isDrawingOrMeasuring ? '-measuring' : '')}
                   data={zone.geojson}
+                  interactive={!isDrawingOrMeasuring}
                   style={{
                     color: isSelected ? '#eab308' : (zone.displayColor || zone.color),
                     weight: isSelected ? 4 : 2,
@@ -1406,16 +1615,17 @@ export function GISMap() {
                     }
                   }}
                 >
-
-                  <Popup>
-                    <ZonePopupComponent 
-                      zone={zone} 
-                      onSaveField={handleSaveField} 
-                      onRemoveField={handleRemoveField}
-                      onChangeColor={handleChangeColor}
-                      currentUser={currentUser}
-                    />
-                  </Popup>
+                  {!isDrawingOrMeasuring && (
+                    <Popup>
+                      <ZonePopupComponent 
+                        zone={zone} 
+                        onSaveField={handleSaveField} 
+                        onRemoveField={handleRemoveField}
+                        onChangeColor={handleChangeColor}
+                        currentUser={currentUser}
+                      />
+                    </Popup>
+                  )}
                 </GeoJSON>
               );
             })}
@@ -1427,7 +1637,8 @@ export function GISMap() {
                 .filter((s) => s.lat && s.lng)
                 .map((s) => (
                   <CircleMarker
-                    key={s._id?.toString()}
+                    key={s._id?.toString() + (isDrawingOrMeasuring ? '-measuring' : '')}
+                    interactive={!isDrawingOrMeasuring}
                     center={[s.lat!, s.lng!]}
                     radius={8}
                     pathOptions={{
@@ -1437,21 +1648,23 @@ export function GISMap() {
                       fillOpacity: 0.85,
                     }}
                   >
-                    <Popup>
-                      <div className="text-sm">
-                        <b>{s.full_name}</b>
-                        <br />
-                        Năm sinh: {s.yob} | {s.gender}
-                        <br />
-                        Tổ/DP: {s.tdp || "—"}
-                        <br />
-                        Loại MT: {(s.drug_types_used && s.drug_types_used.length > 0) ? s.drug_types_used.join(', ') : "Chưa rõ"}
-                        <br />
-                        Tình trạng: <span style={{ color: statusColors[s.status || ""] }}>{s.status}</span>
-                        <br />
-                        <small>{s.address_current || s.address_permanent}</small>
-                      </div>
-                    </Popup>
+                    {!isDrawingOrMeasuring && (
+                      <Popup>
+                        <div className="text-sm">
+                          <b>{s.full_name}</b>
+                          <br />
+                          Năm sinh: {s.yob} | {s.gender}
+                          <br />
+                          Tổ/DP: {s.tdp || "—"}
+                          <br />
+                          Loại MT: {(s.drug_types_used && s.drug_types_used.length > 0) ? s.drug_types_used.join(', ') : "Chưa rõ"}
+                          <br />
+                          Tình trạng: <span style={{ color: statusColors[s.status || ""] }}>{s.status}</span>
+                          <br />
+                          <small>{s.address_current || s.address_permanent}</small>
+                        </div>
+                      </Popup>
+                    )}
                   </CircleMarker>
                 ))}
             </MarkerClusterGroup>
@@ -1472,19 +1685,22 @@ export function GISMap() {
                 });
                 return (
                   <Marker
-                    key={b._id?.toString()}
+                    key={b._id?.toString() + (isDrawingOrMeasuring ? '-measuring' : '')}
+                    interactive={!isDrawingOrMeasuring}
                     position={[b.lat!, b.lng!]}
                     icon={icon}
                   >
-                    <Popup>
-                      <div className="text-sm">
-                        <b>{b.name}</b>
-                        <br />
-                        Loại: {b.business_type} | Nguy cơ: <span style={{ color }}>{b.risk_level}</span>
-                        <br />
-                        <small>{b.address}</small>
-                      </div>
-                    </Popup>
+                    {!isDrawingOrMeasuring && (
+                      <Popup>
+                        <div className="text-sm">
+                          <b>{b.name}</b>
+                          <br />
+                          Loại: {b.business_type} | Nguy cơ: <span style={{ color }}>{b.risk_level}</span>
+                          <br />
+                          <small>{b.address}</small>
+                        </div>
+                      </Popup>
+                    )}
                   </Marker>
                 );
               })}
@@ -1505,23 +1721,26 @@ export function GISMap() {
                 });
                 return (
                   <Marker
-                    key={p._id?.toString()}
+                    key={p._id?.toString() + (isDrawingOrMeasuring ? '-measuring' : '')}
+                    interactive={!isDrawingOrMeasuring}
                     position={[p.lat!, p.lng!]}
                     icon={icon}
                   >
-                    <Popup>
-                      <div className="text-sm">
-                        <b className="text-orange-600">{p.name}</b>
-                        <br />
-                        Loại: {p.type === "hydrant" ? "Trụ nước" : p.type === "building" ? "Công trình" : "Thiết bị"}
-                        <br />
-                        Trạng thái: <span className={p.status === "active" ? "text-green-600 font-bold" : "text-red-600"}>
-                          {p.status === "active" ? "Hoạt động" : "Bảo trì"}
-                        </span>
-                        <br />
-                        <small>{p.address}</small>
-                      </div>
-                    </Popup>
+                    {!isDrawingOrMeasuring && (
+                      <Popup>
+                        <div className="text-sm">
+                          <b className="text-orange-600">{p.name}</b>
+                          <br />
+                          Loại: {p.type === "hydrant" ? "Trụ nước" : p.type === "building" ? "Công trình" : "Thiết bị"}
+                          <br />
+                          Trạng thái: <span className={p.status === "active" ? "text-green-600 font-bold" : "text-red-600"}>
+                            {p.status === "active" ? "Hoạt động" : "Bảo trì"}
+                          </span>
+                          <br />
+                          <small>{p.address}</small>
+                        </div>
+                      </Popup>
+                    )}
                   </Marker>
                 );
               })}

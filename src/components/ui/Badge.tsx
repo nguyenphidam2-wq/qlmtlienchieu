@@ -6,16 +6,16 @@ interface BadgeProps {
 
 export function Badge({ variant = "default", children, className = "" }: BadgeProps) {
   const variants = {
-    default: "bg-gray-100 text-gray-800",
-    success: "bg-green-100 text-green-800",
-    warning: "bg-yellow-100 text-yellow-800",
-    danger: "bg-red-100 text-red-800",
-    purple: "bg-purple-100 text-purple-800",
+    default: "bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700",
+    success: "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60",
+    warning: "bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60",
+    danger: "bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800/60",
+    purple: "bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800/60",
   };
 
   return (
     <span
-      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${variants[variant]} ${className}`}
+      className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wide transition-colors ${variants[variant]} ${className}`}
     >
       {children}
     </span>

@@ -66,7 +66,8 @@ export function Modal({
             <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{title}</h3>
             <button
               onClick={onClose}
-              className="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
+              aria-label="Đóng hộp thoại"
+              className="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
             >
               <X className="w-5 h-5" />
             </button>
