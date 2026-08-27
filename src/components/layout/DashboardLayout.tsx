@@ -65,10 +65,13 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       </Suspense>
 
       {/* Desktop Sidebar Toggle Button */}
-      <div className={`hidden lg:flex fixed top-1/2 -translate-y-1/2 z-50 transition-all duration-300 ${sidebarOpen ? "left-[290px]" : "left-0"}`}>
+      <div 
+        className="hidden lg:flex fixed top-1/2 -translate-y-1/2 transition-all duration-300"
+        style={{ left: sidebarOpen ? "290px" : "0px", zIndex: 9999 }}
+      >
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="flex items-center justify-center w-5 h-12 bg-[#1C2434] text-slate-400 hover:text-white hover:w-6 border border-l-0 border-slate-700/80 cursor-pointer transition-all duration-200 rounded-r-lg shadow-[4px_0_12px_rgba(0,0,0,0.2)] group"
+          className="flex items-center justify-center w-5 h-12 bg-[#1C2434] text-slate-400 hover:text-white hover:w-6 border border-l-0 border-slate-700/80 cursor-pointer transition-all duration-200 rounded-r-lg shadow-[4px_0_12px_rgba(0,0,0,0.5)] group"
           title={sidebarOpen ? "Thu gọn menu" : "Mở rộng menu"}
         >
           <svg
