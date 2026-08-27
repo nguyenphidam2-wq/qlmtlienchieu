@@ -196,6 +196,14 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
                         {layers.pccc && <CheckCircle2 className="w-3.5 h-3.5" />}
                       </button>
                       <button 
+                        onClick={() => updateParam("giaothong", searchParams.get("giaothong") === "true" ? "false" : "true")}
+                        className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all text-xs ${searchParams.get("giaothong") === "true" ? "bg-purple-500/10 text-purple-400" : "text-slate-500 hover:bg-slate-800"}`}
+                      >
+                        <div className={`w-2.5 h-2.5 rounded-sm ${searchParams.get("giaothong") === "true" ? "bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.5)]" : "bg-slate-700"}`}></div>
+                        <span className="flex-1 text-left">Tuyến Giao thông</span>
+                        {searchParams.get("giaothong") === "true" && <CheckCircle2 className="w-3.5 h-3.5" />}
+                      </button>
+                      <button 
                         onClick={() => updateParam("neutral", searchParams.get("neutral") === "true" ? "false" : "true")}
                         className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all text-xs ${searchParams.get("neutral") === "true" ? "bg-white/10 text-white" : "text-slate-500 hover:bg-slate-800"}`}
                       >

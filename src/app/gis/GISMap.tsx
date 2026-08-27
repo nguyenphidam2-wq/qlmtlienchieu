@@ -271,6 +271,7 @@ export function GISMap() {
   const [customZones, setCustomZones] = useState<ICustomZone[]>([]);
   const [tdps, setTdps] = useState<ITDP[]>([]);
   const [pcccRecords, setPcccRecords] = useState<IPCCCRecord[]>([]);
+  const [giaothongData, setGiaothongData] = useState<any>(null);
   const [currentUser, setCurrentUser] = useState<{ id: string; username: string; role: string } | null>(null);
   const [loading, setLoading] = useState(true);
   const [targetTdp, setTargetTdp] = useState<any>(null); // For UI feedback when drawing
@@ -318,6 +319,7 @@ export function GISMap() {
     businesses: searchParams.get("businesses") !== "false",
     zones: searchParams.get("zones") !== "false",
     pccc: searchParams.get("pccc") === "true",
+    giaothong: searchParams.get("giaothong") === "true",
   });
 
   useEffect(() => {
@@ -326,8 +328,18 @@ export function GISMap() {
       businesses: searchParams.get("businesses") !== "false",
       zones: searchParams.get("zones") !== "false",
       pccc: searchParams.get("pccc") === "true",
+      giaothong: searchParams.get("giaothong") === "true",
     });
   }, [searchParams]);
+
+  useEffect(() => {
+    if (visibleLayers.giaothong && !giaothongData) {
+      fetch("/data/Giaothong.geojson")
+        .then(res => res.json())
+        .then(data => setGiaothongData(data))
+        .catch(err => console.error("Failed to load Giaothong GeoJSON", err));
+    }
+  }, [visibleLayers.giaothong, giaothongData]);
 
   const toggleSubjectLayers = () => {
     setVisibleLayers(prev => ({ ...prev, subjects: !prev.subjects }));
@@ -1668,6 +1680,20 @@ export function GISMap() {
                   </CircleMarker>
                 ))}
             </MarkerClusterGroup>
+          )}
+
+          {/* Giao thông GeoJSON Layer */}
+          {visibleLayers.giaothong && giaothongData && (
+            <GeoJSON
+              key="giaothong-layer"
+              data={giaothongData}
+              interactive={false}
+              style={{
+                color: "#9333ea", // purple-600
+                weight: 3,
+                opacity: 0.7,
+              }}
+            />
           )}
 
           {/* Business Markers with Clustering */}
