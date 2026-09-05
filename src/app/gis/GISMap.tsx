@@ -7,15 +7,12 @@ import "leaflet/dist/leaflet.css";
 import "@geoman-io/leaflet-geoman-free";
 import "@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css";
 import { getSubjects, getCurrentUserInfo } from "@/lib/actions/subjects";
-import { getBusinesses } from "@/lib/actions/businesses";
 import { getCustomZones, createCustomZone, deleteCustomZone, importGeoJSONZones, updateCustomZone } from "@/lib/actions/zones";
 import { getTDPById, updateTDP, getTDPs } from "@/lib/actions/tdp";
-import { getPCCCRecords } from "@/lib/actions/pccc";
-import { ISubject, IBusiness, ICustomZone, ITDP } from "@/lib/models";
-import { IPCCCRecord } from "@/lib/models/PCCC";
+import { ISubject, ICustomZone, ITDP } from "@/lib/models";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import * as turf from "@turf/turf";
-import { PenTool, X, CheckCircle2, Eye, EyeOff, MapPin, Layers, Circle as CircleIcon, Ruler, Square, Trash2, Users, Store, Flame, Crosshair, Compass, Info, ChevronDown } from "lucide-react";
+import { PenTool, X, CheckCircle2, Eye, EyeOff, MapPin, Layers, Circle as CircleIcon, Ruler, Square, Trash2, Users, Crosshair, Compass, Info, ChevronDown } from "lucide-react";
 
 
 // Status colors - High contrast semantic palette
@@ -190,21 +187,7 @@ function ZonePopupComponent({
           </div>
         </div>
 
-        {/* Business List */}
-        {zone.businessList && zone.businessList.length > 0 && (
-          <div className="mt-3">
-            <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1.5 flex items-center gap-2">
-              <i className="fas fa-store"></i> Danh sách cơ sở ({zone.businessList.length})
-            </h4>
-            <div className="max-h-24 overflow-y-auto pr-1 space-y-1 custom-scrollbar">
-              {zone.businessList.map((b: string, i: number) => (
-                <div key={i} className="text-[11px] bg-slate-50 text-slate-600 px-2 py-1 rounded border border-slate-100">
-                  {b}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+
 
         {/* Color Picker Section - Moved to bottom for visibility */}
         {canEditColor && (
@@ -267,10 +250,8 @@ import { useSearchParams } from "next/navigation";
 export function GISMap() {
   const searchParams = useSearchParams();
   const [subjects, setSubjects] = useState<ISubject[]>([]);
-  const [businesses, setBusinesses] = useState<IBusiness[]>([]);
   const [customZones, setCustomZones] = useState<ICustomZone[]>([]);
   const [tdps, setTdps] = useState<ITDP[]>([]);
-  const [pcccRecords, setPcccRecords] = useState<IPCCCRecord[]>([]);
   const [giaothongData, setGiaothongData] = useState<any>(null);
   const [currentUser, setCurrentUser] = useState<{ id: string; username: string; role: string } | null>(null);
   const [loading, setLoading] = useState(true);
@@ -289,8 +270,6 @@ export function GISMap() {
     areaSqm?: number;
     center?: [number, number];
     subjects: ISubject[];
-    businesses: IBusiness[];
-    pccc: IPCCCRecord[];
   } | null>(null);
   const spatialLayersRef = useRef<L.Layer[]>([]);
 
@@ -299,10 +278,6 @@ export function GISMap() {
   activeSpatialToolRef.current = activeSpatialTool;
   const subjectsRef = useRef(subjects);
   subjectsRef.current = subjects;
-  const businessesRef = useRef(businesses);
-  businessesRef.current = businesses;
-  const pcccRecordsRef = useRef(pcccRecords);
-  pcccRecordsRef.current = pcccRecords;
 
   // Fetch current user
   useEffect(() => {
@@ -316,18 +291,14 @@ export function GISMap() {
   // State for map layers (allow user interactive toggle directly on map)
   const [visibleLayers, setVisibleLayers] = useState({
     subjects: searchParams.get("subjects") !== "false",
-    businesses: searchParams.get("businesses") !== "false",
     zones: searchParams.get("zones") !== "false",
-    pccc: searchParams.get("pccc") === "true",
     giaothong: searchParams.get("giaothong") === "true",
   });
 
   useEffect(() => {
     setVisibleLayers({
       subjects: searchParams.get("subjects") !== "false",
-      businesses: searchParams.get("businesses") !== "false",
       zones: searchParams.get("zones") !== "false",
-      pccc: searchParams.get("pccc") === "true",
       giaothong: searchParams.get("giaothong") === "true",
     });
   }, [searchParams]);
@@ -345,26 +316,14 @@ export function GISMap() {
     setVisibleLayers(prev => ({ ...prev, subjects: !prev.subjects }));
   };
 
-  const toggleBusinessLayers = () => {
-    setVisibleLayers(prev => ({ ...prev, businesses: !prev.businesses }));
-  };
-
-  const togglePcccLayers = () => {
-    setVisibleLayers(prev => ({ ...prev, pccc: !prev.pccc }));
-  };
-
   const toggleZoneLayers = () => {
     setVisibleLayers(prev => ({ ...prev, zones: !prev.zones }));
   };
 
-  const areAllMarkersOff = !visibleLayers.subjects && !visibleLayers.businesses && !visibleLayers.pccc;
+  const areAllMarkersOff = !visibleLayers.subjects;
 
   const toggleAllMarkers = () => {
-    if (areAllMarkersOff) {
-      setVisibleLayers(prev => ({ ...prev, subjects: true, businesses: true, pccc: true }));
-    } else {
-      setVisibleLayers(prev => ({ ...prev, subjects: false, businesses: false, pccc: false }));
-    }
+    setVisibleLayers(prev => ({ ...prev, subjects: !prev.subjects }));
   };
 
   const drawMode = searchParams.get("draw") === "true";
@@ -412,35 +371,23 @@ export function GISMap() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const [subjectsData, businessesData, zonesData, pcccData, tdpsData] = await Promise.all([
+        const [subjectsData, zonesData, tdpsData] = await Promise.all([
           getSubjects(),
-          getBusinesses(),
           getCustomZones(),
-          getPCCCRecords(),
           getTDPs(),
         ]);
         setSubjects(subjectsData);
-        setBusinesses(businessesData);
-        setPcccRecords(pcccData);
         setTdps(tdpsData);
         
         // Preparation for Point-In-Polygon calculation
         const subjectPoints = turf.featureCollection(
           subjectsData.filter(s => s.lat && s.lng).map(s => turf.point([s.lng!, s.lat!]))
         );
-        const businessPoints = turf.featureCollection(
-          businessesData.filter(b => b.lat && b.lng).map(b => {
-            const p = turf.point([b.lng!, b.lat!]);
-            p.properties = { name: b.name };
-            return p;
-          })
-        );
 
         const enrichedZones = zonesData.map((zone) => {
           if (zone.type === "polygon" && zone.geojson?.features) {
             let riskCount = 0;
             let totalArea = 0;
-            let zoneBusinessList: string[] = [];
 
             zone.geojson.features.forEach((f: any) => {
               if (f.geometry.type === "Polygon" || f.geometry.type === "MultiPolygon") {
@@ -448,24 +395,16 @@ export function GISMap() {
                 const subjectsWithin = turf.pointsWithinPolygon(subjectPoints, f);
                 riskCount += subjectsWithin.features.length;
 
-                // Find businesses within
-                const businessesWithin = turf.pointsWithinPolygon(businessPoints, f);
-                businessesWithin.features.forEach(feat => {
-                  if (feat.properties?.name) zoneBusinessList.push(feat.properties.name);
-                });
-
-                try {
-                  totalArea += turf.area(f);
-                } catch(e) {}
+                // Calculate area
+                totalArea += turf.area(f);
               }
             });
 
             return { 
               ...zone, 
               riskCount, 
-              displayColor: zone.color, // Sử dụng màu gốc từ DB, không tự động đổi theo riskCount
+              displayColor: zone.color,
               areaSqm: totalArea,
-              businessList: Array.from(new Set(zoneBusinessList)) // Unique list
             };
           }
           return { ...zone, displayColor: zone.color };
@@ -532,8 +471,6 @@ export function GISMap() {
 
       const currentTool = activeSpatialToolRef.current;
       const currentSubjects = subjectsRef.current;
-      const currentBusinesses = businessesRef.current;
-      const currentPccc = pcccRecordsRef.current;
 
       // Handle TDP boundary drawing creation
       if (drawTdpId) {
@@ -556,8 +493,6 @@ export function GISMap() {
           const areaSqm = Math.PI * radiusMeters * radiusMeters;
 
           const insideSubjects = currentSubjects.filter(s => s.lat && s.lng && turf.booleanPointInPolygon(turf.point([s.lng, s.lat]), turfCircle));
-          const insideBusinesses = currentBusinesses.filter(b => b.lat && b.lng && turf.booleanPointInPolygon(turf.point([b.lng, b.lat]), turfCircle));
-          const insidePccc = currentPccc.filter(p => p.lat && p.lng && turf.booleanPointInPolygon(turf.point([p.lng, p.lat]), turfCircle));
 
           const radiusKmStr = (radiusMeters / 1000).toFixed(2) + " km";
           const radiusFormatted = radiusMeters < 1000 
@@ -603,8 +538,6 @@ export function GISMap() {
             areaSqm,
             center: [centerLatLng.lat, centerLatLng.lng],
             subjects: insideSubjects,
-            businesses: insideBusinesses,
-            pccc: insidePccc,
           });
 
           layer.bindPopup(`
@@ -613,7 +546,7 @@ export function GISMap() {
               Bán kính: <b>${radiusFormatted}</b><br/>
               Diện tích: <b>${(areaSqm / 10000).toFixed(2)} ha</b><br/>
               <hr style="margin: 4px 0; border: 0; border-top: 1px solid #e2e8f0;"/>
-              🔴 Đối tượng: <b>${insideSubjects.length}</b> | 🏢 Cơ sở: <b>${insideBusinesses.length}</b> | 🚒 PCCC: <b>${insidePccc.length}</b>
+              🔴 Đối tượng: <b>${insideSubjects.length}</b>
             </div>
           `).openPopup();
         }
@@ -661,8 +594,6 @@ export function GISMap() {
             type: "distance",
             distance: totalDistanceMeters,
             subjects: [],
-            businesses: [],
-            pccc: [],
           });
 
           layer.bindPopup(`
@@ -686,15 +617,11 @@ export function GISMap() {
           const areaSqm = turf.area(polyGeoJSON);
 
           const insideSubjects = currentSubjects.filter(s => s.lat && s.lng && turf.booleanPointInPolygon(turf.point([s.lng, s.lat]), polyGeoJSON));
-          const insideBusinesses = currentBusinesses.filter(b => b.lat && b.lng && turf.booleanPointInPolygon(turf.point([b.lng, b.lat]), polyGeoJSON));
-          const insidePccc = currentPccc.filter(p => p.lat && p.lng && turf.booleanPointInPolygon(turf.point([p.lng, p.lat]), polyGeoJSON));
 
           setAnalysisResult({
             type: "polygon",
             areaSqm,
             subjects: insideSubjects,
-            businesses: insideBusinesses,
-            pccc: insidePccc,
           });
 
           layer.bindPopup(`
@@ -702,7 +629,7 @@ export function GISMap() {
               <b style="color: #7c3aed;">KHU VỰC ĐÓNG KHUNG KHOANH VÙNG</b><br/>
               Diện tích: <b>${(areaSqm / 10000).toFixed(2)} ha (${areaSqm.toLocaleString('vi-VN', { maximumFractionDigits: 0 })} m²)</b><br/>
               <hr style="margin: 4px 0; border: 0; border-top: 1px solid #e2e8f0;"/>
-              🔴 Đối tượng: <b>${insideSubjects.length}</b> | 🏢 Cơ sở: <b>${insideBusinesses.length}</b> | 🚒 PCCC: <b>${insidePccc.length}</b>
+              🔴 Đối tượng: <b>${insideSubjects.length}</b>
             </div>
           `).openPopup();
         }
@@ -1214,25 +1141,15 @@ export function GISMap() {
                   <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center justify-between">
                     <span>Thống kê thực địa trong vùng</span>
                     <span className="bg-white/10 px-2 py-0.5 rounded-full text-white font-bold">
-                      {analysisResult.subjects.length + analysisResult.businesses.length + analysisResult.pccc.length} thực thể
+                      {analysisResult.subjects.length} đối tượng
                     </span>
                   </h4>
 
-                  <div className="grid grid-cols-3 gap-2 pt-1 text-center">
+                  <div className="grid grid-cols-1 gap-2 pt-1 text-center">
                     <div className="bg-red-500/10 p-2 rounded-xl border border-red-500/20">
                       <Users className="w-4 h-4 text-red-400 mx-auto mb-1" />
                       <span className="text-xs font-bold text-red-300 block">{analysisResult.subjects.length}</span>
                       <span className="text-[9px] text-slate-400 block">Đối tượng MT</span>
-                    </div>
-                    <div className="bg-amber-500/10 p-2 rounded-xl border border-amber-500/20">
-                      <Store className="w-4 h-4 text-amber-400 mx-auto mb-1" />
-                      <span className="text-xs font-bold text-amber-300 block">{analysisResult.businesses.length}</span>
-                      <span className="text-[9px] text-slate-400 block">Cơ sở KD</span>
-                    </div>
-                    <div className="bg-orange-500/10 p-2 rounded-xl border border-orange-500/20">
-                      <Flame className="w-4 h-4 text-orange-400 mx-auto mb-1" />
-                      <span className="text-xs font-bold text-orange-300 block">{analysisResult.pccc.length}</span>
-                      <span className="text-[9px] text-slate-400 block">Trạm/Trụ PCCC</span>
                     </div>
                   </div>
 
@@ -1298,18 +1215,7 @@ export function GISMap() {
             Đối tượng
           </button>
 
-          {/* Toggle Business Markers */}
-          <button
-            onClick={toggleBusinessLayers}
-            className={`px-3 py-1.5 rounded-xl text-[11px] font-bold transition-all flex items-center gap-1.5 ${
-              visibleLayers.businesses
-                ? "bg-amber-500/20 text-amber-300 border border-amber-500/40"
-                : "bg-white/5 text-slate-400 hover:text-slate-200 hover:bg-white/10"
-            }`}
-          >
-            <span className={`w-2.5 h-2.5 rounded-full ${visibleLayers.businesses ? 'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]' : 'bg-slate-500'}`}></span>
-            Cơ sở
-          </button>
+
 
           {/* Toggle Zone Polygons */}
           <button
@@ -1380,12 +1286,6 @@ export function GISMap() {
               <div className="flex items-center gap-3">
                 <span className="w-3 h-3 rounded-full shadow-[0_0_8px_rgba(206,147,216,0.4)]" style={{ background: statusColors["Khởi tố"] }}></span>
                 <span className="text-slate-200">Đối tượng Khởi tố</span>
-              </div>
-              <div className="mt-2 pt-3 border-t border-white/10">
-                <div className="flex items-center gap-3">
-                  <span className="w-3.5 h-3.5 rounded-sm shadow-[0_0_8px_rgba(255,82,82,0.4)]" style={{ background: riskColors["Cao"] }}></span>
-                  <span className="text-slate-200 text-[10px] uppercase tracking-tighter">CSKD nguy cơ cao</span>
-                </div>
               </div>
             </div>
           </div>
@@ -1586,6 +1486,15 @@ export function GISMap() {
                             <p><b>Số hộ:</b> {tdp.households || "—"}</p>
                             <p><b>Nhân khẩu:</b> {tdp.population || "—"}</p>
                             <p><b>Diện tích:</b> {tdp.area_sqm ? (tdp.area_sqm).toLocaleString() + " m²" : "—"}</p>
+                            {tdp.secretary_name && (
+                              <p><b>Bí thư:</b> {tdp.secretary_name} {tdp.secretary_phone ? `(${tdp.secretary_phone})` : ""}</p>
+                            )}
+                            {tdp.leader_name && (
+                              <p><b>Tổ trưởng:</b> {tdp.leader_name} {tdp.leader_phone ? `(${tdp.leader_phone})` : ""}</p>
+                            )}
+                            {tdp.police_name && (
+                              <p><b>CSKV:</b> {tdp.police_name} {tdp.police_phone ? `(${tdp.police_phone})` : ""}</p>
+                            )}
                             <p><b>Phân loại:</b> 
                               <span className={`ml-2 px-2 py-0.5 rounded-full font-bold ${
                                 tdp.risk_status === 'red' ? 'bg-red-100 text-red-600' : 
@@ -1696,82 +1605,7 @@ export function GISMap() {
             />
           )}
 
-          {/* Business Markers with Clustering */}
-          {visibleLayers.businesses && (
-            <MarkerClusterGroup chunkedLoading maxClusterRadius={30}>
-              {businesses
-              .filter((b) => b.lat && b.lng)
-              .map((b) => {
-                const color = riskColors[b.risk_level || "Thấp"] || "#8b949e";
-                const icon = L.divIcon({
-                  className: "",
-                  html: `<div style="width:24px;height:24px;background:${color};border:2px solid #fff;border-radius:5px;display:flex;align-items:center;justify-content:center;"><i class="fas fa-store" style="color:#fff;font-size:10px;"></i></div>`,
-                  iconSize: [24, 24],
-                  iconAnchor: [12, 12],
-                });
-                return (
-                  <Marker
-                    key={b._id?.toString() + (isDrawingOrMeasuring ? '-measuring' : '')}
-                    interactive={!isDrawingOrMeasuring}
-                    position={[b.lat!, b.lng!]}
-                    icon={icon}
-                  >
-                    {!isDrawingOrMeasuring && (
-                      <Popup>
-                        <div className="text-sm">
-                          <b>{b.name}</b>
-                          <br />
-                          Loại: {b.business_type} | Nguy cơ: <span style={{ color }}>{b.risk_level}</span>
-                          <br />
-                          <small>{b.address}</small>
-                        </div>
-                      </Popup>
-                    )}
-                  </Marker>
-                );
-              })}
-            </MarkerClusterGroup>
-          )}
 
-          {/* PCCC Markers */}
-          {visibleLayers.pccc && (
-            <MarkerClusterGroup chunkedLoading maxClusterRadius={30}>
-              {pcccRecords
-              .filter((p) => p.lat && p.lng)
-              .map((p) => {
-                const icon = L.divIcon({
-                  className: "",
-                  html: `<div style="width:24px;height:24px;background:#f97316;border:2px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="fas fa-fire-extinguisher" style="color:#fff;font-size:10px;"></i></div>`,
-                  iconSize: [24, 24],
-                  iconAnchor: [12, 12],
-                });
-                return (
-                  <Marker
-                    key={p._id?.toString() + (isDrawingOrMeasuring ? '-measuring' : '')}
-                    interactive={!isDrawingOrMeasuring}
-                    position={[p.lat!, p.lng!]}
-                    icon={icon}
-                  >
-                    {!isDrawingOrMeasuring && (
-                      <Popup>
-                        <div className="text-sm">
-                          <b className="text-orange-600">{p.name}</b>
-                          <br />
-                          Loại: {p.type === "hydrant" ? "Trụ nước" : p.type === "building" ? "Công trình" : "Thiết bị"}
-                          <br />
-                          Trạng thái: <span className={p.status === "active" ? "text-green-600 font-bold" : "text-red-600"}>
-                            {p.status === "active" ? "Hoạt động" : "Bảo trì"}
-                          </span>
-                          <br />
-                          <small>{p.address}</small>
-                        </div>
-                      </Popup>
-                    )}
-                  </Marker>
-                );
-              })}
-            </MarkerClusterGroup>
-          )}
 
 
           {/* Drug Density Zones - Auto calculated based on subject count per TDP */}

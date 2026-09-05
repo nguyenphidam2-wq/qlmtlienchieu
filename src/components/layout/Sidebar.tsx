@@ -10,11 +10,9 @@ import {
   ChevronDown,
   Layers,
   MapPin,
-  Flame,
   CheckCircle2,
   X,
   Users,
-  Store,
   Calendar,
 } from "lucide-react";
 import { getCustomZones } from "@/lib/actions/zones";
@@ -42,27 +40,19 @@ const navItems = [
   },
   {
     href: "/quan-ly-ma-tuy",
-    label: "Quản lý Ma túy & Cơ sở",
+    label: "Quản lý Ma túy",
     icon: Shield,
     section: "QUẢN LÝ NGHIỆP VỤ",
     roles: ["admin", "leader", "officer", "guest"],
     isParent: true,
     children: [
       { href: "/subjects", label: "Đối tượng ma túy", icon: Users },
-      { href: "/businesses", label: "Cơ sở nghi vấn / kinh doanh", icon: Store },
       { href: "/schedules", label: "Lịch kiểm danh & Thử test", icon: Calendar },
     ],
   },
   {
-    href: "/pccc",
-    label: "An toàn PCCC",
-    icon: Flame,
-    section: "QUẢN LÝ NGHIỆP VỤ",
-    roles: ["admin", "leader", "officer"],
-  },
-  {
     href: "/tdp",
-    label: "Quản lý Tổ dân phố",
+    label: "Danh sách tổ dân phố",
     icon: MapPin,
     section: "QUẢN LÝ NGHIỆP VỤ",
     roles: ["admin", "leader", "officer"],
@@ -88,8 +78,6 @@ export function Sidebar({ sidebarOpen, setSidebarOpen, user }: SidebarProps) {
   const [maTuyOpen, setMaTuyOpen] = useState(
     pathname === "/subjects" ||
       pathname.startsWith("/subjects/") ||
-      pathname === "/businesses" ||
-      pathname.startsWith("/businesses/") ||
       pathname === "/schedules" ||
       pathname.startsWith("/schedules/") ||
       pathname === "/quan-ly-ma-tuy"
@@ -112,8 +100,6 @@ export function Sidebar({ sidebarOpen, setSidebarOpen, user }: SidebarProps) {
     if (
       pathname === "/subjects" ||
       pathname.startsWith("/subjects/") ||
-      pathname === "/businesses" ||
-      pathname.startsWith("/businesses/") ||
       pathname === "/schedules" ||
       pathname.startsWith("/schedules/")
     ) {
@@ -130,9 +116,7 @@ export function Sidebar({ sidebarOpen, setSidebarOpen, user }: SidebarProps) {
 
   const layers = {
     subjects: searchParams.get("subjects") !== "false",
-    businesses: searchParams.get("businesses") !== "false",
     zones: searchParams.get("zones") !== "false",
-    pccc: searchParams.get("pccc") === "true",
   };
 
   const selectedZone = searchParams.get("zoneId");
@@ -256,34 +240,6 @@ export function Sidebar({ sidebarOpen, setSidebarOpen, user }: SidebarProps) {
 
                                   <button
                                     onClick={() =>
-                                      updateParam(
-                                        "businesses",
-                                        layers.businesses ? "false" : "true"
-                                      )
-                                    }
-                                    className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors ${
-                                      layers.businesses
-                                        ? "bg-emerald-500/20 text-emerald-300 font-semibold"
-                                        : "text-slate-400 hover:bg-slate-800"
-                                    }`}
-                                  >
-                                    <span className="flex items-center gap-2">
-                                      <span
-                                        className={`w-2 h-2 rounded-full ${
-                                          layers.businesses
-                                            ? "bg-emerald-500"
-                                            : "bg-slate-600"
-                                        }`}
-                                      ></span>
-                                      Cơ sở kinh doanh
-                                    </span>
-                                    {layers.businesses && (
-                                      <CheckCircle2 className="w-3.5 h-3.5" />
-                                    )}
-                                  </button>
-
-                                  <button
-                                    onClick={() =>
                                       updateParam("zones", layers.zones ? "false" : "true")
                                     }
                                     className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors ${
@@ -298,30 +254,9 @@ export function Sidebar({ sidebarOpen, setSidebarOpen, user }: SidebarProps) {
                                           layers.zones ? "bg-blue-500" : "bg-slate-600"
                                         }`}
                                       ></span>
-                                      Ranh giới TDP
+                                      Ranh giới 27 TDP
                                     </span>
                                     {layers.zones && <CheckCircle2 className="w-3.5 h-3.5" />}
-                                  </button>
-
-                                  <button
-                                    onClick={() =>
-                                      updateParam("pccc", layers.pccc ? "false" : "true")
-                                    }
-                                    className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs transition-colors ${
-                                      layers.pccc
-                                        ? "bg-orange-500/20 text-orange-300 font-semibold"
-                                        : "text-slate-400 hover:bg-slate-800"
-                                    }`}
-                                  >
-                                    <span className="flex items-center gap-2">
-                                      <span
-                                        className={`w-2 h-2 rounded-full ${
-                                          layers.pccc ? "bg-orange-500" : "bg-slate-600"
-                                        }`}
-                                      ></span>
-                                      An toàn PCCC
-                                    </span>
-                                    {layers.pccc && <CheckCircle2 className="w-3.5 h-3.5" />}
                                   </button>
                                 </div>
                               </div>

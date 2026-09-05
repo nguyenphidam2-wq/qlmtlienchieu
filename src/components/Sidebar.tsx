@@ -17,9 +17,10 @@ import {
   ChevronDown,
   Layers,
   MapPin,
+  Building2,
+  Hotel,
   PenTool,
   CheckCircle2,
-  Flame,
 } from "lucide-react";
 
 // Định nghĩa menu với các vai trò được phép truy cập
@@ -28,11 +29,11 @@ const navItems = [
   { href: "/", label: "Báo cáo tổng quát", icon: BarChart3, section: "Tổng quan", roles: ["admin", "leader", "officer", "guest"] },
   { href: "/quan-ly-ma-tuy", label: "Quản lý ma túy", icon: Shield, section: "Quản lý", roles: ["admin", "leader", "officer", "guest"], isParent: true, children: [
     { href: "/subjects", label: "Đối tượng ma túy" },
-    { href: "/businesses", label: "Các cơ sở, vị trí có dấu hiệu vi phạm" },
     { href: "/schedules", label: "Lịch kiểm danh & Thử test" },
   ]},
-  { href: "/pccc", label: "An toàn PCCC", icon: Flame, section: "Quản lý", roles: ["admin", "leader", "officer"] },
-  { href: "/tdp", label: "Quản lý Tổ dân phố", icon: MapPin, section: "Quản lý", roles: ["admin", "leader", "officer"] },
+  { href: "/tdp", label: "Danh sách tổ dân phố", icon: MapPin, section: "Quản lý", roles: ["admin", "leader", "officer"] },
+  { href: "/rentals", label: "Quản lý nhà trọ", icon: Hotel, section: "Quản lý", roles: ["admin", "leader", "officer"] },
+  { href: "/conditional-businesses", label: "Cơ sở kinh doanh ANTT", icon: Building2, section: "Quản lý", roles: ["admin", "leader", "officer"] },
   { href: "/accounts", label: "Quản lý Phân quyền", icon: Shield, section: "Hệ thống", roles: ["admin"] },
 ];
 
@@ -46,7 +47,6 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
   const [gisOpen, setGisOpen] = useState(pathname.startsWith("/gis"));
   const [quanLyMatuyOpen, setQuanLyMatuyOpen] = useState(
     pathname === "/subjects" || pathname.startsWith("/subjects/") || 
-    pathname === "/businesses" || pathname.startsWith("/businesses/") || 
     pathname === "/schedules" || pathname.startsWith("/schedules/") ||
     pathname === "/quan-ly-ma-tuy"
   );
@@ -72,7 +72,6 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
   // Sync quanLyMatuyOpen with pathname
   useEffect(() => {
     const isMaTuyPath = pathname === "/subjects" || pathname.startsWith("/subjects/") || 
-                       pathname === "/businesses" || pathname.startsWith("/businesses/") || 
                        pathname === "/schedules" || pathname.startsWith("/schedules/") ||
                        pathname === "/quan-ly-ma-tuy";
     if (isMaTuyPath) {
@@ -89,9 +88,7 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
 
   const layers = {
     subjects: searchParams.get("subjects") !== "false",
-    businesses: searchParams.get("businesses") !== "false",
     zones: searchParams.get("zones") !== "false",
-    pccc: searchParams.get("pccc") === "true", // Default off for now
   };
 
   const drawMode = searchParams.get("draw") === "true";
@@ -172,28 +169,12 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
                         {layers.subjects && <CheckCircle2 className="w-3.5 h-3.5" />}
                       </button>
                       <button 
-                        onClick={() => updateParam("businesses", layers.businesses ? "false" : "true")}
-                        className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all text-xs ${layers.businesses ? "bg-emerald-500/10 text-emerald-400" : "text-slate-500 hover:bg-slate-800"}`}
-                      >
-                        <div className={`w-2.5 h-2.5 rounded-sm ${layers.businesses ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" : "bg-slate-700"}`}></div>
-                        <span className="flex-1 text-left">Cơ sở kinh doanh</span>
-                        {layers.businesses && <CheckCircle2 className="w-3.5 h-3.5" />}
-                      </button>
-                      <button 
                         onClick={() => updateParam("zones", layers.zones ? "false" : "true")}
                         className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all text-xs ${layers.zones ? "bg-blue-500/10 text-blue-400" : "text-slate-500 hover:bg-slate-800"}`}
                       >
                         <div className={`w-2.5 h-2.5 rounded-sm ${layers.zones ? "bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]" : "bg-slate-700"}`}></div>
-                        <span className="flex-1 text-left">Ranh giới TDP</span>
+                        <span className="flex-1 text-left">Ranh giới 27 TDP</span>
                         {layers.zones && <CheckCircle2 className="w-3.5 h-3.5" />}
-                      </button>
-                      <button 
-                        onClick={() => updateParam("pccc", layers.pccc ? "false" : "true")}
-                        className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all text-xs ${layers.pccc ? "bg-orange-500/10 text-orange-400" : "text-slate-500 hover:bg-slate-800"}`}
-                      >
-                        <div className={`w-2.5 h-2.5 rounded-full ${layers.pccc ? "bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.5)]" : "bg-slate-700"}`}></div>
-                        <span className="flex-1 text-left">An toàn PCCC</span>
-                        {layers.pccc && <CheckCircle2 className="w-3.5 h-3.5" />}
                       </button>
                       <button 
                         onClick={() => updateParam("giaothong", searchParams.get("giaothong") === "true" ? "false" : "true")}

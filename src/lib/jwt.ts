@@ -1,7 +1,9 @@
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 
-export const JWT_SECRET_KEY = process.env.JWT_SECRET || "qlmt-lienchieu-super-secret-key-12345!@#";
+const configuredSecret = process.env.JWT_SECRET;
+if (!configuredSecret && process.env.NODE_ENV === "production") throw new Error("JWT_SECRET must be configured in production");
+export const JWT_SECRET_KEY = configuredSecret || "qlmt-lienchieu-super-secret-key-12345!@#";
 const key = new TextEncoder().encode(JWT_SECRET_KEY);
 
 export async function signJWT(payload: any) {

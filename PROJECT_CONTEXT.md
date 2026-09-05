@@ -37,8 +37,8 @@ The project follows a modular feature-based architecture located in `src/feature
 - **Modular Design:** Each feature has its own module file (e.g., `subjects.module.ts`) and is registered in `src/features/registry.ts`.
 - **Data Integrity:** Recent work focuses on "Bulk Approval" workflows and ensuring data defaults to "Pending" status upon import.
 - **Geospatial Focus:** Extensive use of Leaflet for managing custom zones and marking locations.
-- **TDP Boundary Standardization:** Successfully processed and imported highly detailed boundary data for 78 TDPs (Tổ dân phố) from complex GeoJSON sources. Handled coordinate rounding to prevent Excel cell limit overflow during data exchange.
-- **Mock Data Ecosystem:** Implemented robust scripts (`generate-mock-data.ts`) to programmatically populate the map with hundreds of entities (Subjects, Businesses, PCCC) specifically pinned within their respective TDP boundaries to simulate a live, highly-dense GIS environment.
+- **TDP Boundary Standardization:** Địa bàn chuẩn hóa gồm 27 Tổ dân phố mới sau sáp nhập. Quản lý đầy đủ thông tin lãnh đạo tổ: Bí thư Chi bộ (`secretary_name`, `secretary_phone`), Tổ trưởng (`leader_name`, `leader_phone`), Cảnh sát khu vực (`police_name`, `police_phone`) và ranh giới GeoJSON.
+- **Focus Areas:** Trọng tâm hệ thống là Quản lý Đối tượng (Subjects), Bản đồ 27 Tổ dân phố (TDP), Lịch/Kế hoạch xét nghiệm ma túy (TestSchedules) và Vùng tự vẽ (CustomZones). Các mảng Cơ sở kinh doanh (Businesses) và PCCC đã được dọn sạch hoàn toàn khỏi hệ thống.
 
 ---
 

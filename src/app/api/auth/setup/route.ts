@@ -3,8 +3,11 @@ import { connectDB } from "@/lib/mongodb";
 import { User } from "@/lib/models/User";
 import bcrypt from "bcryptjs";
 
-export async function POST() {
+export async function POST(request: Request) {
   try {
+    if (!process.env.SETUP_SECRET || request.headers.get("x-setup-secret") !== process.env.SETUP_SECRET) {
+      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+    }
     await connectDB();
     
     // Wipe existing users for fresh demo test

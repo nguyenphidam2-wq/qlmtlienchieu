@@ -3,8 +3,9 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import connectDB from "@/lib/mongodb";
-import { Subject, ISubject, Business } from "@/lib/models";
+import { Subject, ISubject, TDP } from "@/lib/models";
 import { getCurrentUser } from "@/lib/jwt";
+import { buildAuditChanges, recordAudit } from "@/lib/audit";
 
 // Các vai trò được phép tạo/sửa đối tượng
 const ALLOWED_ROLES_FOR_CREATE_UPDATE = ["admin", "leader", "officer"];
@@ -50,7 +51,7 @@ export async function getSubjects(status?: string, startDate?: string, endDate?:
   }
 
   const conn = await connectDB();
-  const db = conn.connection?.db || mongoose.connection?.db;
+  const db = conn.connection?.db;
   if (!db) {
     const subjects = await Subject.find(query).sort({ created_at: -1 }).lean();
     return subjects.map(sanitizeSubject);
@@ -136,7 +137,7 @@ function sanitizeSubject(s: any): any {
 // Get single subject by ID
 export async function getSubject(id: string): Promise<ISubject | null> {
   const conn = await connectDB();
-  const db = conn.connection?.db || mongoose.connection?.db;
+  const db = conn.connection?.db;
   if (!db) {
     const subject: any = await Subject.findById(id).lean();
     return sanitizeSubject(subject);
@@ -170,6 +171,14 @@ export async function createSubject(data: Partial<ISubject>): Promise<{ success:
     created_by: currentUser.id,
   });
 
+  await recordAudit({
+    entity_type: "Subject",
+    entity_id: subject._id.toString(),
+    action: "CREATE",
+    actor: currentUser,
+    changes: buildAuditChanges(null, subject.toObject()),
+  });
+
   revalidatePath("/subjects");
   revalidatePath("/");
   return { success: true, data: JSON.parse(JSON.stringify(subject)) };
@@ -194,6 +203,7 @@ export async function updateSubject(id: string, data: Partial<ISubject>): Promis
     return { success: false, error: "Chỉ admin và leader mới có quyền duyệt đối tượng" };
   }
 
+  const before = await Subject.findById(id).lean();
   const subject = await Subject.findByIdAndUpdate(
     id,
     {
@@ -206,6 +216,14 @@ export async function updateSubject(id: string, data: Partial<ISubject>): Promis
   if (!subject) {
     return { success: false, error: "Không tìm thấy đối tượng" };
   }
+
+  await recordAudit({
+    entity_type: "Subject",
+    entity_id: id,
+    action: data.approval_status === "Approved" ? "APPROVE" : "UPDATE",
+    actor: currentUser,
+    changes: buildAuditChanges(before as Record<string, unknown> | null, subject as Record<string, unknown>),
+  });
 
   revalidatePath("/subjects");
   revalidatePath("/");
@@ -231,6 +249,14 @@ export async function deleteSubject(id: string): Promise<{ success: boolean; err
     return { success: false, error: "Không tìm thấy đối tượng để xóa" };
   }
 
+  await recordAudit({
+    entity_type: "Subject",
+    entity_id: id,
+    action: "DELETE",
+    actor: currentUser,
+    changes: buildAuditChanges(result.toObject(), {}),
+  });
+
   revalidatePath("/subjects");
   revalidatePath("/");
   return { success: true };
@@ -250,6 +276,7 @@ export async function approveSubject(id: string): Promise<{ success: boolean; da
 
   await connectDB();
 
+  const before = await Subject.findById(id).lean();
   const subject = await Subject.findByIdAndUpdate(
     id,
     {
@@ -263,6 +290,14 @@ export async function approveSubject(id: string): Promise<{ success: boolean; da
   if (!subject) {
     return { success: false, error: "Không tìm thấy đối tượng" };
   }
+
+  await recordAudit({
+    entity_type: "Subject",
+    entity_id: id,
+    action: "APPROVE",
+    actor: currentUser,
+    changes: buildAuditChanges(before as Record<string, unknown> | null, subject as Record<string, unknown>),
+  });
 
   revalidatePath("/subjects");
   revalidatePath("/");
@@ -287,6 +322,7 @@ export async function bulkApproveSubjects(ids: string[]): Promise<{ success: boo
 
   await connectDB();
 
+  const subjectsBefore = await Subject.find({ _id: { $in: ids } }).lean();
   await Subject.updateMany(
     { _id: { $in: ids } },
     {
@@ -295,6 +331,20 @@ export async function bulkApproveSubjects(ids: string[]): Promise<{ success: boo
       approved_at: new Date(),
     }
   );
+
+  const approvedAt = new Date();
+  await Promise.all(subjectsBefore.map((before) => recordAudit({
+    entity_type: "Subject",
+    entity_id: before._id.toString(),
+    action: "APPROVE",
+    actor: currentUser,
+    changes: buildAuditChanges(before as Record<string, unknown>, {
+      ...before,
+      approval_status: "Approved",
+      approved_by: currentUser.id,
+      approved_at: approvedAt,
+    } as Record<string, unknown>),
+  })));
 
   revalidatePath("/subjects");
   revalidatePath("/");
@@ -318,7 +368,16 @@ export async function bulkDeleteSubjects(ids: string[]): Promise<{ success: bool
   }
 
   await connectDB();
+  const subjectsBefore = await Subject.find({ _id: { $in: ids } }).lean();
   await Subject.deleteMany({ _id: { $in: ids } });
+
+  await Promise.all(subjectsBefore.map((before) => recordAudit({
+    entity_type: "Subject",
+    entity_id: before._id.toString(),
+    action: "DELETE",
+    actor: currentUser,
+    changes: buildAuditChanges(before as Record<string, unknown>, {}),
+  })));
 
   revalidatePath("/subjects");
   revalidatePath("/");
@@ -334,7 +393,7 @@ export async function getCurrentUserInfo() {
 // Get stats for dashboard - chỉ thống kê các đối tượng đã được duyệt
 export async function getStats(startDate?: string, endDate?: string): Promise<{
   total_subjects: number;
-  total_businesses: number;
+  total_tdps: number;
   status_counts: Record<string, number>;
   tdp_stats: Record<string, number>;
   timeline_stats: Array<{ month: string; count: number }>;
@@ -358,7 +417,7 @@ export async function getStats(startDate?: string, endDate?: string): Promise<{
   let statusCounts: any[];
   let tdpStats: any[];
   let total_subjects: number;
-  let total_businesses: number;
+  let total_tdps: number;
   let timelineStats: any[];
 
   if (startDate || endDate) {
@@ -366,7 +425,7 @@ export async function getStats(startDate?: string, endDate?: string): Promise<{
     statusMatch.created_at = matchQuery.created_at;
 
     total_subjects = await Subject.countDocuments(matchQuery);
-    total_businesses = await Business.countDocuments();
+    total_tdps = await TDP.countDocuments();
     statusCounts = await Subject.aggregate([{ $match: statusMatch }, { $group: { _id: "$status", count: { $sum: 1 } } }]);
     // @ts-ignore
     const tdpQ: any = { tdp: { $exists: true, $ne: null, $ne: "" }, ...approvedFilter };
@@ -391,7 +450,7 @@ export async function getStats(startDate?: string, endDate?: string): Promise<{
     const tdpMatch: any = { tdp: { $exists: true, $ne: null, $ne: "" }, ...approvedFilter };
 
     total_subjects = await Subject.countDocuments(matchQuery);
-    total_businesses = await Business.countDocuments();
+    total_tdps = await TDP.countDocuments();
     statusCounts = await Subject.aggregate([
       { $match: statusMatch },
       { $group: { _id: "$status", count: { $sum: 1 } } },
@@ -421,6 +480,10 @@ export async function getStats(startDate?: string, endDate?: string): Promise<{
   });
 
   const tdp_stats: Record<string, number> = {};
+  const tdpRecords = await TDP.find({}).select("name").lean();
+  for (const tdp of tdpRecords) {
+    if (tdp.name) tdp_stats[tdp.name] = 0;
+  }
   tdpStats.forEach((item: any) => {
     if (item._id) tdp_stats[item._id] = item.count;
   });
@@ -432,7 +495,7 @@ export async function getStats(startDate?: string, endDate?: string): Promise<{
 
   return {
     total_subjects,
-    total_businesses,
+    total_tdps,
     status_counts,
     tdp_stats,
     timeline_stats,

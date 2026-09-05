@@ -94,36 +94,12 @@ export interface Subject {
   updated_at?: Date;
 }
 
-export interface Business {
-  _id?: string;
-  name: string;
-  business_type: string;
-  address: string;
-  address_detail?: string;
-  owner_name?: string;
-  owner_phone?: string;
-  owner_id_card?: string;
-  license_number?: string;
-  operation_hours?: string;
-  num_staff?: number;
-  risk_level: string;
-  inspection_count: number;
-  last_inspection?: string;
-  violations?: string;
-  notes?: string;
-  lat?: number;
-  lng?: number;
-  created_at?: Date;
-  updated_at?: Date;
-}
-
 export interface Stats {
   total_subjects: number;
-  total_businesses: number;
+  total_tdps?: number;
   status_counts: Record<string, number>;
   tdp_stats: Record<string, number>;
 }
 
 export type SubjectStatus = "Nghiện" | "Sử dụng" | "Sau cai" | "Khởi tố";
 export type RiskLevel = "Thấp" | "Trung bình" | "Cao" | "Rất cao";
-export type BusinessType = "Karaoke" | "Nhà nghỉ" | "Pub/Bar" | "Tiệm cầm đồ" | "Quán bia/nhậu" | "Vũ trường" | "Khác";

@@ -28,6 +28,14 @@ export interface IAttachedFile {
   uploaded_at: Date;
 }
 
+export type SubjectCategory =
+  | "drug_related"
+  | "psychiatric_risk"
+  | "community_sentence"
+  | "criminal_record"
+  | "administrative_violation"
+  | "weapon_related";
+
 export interface ISubject extends Document {
   full_name: string;
   alias?: string;
@@ -75,6 +83,7 @@ export interface ISubject extends Document {
   processing_history?: string;
   notes?: string;
   relationships?: string;
+  subject_categories?: SubjectCategory[];
 
   status?: string; // Derived status for map
   risk_level?: "red" | "yellow" | "green";
@@ -85,15 +94,18 @@ export interface ISubject extends Document {
   // Officer in charge
   assigned_officer_id?: string;
   assigned_officer_name?: string;
+  updated_by?: string;
 
   // Media & Files
   house_image_url?: string;
+  residence_verified?: boolean;
+  last_verified_at?: Date;
   subject_images?: string[];
   registered_vehicles?: IVehicle[];
   attached_files?: IAttachedFile[];
 
   // Approval workflow
-  approval_status?: "Pending" | "Approved";
+  approval_status?: "Pending" | "Approved" | "Rejected" | "NeedsUpdate";
   created_by?: string;
   approved_by?: string;
   approved_at?: Date;
@@ -161,6 +173,12 @@ const SubjectSchema = new Schema<ISubject>(
     processing_history: { type: String },
     notes: { type: String },
     relationships: { type: String },
+    subject_categories: {
+      type: [String],
+      enum: ["drug_related", "psychiatric_risk", "community_sentence", "criminal_record", "administrative_violation", "weapon_related"],
+      default: [],
+      index: true,
+    },
 
     status: { type: String, index: true },
     risk_level: { type: String, enum: ["red", "yellow", "green"], default: "green", index: true },
@@ -170,8 +188,11 @@ const SubjectSchema = new Schema<ISubject>(
 
     assigned_officer_id: { type: String, index: true },
     assigned_officer_name: { type: String },
+    updated_by: { type: String },
 
     house_image_url: { type: String },
+    residence_verified: { type: Boolean, default: false },
+    last_verified_at: { type: Date },
     subject_images: { type: [String], default: [] },
     registered_vehicles: [
       {
@@ -190,7 +211,7 @@ const SubjectSchema = new Schema<ISubject>(
     ],
 
     // Approval workflow fields
-    approval_status: { type: String, enum: ["Pending", "Approved"], default: "Pending", index: true },
+    approval_status: { type: String, enum: ["Pending", "Approved", "Rejected", "NeedsUpdate"], default: "Pending", index: true },
     created_by: { type: String },
     approved_by: { type: String },
     approved_at: { type: Date },

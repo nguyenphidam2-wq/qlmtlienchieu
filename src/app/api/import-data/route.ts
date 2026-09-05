@@ -28,12 +28,10 @@ export async function POST(request: Request) {
     }
 
     // Ensure DB connection is ready
-    await connectDB();
-
     const { collection, data, secret } = body;
 
     // Bảo vệ endpoint bằng secret key
-    if (secret !== "import-qlmt-2024") {
+    if (!process.env.IMPORT_SECRET || secret !== process.env.IMPORT_SECRET) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
@@ -57,6 +55,8 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+
+    await connectDB();
 
     const col = mongoose.connection.db!.collection(collection);
 

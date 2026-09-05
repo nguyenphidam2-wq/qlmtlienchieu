@@ -30,5 +30,5 @@
           ".next/dev/types/**/*.ts",
           "**/*.mts"
     ],
-    "exclude": ["node_modules", "qlmt-next-temp", "scripts"]
+    "exclude": ["node_modules", "qlmt-next-temp", "scripts", "scratch", "_archive", "archives", "QLMT_PORTABLE_APP", "test_extract"]
 }

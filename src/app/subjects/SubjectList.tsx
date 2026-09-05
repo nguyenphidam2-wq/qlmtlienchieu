@@ -17,6 +17,7 @@ import {
 } from "@/lib/actions/subjects";
 import { ISubject } from "@/lib/models";
 import { SubjectForm } from "./components/SubjectForm";
+import { AuditTimeline } from "./components/AuditTimeline";
 
 const STATUS_OPTIONS = [
   { value: "", label: "Tất cả" },
@@ -871,6 +872,8 @@ function SubjectDetail({ subject: initialSubject }: { subject: ISubject }) {
           )}
         </div>
       </div>
+
+      <AuditTimeline entityType="Subject" entityId={subject._id?.toString()} />
     </div>
   );
 }

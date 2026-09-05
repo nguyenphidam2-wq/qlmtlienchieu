@@ -702,3 +702,77 @@ button:disabled {
 .custom-measure-tooltip-green::before {
   display: none !important;
 }
+
+/* Framed Grid Layout Tokens & Utilities */
+:root {
+  --fg-bg: #f8fafc;
+  --fg-surface: rgba(255, 255, 255, 0.82);
+  --fg-line: rgba(24, 24, 27, 0.12);
+  --fg-line-strong: rgba(24, 24, 27, 0.4);
+  --fg-texture: rgba(24, 24, 27, 0.025);
+  --fg-gap: 16px;
+  --fg-pad: clamp(14px, 1.8vw, 24px);
+  --fg-corner: 14px;
+}
+
+.dark {
+  --fg-bg: #0f172a;
+  --fg-surface: rgba(30, 41, 59, 0.82);
+  --fg-line: rgba(255, 255, 255, 0.14);
+  --fg-line-strong: rgba(255, 255, 255, 0.45);
+  --fg-texture: rgba(255, 255, 255, 0.02);
+}
+
+.framed-grid {
+  min-height: 100vh;
+  padding: var(--fg-gap);
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 11px,
+      var(--fg-texture) 11px 12px
+    ),
+    var(--fg-bg);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--fg-gap);
+}
+
+.framed-grid > * {
+  min-width: 0;
+}
+
+.frame {
+  position: relative;
+  border: 1px solid var(--fg-line);
+  background: var(--fg-surface);
+  padding: var(--fg-pad);
+  overflow: hidden;
+}
+
+.frame-brackets {
+  background:
+    linear-gradient(var(--fg-line-strong), var(--fg-line-strong)) left top / var(--fg-corner) 1px no-repeat,
+    linear-gradient(var(--fg-line-strong), var(--fg-line-strong)) left top / 1px var(--fg-corner) no-repeat,
+    linear-gradient(var(--fg-line-strong), var(--fg-line-strong)) right top / var(--fg-corner) 1px no-repeat,
+    linear-gradient(var(--fg-line-strong), var(--fg-line-strong)) right top / 1px var(--fg-corner) no-repeat,
+    linear-gradient(var(--fg-line-strong), var(--fg-line-strong)) left bottom / var(--fg-corner) 1px no-repeat,
+    linear-gradient(var(--fg-line-strong), var(--fg-line-strong)) left bottom / 1px var(--fg-corner) no-repeat,
+    linear-gradient(var(--fg-line-strong), var(--fg-line-strong)) right bottom / var(--fg-corner) 1px no-repeat,
+    linear-gradient(var(--fg-line-strong), var(--fg-line-strong)) right bottom / 1px var(--fg-corner) no-repeat,
+    var(--fg-surface);
+}
+
+.span-12 { grid-column: span 12; }
+.span-8 { grid-column: span 8; }
+.span-6 { grid-column: span 6; }
+.span-4 { grid-column: span 4; }
+
+@media (max-width: 760px) {
+  .framed-grid {
+    grid-template-columns: 1fr;
+  }
+  .span-12, .span-8, .span-6, .span-4 {
+    grid-column: 1 / -1;
+  }
+}

@@ -4,6 +4,8 @@ import connectDB from "@/lib/mongodb";
 import { TestSchedule, Subject, ITestSchedule } from "@/lib/models";
 import { revalidatePath } from "next/cache";
 import mongoose from "mongoose";
+import { getCurrentUser } from "@/lib/jwt";
+import { recordAudit } from "@/lib/audit";
 
 function sanitizeSchedule(s: any): any {
   if (!s) return null;
@@ -86,6 +88,10 @@ export async function createTestSchedule(data: {
   notes?: string;
 }): Promise<{ success: boolean; data?: any; error?: string }> {
   try {
+    const currentUser = await getCurrentUser();
+    if (!currentUser || !["admin", "leader", "officer"].includes(currentUser.role)) {
+      return { success: false, error: "Unauthorized" };
+    }
     const conn = await connectDB();
     const db = conn.connection?.db || mongoose.connection?.db;
 
@@ -121,15 +127,18 @@ export async function createTestSchedule(data: {
       notes: data.notes || "",
       created_at: new Date(),
       updated_at: new Date(),
+      created_by: currentUser.id,
     };
 
     if (db) {
       const res = await db.collection("test_schedules").insertOne(newSchedule);
+      await recordAudit({ entity_type: "TestSchedule", entity_id: res.insertedId.toString(), action: "CREATE", actor: currentUser });
       revalidatePath("/schedules");
       return { success: true, data: { _id: res.insertedId.toString(), ...newSchedule } };
     }
 
     const schedule = await TestSchedule.create(newSchedule);
+    await recordAudit({ entity_type: "TestSchedule", entity_id: schedule._id.toString(), action: "CREATE", actor: currentUser });
     revalidatePath("/schedules");
     return { success: true, data: sanitizeSchedule(schedule) };
   } catch (err: any) {
@@ -148,6 +157,10 @@ export async function updateParticipantResult(data: {
   tested_by?: string;
 }): Promise<{ success: boolean; error?: string }> {
   try {
+    const currentUser = await getCurrentUser();
+    if (!currentUser || !["admin", "leader", "officer"].includes(currentUser.role)) {
+      return { success: false, error: "Unauthorized" };
+    }
     const conn = await connectDB();
     const db = conn.connection?.db || mongoose.connection?.db;
     const { ObjectId } = await import("mongodb");
@@ -201,6 +214,13 @@ export async function updateParticipantResult(data: {
       }
 
       await db.collection("subjects").updateOne({ _id: subjectId }, subjectUpdate);
+      await recordAudit({
+        entity_type: "TestSchedule",
+        entity_id: data.schedule_id,
+        action: "UPDATE",
+        actor: currentUser,
+        reason: `Participant ${data.subject_id} result: ${data.result}`,
+      });
 
       // Kiểm tra xem tất cả participant trong đợt đã có kết quả chưa -> Đổi status đợt thành Completed
       const updatedSchedule: any = await db.collection("test_schedules").findOne({ _id: scheduleId });

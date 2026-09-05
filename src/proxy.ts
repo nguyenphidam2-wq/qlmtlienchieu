@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { jwtVerify } from 'jose';
 
-const JWT_SECRET_KEY = process.env.JWT_SECRET || "qlmt-lienchieu-super-secret-key-12345!@#";
+const JWT_SECRET_KEY = process.env.JWT_SECRET || (process.env.NODE_ENV === "production" ? "" : "qlmt-lienchieu-super-secret-key-12345!@#");
 const key = new TextEncoder().encode(JWT_SECRET_KEY);
 
 export async function proxy(request: NextRequest) {
@@ -14,6 +14,7 @@ export async function proxy(request: NextRequest) {
   if (isPublicPath) {
     return NextResponse.next();
   }
+  if (!JWT_SECRET_KEY) return new NextResponse("Server authentication is not configured", { status: 503 });
 
   // Get token from cookies
   const token = request.cookies.get('auth_token')?.value;

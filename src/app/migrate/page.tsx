@@ -20,9 +20,8 @@ export default function MigratePage() {
 
                   const res1 = await importData('subjects', 'https://raw.githubusercontent.com/nguyenphidam2-wq/qlmtlienchieu/main/scripts/export/subjects.json');
                                 const res2 = await importData('customzones', 'https://raw.githubusercontent.com/nguyenphidam2-wq/qlmtlienchieu/main/scripts/export/customzones.json');
-                                const res3 = await importData('businesses', 'https://raw.githubusercontent.com/nguyenphidam2-wq/qlmtlienchieu/main/scripts/export/businesses.json');
 
-                  setStatus(`Finished: ${JSON.stringify({subjects: res1.message, customzones: res2.message, businesses: res3.message})}`);
+                  setStatus(`Finished: ${JSON.stringify({subjects: res1.message, customzones: res2.message})}`);
                 } catch (e: any) {
                                 setStatus(`Failed: ${e.message}`);
                 }
