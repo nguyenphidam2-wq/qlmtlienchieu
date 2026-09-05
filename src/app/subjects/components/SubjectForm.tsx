@@ -66,6 +66,15 @@ const VIOLATION_ACTIONS = [
   { value: "Khác", label: "Khác (Nhập tự do)" }
 ];
 
+const SUBJECT_CATEGORY_OPTIONS = [
+  { value: "drug_related", label: "Liên quan ma túy" },
+  { value: "psychiatric_risk", label: "Tâm thần/loạn thần có nguy cơ" },
+  { value: "community_sentence", label: "Thi hành án tại cộng đồng" },
+  { value: "criminal_record", label: "Tiền án, tiền sự/diện sưu tra" },
+  { value: "administrative_violation", label: "Thường xuyên vi phạm hành chính" },
+  { value: "weapon_related", label: "Nghi vấn vũ khí, vật liệu nổ, CCHT, pháo" },
+];
+
 interface ImagePreview { url: string; file?: File; isNew?: boolean; }
 
 export function SubjectForm({ subject, onSubmit, onCancel }: any) {
@@ -98,8 +107,13 @@ export function SubjectForm({ subject, onSubmit, onCancel }: any) {
 
   // Dynamic Arrays
   const [drugTypes, setDrugTypes] = useState<string[]>(subject?.drug_types_used || []);
+  const [subjectCategories, setSubjectCategories] = useState<string[]>(subject?.subject_categories || []);
   const [familyMembers, setFamilyMembers] = useState<any[]>(subject?.family_members || []);
   const [violations, setViolations] = useState<any[]>(subject?.violation_histories || []);
+  const [residenceVerified, setResidenceVerified] = useState(Boolean(subject?.residence_verified));
+  const [lastVerifiedAt, setLastVerifiedAt] = useState(
+    subject?.last_verified_at ? new Date(subject.last_verified_at).toISOString().slice(0, 10) : ""
+  );
 
   // Image states
   const [faceImageUrl, setFaceImageUrl] = useState(subject?.face_image_url || "");
@@ -119,6 +133,10 @@ export function SubjectForm({ subject, onSubmit, onCancel }: any) {
 
   const handleDrugToggle = (val: string) => {
     setDrugTypes(prev => prev.includes(val) ? prev.filter(d => d !== val) : [...prev, val]);
+  };
+
+  const handleCategoryToggle = (val: string) => {
+    setSubjectCategories(prev => prev.includes(val) ? prev.filter(category => category !== val) : [...prev, val]);
   };
 
   // Family Handlers
@@ -201,8 +219,11 @@ export function SubjectForm({ subject, onSubmit, onCancel }: any) {
         house_image_url: houseImageUrl || undefined,
         subject_images: subjectImages.map((img) => img.url),
         drug_types_used: drugTypes,
+        subject_categories: subjectCategories,
         family_members: familyMembers,
         violation_histories: violations,
+        residence_verified: residenceVerified,
+        last_verified_at: residenceVerified && lastVerifiedAt ? lastVerifiedAt : undefined,
         status: derivedStatus // for GIS map colors compatibility
       });
     } finally {
@@ -280,7 +301,31 @@ export function SubjectForm({ subject, onSubmit, onCancel }: any) {
         </div>
       </div>
 
-      {/* 3. THONG TIN CU TRU */}
+      {/* 3. PHAN LOAI QUAN LY */}
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <div className="bg-slate-50 px-6 py-3 border-b border-slate-200">
+          <h3 className="font-bold text-slate-800 flex items-center gap-2">⚖️ 3. PHÂN LOẠI QUẢN LÝ ĐỐI TƯỢNG</h3>
+          <p className="mt-1 text-xs text-slate-500">Chọn một hoặc nhiều diện quản lý phù hợp với hồ sơ và tài liệu nghiệp vụ.</p>
+        </div>
+        <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {SUBJECT_CATEGORY_OPTIONS.map((category) => (
+            <label
+              key={category.value}
+              className={`flex items-start gap-3 rounded-lg border p-3 cursor-pointer transition-colors ${subjectCategories.includes(category.value) ? "bg-amber-50 border-amber-300" : "border-slate-200 hover:bg-slate-50"}`}
+            >
+              <input
+                type="checkbox"
+                checked={subjectCategories.includes(category.value)}
+                onChange={() => handleCategoryToggle(category.value)}
+                className="mt-0.5 h-4 w-4 rounded border-slate-300 text-amber-600 focus:ring-amber-500"
+              />
+              <span className="text-sm font-medium text-slate-700">{category.label}</span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      {/* 4. THONG TIN CU TRU */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
         <div className="bg-slate-50 px-6 py-3 border-b border-slate-200">
           <h3 className="font-bold text-slate-800 flex items-center gap-2">🏠 3. THÔNG TIN CƯ TRÚ</h3>
@@ -314,10 +359,45 @@ export function SubjectForm({ subject, onSubmit, onCancel }: any) {
               <div className="text-xs text-green-600 font-medium">✓ Đã gắn tọa độ: {formData.lat.toFixed(5)}, {formData.lng.toFixed(5)}</div>
             )}
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-slate-100 pt-4">
+            <div>
+              <label className="text-sm font-semibold text-slate-700">Ảnh thực tế nhà ở</label>
+              <div className="mt-1 flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => houseInputRef.current?.click()}
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                >
+                  📷 {houseImageUrl ? "Đổi ảnh nhà" : "Tải ảnh nhà"}
+                </button>
+                <input ref={houseInputRef} type="file" accept="image/*" onChange={(e) => handleImageUpload(e, "house")} className="hidden" />
+                {houseImageUrl && <span className="text-xs text-emerald-600">Đã có ảnh</span>}
+              </div>
+              {houseImageUrl && <img src={houseImageUrl} alt="Ảnh nhà ở" className="mt-3 h-28 w-40 rounded-lg border border-slate-200 object-cover" />}
+            </div>
+            <div className="space-y-3">
+              <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+                <input
+                  type="checkbox"
+                  checked={residenceVerified}
+                  onChange={(e) => setResidenceVerified(e.target.checked)}
+                  className="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+                />
+                Đã xác minh nơi cư trú
+              </label>
+              {residenceVerified && (
+                <label className="block text-sm font-medium text-slate-700">
+                  Ngày xác minh
+                  <input type="date" value={lastVerifiedAt} onChange={(e) => setLastVerifiedAt(e.target.value)} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2" />
+                </label>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* 4. GIA DINH */}
+      {/* 5. GIA DINH */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
         <div className="bg-slate-50 px-6 py-3 border-b border-slate-200 flex justify-between items-center">
           <h3 className="font-bold text-slate-800 flex items-center gap-2">👨‍👩‍👧‍👦 4. QUAN HỆ GIA ĐÌNH</h3>
@@ -361,7 +441,7 @@ export function SubjectForm({ subject, onSubmit, onCancel }: any) {
         </div>
       </div>
 
-      {/* 5. LỊCH SỬ VI PHẠM & THỜI GIAN QUẢN LÝ */}
+      {/* 6. LỊCH SỬ VI PHẠM & THỜI GIAN QUẢN LÝ */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
         <div className="bg-slate-50 px-6 py-3 border-b border-slate-200 flex justify-between items-center">
           <div>

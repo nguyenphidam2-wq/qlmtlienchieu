@@ -28,6 +28,15 @@ const STATUS_OPTIONS = [
   { value: "Thanh loại", label: "Thanh loại", color: "var(--slate)" },
 ];
 
+const SUBJECT_CATEGORY_LABELS: Record<string, string> = {
+  drug_related: "Liên quan ma túy",
+  psychiatric_risk: "Tâm thần/loạn thần có nguy cơ",
+  community_sentence: "Thi hành án tại cộng đồng",
+  criminal_record: "Tiền án, tiền sự/diện sưu tra",
+  administrative_violation: "Thường xuyên vi phạm hành chính",
+  weapon_related: "Nghi vấn vũ khí, VLN, CCHT, pháo",
+};
+
 // Các vai trò được phép tạo/sửa đối tượng
 const ALLOWED_ROLES_FOR_CREATE_UPDATE = ["admin", "leader", "officer"];
 
@@ -723,7 +732,31 @@ function SubjectDetail({ subject: initialSubject }: { subject: ISubject }) {
             <span className="font-semibold text-slate-600 dark:text-slate-400 block mb-1">Nơi ở hiện tại</span>
             <span className="font-medium text-slate-900 dark:text-white text-sm">{subject.address_current || "—"}</span>
           </div>
+          <div className="flex justify-between py-2 border-b border-dashed border-slate-200 dark:border-slate-700">
+            <span className="font-semibold text-slate-600 dark:text-slate-400">Xác minh cư trú</span>
+            <span className={`font-semibold ${subject.residence_verified ? "text-emerald-600" : "text-amber-600"}`}>
+              {subject.residence_verified ? `Đã xác minh${subject.last_verified_at ? ` (${new Date(subject.last_verified_at).toLocaleDateString("vi-VN")})` : ""}` : "Chưa xác minh"}
+            </span>
+          </div>
         </div>
+      </div>
+
+      {/* Official management categories */}
+      <div className="mb-6">
+        <h4 className="text-base font-bold text-slate-800 dark:text-white mb-3 pb-2 border-b-2 border-slate-200 dark:border-slate-700 uppercase tracking-wide">
+          Diện quản lý
+        </h4>
+        {subject.subject_categories && subject.subject_categories.length > 0 ? (
+          <div className="flex flex-wrap gap-2">
+            {subject.subject_categories.map((category: string) => (
+              <span key={category} className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs font-semibold text-amber-800">
+                {SUBJECT_CATEGORY_LABELS[category] || category}
+              </span>
+            ))}
+          </div>
+        ) : (
+          <p className="text-sm italic text-slate-400">Chưa chọn diện quản lý.</p>
+        )}
       </div>
 
       {/* Classification */}

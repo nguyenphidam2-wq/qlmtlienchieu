@@ -1,0 +1,13 @@
+node_modules
+.next
+.git
+.env*
+scratch
+tmp
+archives
+_archive
+QLMT_PORTABLE_APP
+test_extract
+public/uploads
+*.log
+*.pdf

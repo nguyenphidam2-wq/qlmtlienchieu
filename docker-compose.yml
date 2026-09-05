@@ -1,0 +1,48 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: qlmt-mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME:-qlmt_root}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-change_this_root_password}
+      MONGO_INITDB_DATABASE: qlmt-lienchieu
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - qlmt
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: qlmt-web
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    depends_on:
+      - mongo
+    ports:
+      - "3000:3000"
+    volumes:
+      - app_uploads:/app/public/uploads
+    networks:
+      - qlmt
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: qlmt-cloudflared
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - web
+    networks:
+      - qlmt
+
+volumes:
+  mongo_data:
+  app_uploads:
+
+networks:
+  qlmt:
+    driver: bridge
