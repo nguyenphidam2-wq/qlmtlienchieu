@@ -108,7 +108,7 @@ export function Sidebar({ onCloseMobile }: { onCloseMobile?: () => void }) {
             <img src="/logo.png?v=2" alt="Logo CA" className="w-full h-full object-contain p-0.5" />
           </div>
           <div className="flex flex-col text-left justify-center">
-            <h1 style={{ color: '#eab308', fontSize: '13px', lineHeight: '1.2', fontWeight: 'bold' }} className="tracking-wider m-0 p-0">
+            <h1 style={{ color: '#eab308', fontSize: '13px', lineHeight: '1.2', fontWeight: 'bold' }} className="font-display tracking-wider m-0 p-0">
               CÔNG AN PHƯỜNG<br />LIÊN CHIỂU
             </h1>
             <span style={{ color: '#94a3b8', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em' }} className="font-semibold mt-0.5 leading-none">

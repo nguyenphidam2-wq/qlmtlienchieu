@@ -1,8 +1,26 @@
 import type { Metadata } from "next";
+import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Sidebar } from "@/components/Sidebar";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
+
+const inter = Inter({
+  subsets: ["vietnamese", "latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["vietnamese", "latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["vietnamese", "latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Bản đồ số phường Liên Chiểu",
@@ -15,13 +33,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
-      <body className="min-h-screen bg-slate-50 relative flex text-slate-900">
+    <html
+      lang="vi"
+      suppressHydrationWarning
+      className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="min-h-screen bg-slate-50 dark:bg-slate-950 font-sans antialiased relative flex text-slate-900 dark:text-slate-100">
         <ThemeProvider>
           <LayoutWrapper>
             {children}

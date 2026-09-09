@@ -683,25 +683,25 @@ export function GISMap() {
           <div className="flex items-center gap-1.5">
             <Users className="w-3.5 h-3.5 text-red-400" />
             <span className="text-slate-400">Đối tượng:</span>
-            <b className="font-mono text-white text-xs">{filteredSubjects.length}</b>
+            <b className="font-mono tabular-nums text-white text-xs">{filteredSubjects.length}</b>
           </div>
           <div className="w-[1px] h-3.5 bg-slate-700"></div>
           <div className="flex items-center gap-1.5">
             <Home className="w-3.5 h-3.5 text-cyan-400" />
             <span className="text-slate-400">Nhà trọ:</span>
-            <b className="font-mono text-white text-xs">{filteredRentals.length}</b>
+            <b className="font-mono tabular-nums text-white text-xs">{filteredRentals.length}</b>
           </div>
           <div className="w-[1px] h-3.5 bg-slate-700 hidden sm:block"></div>
           <div className="items-center gap-1.5 hidden sm:flex">
             <Store className="w-3.5 h-3.5 text-rose-400" />
             <span className="text-slate-400">CSKD:</span>
-            <b className="font-mono text-white text-xs">{filteredBusinesses.length}</b>
+            <b className="font-mono tabular-nums text-white text-xs">{filteredBusinesses.length}</b>
           </div>
           <div className="w-[1px] h-3.5 bg-slate-700"></div>
           <div className="flex items-center gap-1.5">
             <Building2 className="w-3.5 h-3.5 text-blue-400" />
             <span className="text-slate-400">TDP:</span>
-            <b className="font-mono text-white text-xs">{tdps.length}</b>
+            <b className="font-mono tabular-nums text-white text-xs">{tdps.length}</b>
           </div>
         </div>
 
@@ -711,7 +711,7 @@ export function GISMap() {
             <div className="flex items-center gap-2">
               <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
               <span className="text-slate-400 text-[11px]">Độ sạch dữ liệu:</span>
-              <b className="font-mono text-emerald-400 font-bold">{dataQualityScore}%</b>
+              <b className="font-mono tabular-nums text-emerald-400 font-bold">{dataQualityScore}%</b>
             </div>
             <div className="w-20 bg-slate-800 rounded-full h-1.5 overflow-hidden">
               <div
