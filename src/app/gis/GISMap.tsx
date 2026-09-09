@@ -574,30 +574,9 @@ export function GISMap() {
 
   return (
     <div className={`relative w-full ${isFullscreen ? 'fixed inset-0 z-[99999] h-screen' : 'h-[calc(100vh-4rem)]'} overflow-hidden bg-slate-950 font-sans`}>
-      {/* Top Floating Glass Header (Blue Laser Clean Glass Layout) */}
-      <header className="absolute top-3.5 left-3.5 right-3.5 z-[1000] flex flex-wrap items-center justify-between gap-3 pointer-events-none">
-        {/* Left: Branding & Status Badge */}
-        <div className="glass-panel px-4 py-2 rounded-2xl flex items-center gap-3 pointer-events-auto border border-cyan-500/25 shadow-xl shadow-cyan-950/50">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-600/20 border border-cyan-400/40 flex items-center justify-center text-cyan-400 shadow-inner">
-            <MapPin className="w-4 h-4 animate-pulse" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-xs sm:text-sm font-bold text-white tracking-wide">
-                BẢN ĐỒ NGHIỆP VỤ GIS
-              </h1>
-              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-950/80 border border-emerald-500/40 text-emerald-300">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-                Trực tuyến
-              </span>
-            </div>
-            <p className="text-[10px] text-slate-400 hidden sm:block">
-              27 Tổ dân phố • Phường Liên Chiểu
-            </p>
-          </div>
-        </div>
-
-        {/* Right: Quick Action Controls */}
+      {/* Top Floating Controls */}
+      <header className="absolute top-3.5 left-3.5 right-3.5 z-[1000] flex items-center justify-end gap-2 pointer-events-none">
+        {/* Quick Action Controls */}
         <div className="flex items-center gap-2 pointer-events-auto flex-wrap justify-end">
           {/* Reset to Ward Center */}
           <button

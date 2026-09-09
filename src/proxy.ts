@@ -9,7 +9,13 @@ export async function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
   // Public paths that do not require authentication
-  const isPublicPath = path === '/login' || path === '/test-login' || path.startsWith('/api/auth') || path.startsWith('/_next') || path === '/favicon.ico';
+  const isPublicPath =
+    path === '/login' ||
+    path === '/test-login' ||
+    path.startsWith('/api/auth') ||
+    path.startsWith('/api/agent') ||
+    path.startsWith('/_next') ||
+    path === '/favicon.ico';
 
   if (isPublicPath) {
     return NextResponse.next();
@@ -36,5 +42,5 @@ export async function proxy(request: NextRequest) {
 
 // Config to specify which routes should be processed by the middleware
 export const config = {
-  matcher: ['/((?!api/auth|_next/static|_next/image|favicon.ico).*)'],
+  matcher: ['/((?!api/auth|api/agent|_next/static|_next/image|favicon.ico).*)'],
 };
